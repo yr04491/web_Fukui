@@ -1,80 +1,88 @@
-// ========================================
-// DOM Content Loaded Event
-// ========================================
+// ======================
+// 基本設定・初期化
+// ======================
 document.addEventListener('DOMContentLoaded', function() {
-    initializeNavigation();
-    initializeSmoothScrolling();
-    initializeScrollAnimation();
-    initializeButtonEffects();
+    console.log('不登校情報サイトが読み込まれました');
+    initializePageEffects();
 });
 
-// ========================================
-// Navigation Functions
-// ========================================
-function initializeNavigation() {
-    const navSections = document.querySelectorAll('.nav-section');
-    const contentSections = document.querySelectorAll('.content-section');
+// ======================
+// ボタンクリック処理
+// ======================
+
+/**
+ * プロジェクトについてボタンのクリック処理
+ */
+function openProject() {
+    console.log('プロジェクトについてがクリックされました');
     
-    // Add click event listeners to navigation items
-    navSections.forEach((navSection, index) => {
-        const navTitle = navSection.querySelector('.nav-title');
-        const navMenuItems = navSection.querySelectorAll('.nav-menu-item');
-        
-        // Navigation title click
-        navTitle.addEventListener('click', function() {
-            setActiveNavSection(index);
-            scrollToSection(index);
-        });
-        
-        // Navigation menu item clicks
-        navMenuItems.forEach((menuItem, menuIndex) => {
-            menuItem.addEventListener('click', function() {
-                setActiveNavSection(index);
-                scrollToSection(index);
-                // You can add specific menu item actions here
-                console.log(`Clicked menu item ${menuIndex} in section ${index}`);
-            });
-        });
-    });
+    // アラート表示（後で詳細ページに変更予定）
+    alert('プロジェクトについて\n\n当サイトは元不登校生やその保護者達が作成した情報サイトです。\n\n（ここに詳細ページへのリンク機能を実装予定）');
+    
+    // 今後の実装例：
+    // window.open('about.html', '_blank');
+    // または
+    // location.href = 'about.html';
 }
 
-function setActiveNavSection(activeIndex) {
-    const navTitles = document.querySelectorAll('.nav-title');
+/**
+ * セクションボタンのクリック処理
+ * @param {string} sectionId - セクションID（'00', '01', '02'）
+ */
+function openSection(sectionId) {
+    console.log(`セクション${sectionId}がクリックされました`);
     
-    // Remove active class from all nav titles
-    navTitles.forEach(title => title.classList.remove('active'));
-    
-    // Add active class to clicked nav title
-    if (navTitles[activeIndex]) {
-        navTitles[activeIndex].classList.add('active');
-    }
-}
-
-function scrollToSection(sectionIndex) {
-    const contentSections = document.querySelectorAll('.content-section');
-    if (contentSections[sectionIndex]) {
-        contentSections[sectionIndex].scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-        });
-    }
-}
-
-// ========================================
-// Smooth Scrolling Functions
-// ========================================
-function initializeSmoothScrolling() {
-    // Smooth scrolling for all internal links
-    const links = document.querySelectorAll('a[href^="#"]');
-    
-    links.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href').substring(1);
-            const targetElement = document.getElementById(targetId);
+    // セクションごとの処理分岐
+    switch(sectionId) {
+        case '00':
+            alert('まずどうする\n\n心を落ち着ける情報ページを開きます。\n\n（詳細ページを実装予定）');
+            // 今後の実装: location.href = 'mindset.html';
+            break;
             
-            if (targetElement) {
-                targetElement.scrollIntoView({
+        case '01':
+            alert('学校に相談\n\n学校のサポート制度について詳しく説明します。\n\n（詳細ページを実装予定）');
+            // 今後の実装: location.href = 'school-support.html';
+            break;
+            
+        case '02':
+            alert('行政が行う公的支援\n\n公的支援窓口の情報を表示します。\n\n（詳細ページを実装予定）');
+            // 今後の実装: location.href = 'public-support.html';
+            break;
+            
+        default:
+            console.error('不正なセクションIDです:', sectionId);
+    }
+}
+
+// ======================
+// ページ効果・アニメーション
+// ======================
+
+/**
+ * ページの初期化効果
+ */
+function initializePageEffects() {
+    // スムーズスクロール効果
+    addSmoothScrolling();
+    
+    // セクションの表示アニメーション
+    addSectionAnimations();
+    
+    // カラーナビの動的効果
+    addColorNaviEffects();
+}
+
+/**
+ * スムーズスクロール機能
+ */
+function addSmoothScrolling() {
+    // 将来的にアンカーリンクを追加する際に使用
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
                     behavior: 'smooth',
                     block: 'start'
                 });
@@ -83,138 +91,41 @@ function initializeSmoothScrolling() {
     });
 }
 
-// ========================================
-// Scroll Animation Functions
-// ========================================
-function initializeScrollAnimation() {
-    // Intersection Observer for scroll animations
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-    
-    const observer = new IntersectionObserver(function(entries) {
+/**
+ * セクションの表示アニメーション
+ */
+function addSectionAnimations() {
+    // Intersection Observer for fade-in effects
+    const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('animate-in');
-                updateActiveNavigation(entry.target);
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
             }
         });
-    }, observerOptions);
-    
-    // Observe all content sections
-    const contentSections = document.querySelectorAll('.content-section');
-    contentSections.forEach(section => {
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    });
+
+    // セクションにアニメーション効果を適用
+    document.querySelectorAll('.content-section').forEach(section => {
+        section.style.opacity = '0';
+        section.style.transform = 'translateY(20px)';
+        section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
         observer.observe(section);
     });
 }
 
-function updateActiveNavigation(activeSection) {
-    // Update navigation based on visible section
-    const sectionClasses = activeSection.classList;
-    let sectionIndex = -1;
-    
-    if (sectionClasses.contains('section-00')) sectionIndex = 0;
-    else if (sectionClasses.contains('section-01')) sectionIndex = 1;
-    else if (sectionClasses.contains('section-02')) sectionIndex = 2;
-    
-    if (sectionIndex >= 0) {
-        setActiveNavSection(sectionIndex);
-    }
-}
-
-// ========================================
-// Button Effects Functions
-// ========================================
-function initializeButtonEffects() {
-    // Add click effects to all buttons
-    const buttons = document.querySelectorAll('.btn-project, .section-btn');
-    
-    buttons.forEach(button => {
-        button.addEventListener('click', function(e) {
-            // Create ripple effect
-            createRippleEffect(e, this);
-        });
-        
-        // Add hover sound effect (optional)
-        button.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-2px) scale(1.02)';
-        });
-        
-        button.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0) scale(1)';
-        });
-    });
-}
-
-function createRippleEffect(event, element) {
-    const ripple = document.createElement('span');
-    const rect = element.getBoundingClientRect();
-    const size = Math.max(rect.width, rect.height);
-    const x = event.clientX - rect.left - size / 2;
-    const y = event.clientY - rect.top - size / 2;
-    
-    ripple.style.cssText = `
-        position: absolute;
-        width: ${size}px;
-        height: ${size}px;
-        left: ${x}px;
-        top: ${y}px;
-        background: rgba(255, 255, 255, 0.5);
-        border-radius: 50%;
-        transform: scale(0);
-        animation: ripple 0.6s ease-out;
-        pointer-events: none;
-    `;
-    
-    element.style.position = 'relative';
-    element.style.overflow = 'hidden';
-    element.appendChild(ripple);
-    
-    // Remove ripple after animation
-    setTimeout(() => {
-        ripple.remove();
-    }, 600);
-}
-
-// ========================================
-// Utility Functions
-// ========================================
-function debounce(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-    };
-}
-
-// Scroll to top function
-function scrollToTop() {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
-}
-
-// ========================================
-// Color Navigation Effects
-// ========================================
-function initializeColorNavigation() {
-    const colorBars = document.querySelectorAll('.color-bar');
-    
-    colorBars.forEach((bar, index) => {
-        bar.addEventListener('click', function() {
-            scrollToSection(index);
-        });
-        
-        // Add hover effects
+/**
+ * カラーナビの動的効果
+ */
+function addColorNaviEffects() {
+    // カラーバーにホバー効果を追加
+    document.querySelectorAll('.color-bar').forEach(bar => {
         bar.addEventListener('mouseenter', function() {
-            this.style.transform = 'scale(1.2)';
-            this.style.cursor = 'pointer';
+            this.style.transform = 'scale(1.1)';
+            this.style.transition = 'transform 0.2s ease';
         });
         
         bar.addEventListener('mouseleave', function() {
@@ -223,179 +134,119 @@ function initializeColorNavigation() {
     });
 }
 
-// ========================================
-// Keyboard Navigation
-// ========================================
-function initializeKeyboardNavigation() {
-    document.addEventListener('keydown', function(e) {
-        switch(e.key) {
-            case 'ArrowDown':
-                if (e.ctrlKey) {
-                    e.preventDefault();
-                    navigateToNextSection();
-                }
-                break;
-            case 'ArrowUp':
-                if (e.ctrlKey) {
-                    e.preventDefault();
-                    navigateToPreviousSection();
-                }
-                break;
-            case 'Home':
-                if (e.ctrlKey) {
-                    e.preventDefault();
-                    scrollToTop();
-                }
-                break;
-        }
-    });
+// ======================
+// ユーティリティ関数
+// ======================
+
+/**
+ * 指定した時間後に関数を実行
+ * @param {Function} func - 実行する関数
+ * @param {number} delay - 遅延時間（ミリ秒）
+ */
+function delay(func, delay) {
+    setTimeout(func, delay);
 }
 
-function navigateToNextSection() {
-    const currentActive = document.querySelector('.nav-title.active');
-    if (currentActive) {
-        const navSections = Array.from(document.querySelectorAll('.nav-title'));
-        const currentIndex = navSections.indexOf(currentActive);
-        const nextIndex = (currentIndex + 1) % navSections.length;
-        
-        setActiveNavSection(nextIndex);
-        scrollToSection(nextIndex);
+/**
+ * ローカルストレージにデータを保存
+ * @param {string} key - キー
+ * @param {any} value - 値
+ */
+function saveToLocalStorage(key, value) {
+    try {
+        localStorage.setItem(key, JSON.stringify(value));
+    } catch (error) {
+        console.error('ローカルストレージへの保存に失敗しました:', error);
     }
 }
 
-function navigateToPreviousSection() {
-    const currentActive = document.querySelector('.nav-title.active');
-    if (currentActive) {
-        const navSections = Array.from(document.querySelectorAll('.nav-title'));
-        const currentIndex = navSections.indexOf(currentActive);
-        const prevIndex = currentIndex === 0 ? navSections.length - 1 : currentIndex - 1;
-        
-        setActiveNavSection(prevIndex);
-        scrollToSection(prevIndex);
+/**
+ * ローカルストレージからデータを取得
+ * @param {string} key - キー
+ * @returns {any} 保存されたデータ
+ */
+function loadFromLocalStorage(key) {
+    try {
+        const item = localStorage.getItem(key);
+        return item ? JSON.parse(item) : null;
+    } catch (error) {
+        console.error('ローカルストレージからの読み込みに失敗しました:', error);
+        return null;
     }
 }
 
-// ========================================
-// Performance Optimization
-// ========================================
-function optimizePerformance() {
-    // Lazy load images (if any are added later)
-    const images = document.querySelectorAll('img[data-src]');
-    const imageObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                img.src = img.dataset.src;
-                img.classList.remove('lazy');
-                imageObserver.unobserve(img);
-            }
-        });
-    });
+// ======================
+// 今後の拡張機能用の関数（コメントアウト）
+// ======================
+
+/*
+// お気に入り機能
+function toggleFavorite(sectionId) {
+    const favorites = loadFromLocalStorage('favorites') || [];
+    const index = favorites.indexOf(sectionId);
     
-    images.forEach(img => imageObserver.observe(img));
+    if (index > -1) {
+        favorites.splice(index, 1);
+        console.log(`セクション${sectionId}をお気に入りから削除しました`);
+    } else {
+        favorites.push(sectionId);
+        console.log(`セクション${sectionId}をお気に入りに追加しました`);
+    }
+    
+    saveToLocalStorage('favorites', favorites);
 }
 
-// ========================================
-// Accessibility Enhancements
-// ========================================
-function initializeAccessibility() {
-    // Add ARIA labels
-    const navItems = document.querySelectorAll('.nav-menu-item');
-    navItems.forEach((item, index) => {
-        item.setAttribute('role', 'button');
-        item.setAttribute('tabindex', '0');
-        item.setAttribute('aria-label', `Navigation menu item ${index + 1}`);
-    });
+// 進捗管理機能
+function markAsCompleted(sectionId) {
+    const completed = loadFromLocalStorage('completed') || [];
+    if (!completed.includes(sectionId)) {
+        completed.push(sectionId);
+        saveToLocalStorage('completed', completed);
+        console.log(`セクション${sectionId}を完了としてマークしました`);
+    }
+}
+
+// 検索機能
+function searchContent(query) {
+    const sections = document.querySelectorAll('.content-section');
+    query = query.toLowerCase();
     
-    // Add keyboard support for menu items
-    navItems.forEach(item => {
-        item.addEventListener('keydown', function(e) {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                this.click();
-            }
-        });
+    sections.forEach(section => {
+        const text = section.textContent.toLowerCase();
+        if (text.includes(query)) {
+            section.style.display = 'flex';
+            section.style.backgroundColor = '#fffacd'; // ハイライト
+        } else {
+            section.style.display = 'none';
+        }
     });
 }
 
-// ========================================
-// CSS Animations Keyframes (JavaScript version)
-// ========================================
-function addCSSAnimations() {
-    const style = document.createElement('style');
-    style.textContent = `
-        @keyframes ripple {
-            to {
-                transform: scale(2);
-                opacity: 0;
-            }
-        }
-        
-        @keyframes slideInFromRight {
-            from {
-                opacity: 0;
-                transform: translateX(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-        
-        .animate-in {
-            animation: slideInFromRight 0.6s ease-out;
-        }
-        
-        @keyframes pulse {
-            0%, 100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.05);
-            }
-        }
-        
-        .pulse {
-            animation: pulse 2s infinite;
-        }
-    `;
-    document.head.appendChild(style);
+// ダークモード切り替え
+function toggleDarkMode() {
+    document.body.classList.toggle('dark-mode');
+    const isDarkMode = document.body.classList.contains('dark-mode');
+    saveToLocalStorage('darkMode', isDarkMode);
 }
 
-// ========================================
-// Initialize All Functions
-// ========================================
-document.addEventListener('DOMContentLoaded', function() {
-    // Initialize all modules
-    initializeNavigation();
-    initializeSmoothScrolling();
-    initializeScrollAnimation();
-    initializeButtonEffects();
-    initializeColorNavigation();
-    initializeKeyboardNavigation();
-    initializeAccessibility();
-    addCSSAnimations();
-    optimizePerformance();
-    
-    // Console log for debugging
-    console.log('ぼくらのみち website initialized successfully!');
-});
+// フォント サイズ調整
+function adjustFontSize(increase) {
+    const currentSize = parseInt(getComputedStyle(document.body).fontSize);
+    const newSize = increase ? currentSize + 2 : Math.max(currentSize - 2, 12);
+    document.body.style.fontSize = newSize + 'px';
+    saveToLocalStorage('fontSize', newSize);
+}
+*/
 
-// ========================================
-// Error Handling
-// ========================================
+// ======================
+// エラーハンドリング
+// ======================
 window.addEventListener('error', function(e) {
-    console.error('JavaScript error occurred:', e.error);
+    console.error('JavaScriptエラーが発生しました:', e.error);
+    // 今後、エラー報告機能を追加可能
 });
 
-// ========================================
-// Export functions for potential module use
-// ========================================
-if (typeof module !== 'undefined' && module.exports) {
-    module.exports = {
-        scrollToSection,
-        setActiveNavSection,
-        createRippleEffect,
-        scrollToTop
-    };
-}
+// デバッグ用の情報出力
+console.log('script.js が正常に読み込まれました');
+console.log('利用可能な関数: openProject(), openSection()');
+console.log('開発者向け: initializePageEffects(), saveToLocalStorage(), loadFromLocalStorage()');

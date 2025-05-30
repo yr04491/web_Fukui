@@ -47,15 +47,18 @@
     left: 38px;
 }
 
-.nav-section:nth-child(2) { /* 00 */
+.nav-section:nth-child(2) {
+    /* 00 */
     top: 106px;
 }
 
-.nav-section:nth-child(3) { /* 01 */
+.nav-section:nth-child(3) {
+    /* 01 */
     top: 222px;
 }
 
-.nav-section:nth-child(4) { /* 02 */
+.nav-section:nth-child(4) {
+    /* 02 */
     top: 355px;
 }
 
@@ -117,6 +120,16 @@
     flex-grow: 1;
     position: relative;
     height: 1887px;
+}
+
+/* css/top.css に追加 */
+.newwindow {
+    width: 18px;
+    height: 18px;
+    background: url('../images/newwindow.png') center/cover;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
 }
 
 /* ==================== 
@@ -228,6 +241,7 @@
     position: absolute;
     width: 55.97%;
     height: 13.79%;
+    border-radius: 50%;
 }
 
 .color-bar:nth-child(1) {
@@ -264,8 +278,7 @@
 .section-00 .color-bar:nth-child(1),
 .section-01 .color-bar:nth-child(2),
 .section-02 .color-bar:nth-child(3) {
-    width: 44.03%;
-    right: 0.04%;
+    left: 44.03%;
 }
 
 /* セクションヘッダー */
@@ -288,8 +301,9 @@
     line-height: 25px;
     letter-spacing: -0.05em;
     color: rgba(255, 255, 255, 0.75);
-    border: 1px solid var(--color-black);
     text-align: center;
+    -webkit-text-stroke: 1px var(--color-black);
+    /* ← この行を追加（文字の輪郭線） */
 }
 
 /* セクション別の数字スタイル */

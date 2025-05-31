@@ -1,5 +1,5 @@
 /* ==================== 
-   トップページ専用スタイル
+   トップページ デスクトップ用スタイル
 ==================== */
 
 /* メインコンテナ */
@@ -120,16 +120,6 @@
     flex-grow: 1;
     position: relative;
     height: 1887px;
-}
-
-/* css/top.css に追加 */
-.newwindow {
-    width: 18px;
-    height: 18px;
-    background: url('../images/newwindow.png') center/cover;
-    flex: none;
-    order: 0;
-    flex-grow: 0;
 }
 
 /* ==================== 

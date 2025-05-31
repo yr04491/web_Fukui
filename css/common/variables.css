@@ -1,0 +1,24 @@
+/* ==================== 
+   CSS変数定義
+==================== */
+
+:root {
+    /* カラーパレット */
+    --bg-main: #F4F4EF;
+    --bg-white: #FFFFFF;
+    --color-black: #000000;
+    --color-white: #FFFFFF;
+    
+    /* セクションカラー */
+    --color-section-00: #FDF9D5;
+    --color-section-01: #A3D0FA;
+    --color-section-02: #88D3BC;
+    --color-section-03: #F4BED3;
+    --color-section-04: #EFAB94;
+    --color-section-05: #B695CE;
+    
+    /* フォント */
+    --font-zen: 'Zen Kaku Gothic New', 'Hiragino Sans', 'ヒラギノ角ゴシック', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', 'メイリオ', sans-serif;
+    --font-oswald: 'Oswald', 'Arial Black', sans-serif;
+    --font-inter: 'Inter', 'Arial', sans-serif;
+}

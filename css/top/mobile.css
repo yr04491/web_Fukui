@@ -1,5 +1,5 @@
 /* ==================== 
-   スマホ用スタイル - TOP2.css忠実再現版
+   トップページ モバイル用スタイル
 ==================== */
 
 /* スマホ用メディアクエリ */
@@ -84,7 +84,7 @@
     .main-visual {
         width: 540px;
         height: 270px;
-        background: url('../images/0525maini_mg.png') center/cover;
+        background: url('../../images/0525maini_mg.png') center/cover;
         flex: none;
         order: 0;
         align-self: stretch;
@@ -180,7 +180,7 @@
     .newwindow {
         width: 18px;
         height: 18px;
-        background: url('../images/newwindow.png') center/cover;
+        background: url('../../images/newwindow.png') center/cover;
         flex: none;
         order: 0;
         flex-grow: 0;

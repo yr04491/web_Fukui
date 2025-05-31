@@ -1,0 +1,338 @@
+/* ==================== 
+   スマホ用スタイル
+==================== */
+
+/* スマホ用メディアクエリ */
+@media screen and (max-width: 768px) {
+    
+    /* メインコンテナ - スマホ用レイアウト */
+    .container {
+        flex-direction: column;
+        padding: 0;
+        gap: 0;
+        width: 100%;
+        height: auto;
+        margin: 0;
+    }
+
+    /* ==================== 
+       ナビゲーション - スマホ用
+    ==================== */
+    .navi {
+        width: 100%;
+        height: auto;
+        position: relative;
+        padding: 20px;
+        order: 2; /* メインコンテンツの後に表示 */
+    }
+
+    .site-title {
+        position: static;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 30px;
+        font-size: 22px;
+    }
+
+    .nav-section {
+        position: static;
+        width: 100%;
+        margin-bottom: 25px;
+    }
+
+    .nav-section:nth-child(2),
+    .nav-section:nth-child(3),
+    .nav-section:nth-child(4) {
+        top: auto;
+    }
+
+    .nav-title {
+        padding-bottom: 8px;
+        margin-bottom: 12px;
+    }
+
+    .nav-section:nth-child(2) .nav-title {
+        border-bottom: 1px solid var(--color-black);
+    }
+
+    .nav-menu {
+        padding-left: 20px;
+        gap: 8px;
+    }
+
+    .nav-item {
+        font-size: 14px;
+        line-height: 20px;
+        padding: 5px 0;
+    }
+
+    /* ==================== 
+       メインコンテンツ - スマホ用
+    ==================== */
+    .main-contents {
+        width: 100%;
+        height: auto;
+        order: 1; /* ナビゲーションより先に表示 */
+    }
+
+    /* ==================== 
+       タイトルセクション - スマホ用
+    ==================== */
+    .title-section {
+        width: 100%;
+        height: auto;
+        gap: 20px;
+        padding: 0 20px 40px;
+    }
+
+    .main-visual {
+        width: 100%;
+        height: 200px;
+        margin-bottom: 20px;
+    }
+
+    .title-text {
+        position: static;
+        width: 100%;
+        text-align: center;
+        color: var(--color-black);
+        margin-bottom: 10px;
+    }
+
+    .logo {
+        position: static;
+        width: 250px;
+        height: auto;
+        margin: 0 auto 20px;
+    }
+
+    .intro-text {
+        width: 100%;
+        margin-top: 0;
+        text-align: left;
+    }
+
+    /* プロジェクトボタン - スマホ用 */
+    .btn-project.small {
+        width: 200px;
+        height: 45px;
+        padding: 10px 15px;
+        font-size: 13px;
+        margin: 0 auto;
+    }
+
+    /* ==================== 
+       セクション共通 - スマホ用
+    ==================== */
+    .section-00,
+    .section-01,
+    .section-02 {
+        position: static;
+        width: 100%;
+        height: auto;
+        padding: 40px 20px;
+        gap: 25px;
+        margin-bottom: 20px;
+    }
+
+    /* カラーナビゲーション - スマホ用 */
+    .color-navi {
+        position: absolute;
+        left: 10px;
+        top: 20px;
+        width: 20px;
+        height: 80px;
+    }
+
+    .color-bar {
+        width: 60%;
+        height: 12%;
+    }
+
+    .color-bar:nth-child(1) { top: 5%; }
+    .color-bar:nth-child(2) { top: 20%; }
+    .color-bar:nth-child(3) { top: 35%; }
+    .color-bar:nth-child(4) { top: 50%; }
+    .color-bar:nth-child(5) { top: 65%; }
+    .color-bar:nth-child(6) { top: 80%; }
+
+    /* アクティブカラーバー */
+    .section-00 .color-bar:nth-child(1),
+    .section-01 .color-bar:nth-child(2),
+    .section-02 .color-bar:nth-child(3) {
+        left: 40%;
+    }
+
+    /* セクションヘッダー - スマホ用 */
+    .section-header {
+        width: 100%;
+        padding: 0;
+        flex-direction: column;
+        gap: 10px;
+        height: auto;
+    }
+
+    .section-number {
+        width: auto;
+        height: auto;
+        font-size: 36px;
+        line-height: 1;
+        margin: 0;
+    }
+
+    .section-title {
+        width: 100%;
+        height: auto;
+        font-size: 22px;
+        text-align: center;
+        margin: 0;
+    }
+
+    .section-subtitle {
+        width: 100%;
+        font-size: 15px;
+        line-height: 22px;
+    }
+
+    .section-content {
+        width: 100%;
+        font-size: 13px;
+        line-height: 23px;
+        text-align: left;
+    }
+
+    /* セクション別ボタン - スマホ用 */
+    .section-00-btn,
+    .section-01-btn,
+    .section-02-btn {
+        width: 100%;
+        max-width: 320px;
+        height: 60px;
+        padding: 10px 15px;
+        font-size: 13px;
+        line-height: 18px;
+    }
+
+    .btn-project .btn-icon {
+        width: 28px;
+        height: 26px;
+    }
+
+    /* ==================== 
+       フッター - スマホ用
+    ==================== */
+    .footer {
+        position: static;
+        width: 100%;
+        height: auto;
+        padding: 40px 20px;
+        gap: 15px;
+        left: auto;
+        top: auto;
+    }
+
+    .footer-text {
+        width: 100%;
+        text-align: center;
+        font-size: 13px;
+    }
+
+    .footer-logo {
+        width: 160px;
+        height: auto;
+    }
+
+    .footer-menu {
+        width: 100%;
+        text-align: center;
+        font-size: 11px;
+    }
+
+    /* ==================== 
+       ユーティリティ - スマホ用
+    ==================== */
+    
+    /* テキストサイズ調整 */
+    .text-h1 {
+        font-size: 22px;
+        line-height: 32px;
+    }
+
+    .text-h2 {
+        font-size: 15px;
+        line-height: 22px;
+    }
+
+    .text-body {
+        font-size: 13px;
+        line-height: 23px;
+    }
+
+    .text-small {
+        font-size: 11px;
+        line-height: 16px;
+    }
+
+    /* スマホ専用のヘルパークラス */
+    .mobile-hidden {
+        display: none;
+    }
+
+    .mobile-center {
+        text-align: center;
+    }
+
+    /* タッチ操作の改善 */
+    .nav-item,
+    .btn-project {
+        min-height: 44px; /* タッチしやすいサイズ */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .nav-item {
+        padding: 10px 5px;
+        border-radius: 3px;
+        transition: background-color 0.2s ease;
+    }
+
+    .nav-item:hover,
+    .nav-item:active {
+        background-color: rgba(0, 0, 0, 0.05);
+    }
+
+}
+
+/* より小さいスマホ用（iPhone SE等） */
+@media screen and (max-width: 375px) {
+    
+    .title-section {
+        padding: 0 15px 30px;
+    }
+    
+    .section-00,
+    .section-01,
+    .section-02 {
+        padding: 30px 15px;
+    }
+    
+    .logo {
+        width: 200px;
+    }
+    
+    .section-title {
+        font-size: 20px;
+    }
+    
+    .section-number {
+        font-size: 32px;
+    }
+    
+    .intro-text,
+    .section-content {
+        font-size: 12px;
+        line-height: 21px;
+    }
+    
+}

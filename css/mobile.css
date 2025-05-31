@@ -37,6 +37,32 @@
     }
 
     /* ==================== 
+       ボタン共通スタイル - スマホ用
+    ==================== */
+    .btn-project {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        border-radius: 5px;
+        font-family: 'Zen Kaku Gothic New', 'Hiragino Sans', 'ヒラギノ角ゴシック', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', 'メイリオ', sans-serif;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 20px;
+        letter-spacing: -0.05em;
+        color: #000000;
+        transition: opacity 0.2s ease;
+        text-decoration: none;
+        cursor: pointer;
+        pointer-events: auto;
+        touch-action: manipulation;
+    }
+
+    .btn-project:hover {
+        opacity: 0.8;
+    }
+
+    /* ==================== 
        タイトルセクション - TOP2.css準拠
     ==================== */
     .title-section {
@@ -134,7 +160,7 @@
         flex: none;
         order: 2;
         flex-grow: 0;
-        z-index: 15;
+        z-index: 10; /* 15から999に変更 */
 
         /* リンク動作を確保するための追加スタイル */
         position: relative;
@@ -176,7 +202,7 @@
         width: 540px;
         height: 410px;
         left: calc(50% - 540px/2 - 1px);
-        top: 500px;
+        top: 540px; /* 500pxから520pxに変更 */
     }
 
     .section-00 .section-header {
@@ -313,7 +339,7 @@
         width: 540px;
         height: 385px;
         left: calc(50% - 540px/2 - 0.91px);
-        top: 908.91px;
+        top: 928.91px; /* 908.91px + 20px調整 */
     }
 
     .section-01 .section-header {
@@ -450,7 +476,7 @@
         width: 540px;
         height: 360px;
         left: calc(50% - 540px/2 - 0.91px);
-        top: 1317.91px;
+        top: 1337.91px; /* 1317.91px + 20px調整 */
     }
 
     .section-02 .section-header {
@@ -785,7 +811,7 @@
         width: 540px;
         height: 208.88px;
         left: calc(50% - 540px/2 - 0.91px);
-        top: 1678px;
+        top: 1698px; /* 1678px + 20px調整 */
         background: #EFAB94;
     }
 
@@ -833,28 +859,6 @@
     }
 
     /* ==================== 
-        ボタン共通スタイル - スマホ用
-    ==================== */
-    .btn-project {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
-        border-radius: 5px;
-        font-family: 'Zen Kaku Gothic New', 'Hiragino Sans', 'ヒラギノ角ゴシック', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', 'メイリオ', sans-serif;
-        font-weight: 700;
-        font-size: 12px;
-        line-height: 20px;
-        letter-spacing: -0.05em;
-        color: #000000;
-        transition: opacity 0.2s ease;
-        text-decoration: none;
-        cursor: pointer;
-        pointer-events: auto;
-        touch-action: manipulation;
-    }
-
-    /* ==================== 
        ボタン内アイコンとテキスト
     ==================== */
     .btn-project .btn-icon {
@@ -879,10 +883,6 @@
         order: 1;
         flex-grow: 1;
         pointer-events: none;
-    }
-
-    .btn-project:hover {
-        opacity: 0.8;
     }
 
 }

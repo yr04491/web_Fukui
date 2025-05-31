@@ -17,9 +17,19 @@
 </head>
 
 <body>
+    <!-- ハンバーガーメニューボタン（モバイル専用） -->
+    <button class="hamburger-btn" id="hamburgerBtn">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <!-- メニューオーバーレイ（モバイル専用） -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+
     <div class="container">
         <!-- ナビゲーション -->
-        <nav class="navi">
+        <nav class="navi" id="navigation">
             <h1 class="site-title">ぼくらのみち</h1>
 
             <!-- 00 まずどうする？ -->
@@ -163,6 +173,42 @@
             </footer>
         </main>
     </div>
+
+    <script>
+        // ハンバーガーメニューの制御
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburgerBtn = document.getElementById('hamburgerBtn');
+            const navigation = document.getElementById('navigation');
+            const menuOverlay = document.getElementById('menuOverlay');
+
+            // ハンバーガーボタンクリック
+            hamburgerBtn.addEventListener('click', function() {
+                navigation.classList.toggle('active');
+                menuOverlay.classList.toggle('active');
+                hamburgerBtn.classList.toggle('active');
+                document.body.classList.toggle('menu-open');
+            });
+
+            // オーバーレイクリックでメニューを閉じる
+            menuOverlay.addEventListener('click', function() {
+                navigation.classList.remove('active');
+                menuOverlay.classList.remove('active');
+                hamburgerBtn.classList.remove('active');
+                document.body.classList.remove('menu-open');
+            });
+
+            // メニューアイテムクリックでメニューを閉じる
+            const navItems = document.querySelectorAll('.nav-item');
+            navItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    navigation.classList.remove('active');
+                    menuOverlay.classList.remove('active');
+                    hamburgerBtn.classList.remove('active');
+                    document.body.classList.remove('menu-open');
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>

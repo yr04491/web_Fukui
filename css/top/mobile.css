@@ -16,10 +16,167 @@
     }
 
     /* ==================== 
-       ナビゲーション - 非表示
+       ハンバーガーメニューボタン
+    ==================== */
+    .hamburger-btn {
+        display: block;
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        width: 40px;
+        height: 40px;
+        background: rgba(255, 255, 255, 0.9);
+        border: 1px solid #000;
+        border-radius: 5px;
+        cursor: pointer;
+        z-index: 1001;
+        padding: 0;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 6px;
+        transition: all 0.3s ease;
+    }
+
+    .hamburger-btn span {
+        display: block;
+        width: 20px;
+        height: 2px;
+        background: #000;
+        transition: all 0.3s ease;
+        transform-origin: center;
+    }
+
+    .hamburger-btn.active span:nth-child(1) {
+        transform: rotate(45deg) translate(4px, 4px);
+    }
+
+    .hamburger-btn.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger-btn.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(4px, -4px);
+    }
+
+    /* ==================== 
+       メニューオーバーレイ
+    ==================== */
+    .menu-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .menu-overlay.active {
+        display: block;
+        opacity: 1;
+    }
+
+    /* ==================== 
+       ナビゲーション - モバイル用サイドバー
     ==================== */
     .navi {
-        display: none;
+        position: fixed;
+        top: 0;
+        left: -300px;
+        width: 280px;
+        height: 100vh;
+        background: #FFFFFF;
+        z-index: 1000;
+        padding: 80px 20px 20px 20px;
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+        transition: left 0.3s ease;
+        overflow-y: auto;
+    }
+
+    .navi.active {
+        left: 0;
+    }
+
+    .site-title {
+        position: static;
+        margin-bottom: 30px;
+        width: auto;
+        height: auto;
+        font-family: var(--font-zen);
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 30px;
+        color: var(--color-black);
+        text-align: center;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 15px;
+    }
+
+    /* ナビセクション */
+    .nav-section {
+        position: static;
+        width: 100%;
+        margin-bottom: 25px;
+        left: auto;
+        top: auto;
+    }
+
+    .nav-title {
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+        padding-bottom: 8px;
+        margin-bottom: 12px;
+        border-bottom: 1px solid var(--color-black);
+    }
+
+    .nav-number {
+        font-family: var(--font-zen);
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 23px;
+        color: var(--color-black);
+    }
+
+    .nav-text {
+        font-family: var(--font-zen);
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 23px;
+        color: var(--color-black);
+    }
+
+    .nav-menu {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        padding-left: 20px;
+    }
+
+    .nav-item {
+        font-family: var(--font-zen);
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 20px;
+        color: var(--color-black);
+        cursor: pointer;
+        transition: all 0.2s ease;
+        padding: 5px 0;
+        border-radius: 3px;
+    }
+
+    .nav-item:hover {
+        background: #f5f5f5;
+        padding-left: 5px;
+    }
+
+    /* スクロール防止 */
+    body.menu-open {
+        overflow: hidden;
     }
 
     /* ==================== 

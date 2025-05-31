@@ -886,16 +886,3 @@
     }
 
 }
-
-/* より小さいスマホ用 - スケーリング調整 */
-@media screen and (max-width: 480px) {
-    .main-contents {
-        transform: scale(calc(100vw / 540));
-    }
-}
-
-@media screen and (max-width: 375px) {
-    .main-contents {
-        transform: scale(calc(100vw / 540));
-    }
-}

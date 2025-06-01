@@ -98,3 +98,269 @@
 .footer-login-link:hover {
     opacity: 0.7;
 }
+
+/* css/common/components.css に追加する CSS */
+
+/* 既存の footer-login-link の下に追加 */
+.footer-review-link {
+    color: var(--color-black);
+    text-decoration: none;
+    font-weight: 700;
+    transition: opacity 0.2s ease;
+}
+
+.footer-review-link:hover {
+    opacity: 0.7;
+}
+
+/* デバッグパネル用スタイル（review.html用） */
+.debug-panel {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    z-index: 9999;
+    min-width: 200px;
+    font-family: monospace;
+    font-size: 12px;
+}
+
+.debug-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 5px;
+}
+
+.debug-close {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.debug-content button {
+    display: block;
+    width: 100%;
+    margin: 5px 0;
+    padding: 5px;
+    background: #333;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 11px;
+}
+
+.debug-content button:hover {
+    background: #555;
+}
+
+/* トースト通知スタイル */
+.toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #333;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 6px;
+    z-index: 10000;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+}
+
+.toast-show {
+    transform: translateX(0);
+}
+
+.toast-success {
+    background: #27ae60;
+}
+
+.toast-error {
+    background: #e74c3c;
+}
+
+.toast-warning {
+    background: #f39c12;
+}
+
+/* 検索ボックススタイル */
+.search-container {
+    margin-top: 20px;
+}
+
+.search-box {
+    position: relative;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.search-input {
+    width: 100%;
+    padding: 10px 40px 10px 15px;
+    border: 2px solid #E8E8E8;
+    border-radius: 25px;
+    font-size: 14px;
+    font-family: var(--font-zen);
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.search-input:focus {
+    border-color: var(--color-section-01);
+}
+
+.search-clear {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    color: #999;
+    display: none;
+}
+
+.search-clear:hover {
+    color: #666;
+}
+
+/* レビューアクションボタン */
+.review-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px solid #eee;
+}
+
+.action-btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 6px 12px;
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 20px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: var(--font-zen);
+}
+
+.action-btn:hover {
+    background: #e9ecef;
+    transform: translateY(-1px);
+}
+
+.helpful-btn.helpful-clicked {
+    background: var(--color-section-01);
+    color: white;
+    border-color: var(--color-section-01);
+}
+
+.helpful-count {
+    background: rgba(0, 0, 0, 0.1);
+    padding: 2px 6px;
+    border-radius: 10px;
+    font-weight: bold;
+    min-width: 20px;
+    text-align: center;
+}
+
+/* 新しい投稿のハイライト */
+.new-review {
+    animation: highlightNew 3s ease-out;
+}
+
+@keyframes highlightNew {
+    0% {
+        background: rgba(163, 208, 250, 0.3);
+        transform: scale(1.02);
+    }
+    100% {
+        background: #f8f9fa;
+        transform: scale(1);
+    }
+}
+
+/* スキップリンク */
+.skip-links {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    z-index: 1000;
+}
+
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: var(--color-black);
+    color: var(--color-white);
+    padding: 8px;
+    text-decoration: none;
+    z-index: 100;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.skip-link:focus {
+    top: 6px;
+}
+
+/* エラーページ */
+.error-page {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 40px;
+    text-align: center;
+    background: var(--bg-white);
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.error-page h1 {
+    color: #e74c3c;
+    margin-bottom: 20px;
+}
+
+.error-page button {
+    padding: 12px 24px;
+    background: var(--color-section-01);
+    color: var(--color-black);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: var(--font-zen);
+    margin-top: 20px;
+}
+
+/* オフラインモード */
+.offline-mode {
+    filter: grayscale(0.3);
+}
+
+.offline-mode::before {
+    content: 'オフラインモード';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: #f39c12;
+    color: white;
+    text-align: center;
+    padding: 5px;
+    z-index: 10000;
+    font-size: 12px;
+}

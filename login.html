@@ -347,7 +347,7 @@
             <div id="registerForm" class="form-container hidden">
                 <form id="registerFormElement" onsubmit="handleRegister(event)">
                     <div class="form-group">
-                        <label for="registerName" class="form-label">お名前</label>
+                        <label for="registerName" class="form-label">ユーザーネーム</label>
                         <input 
                             type="text" 
                             id="registerName" 
@@ -492,7 +492,7 @@
             let hasError = false;
             
             if (name.trim().length === 0) {
-                showError('registerNameError', '名前を入力してください');
+                showError('registerNameError', 'ユーザーネームを入力してください');
                 hasError = true;
             }
             

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>口コミ投稿 - ぼくらのみち</title>
+    
+    <!-- 既存の共通スタイルを読み込み -->
+    <link rel="stylesheet" href="css/common/variables.css">
+    <link rel="stylesheet" href="css/common/reset.css">
+    <link rel="stylesheet" href="css/common/components.css">
+    
+    <!-- 口コミページ専用スタイル -->
+    <link rel="stylesheet" href="css/review/review.css">
+</head>
+<body>
+    <!-- ヘッダー -->
+    <header class="review-header">
+        <div class="header-container">
+            <!-- 戻るボタン -->
+            <button class="back-btn" onclick="goBack()" title="戻る">←</button>
+            
+            <!-- ロゴとタイトル -->
+            <div class="header-content">
+                <img src="images/logo.png" alt="ぼくらのみち" class="header-logo">
+                <h1 class="page-title">口コミ投稿</h1>
+                <p class="page-subtitle">みんなの体験を共有しましょう</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- メインコンテンツ -->
+    <main class="main-container">
+        <!-- 投稿フォームセクション -->
+        <section class="form-section">
+            <div class="section-header">
+                <h2 class="section-title">口コミを投稿する</h2>
+                <p class="section-description">あなたの体験が、同じ悩みを持つ方の参考になります</p>
+            </div>
+
+            <!-- 成功・エラーメッセージ -->
+            <div id="messageContainer" class="message-container hidden"></div>
+
+            <!-- 投稿フォーム -->
+            <form id="reviewForm" class="review-form">
+                <!-- ユーザーネーム -->
+                <div class="form-group">
+                    <label for="username" class="form-label">
+                        <span class="label-text">お名前（ニックネーム可）</span>
+                        <span class="required">*</span>
+                    </label>
+                    <input 
+                        type="text" 
+                        id="username" 
+                        name="username" 
+                        class="form-input" 
+                        placeholder="例：花子ママ"
+                        required
+                        maxlength="20"
+                    >
+                    <span class="error-message hidden" id="usernameError"></span>
+                </div>
+
+                <!-- お子さんの年齢 -->
+                <div class="form-group">
+                    <label for="childAge" class="form-label">
+                        <span class="label-text">お子さんの年齢</span>
+                        <span class="required">*</span>
+                    </label>
+                    <select id="childAge" name="childAge" class="form-select" required>
+                        <option value="">選択してください</option>
+                        <option value="未就学児">未就学児</option>
+                        <option value="小学生低学年">小学生低学年（1-3年生）</option>
+                        <option value="小学生高学年">小学生高学年（4-6年生）</option>
+                        <option value="中学生">中学生</option>
+                        <option value="高校生">高校生</option>
+                        <option value="18歳以上">18歳以上</option>
+                    </select>
+                    <span class="error-message hidden" id="childAgeError"></span>
+                </div>
+
+                <!-- タイトル -->
+                <div class="form-group">
+                    <label for="title" class="form-label">
+                        <span class="label-text">タイトル</span>
+                        <span class="required">*</span>
+                    </label>
+                    <input 
+                        type="text" 
+                        id="title" 
+                        name="title" 
+                        class="form-input" 
+                        placeholder="例：スクールカウンセラーに相談して良かった"
+                        required
+                        maxlength="50"
+                    >
+                    <div class="char-counter">
+                        <span id="titleCounter">0</span>/50文字
+                    </div>
+                    <span class="error-message hidden" id="titleError"></span>
+                </div>
+
+                <!-- 口コミ内容 -->
+                <div class="form-group">
+                    <label for="content" class="form-label">
+                        <span class="label-text">口コミ内容</span>
+                        <span class="required">*</span>
+                    </label>
+                    <textarea 
+                        id="content" 
+                        name="content" 
+                        class="form-textarea" 
+                        placeholder="具体的な体験談をお聞かせください。どのような状況で、何をして、どのような結果になったかなど..."
+                        required
+                        maxlength="1000"
+                        rows="8"
+                    ></textarea>
+                    <div class="char-counter">
+                        <span id="contentCounter">0</span>/1000文字
+                    </div>
+                    <span class="error-message hidden" id="contentError"></span>
+                </div>
+
+                <!-- AIが判定するカテゴリの説明 -->
+                <div class="category-info">
+                    <p class="info-text">
+                        <span class="info-icon">🤖</span>
+                        投稿内容を元に、AIが自動的に関連するカテゴリを3つ選んで分類します
+                    </p>
+                </div>
+
+                <!-- 投稿ボタン -->
+                <div class="form-actions">
+                    <button type="button" class="btn-cancel" onclick="resetForm()">
+                        リセット
+                    </button>
+                    <button type="submit" class="btn-submit" id="submitBtn">
+                        <span class="btn-text">投稿する</span>
+                        <span class="btn-loading hidden">投稿中...</span>
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <!-- 投稿一覧セクション -->
+        <section class="list-section">
+            <div class="section-header">
+                <h2 class="section-title">投稿された口コミ</h2>
+                <div class="list-controls">
+                    <!-- フィルタ -->
+                    <div class="filter-group">
+                        <label for="ageFilter" class="filter-label">年齢で絞り込み：</label>
+                        <select id="ageFilter" class="filter-select">
+                            <option value="">すべて</option>
+                            <option value="未就学児">未就学児</option>
+                            <option value="小学生低学年">小学生低学年</option>
+                            <option value="小学生高学年">小学生高学年</option>
+                            <option value="中学生">中学生</option>
+                            <option value="高校生">高校生</option>
+                            <option value="18歳以上">18歳以上</option>
+                        </select>
+                    </div>
+                    
+                    <!-- ソート -->
+                    <div class="filter-group">
+                        <label for="sortBy" class="filter-label">並び順：</label>
+                        <select id="sortBy" class="filter-select">
+                            <option value="newest">新しい順</option>
+                            <option value="oldest">古い順</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 口コミ一覧 -->
+            <div id="reviewList" class="review-list">
+                <!-- 動的に生成される -->
+            </div>
+
+            <!-- 空状態 -->
+            <div id="emptyState" class="empty-state hidden">
+                <div class="empty-icon">📝</div>
+                <h3 class="empty-title">まだ口コミが投稿されていません</h3>
+                <p class="empty-text">最初の投稿をしてみませんか？</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- JavaScriptファイル読み込み -->
+    <script src="js/data/categories.js"></script>
+    <script src="js/components/ReviewStorage.js"></script>
+    <script src="js/components/ReviewValidator.js"></script>
+    <script src="js/components/CategoryManager.js"></script>
+    <script src="js/components/ReviewForm.js"></script>
+    <script src="js/components/ReviewList.js"></script>
+    <script src="js/review.js"></script>
+
+    <script>
+        // 戻るボタンの処理
+        function goBack() {
+            window.location.href = 'index.html';
+        }
+
+        // フォームリセット
+        function resetForm() {
+            if (confirm('入力内容をリセットしますか？')) {
+                document.getElementById('reviewForm').reset();
+                // 文字カウンターもリセット
+                document.getElementById('titleCounter').textContent = '0';
+                document.getElementById('contentCounter').textContent = '0';
+                // エラーメッセージをクリア
+                document.querySelectorAll('.error-message').forEach(el => {
+                    el.classList.add('hidden');
+                });
+                document.querySelectorAll('.form-input, .form-select, .form-textarea').forEach(el => {
+                    el.classList.remove('error');
+                });
+            }
+        }
+
+        // 文字カウンター
+        document.addEventListener('DOMContentLoaded', function() {
+            // タイトル文字カウンター
+            const titleInput = document.getElementById('title');
+            const titleCounter = document.getElementById('titleCounter');
+            titleInput.addEventListener('input', function() {
+                titleCounter.textContent = this.value.length;
+            });
+
+            // 内容文字カウンター
+            const contentTextarea = document.getElementById('content');
+            const contentCounter = document.getElementById('contentCounter');
+            contentTextarea.addEventListener('input', function() {
+                contentCounter.textContent = this.value.length;
+            });
+        });
+    </script>
+</body>
+</html>

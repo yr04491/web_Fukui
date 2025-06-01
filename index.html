@@ -5,12 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ぼくらのみち - 当事者たちでつくる、不登校情報サイト</title>
-    
+
     <!-- 共通スタイル -->
     <link rel="stylesheet" href="css/common/variables.css">
     <link rel="stylesheet" href="css/common/reset.css">
     <link rel="stylesheet" href="css/common/components.css">
-    
+
     <!-- ページ固有スタイル -->
     <link rel="stylesheet" href="css/top/desktop.css">
     <link rel="stylesheet" href="css/top/mobile.css">
@@ -169,20 +169,22 @@
                 <div class="footer-logo">
                     <img src="images/logo.png" alt="ぼくらのみち">
                 </div>
-                <div class="footer-menu">・運営について　（ここにフッターメニュー）</div>
+                <div class="footer-menu">
+                    ・運営について<br>・<a href="login.html" class="footer-login-link">ログイン</a>
+                </div>
             </footer>
         </main>
     </div>
 
     <script>
         // ハンバーガーメニューの制御
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const hamburgerBtn = document.getElementById('hamburgerBtn');
             const navigation = document.getElementById('navigation');
             const menuOverlay = document.getElementById('menuOverlay');
 
             // ハンバーガーボタンクリック
-            hamburgerBtn.addEventListener('click', function() {
+            hamburgerBtn.addEventListener('click', function () {
                 navigation.classList.toggle('active');
                 menuOverlay.classList.toggle('active');
                 hamburgerBtn.classList.toggle('active');
@@ -190,7 +192,7 @@
             });
 
             // オーバーレイクリックでメニューを閉じる
-            menuOverlay.addEventListener('click', function() {
+            menuOverlay.addEventListener('click', function () {
                 navigation.classList.remove('active');
                 menuOverlay.classList.remove('active');
                 hamburgerBtn.classList.remove('active');
@@ -200,7 +202,7 @@
             // メニューアイテムクリックでメニューを閉じる
             const navItems = document.querySelectorAll('.nav-item');
             navItems.forEach(item => {
-                item.addEventListener('click', function() {
+                item.addEventListener('click', function () {
                     navigation.classList.remove('active');
                     menuOverlay.classList.remove('active');
                     hamburgerBtn.classList.remove('active');

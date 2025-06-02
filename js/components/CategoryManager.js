@@ -4,10 +4,34 @@
 
 class CategoryManager {
     constructor() {
-        this.categories = ALL_CATEGORIES || [];
-        this.keywordMapping = KEYWORD_MAPPING || {};
+        // グローバル変数の確実な参照（修正点）
+        this.categories = window.ALL_CATEGORIES || ALL_CATEGORIES || [];
+        this.keywordMapping = window.KEYWORD_MAPPING || KEYWORD_MAPPING || {};
         this.minConfidenceScore = 0.3;
         this.maxCategories = 3;
+        
+        // 初期化チェック
+        if (this.categories.length === 0) {
+            console.warn('Categories not loaded, using fallback');
+            this.categories = [
+                "担任教師との相談", "保健室登校", "スクールカウンセラー", "心理カウンセラー",
+                "教育支援センター", "フリースクール", "不安症状", "親子関係", "進路相談", "いじめ被害"
+            ];
+        }
+        
+        if (Object.keys(this.keywordMapping).length === 0) {
+            console.warn('Keyword mapping not loaded, using fallback');
+            this.keywordMapping = {
+                "担任": ["担任教師との相談"],
+                "先生": ["担任教師との相談"],
+                "カウンセラー": ["スクールカウンセラー", "心理カウンセラー"],
+                "相談": ["教育相談員"],
+                "フリースクール": ["フリースクール"],
+                "不安": ["不安症状"],
+                "いじめ": ["いじめ被害"],
+                "家族": ["親子関係"]
+            };
+        }
         
         // 重み付けスコア（より重要なキーワードには高いスコア）
         this.weightedKeywords = {
@@ -36,14 +60,22 @@ class CategoryManager {
     // メイン関数：口コミ内容からカテゴリを3つ判定
     async categorizeReview(title, content) {
         try {
+            // 入力値チェック（修正点）
+            if (!title && !content) {
+                return this.getErrorResponse();
+            }
+            
+            const safeTitle = title || '';
+            const safeContent = content || '';
+            
             // 1. キーワードベースの分析
-            const keywordCategories = this.analyzeByKeywords(title, content);
+            const keywordCategories = this.analyzeByKeywords(safeTitle, safeContent);
             
             // 2. 文脈分析
-            const contextCategories = this.analyzeByContext(title, content);
+            const contextCategories = this.analyzeByContext(safeTitle, safeContent);
             
             // 3. 感情分析
-            const emotionCategories = this.analyzeByEmotion(title, content);
+            const emotionCategories = this.analyzeByEmotion(safeTitle, safeContent);
             
             // 4. スコア計算と統合
             const allCategories = this.combineAndScore(
@@ -56,7 +88,7 @@ class CategoryManager {
             const selectedCategories = this.selectTopCategories(allCategories);
             
             // 6. 最低1つは確保（fallback）
-            const finalCategories = this.ensureMinimumCategories(selectedCategories, title, content);
+            const finalCategories = this.ensureMinimumCategories(selectedCategories, safeTitle, safeContent);
             
             return {
                 success: true,
@@ -66,14 +98,17 @@ class CategoryManager {
             
         } catch (error) {
             console.error('Error in categorizeReview:', error);
-            
-            // エラー時のフォールバック
-            return {
-                success: false,
-                categories: this.getFallbackCategories(title, content),
-                confidence: 0.1
-            };
+            return this.getErrorResponse();
         }
+    }
+
+    // エラー時のレスポンス（修正点）
+    getErrorResponse() {
+        return {
+            success: false,
+            categories: this.getFallbackCategories('', ''),
+            confidence: 0.1
+        };
     }
 
     // 1. キーワードベースの分析
@@ -150,12 +185,19 @@ class CategoryManager {
         // パターンマッチング
         for (const [contextType, data] of Object.entries(contextPatterns)) {
             for (const pattern of data.patterns) {
-                const regex = new RegExp(pattern);
-                if (regex.test(text)) {
-                    data.categories.forEach(category => {
-                        const currentScore = foundCategories.get(category) || 0;
-                        foundCategories.set(category, currentScore + 1.5);
-                    });
+                try {
+                    const regex = new RegExp(pattern);
+                    if (regex.test(text)) {
+                        data.categories.forEach(category => {
+                            // カテゴリが実際に存在するかチェック（修正点）
+                            if (this.categories.includes(category)) {
+                                const currentScore = foundCategories.get(category) || 0;
+                                foundCategories.set(category, currentScore + 1.5);
+                            }
+                        });
+                    }
+                } catch (regexError) {
+                    console.warn('Regex error:', regexError);
                 }
             }
         }
@@ -190,8 +232,11 @@ class CategoryManager {
             if (matchCount > 0) {
                 const score = matchCount * 0.8;
                 data.categories.forEach(category => {
-                    const currentScore = foundCategories.get(category) || 0;
-                    foundCategories.set(category, currentScore + score);
+                    // カテゴリが実際に存在するかチェック（修正点）
+                    if (this.categories.includes(category)) {
+                        const currentScore = foundCategories.get(category) || 0;
+                        foundCategories.set(category, currentScore + score);
+                    }
                 });
             }
         }
@@ -212,7 +257,7 @@ class CategoryManager {
         });
 
         // スコアの正規化
-        const maxScore = Math.max(...allCategories.values()) || 1;
+        const maxScore = Math.max(...Array.from(allCategories.values())) || 1;
         const normalizedCategories = new Map();
         
         for (const [category, score] of allCategories) {
@@ -261,27 +306,42 @@ class CategoryManager {
         return finalCategories.slice(0, this.maxCategories);
     }
 
-    // フォールバック：シンプルなルールベース分類
+    // フォールバック：シンプルなルールベース分類（修正点）
     getFallbackCategories(title, content) {
         const text = (title + ' ' + content).toLowerCase();
         const fallbackCategories = [];
 
-        // 基本的なルール
-        if (text.includes('学校') || text.includes('先生') || text.includes('教室')) {
-            fallbackCategories.push('担任教師との相談');
-        }
-        
-        if (text.includes('相談') || text.includes('話') || text.includes('聞い')) {
-            fallbackCategories.push('教育相談員');
-        }
-        
-        if (text.includes('不安') || text.includes('心配') || text.includes('辛い')) {
-            fallbackCategories.push('不安症状');
+        // 基本的なルール（存在確認付き）
+        const rules = [
+            { keywords: ['学校', '先生', '教室'], category: '担任教師との相談' },
+            { keywords: ['相談', '話', '聞い'], category: '教育相談員' },
+            { keywords: ['不安', '心配', '辛い'], category: '不安症状' },
+            { keywords: ['いじめ', '友達', 'クラス'], category: 'いじめ被害' },
+            { keywords: ['フリースクール'], category: 'フリースクール' },
+            { keywords: ['家族', '親'], category: '親子関係' }
+        ];
+
+        for (const rule of rules) {
+            if (rule.keywords.some(keyword => text.includes(keyword))) {
+                if (this.categories.includes(rule.category)) {
+                    fallbackCategories.push(rule.category);
+                }
+            }
         }
 
-        // デフォルトカテゴリ
+        // デフォルトカテゴリ（存在確認付き）
         if (fallbackCategories.length === 0) {
-            fallbackCategories.push('家族会議', '生活リズム', '親子関係');
+            const defaultCategories = ['家族会議', '生活リズム', '親子関係'];
+            defaultCategories.forEach(cat => {
+                if (this.categories.includes(cat)) {
+                    fallbackCategories.push(cat);
+                }
+            });
+            
+            // それでも空の場合は最初の3つを使用
+            if (fallbackCategories.length === 0) {
+                fallbackCategories.push(...this.categories.slice(0, 3));
+            }
         }
 
         return fallbackCategories.slice(0, 3);
@@ -385,21 +445,42 @@ class CategoryManager {
 
     // 学習データの蓄積（将来の精度向上のため）
     recordCategorizationFeedback(reviewId, originalCategories, userModifiedCategories) {
-        // 実装：ユーザーの修正情報を記録
-        // Firebase移行時には、この情報を使ってAIの精度を向上させる
-        const feedback = {
-            reviewId,
-            originalCategories,
-            userModifiedCategories,
-            timestamp: new Date().toISOString()
+        try {
+            // 実装：ユーザーの修正情報を記録
+            // Firebase移行時には、この情報を使ってAIの精度を向上させる
+            const feedback = {
+                reviewId,
+                originalCategories,
+                userModifiedCategories,
+                timestamp: new Date().toISOString()
+            };
+
+            // localStorage に学習データとして保存
+            const feedbackKey = 'category_feedback';
+            const existingFeedback = JSON.parse(localStorage.getItem(feedbackKey) || '[]');
+            existingFeedback.push(feedback);
+            
+            // 最新100件のみ保持
+            if (existingFeedback.length > 100) {
+                existingFeedback.splice(0, existingFeedback.length - 100);
+            }
+            
+            localStorage.setItem(feedbackKey, JSON.stringify(existingFeedback));
+
+            return feedback;
+        } catch (error) {
+            console.error('Error recording feedback:', error);
+            return null;
+        }
+    }
+
+    // デバッグ用：現在の設定状況を確認
+    getDebugInfo() {
+        return {
+            categoriesLoaded: this.categories.length,
+            keywordMappingLoaded: Object.keys(this.keywordMapping).length,
+            sampleCategories: this.categories.slice(0, 5),
+            sampleKeywords: Object.keys(this.keywordMapping).slice(0, 5)
         };
-
-        // localStorage に学習データとして保存
-        const feedbackKey = 'category_feedback';
-        const existingFeedback = JSON.parse(localStorage.getItem(feedbackKey) || '[]');
-        existingFeedback.push(feedback);
-        localStorage.setItem(feedbackKey, JSON.stringify(existingFeedback));
-
-        return feedback;
     }
 }

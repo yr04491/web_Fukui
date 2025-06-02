@@ -14,15 +14,29 @@ class ReviewForm {
         
         this.isSubmitting = false;
         this.formData = {};
+        this.hasUnsavedChanges = false;
         
         this.init();
     }
 
     // 初期化
     init() {
-        this.bindEvents();
-        this.setupRealTimeValidation();
-        this.setupCharacterCounters();
+        try {
+            // 必要な要素の存在確認
+            if (!this.form || !this.submitBtn || !this.messageContainer) {
+                throw new Error('Required DOM elements not found');
+            }
+            
+            this.bindEvents();
+            this.setupRealTimeValidation();
+            this.setupCharacterCounters();
+            this.setupBeforeUnloadWarning();
+            this.initializeDraftRestore();
+            
+            console.log('ReviewForm initialized successfully');
+        } catch (error) {
+            console.error('ReviewForm initialization failed:', error);
+        }
     }
 
     // イベントバインディング
@@ -34,7 +48,10 @@ class ReviewForm {
         const inputs = this.form.querySelectorAll('.form-input, .form-select, .form-textarea');
         inputs.forEach(input => {
             input.addEventListener('blur', (e) => this.validateField(e.target));
-            input.addEventListener('input', (e) => this.clearFieldErrors(e.target));
+            input.addEventListener('input', (e) => {
+                this.clearFieldErrors(e.target);
+                this.hasUnsavedChanges = true;
+            });
         });
 
         // Enterキーでの送信防止（テキストエリア以外）
@@ -84,11 +101,14 @@ class ReviewForm {
         }
     }
 
-    // フォーム送信処理
+    // フォーム送信処理（修正点：エラーハンドリング強化）
     async handleSubmit(event) {
         event.preventDefault();
         
-        if (this.isSubmitting) return;
+        if (this.isSubmitting) {
+            console.log('Already submitting, ignoring additional submit');
+            return;
+        }
         
         try {
             this.isSubmitting = true;
@@ -97,54 +117,75 @@ class ReviewForm {
 
             // フォームデータ取得
             const formData = this.getFormData();
+            console.log('Form data collected:', formData);
             
             // バリデーション
             const validation = this.validator.validateReview(formData);
             if (!validation.isValid) {
+                console.log('Validation failed:', validation.errors);
                 this.displayValidationErrors(validation.errors);
                 return;
             }
 
-            // 投稿頻度チェック
-            const frequencyCheck = this.validator.checkPostingFrequency(this.storage);
-            if (!frequencyCheck.allowed) {
-                this.showMessage(frequencyCheck.message, 'error');
-                return;
+            // 投稿頻度チェック（修正点：エラーハンドリング追加）
+            try {
+                const frequencyCheck = this.validator.checkPostingFrequency ? 
+                    this.validator.checkPostingFrequency(this.storage) : 
+                    { allowed: true };
+                    
+                if (!frequencyCheck.allowed) {
+                    this.showMessage(frequencyCheck.message, 'error');
+                    return;
+                }
+            } catch (frequencyError) {
+                console.warn('Frequency check failed:', frequencyError);
+                // 頻度チェックが失敗しても投稿は続行
             }
 
             // サニタイゼーション
-            const sanitizedData = this.validator.sanitizeReviewData(formData);
+            const sanitizedData = this.validator.sanitizeReviewData ? 
+                this.validator.sanitizeReviewData(formData) : formData;
 
             // AIカテゴリ判定
             this.showMessage('投稿内容を分析中...', 'info');
+            console.log('Starting category analysis...');
+            
             const categorization = await this.categoryManager.categorizeReview(
                 sanitizedData.title, 
                 sanitizedData.content
             );
+            
+            console.log('Category analysis result:', categorization);
 
             if (categorization.success) {
                 sanitizedData.categories = categorization.categories;
             } else {
                 // フォールバック
-                sanitizedData.categories = this.categoryManager.getFallbackCategories(
-                    sanitizedData.title, 
-                    sanitizedData.content
-                );
+                console.log('Using fallback categories');
+                sanitizedData.categories = this.categoryManager.getFallbackCategories ? 
+                    this.categoryManager.getFallbackCategories(sanitizedData.title, sanitizedData.content) : 
+                    ['家族会議', '親子関係'];
             }
 
             // データ保存
             this.showMessage('投稿を保存中...', 'info');
+            console.log('Saving review data:', sanitizedData);
+            
             const result = await this.storage.saveReview(sanitizedData);
+            console.log('Save result:', result);
 
             if (result.success) {
                 this.showMessage('投稿が完了しました！', 'success');
                 this.resetForm();
+                this.hasUnsavedChanges = false;
                 
                 // 一覧を更新（イベント発火）
                 this.dispatchUpdateEvent(result.data);
                 
                 // 成功時のフィードバック
-                this.showCategorizationResult(result.data.categories, categorization.confidence);
+                if (result.data.categories && result.data.categories.length > 0) {
+                    this.showCategorizationResult(result.data.categories, categorization.confidence || 0.5);
+                }
                 
             } else {
                 throw new Error(result.error || '投稿に失敗しました');
@@ -161,47 +202,79 @@ class ReviewForm {
 
     // フォームデータ取得
     getFormData() {
+        const elements = {
+            username: document.getElementById('username'),
+            childAge: document.getElementById('childAge'),
+            title: document.getElementById('title'),
+            content: document.getElementById('content')
+        };
+
+        // 要素の存在確認
+        for (const [key, element] of Object.entries(elements)) {
+            if (!element) {
+                console.warn(`Element ${key} not found`);
+                elements[key] = { value: '' };
+            }
+        }
+
         return {
-            username: document.getElementById('username').value.trim(),
-            childAge: document.getElementById('childAge').value,
-            title: document.getElementById('title').value.trim(),
-            content: document.getElementById('content').value.trim()
+            username: elements.username.value ? elements.username.value.trim() : '',
+            childAge: elements.childAge.value || '',
+            title: elements.title.value ? elements.title.value.trim() : '',
+            content: elements.content.value ? elements.content.value.trim() : ''
         };
     }
 
     // リアルタイムバリデーション実行
     performRealTimeValidation(fieldName, value) {
-        const validation = this.validator.validateRealtime(fieldName, value);
-        const field = document.getElementById(fieldName);
-        const errorElement = document.getElementById(fieldName + 'Error');
+        try {
+            if (this.validator && typeof this.validator.validateRealtime === 'function') {
+                const validation = this.validator.validateRealtime(fieldName, value);
+                const field = document.getElementById(fieldName);
+                const errorElement = document.getElementById(fieldName + 'Error');
 
-        if (!validation.isValid && validation.errors.length > 0) {
-            this.showFieldError(field, errorElement, validation.errors[0]);
-        } else {
-            this.clearFieldErrors(field);
+                if (!validation.isValid && validation.errors.length > 0) {
+                    this.showFieldError(field, errorElement, validation.errors[0]);
+                } else {
+                    this.clearFieldErrors(field);
+                }
+            }
+        } catch (error) {
+            console.warn('Real-time validation error:', error);
         }
     }
 
     // フィールドバリデーション
     validateField(field) {
-        const fieldName = field.name || field.id;
-        const value = field.value;
-        
-        const errors = this.validator.validateField(fieldName, value);
-        const errorElement = document.getElementById(fieldName + 'Error');
+        try {
+            const fieldName = field.name || field.id;
+            const value = field.value;
+            
+            if (this.validator && typeof this.validator.validateField === 'function') {
+                const errors = this.validator.validateField(fieldName, value);
+                const errorElement = document.getElementById(fieldName + 'Error');
 
-        if (errors.length > 0) {
-            this.showFieldError(field, errorElement, errors[0]);
-            return false;
-        } else {
-            this.clearFieldErrors(field);
+                if (errors.length > 0) {
+                    this.showFieldError(field, errorElement, errors[0]);
+                    return false;
+                } else {
+                    this.clearFieldErrors(field);
+                    return true;
+                }
+            }
+            
             return true;
+        } catch (error) {
+            console.warn('Field validation error:', error);
+            return true; // エラー時は通す
         }
     }
 
     // フィールドエラー表示
     showFieldError(field, errorElement, message) {
-        field.classList.add('error');
+        if (field) {
+            field.classList.add('error');
+        }
         if (errorElement) {
             errorElement.textContent = message;
             errorElement.classList.remove('hidden');
@@ -210,18 +283,23 @@ class ReviewForm {
 
     // フィールドエラークリア
     clearFieldErrors(field) {
-        field.classList.remove('error');
-        const fieldName = field.name || field.id;
-        const errorElement = document.getElementById(fieldName + 'Error');
-        if (errorElement) {
-            errorElement.classList.add('hidden');
-            errorElement.textContent = '';
+        if (field) {
+            field.classList.remove('error');
+            const fieldName = field.name || field.id;
+            const errorElement = document.getElementById(fieldName + 'Error');
+            if (errorElement) {
+                errorElement.classList.add('hidden');
+                errorElement.textContent = '';
+            }
         }
     }
 
     // バリデーションエラー表示
     displayValidationErrors(errors) {
         let errorMessages = [];
+
+        // 既存エラーをクリア
+        this.clearAllFieldErrors();
 
         for (const [field, fieldErrors] of Object.entries(errors)) {
             if (field === 'global') {
@@ -243,6 +321,17 @@ class ReviewForm {
         }
     }
 
+    // 全フィールドエラークリア
+    clearAllFieldErrors() {
+        document.querySelectorAll('.error-message').forEach(el => {
+            el.classList.add('hidden');
+            el.textContent = '';
+        });
+        document.querySelectorAll('.form-input, .form-select, .form-textarea').forEach(el => {
+            el.classList.remove('error');
+        });
+    }
+
     // フィールドラベル取得
     getFieldLabel(fieldName) {
         const labels = {
@@ -256,60 +345,72 @@ class ReviewForm {
 
     // メッセージ表示
     showMessage(message, type = 'info') {
-        this.messageContainer.textContent = message;
-        this.messageContainer.className = `message-container ${type}`;
-        this.messageContainer.classList.remove('hidden');
+        if (this.messageContainer) {
+            this.messageContainer.textContent = message;
+            this.messageContainer.className = `message-container ${type}`;
+            this.messageContainer.classList.remove('hidden');
 
-        // 自動非表示（エラー以外）
-        if (type !== 'error') {
-            setTimeout(() => {
-                this.hideMessage();
-            }, 3000);
+            // 自動非表示（エラー以外）
+            if (type !== 'error') {
+                setTimeout(() => {
+                    this.hideMessage();
+                }, 3000);
+            }
         }
     }
 
     // メッセージ非表示
     hideMessage() {
-        this.messageContainer.classList.add('hidden');
+        if (this.messageContainer) {
+            this.messageContainer.classList.add('hidden');
+        }
     }
 
     // 送信ボタンのローディング状態
     setSubmitButtonLoading(loading) {
+        if (!this.submitBtn) return;
+        
         const btnText = this.submitBtn.querySelector('.btn-text');
         const btnLoading = this.submitBtn.querySelector('.btn-loading');
 
         if (loading) {
             this.submitBtn.disabled = true;
-            btnText.classList.add('hidden');
-            btnLoading.classList.remove('hidden');
+            if (btnText) btnText.classList.add('hidden');
+            if (btnLoading) btnLoading.classList.remove('hidden');
         } else {
             this.submitBtn.disabled = false;
-            btnText.classList.remove('hidden');
-            btnLoading.classList.add('hidden');
+            if (btnText) btnText.classList.remove('hidden');
+            if (btnLoading) btnLoading.classList.add('hidden');
         }
     }
 
     // フォームリセット
     resetForm() {
-        this.form.reset();
-        
-        // 文字カウンターリセット
-        const titleCounter = document.getElementById('titleCounter');
-        const contentCounter = document.getElementById('contentCounter');
-        if (titleCounter) titleCounter.textContent = '0';
-        if (contentCounter) contentCounter.textContent = '0';
+        if (this.form) {
+            this.form.reset();
+            
+            // 文字カウンターリセット
+            const titleCounter = document.getElementById('titleCounter');
+            const contentCounter = document.getElementById('contentCounter');
+            if (titleCounter) titleCounter.textContent = '0';
+            if (contentCounter) contentCounter.textContent = '0';
 
-        // エラー状態クリア
-        this.form.querySelectorAll('.form-input, .form-select, .form-textarea').forEach(input => {
-            this.clearFieldErrors(input);
-        });
+            // エラー状態クリア
+            this.clearAllFieldErrors();
+            
+            // 下書きクリア
+            this.clearDraft();
+        }
     }
 
     // カテゴリ判定結果表示
     showCategorizationResult(categories, confidence) {
         if (!categories || categories.length === 0) return;
 
-        const explanation = this.categoryManager.generateCategoryExplanation(categories);
+        const explanation = this.categoryManager.generateCategoryExplanation ? 
+            this.categoryManager.generateCategoryExplanation(categories) : 
+            `選択されたカテゴリ: ${categories.join('、')}`;
+            
         const confidenceText = confidence > 0.7 ? '（高い信頼度）' : 
                               confidence > 0.4 ? '（中程度の信頼度）' : '（低い信頼度）';
 
@@ -321,25 +422,38 @@ class ReviewForm {
         }, 2000);
     }
 
-    // 更新イベント発火
+    // 更新イベント発火（修正点：イベント名統一）
     dispatchUpdateEvent(newReview) {
-        const event = new CustomEvent('reviewAdded', {
-            detail: { review: newReview },
-            bubbles: true
-        });
-        document.dispatchEvent(event);
+        try {
+            const event = new CustomEvent('reviewAdded', {
+                detail: { review: newReview },
+                bubbles: true
+            });
+            document.dispatchEvent(event);
+            console.log('Review added event dispatched:', newReview.id);
+        } catch (error) {
+            console.error('Error dispatching update event:', error);
+        }
     }
 
     // フォーム状態の保存（下書き機能）
     saveDraft() {
-        const formData = this.getFormData();
-        const hasContent = Object.values(formData).some(value => value.trim() !== '');
-        
-        if (hasContent) {
-            localStorage.setItem('review_draft', JSON.stringify({
-                ...formData,
-                savedAt: new Date().toISOString()
-            }));
+        try {
+            const formData = this.getFormData();
+            const hasContent = Object.values(formData).some(value => 
+                typeof value === 'string' && value.trim() !== ''
+            );
+            
+            if (hasContent) {
+                const draftData = {
+                    ...formData,
+                    savedAt: new Date().toISOString()
+                };
+                localStorage.setItem('review_draft', JSON.stringify(draftData));
+                console.log('Draft saved');
+            }
+        } catch (error) {
+            console.warn('Error saving draft:', error);
         }
     }
 
@@ -355,44 +469,64 @@ class ReviewForm {
                 // 24時間以内の下書きのみ復元
                 if (savedAt > oneDayAgo) {
                     if (confirm('保存された下書きがあります。復元しますか？')) {
-                        document.getElementById('username').value = draftData.username || '';
-                        document.getElementById('childAge').value = draftData.childAge || '';
-                        document.getElementById('title').value = draftData.title || '';
-                        document.getElementById('content').value = draftData.content || '';
+                        const elements = {
+                            username: document.getElementById('username'),
+                            childAge: document.getElementById('childAge'),
+                            title: document.getElementById('title'),
+                            content: document.getElementById('content')
+                        };
+
+                        // 要素が存在する場合のみ値を設定
+                        if (elements.username) elements.username.value = draftData.username || '';
+                        if (elements.childAge) elements.childAge.value = draftData.childAge || '';
+                        if (elements.title) elements.title.value = draftData.title || '';
+                        if (elements.content) elements.content.value = draftData.content || '';
 
                         // 文字カウンター更新
-                        document.getElementById('titleCounter').textContent = (draftData.title || '').length;
-                        document.getElementById('contentCounter').textContent = (draftData.content || '').length;
+                        const titleCounter = document.getElementById('titleCounter');
+                        const contentCounter = document.getElementById('contentCounter');
+                        if (titleCounter) titleCounter.textContent = (draftData.title || '').length;
+                        if (contentCounter) contentCounter.textContent = (draftData.content || '').length;
 
                         this.showMessage('下書きを復元しました', 'info');
                     }
                 }
                 
                 // 使用済み下書きを削除
-                localStorage.removeItem('review_draft');
+                this.clearDraft();
             }
         } catch (error) {
-            console.error('Error restoring draft:', error);
+            console.warn('Error restoring draft:', error);
+        }
+    }
+
+    // 下書きクリア
+    clearDraft() {
+        try {
+            localStorage.removeItem('review_draft');
+        } catch (error) {
+            console.warn('Error clearing draft:', error);
         }
     }
 
     // フォーム離脱時の警告
     setupBeforeUnloadWarning() {
-        let hasUnsavedChanges = false;
-
         // 入力変更の監視
-        this.form.addEventListener('input', () => {
-            hasUnsavedChanges = true;
+        const inputs = this.form.querySelectorAll('.form-input, .form-select, .form-textarea');
+        inputs.forEach(input => {
+            input.addEventListener('input', () => {
+                this.hasUnsavedChanges = true;
+            });
         });
 
         // フォーム送信時は警告無効
         this.form.addEventListener('submit', () => {
-            hasUnsavedChanges = false;
+            this.hasUnsavedChanges = false;
         });
 
         // ページ離脱前の警告
         window.addEventListener('beforeunload', (e) => {
-            if (hasUnsavedChanges) {
+            if (this.hasUnsavedChanges) {
                 this.saveDraft();
                 e.preventDefault();
                 e.returnValue = '入力中の内容が失われますが、よろしいですか？';
@@ -447,239 +581,50 @@ class ReviewForm {
         }
     }
 
-    // バリデーション状態の可視化
-    updateValidationStatus() {
-        const formData = this.getFormData();
-        const validation = this.validator.validateReview(formData);
-        
-        // 進捗表示
-        const totalFields = Object.keys(this.validator.rules).length;
-        const validFields = Object.keys(formData).filter(field => {
-            const errors = this.validator.validateField(field, formData[field]);
-            return errors.length === 0;
-        }).length;
-        
-        const progress = (validFields / totalFields) * 100;
-        this.updateProgressIndicator(progress);
-    }
-
-    // 進捗インジケーター更新
-    updateProgressIndicator(progress) {
-        let progressBar = document.getElementById('formProgress');
-        if (!progressBar) {
-            // 進捗バーが存在しない場合は作成
-            progressBar = this.createProgressBar();
-        }
-        
-        const progressFill = progressBar.querySelector('.progress-fill');
-        if (progressFill) {
-            progressFill.style.width = `${progress}%`;
-        }
-    }
-
-    // 進捗バー作成
-    createProgressBar() {
-        const progressContainer = document.createElement('div');
-        progressContainer.id = 'formProgress';
-        progressContainer.className = 'form-progress';
-        progressContainer.innerHTML = `
-            <div class="progress-bar">
-                <div class="progress-fill"></div>
-            </div>
-            <span class="progress-text">入力進捗</span>
-        `;
-        
-        // フォームの最初に挿入
-        this.form.insertBefore(progressContainer, this.form.firstChild);
-        return progressContainer;
-    }
-
     // エラー統計の取得
     getValidationStatistics() {
-        const stats = {
+        try {
+            const statsData = localStorage.getItem('validation_stats');
+            if (statsData) {
+                return JSON.parse(statsData);
+            }
+        } catch (error) {
+            console.warn('Error getting validation statistics:', error);
+        }
+        
+        return {
             totalAttempts: 0,
             fieldErrors: {},
             commonErrors: []
         };
-
-        // ローカルストレージから統計情報を取得
-        const statsData = localStorage.getItem('validation_stats');
-        if (statsData) {
-            return JSON.parse(statsData);
-        }
-
-        return stats;
     }
 
     // エラー統計の更新
     updateValidationStatistics(errors) {
-        const stats = this.getValidationStatistics();
-        stats.totalAttempts++;
+        try {
+            const stats = this.getValidationStatistics();
+            stats.totalAttempts++;
 
-        for (const [field, fieldErrors] of Object.entries(errors)) {
-            if (!stats.fieldErrors[field]) {
-                stats.fieldErrors[field] = 0;
-            }
-            stats.fieldErrors[field]++;
-            
-            fieldErrors.forEach(error => {
-                const existingError = stats.commonErrors.find(e => e.message === error);
-                if (existingError) {
-                    existingError.count++;
-                } else {
-                    stats.commonErrors.push({ message: error, count: 1 });
+            for (const [field, fieldErrors] of Object.entries(errors)) {
+                if (!stats.fieldErrors[field]) {
+                    stats.fieldErrors[field] = 0;
                 }
-            });
-        }
-
-        localStorage.setItem('validation_stats', JSON.stringify(stats));
-    }
-
-    // フォームの使いやすさ向上
-    enhanceUserExperience() {
-        // 自動保存機能
-        setInterval(() => {
-            this.saveDraft();
-        }, 30000); // 30秒ごと
-
-        // 入力補助
-        this.setupInputAssistance();
-        
-        // ショートカットキー
-        this.setupKeyboardShortcuts();
-    }
-
-    // 入力補助機能
-    setupInputAssistance() {
-        const titleInput = document.getElementById('title');
-        const contentTextarea = document.getElementById('content');
-
-        // タイトル候補の提案
-        titleInput.addEventListener('input', () => {
-            this.suggestTitles(titleInput.value);
-        });
-
-        // 定型文の挿入支援
-        contentTextarea.addEventListener('keydown', (e) => {
-            if (e.ctrlKey && e.key === 'i') {
-                e.preventDefault();
-                this.showTemplateDialog();
+                stats.fieldErrors[field]++;
+                
+                fieldErrors.forEach(error => {
+                    const existingError = stats.commonErrors.find(e => e.message === error);
+                    if (existingError) {
+                        existingError.count++;
+                    } else {
+                        stats.commonErrors.push({ message: error, count: 1 });
+                    }
+                });
             }
-        });
-    }
 
-    // タイトル候補提案
-    suggestTitles(currentTitle) {
-        if (currentTitle.length < 3) return;
-
-        const suggestions = [
-            'スクールカウンセラーに相談して良かった',
-            'フリースクールという選択肢',
-            '保健室登校から始めた復帰',
-            '家族で話し合った結果',
-            '担任の先生との相談'
-        ];
-
-        const matchingSuggestions = suggestions.filter(suggestion =>
-            suggestion.toLowerCase().includes(currentTitle.toLowerCase())
-        );
-
-        if (matchingSuggestions.length > 0) {
-            this.showTitleSuggestions(matchingSuggestions);
+            localStorage.setItem('validation_stats', JSON.stringify(stats));
+        } catch (error) {
+            console.warn('Error updating validation statistics:', error);
         }
-    }
-
-    // タイトル候補表示
-    showTitleSuggestions(suggestions) {
-        // 実装省略（ドロップダウンリストの表示）
-        console.log('Title suggestions:', suggestions);
-    }
-
-    // 定型文ダイアログ表示
-    showTemplateDialog() {
-        const templates = [
-            '子どもが学校に行きづらくなって...',
-            '最初は何をしたらいいか分からず...',
-            'カウンセラーの先生に相談したところ...',
-            '段階的に復帰することができました'
-        ];
-
-        // 簡易的な実装
-        const template = prompt('挿入したい定型文を選択してください:\n' + 
-            templates.map((t, i) => `${i + 1}. ${t}`).join('\n'));
-        
-        if (template) {
-            const index = parseInt(template) - 1;
-            if (index >= 0 && index < templates.length) {
-                const contentTextarea = document.getElementById('content');
-                contentTextarea.value += templates[index];
-                contentTextarea.dispatchEvent(new Event('input'));
-            }
-        }
-    }
-
-    // キーボードショートカット
-    setupKeyboardShortcuts() {
-        document.addEventListener('keydown', (e) => {
-            if (e.ctrlKey || e.metaKey) {
-                switch (e.key) {
-                    case 's':
-                        e.preventDefault();
-                        this.saveDraft();
-                        this.showMessage('下書きを保存しました', 'info');
-                        break;
-                    case 'Enter':
-                        if (e.shiftKey) {
-                            e.preventDefault();
-                            this.form.dispatchEvent(new Event('submit'));
-                        }
-                        break;
-                }
-            }
-        });
-    }
-
-    // モバイル対応の改善
-    enhanceMobileExperience() {
-        // タッチデバイスの検出
-        if ('ontouchstart' in window) {
-            // モバイル固有の機能
-            this.setupMobileFeatures();
-        }
-    }
-
-    // モバイル固有機能
-    setupMobileFeatures() {
-        // 仮想キーボード対応
-        this.handleVirtualKeyboard();
-        
-        // タッチ操作の最適化
-        this.optimizeTouchInteraction();
-    }
-
-    // 仮想キーボード対応
-    handleVirtualKeyboard() {
-        const viewport = document.querySelector('meta[name=viewport]');
-        if (viewport) {
-            // フォーカス時にズームを防ぐ
-            document.addEventListener('focusin', () => {
-                viewport.setAttribute('content', 'width=device-width, initial-scale=1, maximum-scale=1');
-            });
-            
-            document.addEventListener('focusout', () => {
-                viewport.setAttribute('content', 'width=device-width, initial-scale=1');
-            });
-        }
-    }
-
-    // タッチ操作最適化
-    optimizeTouchInteraction() {
-        // ボタンのタッチ領域拡大
-        const buttons = this.form.querySelectorAll('button');
-        buttons.forEach(button => {
-            button.style.minHeight = '44px'; // iOS推奨サイズ
-            button.style.minWidth = '44px';
-        });
     }
 
     // デバッグ用メソッド
@@ -687,6 +632,7 @@ class ReviewForm {
         return {
             formData: this.getFormData(),
             isSubmitting: this.isSubmitting,
+            hasUnsavedChanges: this.hasUnsavedChanges,
             validationStats: this.getValidationStatistics(),
             draftExists: !!localStorage.getItem('review_draft')
         };

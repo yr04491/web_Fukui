@@ -299,7 +299,16 @@ function getRandomCategories(count = 3) {
     return shuffled.slice(0, count);
 }
 
-// エクスポート（他のファイルで使用するため）
+// ブラウザ環境用のグローバル変数定義（修正点）
+if (typeof window !== 'undefined') {
+    window.CATEGORIES = CATEGORIES;
+    window.ALL_CATEGORIES = ALL_CATEGORIES;
+    window.KEYWORD_MAPPING = KEYWORD_MAPPING;
+    window.findCategoriesByKeywords = findCategoriesByKeywords;
+    window.getRandomCategories = getRandomCategories;
+}
+
+// Node.js環境用のエクスポート
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = {
         CATEGORIES,

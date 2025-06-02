@@ -344,8 +344,6 @@ class ReviewApp {
     // アクセシビリティ強化
     enhanceAccessibility() {
         try {
-            // スキップリンク追加
-            this.addSkipLinks();
             
             // フォーカス管理
             this.setupFocusManagement();

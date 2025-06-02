@@ -1,5 +1,5 @@
 /* ==================== 
-   ReviewForm - 投稿フォーム制御クラス
+   ReviewForm - 投稿フォーム制御クラス（手動カテゴリ選択版）
 ==================== */
 
 class ReviewForm {
@@ -16,6 +16,13 @@ class ReviewForm {
         this.formData = {};
         this.hasUnsavedChanges = false;
         
+        // カテゴリ選択関連
+        this.selectedCategories = [];
+        this.minCategories = 3;
+        this.maxCategories = 5;
+        this.allCategories = [];
+        this.filteredCategories = [];
+        
         this.init();
     }
 
@@ -27,6 +34,8 @@ class ReviewForm {
                 throw new Error('Required DOM elements not found');
             }
             
+            this.loadCategories();
+            this.initializeCategorySelection();
             this.bindEvents();
             this.setupRealTimeValidation();
             this.setupCharacterCounters();
@@ -39,27 +48,326 @@ class ReviewForm {
         }
     }
 
-    // イベントバインディング
-    bindEvents() {
-        // フォーム送信
-        this.form.addEventListener('submit', (e) => this.handleSubmit(e));
-        
-        // リアルタイムバリデーション
-        const inputs = this.form.querySelectorAll('.form-input, .form-select, .form-textarea');
-        inputs.forEach(input => {
-            input.addEventListener('blur', (e) => this.validateField(e.target));
-            input.addEventListener('input', (e) => {
-                this.clearFieldErrors(e.target);
-                this.hasUnsavedChanges = true;
-            });
-        });
+    // カテゴリデータを読み込み
+    loadCategories() {
+        try {
+            // グローバル変数からカテゴリを取得
+            if (window.ALL_CATEGORIES && Array.isArray(window.ALL_CATEGORIES)) {
+                this.allCategories = [...window.ALL_CATEGORIES];
+            } else if (window.CATEGORIES && typeof window.CATEGORIES === 'object') {
+                // オブジェクト形式の場合は配列に変換
+                this.allCategories = Object.values(window.CATEGORIES).flat();
+            } else {
+                // フォールバック
+                this.allCategories = [
+                    "担任教師との相談", "保健室登校", "別室登校", "時間差登校",
+                    "スクールカウンセラー", "心理カウンセラー", "教育相談員",
+                    "教育支援センター", "適応指導教室", "チャレンジ教室",
+                    "フリースクール", "ホームスクーリング", "通信制高校",
+                    "不安症状", "うつ症状", "起立性調節障害", "睡眠障害",
+                    "親子関係", "兄弟姉妹関係", "家族会議", "生活リズム",
+                    "高校受験", "進路相談", "将来の夢", "目標設定",
+                    "いじめ被害", "友人トラブル", "仲間外れ", "悪口・陰口"
+                ];
+            }
+            
+            this.filteredCategories = [...this.allCategories];
+            console.log(`Loaded ${this.allCategories.length} categories`);
+        } catch (error) {
+            console.error('Error loading categories:', error);
+            this.allCategories = [];
+            this.filteredCategories = [];
+        }
+    }
 
-        // Enterキーでの送信防止（テキストエリア以外）
-        this.form.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' && e.target.tagName !== 'TEXTAREA') {
-                e.preventDefault();
+    // カテゴリ選択UIの初期化
+    initializeCategorySelection() {
+        try {
+            this.renderCategoryGroups();
+            this.setupCategorySearch();
+            this.updateSelectedCategoriesDisplay();
+        } catch (error) {
+            console.error('Error initializing category selection:', error);
+        }
+    }
+
+    // カテゴリグループを表示
+    renderCategoryGroups() {
+        try {
+            const container = document.getElementById('categoryGroups');
+            if (!container) return;
+
+            // カテゴリをグループ分け（アルファベット順）
+            const grouped = this.groupCategoriesByType();
+            
+            container.innerHTML = '';
+            
+            for (const [groupName, categories] of Object.entries(grouped)) {
+                const groupElement = document.createElement('div');
+                groupElement.className = 'category-group';
+                
+                const groupTitle = document.createElement('h4');
+                groupTitle.className = 'category-group-title';
+                groupTitle.textContent = groupName;
+                groupElement.appendChild(groupTitle);
+                
+                const categoryList = document.createElement('div');
+                categoryList.className = 'category-list';
+                
+                categories.forEach(category => {
+                    if (this.filteredCategories.includes(category)) {
+                        const categoryItem = this.createCategoryItem(category);
+                        categoryList.appendChild(categoryItem);
+                    }
+                });
+                
+                groupElement.appendChild(categoryList);
+                container.appendChild(groupElement);
+            }
+        } catch (error) {
+            console.error('Error rendering category groups:', error);
+        }
+    }
+
+    // カテゴリをタイプ別にグループ分け
+    groupCategoriesByType() {
+        const groups = {
+            '学校関連の支援': [],
+            'カウンセリング・相談': [],
+            '公的支援機関': [],
+            '代替教育': [],
+            'メンタルヘルス': [],
+            '家庭・家族': [],
+            '進路・将来': [],
+            'いじめ・人間関係': []
+        };
+
+        // キーワードベースでグループ分け
+        this.allCategories.forEach(category => {
+            if (category.includes('登校') || category.includes('学校') || category.includes('担任') || category.includes('教室')) {
+                groups['学校関連の支援'].push(category);
+            } else if (category.includes('カウンセラー') || category.includes('相談') || category.includes('心理')) {
+                groups['カウンセリング・相談'].push(category);
+            } else if (category.includes('支援センター') || category.includes('教育委員会') || category.includes('児童相談所') || category.includes('市役所')) {
+                groups['公的支援機関'].push(category);
+            } else if (category.includes('フリースクール') || category.includes('ホームスクーリング') || category.includes('通信制') || category.includes('定時制')) {
+                groups['代替教育'].push(category);
+            } else if (category.includes('不安') || category.includes('うつ') || category.includes('障害') || category.includes('ストレス') || category.includes('睡眠')) {
+                groups['メンタルヘルス'].push(category);
+            } else if (category.includes('親子') || category.includes('家族') || category.includes('兄弟') || category.includes('生活')) {
+                groups['家庭・家族'].push(category);
+            } else if (category.includes('受験') || category.includes('進路') || category.includes('将来') || category.includes('目標') || category.includes('就職')) {
+                groups['進路・将来'].push(category);
+            } else if (category.includes('いじめ') || category.includes('友人') || category.includes('人間関係') || category.includes('トラブル')) {
+                groups['いじめ・人間関係'].push(category);
             }
         });
+
+        return groups;
+    }
+
+    // 個別カテゴリアイテムを作成
+    createCategoryItem(category) {
+        const item = document.createElement('div');
+        item.className = 'category-item';
+        item.textContent = category;
+        item.setAttribute('data-category', category);
+        
+        // 選択状態を反映
+        if (this.selectedCategories.includes(category)) {
+            item.classList.add('selected');
+        }
+        
+        // クリックイベント
+        item.addEventListener('click', () => {
+            this.toggleCategory(category);
+        });
+        
+        return item;
+    }
+
+    // カテゴリの選択・選択解除
+    toggleCategory(category) {
+        try {
+            const index = this.selectedCategories.indexOf(category);
+            
+            if (index > -1) {
+                // 選択解除
+                this.selectedCategories.splice(index, 1);
+            } else {
+                // 選択追加（最大数チェック）
+                if (this.selectedCategories.length >= this.maxCategories) {
+                    this.showMessage(`カテゴリは最大${this.maxCategories}個まで選択できます`, 'warning');
+                    return;
+                }
+                this.selectedCategories.push(category);
+            }
+            
+            this.updateCategoryDisplay();
+            this.updateSelectedCategoriesDisplay();
+            this.validateCategories();
+            this.hasUnsavedChanges = true;
+            
+        } catch (error) {
+            console.error('Error toggling category:', error);
+        }
+    }
+
+    // カテゴリ表示を更新
+    updateCategoryDisplay() {
+        try {
+            const categoryItems = document.querySelectorAll('.category-item');
+            categoryItems.forEach(item => {
+                const category = item.getAttribute('data-category');
+                if (this.selectedCategories.includes(category)) {
+                    item.classList.add('selected');
+                } else {
+                    item.classList.remove('selected');
+                }
+            });
+        } catch (error) {
+            console.error('Error updating category display:', error);
+        }
+    }
+
+    // 選択されたカテゴリの表示を更新
+    updateSelectedCategoriesDisplay() {
+        try {
+            const container = document.getElementById('selectedCategories');
+            if (!container) return;
+            
+            if (this.selectedCategories.length === 0) {
+                container.innerHTML = '<p class="selection-hint">下のカテゴリから3〜5個選んでください</p>';
+                return;
+            }
+            
+            container.innerHTML = '';
+            
+            const selectedTitle = document.createElement('div');
+            selectedTitle.className = 'selected-title';
+            selectedTitle.textContent = `選択済み (${this.selectedCategories.length}/${this.maxCategories})`;
+            container.appendChild(selectedTitle);
+            
+            const selectedList = document.createElement('div');
+            selectedList.className = 'selected-list';
+            
+            this.selectedCategories.forEach(category => {
+                const tag = document.createElement('span');
+                tag.className = 'selected-tag';
+                tag.innerHTML = `
+                    ${category}
+                    <button type="button" class="remove-tag" aria-label="削除">×</button>
+                `;
+                
+                // 削除ボタンのイベント
+                const removeBtn = tag.querySelector('.remove-tag');
+                removeBtn.addEventListener('click', () => {
+                    this.toggleCategory(category);
+                });
+                
+                selectedList.appendChild(tag);
+            });
+            
+            container.appendChild(selectedList);
+            
+        } catch (error) {
+            console.error('Error updating selected categories display:', error);
+        }
+    }
+
+    // カテゴリ検索の設定
+    setupCategorySearch() {
+        try {
+            const searchInput = document.getElementById('categorySearch');
+            if (!searchInput) return;
+            
+            searchInput.addEventListener('input', (e) => {
+                const query = e.target.value.toLowerCase().trim();
+                this.filterCategories(query);
+            });
+            
+        } catch (error) {
+            console.error('Error setting up category search:', error);
+        }
+    }
+
+    // カテゴリをフィルタリング
+    filterCategories(query) {
+        try {
+            if (!query) {
+                this.filteredCategories = [...this.allCategories];
+            } else {
+                this.filteredCategories = this.allCategories.filter(category =>
+                    category.toLowerCase().includes(query)
+                );
+            }
+            
+            this.renderCategoryGroups();
+        } catch (error) {
+            console.error('Error filtering categories:', error);
+        }
+    }
+
+    // カテゴリバリデーション
+    validateCategories() {
+        try {
+            const errorElement = document.getElementById('categoriesError');
+            if (!errorElement) return true;
+            
+            if (this.selectedCategories.length < this.minCategories) {
+                this.showFieldError(null, errorElement, `最低${this.minCategories}個のカテゴリを選択してください`);
+                return false;
+            } else if (this.selectedCategories.length > this.maxCategories) {
+                this.showFieldError(null, errorElement, `カテゴリは最大${this.maxCategories}個まで選択できます`);
+                return false;
+            } else {
+                this.clearFieldErrors(null);
+                errorElement.classList.add('hidden');
+                return true;
+            }
+        } catch (error) {
+            console.error('Error validating categories:', error);
+            return false;
+        }
+    }
+
+    // 選択されたカテゴリをクリア
+    clearSelectedCategories() {
+        try {
+            this.selectedCategories = [];
+            this.updateCategoryDisplay();
+            this.updateSelectedCategoriesDisplay();
+            this.validateCategories();
+        } catch (error) {
+            console.error('Error clearing selected categories:', error);
+        }
+    }
+
+    // イベントバインディング
+    bindEvents() {
+        try {
+            // フォーム送信
+            this.form.addEventListener('submit', (e) => this.handleSubmit(e));
+            
+            // リアルタイムバリデーション
+            const inputs = this.form.querySelectorAll('.form-input, .form-select, .form-textarea');
+            inputs.forEach(input => {
+                input.addEventListener('blur', (e) => this.validateField(e.target));
+                input.addEventListener('input', (e) => {
+                    this.clearFieldErrors(e.target);
+                    this.hasUnsavedChanges = true;
+                });
+            });
+
+            // Enterキーでの送信防止（テキストエリア以外）
+            this.form.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' && e.target.tagName !== 'TEXTAREA') {
+                    e.preventDefault();
+                }
+            });
+        } catch (error) {
+            console.error('Error binding events:', error);
+        }
     }
 
     // リアルタイムバリデーション設定
@@ -101,7 +409,7 @@ class ReviewForm {
         }
     }
 
-    // フォーム送信処理（修正点：エラーハンドリング強化）
+    // フォーム送信処理（AI判定を削除し、手動選択を使用）
     async handleSubmit(event) {
         event.preventDefault();
         
@@ -119,6 +427,15 @@ class ReviewForm {
             const formData = this.getFormData();
             console.log('Form data collected:', formData);
             
+            // カテゴリバリデーション
+            if (!this.validateCategories()) {
+                this.showMessage('カテゴリを正しく選択してください', 'error');
+                return;
+            }
+            
+            // 選択されたカテゴリを追加
+            formData.categories = [...this.selectedCategories];
+            
             // バリデーション
             const validation = this.validator.validateReview(formData);
             if (!validation.isValid) {
@@ -127,7 +444,7 @@ class ReviewForm {
                 return;
             }
 
-            // 投稿頻度チェック（修正点：エラーハンドリング追加）
+            // 投稿頻度チェック
             try {
                 const frequencyCheck = this.validator.checkPostingFrequency ? 
                     this.validator.checkPostingFrequency(this.storage) : 
@@ -139,33 +456,11 @@ class ReviewForm {
                 }
             } catch (frequencyError) {
                 console.warn('Frequency check failed:', frequencyError);
-                // 頻度チェックが失敗しても投稿は続行
             }
 
             // サニタイゼーション
             const sanitizedData = this.validator.sanitizeReviewData ? 
                 this.validator.sanitizeReviewData(formData) : formData;
-
-            // AIカテゴリ判定
-            this.showMessage('投稿内容を分析中...', 'info');
-            console.log('Starting category analysis...');
-            
-            const categorization = await this.categoryManager.categorizeReview(
-                sanitizedData.title, 
-                sanitizedData.content
-            );
-            
-            console.log('Category analysis result:', categorization);
-
-            if (categorization.success) {
-                sanitizedData.categories = categorization.categories;
-            } else {
-                // フォールバック
-                console.log('Using fallback categories');
-                sanitizedData.categories = this.categoryManager.getFallbackCategories ? 
-                    this.categoryManager.getFallbackCategories(sanitizedData.title, sanitizedData.content) : 
-                    ['家族会議', '親子関係'];
-            }
 
             // データ保存
             this.showMessage('投稿を保存中...', 'info');
@@ -181,11 +476,6 @@ class ReviewForm {
                 
                 // 一覧を更新（イベント発火）
                 this.dispatchUpdateEvent(result.data);
-                
-                // 成功時のフィードバック
-                if (result.data.categories && result.data.categories.length > 0) {
-                    this.showCategorizationResult(result.data.categories, categorization.confidence || 0.5);
-                }
                 
             } else {
                 throw new Error(result.error || '投稿に失敗しました');
@@ -266,7 +556,7 @@ class ReviewForm {
             return true;
         } catch (error) {
             console.warn('Field validation error:', error);
-            return true; // エラー時は通す
+            return true;
         }
     }
 
@@ -338,7 +628,8 @@ class ReviewForm {
             username: 'お名前',
             childAge: 'お子さんの年齢', 
             title: 'タイトル',
-            content: '口コミ内容'
+            content: '口コミ内容',
+            categories: 'カテゴリ'
         };
         return labels[fieldName] || fieldName;
     }
@@ -398,31 +689,15 @@ class ReviewForm {
             // エラー状態クリア
             this.clearAllFieldErrors();
             
+            // カテゴリ選択をクリア
+            this.clearSelectedCategories();
+            
             // 下書きクリア
             this.clearDraft();
         }
     }
 
-    // カテゴリ判定結果表示
-    showCategorizationResult(categories, confidence) {
-        if (!categories || categories.length === 0) return;
-
-        const explanation = this.categoryManager.generateCategoryExplanation ? 
-            this.categoryManager.generateCategoryExplanation(categories) : 
-            `選択されたカテゴリ: ${categories.join('、')}`;
-            
-        const confidenceText = confidence > 0.7 ? '（高い信頼度）' : 
-                              confidence > 0.4 ? '（中程度の信頼度）' : '（低い信頼度）';
-
-        setTimeout(() => {
-            this.showMessage(
-                `自動分類: ${categories.join('、')} ${confidenceText}`, 
-                'info'
-            );
-        }, 2000);
-    }
-
-    // 更新イベント発火（修正点：イベント名統一）
+    // 更新イベント発火
     dispatchUpdateEvent(newReview) {
         try {
             const event = new CustomEvent('reviewAdded', {
@@ -442,11 +717,12 @@ class ReviewForm {
             const formData = this.getFormData();
             const hasContent = Object.values(formData).some(value => 
                 typeof value === 'string' && value.trim() !== ''
-            );
+            ) || this.selectedCategories.length > 0;
             
             if (hasContent) {
                 const draftData = {
                     ...formData,
+                    categories: [...this.selectedCategories],
                     savedAt: new Date().toISOString()
                 };
                 localStorage.setItem('review_draft', JSON.stringify(draftData));
@@ -481,6 +757,13 @@ class ReviewForm {
                         if (elements.childAge) elements.childAge.value = draftData.childAge || '';
                         if (elements.title) elements.title.value = draftData.title || '';
                         if (elements.content) elements.content.value = draftData.content || '';
+
+                        // カテゴリ選択を復元
+                        if (draftData.categories && Array.isArray(draftData.categories)) {
+                            this.selectedCategories = [...draftData.categories];
+                            this.updateCategoryDisplay();
+                            this.updateSelectedCategoriesDisplay();
+                        }
 
                         // 文字カウンター更新
                         const titleCounter = document.getElementById('titleCounter');
@@ -543,97 +826,14 @@ class ReviewForm {
         }, 500);
     }
 
-    // アクセシビリティ向上
-    enhanceAccessibility() {
-        // フォーカス管理
-        const firstInput = this.form.querySelector('input');
-        if (firstInput) {
-            firstInput.focus();
-        }
-
-        // キーボードナビゲーション
-        this.form.addEventListener('keydown', (e) => {
-            if (e.key === 'Tab') {
-                // Tabキーでのフォーカス移動の最適化
-                this.handleTabNavigation(e);
-            }
-        });
-
-        // スクリーンリーダー対応
-        this.form.setAttribute('role', 'form');
-        this.form.setAttribute('aria-label', '口コミ投稿フォーム');
-    }
-
-    // Tabナビゲーション制御
-    handleTabNavigation(event) {
-        const focusableElements = this.form.querySelectorAll(
-            'input, select, textarea, button'
-        );
-        const firstElement = focusableElements[0];
-        const lastElement = focusableElements[focusableElements.length - 1];
-
-        if (event.shiftKey && document.activeElement === firstElement) {
-            event.preventDefault();
-            lastElement.focus();
-        } else if (!event.shiftKey && document.activeElement === lastElement) {
-            event.preventDefault();
-            firstElement.focus();
-        }
-    }
-
-    // エラー統計の取得
-    getValidationStatistics() {
-        try {
-            const statsData = localStorage.getItem('validation_stats');
-            if (statsData) {
-                return JSON.parse(statsData);
-            }
-        } catch (error) {
-            console.warn('Error getting validation statistics:', error);
-        }
-        
-        return {
-            totalAttempts: 0,
-            fieldErrors: {},
-            commonErrors: []
-        };
-    }
-
-    // エラー統計の更新
-    updateValidationStatistics(errors) {
-        try {
-            const stats = this.getValidationStatistics();
-            stats.totalAttempts++;
-
-            for (const [field, fieldErrors] of Object.entries(errors)) {
-                if (!stats.fieldErrors[field]) {
-                    stats.fieldErrors[field] = 0;
-                }
-                stats.fieldErrors[field]++;
-                
-                fieldErrors.forEach(error => {
-                    const existingError = stats.commonErrors.find(e => e.message === error);
-                    if (existingError) {
-                        existingError.count++;
-                    } else {
-                        stats.commonErrors.push({ message: error, count: 1 });
-                    }
-                });
-            }
-
-            localStorage.setItem('validation_stats', JSON.stringify(stats));
-        } catch (error) {
-            console.warn('Error updating validation statistics:', error);
-        }
-    }
-
     // デバッグ用メソッド
     debug() {
         return {
             formData: this.getFormData(),
+            selectedCategories: this.selectedCategories,
+            allCategories: this.allCategories.length,
             isSubmitting: this.isSubmitting,
             hasUnsavedChanges: this.hasUnsavedChanges,
-            validationStats: this.getValidationStatistics(),
             draftExists: !!localStorage.getItem('review_draft')
         };
     }

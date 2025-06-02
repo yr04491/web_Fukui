@@ -1,5 +1,5 @@
 /* ==================== 
-   口コミ投稿ページ専用スタイル
+   口コミ投稿ページ専用スタイル（カテゴリ手動選択対応）
 ==================== */
 
 /* 全体レイアウト */
@@ -25,27 +25,36 @@ body {
     position: relative;
 }
 
+/* 新しい戻るボタンのスタイル */
+.navigation-controls {
+    grid-column: 1 / -1;
+    /* グリッド全体に配置 */
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: flex-start;
+}
+
 .back-btn {
-    position: absolute;
-    left: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(255, 255, 255, 0.2);
-    color: var(--color-white);
-    border: none;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    background: rgba(163, 208, 250, 0.1);
+    color: var(--color-black);
+    border: 2px solid var(--color-section-01);
+    border-radius: 8px;
     cursor: pointer;
     transition: all 0.3s ease;
-    font-size: 18px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: var(--font-zen);
+    text-decoration: none;
 }
 
 .back-btn:hover {
-    background: rgba(255, 255, 255, 0.3);
+    background: var(--color-section-01);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(163, 208, 250, 0.3);
 }
 
 .header-content {
@@ -142,6 +151,18 @@ body {
     border: 1px solid rgba(231, 76, 60, 0.2);
 }
 
+.message-container.warning {
+    background: rgba(243, 156, 18, 0.1);
+    color: #f39c12;
+    border: 1px solid rgba(243, 156, 18, 0.2);
+}
+
+.message-container.info {
+    background: rgba(52, 152, 219, 0.1);
+    color: #3498db;
+    border: 1px solid rgba(52, 152, 219, 0.2);
+}
+
 .message-container.hidden {
     display: none;
 }
@@ -168,6 +189,12 @@ body {
 
 .label-text {
     margin-right: 4px;
+}
+
+.label-note {
+    font-size: 12px;
+    color: #666;
+    font-weight: normal;
 }
 
 .required {
@@ -215,6 +242,168 @@ body {
     min-height: 120px;
 }
 
+/* ==================== 
+   カテゴリ選択UI
+==================== */
+.category-selection {
+    border: 2px solid #E8E8E8;
+    border-radius: 12px;
+    padding: 20px;
+    background: #f8f9fa;
+}
+
+/* カテゴリ検索 */
+.category-search {
+    margin-bottom: 20px;
+}
+
+.search-input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: var(--font-zen);
+    background: var(--bg-white);
+}
+
+.search-input:focus {
+    border-color: var(--color-section-01);
+    outline: none;
+}
+
+/* 選択されたカテゴリ表示 */
+.selected-categories {
+    margin-bottom: 20px;
+    padding: 15px;
+    background: var(--bg-white);
+    border-radius: 8px;
+    border: 1px solid #E8E8E8;
+    min-height: 60px;
+}
+
+.selection-hint {
+    color: #999;
+    font-size: 14px;
+    text-align: center;
+    margin: 0;
+    line-height: 30px;
+}
+
+.selected-title {
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--color-black);
+    font-size: 14px;
+}
+
+.selected-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.selected-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--color-section-01);
+    color: var(--color-black);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    animation: fadeInScale 0.3s ease;
+}
+
+.remove-tag {
+    background: none;
+    border: none;
+    color: var(--color-black);
+    cursor: pointer;
+    font-size: 14px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    opacity: 0.7;
+}
+
+.remove-tag:hover {
+    background: rgba(0, 0, 0, 0.1);
+    opacity: 1;
+}
+
+/* カテゴリグループ */
+.category-groups {
+    max-height: 400px;
+    overflow-y: auto;
+    border: 1px solid #E8E8E8;
+    border-radius: 8px;
+    background: var(--bg-white);
+}
+
+.category-group {
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.category-group:last-child {
+    border-bottom: none;
+}
+
+.category-group-title {
+    background: #f8f9fa;
+    padding: 12px 16px;
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-black);
+    border-bottom: 1px solid #E8E8E8;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.category-list {
+    padding: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.category-item {
+    padding: 8px 12px;
+    background: #f8f9fa;
+    border: 1px solid #E8E8E8;
+    border-radius: 6px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    user-select: none;
+    color: var(--color-black);
+}
+
+.category-item:hover {
+    background: #e9ecef;
+    border-color: var(--color-section-01);
+    transform: translateY(-1px);
+}
+
+.category-item.selected {
+    background: var(--color-section-01);
+    border-color: var(--color-section-01);
+    color: var(--color-black);
+    font-weight: 600;
+}
+
+.category-item.selected:hover {
+    background: var(--color-section-02);
+    border-color: var(--color-section-02);
+}
+
 /* 文字カウンター */
 .char-counter {
     text-align: right;
@@ -235,29 +424,6 @@ body {
 
 .error-message.hidden {
     visibility: hidden;
-}
-
-/* カテゴリ情報 */
-.category-info {
-    background: rgba(163, 208, 250, 0.1);
-    border-radius: 8px;
-    padding: 15px;
-    margin-bottom: 30px;
-}
-
-.info-text {
-    font-family: var(--font-zen);
-    font-size: 14px;
-    color: var(--color-black);
-    margin: 0;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.info-icon {
-    font-size: 16px;
-    flex-shrink: 0;
 }
 
 /* フォームアクション */
@@ -470,6 +636,148 @@ body {
 }
 
 /* ==================== 
+   検索機能
+==================== */
+.search-container {
+    margin-top: 20px;
+}
+
+.search-box {
+    position: relative;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.search-clear {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    color: #999;
+    display: none;
+}
+
+.search-clear:hover {
+    color: #666;
+}
+
+/* ==================== 
+   レビューアクション
+==================== */
+.review-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px solid #eee;
+}
+
+.action-btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 6px 12px;
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 20px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: var(--font-zen);
+}
+
+.action-btn:hover {
+    background: #e9ecef;
+    transform: translateY(-1px);
+}
+
+.helpful-btn.helpful-clicked {
+    background: var(--color-section-01);
+    color: white;
+    border-color: var(--color-section-01);
+}
+
+.helpful-count {
+    background: rgba(0, 0, 0, 0.1);
+    padding: 2px 6px;
+    border-radius: 10px;
+    font-weight: bold;
+    min-width: 20px;
+    text-align: center;
+}
+
+/* ==================== 
+   アニメーション
+==================== */
+@keyframes fadeInScale {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes highlightNew {
+    0% {
+        background: rgba(163, 208, 250, 0.3);
+        transform: scale(1.02);
+    }
+
+    100% {
+        background: #f8f9fa;
+        transform: scale(1);
+    }
+}
+
+.new-review {
+    animation: highlightNew 3s ease-out;
+}
+
+/* ==================== 
+   トースト通知
+==================== */
+.toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #333;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 6px;
+    z-index: 10000;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+}
+
+.toast-show {
+    transform: translateX(0);
+}
+
+.toast-success {
+    background: #27ae60;
+}
+
+.toast-error {
+    background: #e74c3c;
+}
+
+.toast-warning {
+    background: #f39c12;
+}
+
+.toast-info {
+    background: #3498db;
+}
+
+/* ==================== 
    レスポンシブ
 ==================== */
 @media (max-width: 1024px) {
@@ -477,66 +785,108 @@ body {
         grid-template-columns: 1fr;
         gap: 40px;
     }
+
+    .navigation-controls {
+        order: -1;
+        /* モバイルでは最上部に配置 */
+    }
 }
 
 @media (max-width: 768px) {
     .review-header {
         padding: 15px 20px;
     }
-    
+
     .header-content {
         padding: 15px 0;
     }
-    
+
     .page-title {
         font-size: 28px;
     }
-    
+
     .page-subtitle {
         font-size: 14px;
     }
-    
+
     .main-container {
         padding: 0 15px;
     }
-    
+
     .form-section,
     .list-section {
         padding: 25px;
         border-radius: 15px;
     }
-    
+
     .section-title {
         font-size: 20px;
     }
-    
+
     .form-actions {
         flex-direction: column;
         align-items: center;
     }
-    
+
     .btn-cancel,
     .btn-submit {
         width: 100%;
         max-width: 280px;
     }
-    
+
     .list-controls {
         flex-direction: column;
         gap: 15px;
     }
-    
+
     .filter-group {
         justify-content: center;
     }
-    
+
     .review-header {
         flex-direction: column;
         gap: 8px;
     }
-    
+
     .review-categories {
         justify-content: center;
+    }
+
+    /* カテゴリ選択UIのモバイル対応 */
+    .category-selection {
+        padding: 15px;
+    }
+
+    .category-groups {
+        max-height: 300px;
+    }
+
+    .category-list {
+        gap: 4px;
+    }
+
+    .category-item {
+        font-size: 11px;
+        padding: 6px 8px;
+    }
+
+    .selected-list {
+        gap: 6px;
+    }
+
+    .selected-tag {
+        font-size: 11px;
+        padding: 4px 8px;
+    }
+
+    .navigation-controls {
+        margin-bottom: 15px;
+        justify-content: center;
+    }
+
+    .back-btn {
+        padding: 10px 16px;
+        font-size: 13px;
     }
 }
 
@@ -544,27 +894,62 @@ body {
     .main-container {
         padding: 0 10px;
     }
-    
+
     .form-section,
     .list-section {
         padding: 20px;
     }
-    
+
     .back-btn {
         left: 15px;
         width: 35px;
         height: 35px;
         font-size: 16px;
     }
-    
+
     .page-title {
         font-size: 24px;
     }
-    
+
     .form-input,
     .form-select,
     .form-textarea {
         padding: 12px 16px;
         font-size: 16px;
+    }
+
+    /* カテゴリ選択の小画面対応 */
+    .category-selection {
+        padding: 12px;
+    }
+
+    .selected-categories {
+        padding: 12px;
+        min-height: 50px;
+    }
+
+    .category-groups {
+        max-height: 250px;
+    }
+
+    .category-group-title {
+        padding: 10px 12px;
+        font-size: 13px;
+    }
+
+    .category-item {
+        font-size: 10px;
+        padding: 4px 6px;
+    }
+
+    .selected-tag {
+        font-size: 10px;
+        padding: 3px 6px;
+    }
+
+    .remove-tag {
+        width: 14px;
+        height: 14px;
+        font-size: 12px;
     }
 }

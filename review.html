@@ -1,25 +1,23 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>口コミ投稿 - ぼくらのみち</title>
-    
+
     <!-- 既存の共通スタイルを読み込み -->
     <link rel="stylesheet" href="css/common/variables.css">
     <link rel="stylesheet" href="css/common/reset.css">
     <link rel="stylesheet" href="css/common/components.css">
-    
+
     <!-- 口コミページ専用スタイル -->
     <link rel="stylesheet" href="css/review/review.css">
 </head>
+
 <body>
-    <!-- ヘッダー -->
     <header class="review-header">
         <div class="header-container">
-            <!-- 戻るボタン -->
-            <button class="back-btn" onclick="goBack()" title="戻る">←</button>
-            
             <!-- ロゴとタイトル -->
             <div class="header-content">
                 <img src="images/logo.png" alt="ぼくらのみち" class="header-logo">
@@ -28,6 +26,24 @@
             </div>
         </div>
     </header>
+
+    <!-- メインコンテンツ -->
+    <main class="main-container">
+        <!-- 戻るボタンを一覧セクションの上に配置 -->
+        <div class="navigation-controls">
+            <button class="back-btn" onclick="goBack()" title="戻る">← 戻る</button>
+        </div>
+
+        <!-- 投稿フォームセクション -->
+        <section class="form-section">
+            <!-- 既存のフォーム内容 -->
+        </section>
+
+        <!-- 投稿一覧セクション -->
+        <section class="list-section">
+            <!-- 既存の一覧内容 -->
+        </section>
+    </main>
 
     <!-- メインコンテンツ -->
     <main class="main-container">
@@ -49,15 +65,8 @@
                         <span class="label-text">お名前（ニックネーム可）</span>
                         <span class="required">*</span>
                     </label>
-                    <input 
-                        type="text" 
-                        id="username" 
-                        name="username" 
-                        class="form-input" 
-                        placeholder="例：花子ママ"
-                        required
-                        maxlength="20"
-                    >
+                    <input type="text" id="username" name="username" class="form-input" placeholder="例：花子ママ" required
+                        maxlength="20">
                     <span class="error-message hidden" id="usernameError"></span>
                 </div>
 
@@ -85,15 +94,8 @@
                         <span class="label-text">タイトル</span>
                         <span class="required">*</span>
                     </label>
-                    <input 
-                        type="text" 
-                        id="title" 
-                        name="title" 
-                        class="form-input" 
-                        placeholder="例：スクールカウンセラーに相談して良かった"
-                        required
-                        maxlength="50"
-                    >
+                    <input type="text" id="title" name="title" class="form-input" placeholder="例：スクールカウンセラーに相談して良かった"
+                        required maxlength="50">
                     <div class="char-counter">
                         <span id="titleCounter">0</span>/50文字
                     </div>
@@ -106,27 +108,34 @@
                         <span class="label-text">口コミ内容</span>
                         <span class="required">*</span>
                     </label>
-                    <textarea 
-                        id="content" 
-                        name="content" 
-                        class="form-textarea" 
-                        placeholder="具体的な体験談をお聞かせください。どのような状況で、何をして、どのような結果になったかなど..."
-                        required
-                        maxlength="1000"
-                        rows="8"
-                    ></textarea>
+                    <textarea id="content" name="content" class="form-textarea"
+                        placeholder="具体的な体験談をお聞かせください。どのような状況で、何をして、どのような結果になったかなど..." required maxlength="1000"
+                        rows="8"></textarea>
                     <div class="char-counter">
                         <span id="contentCounter">0</span>/1000文字
                     </div>
                     <span class="error-message hidden" id="contentError"></span>
                 </div>
 
-                <!-- AIが判定するカテゴリの説明 -->
-                <div class="category-info">
-                    <p class="info-text">
-                        <span class="info-icon">🤖</span>
-                        投稿内容を元に、AIが自動的に関連するカテゴリを3つ選んで分類します
-                    </p>
+                <!-- カテゴリ手動選択 -->
+                <div class="form-group">
+                    <label class="form-label">
+                        <span class="label-text">カテゴリ選択</span>
+                        <span class="required">*</span>
+                        <span class="label-note">（3〜5個選択してください）</span>
+                    </label>
+                    <div class="category-selection">
+                        <div class="category-search">
+                            <input type="text" id="categorySearch" placeholder="カテゴリを検索..." class="search-input">
+                        </div>
+                        <div class="selected-categories" id="selectedCategories">
+                            <p class="selection-hint">下のカテゴリから3〜5個選んでください</p>
+                        </div>
+                        <div class="category-groups" id="categoryGroups">
+                            <!-- カテゴリグループがJavaScriptで動的に生成される -->
+                        </div>
+                    </div>
+                    <span class="error-message hidden" id="categoriesError"></span>
                 </div>
 
                 <!-- 投稿ボタン -->
@@ -160,7 +169,7 @@
                             <option value="18歳以上">18歳以上</option>
                         </select>
                     </div>
-                    
+
                     <!-- ソート -->
                     <div class="filter-group">
                         <label for="sortBy" class="filter-label">並び順：</label>
@@ -215,25 +224,30 @@
                 document.querySelectorAll('.form-input, .form-select, .form-textarea').forEach(el => {
                     el.classList.remove('error');
                 });
+                // 選択されたカテゴリもリセット
+                if (window.reviewApp && window.reviewApp.reviewForm) {
+                    window.reviewApp.reviewForm.clearSelectedCategories();
+                }
             }
         }
 
         // 文字カウンター
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             // タイトル文字カウンター
             const titleInput = document.getElementById('title');
             const titleCounter = document.getElementById('titleCounter');
-            titleInput.addEventListener('input', function() {
+            titleInput.addEventListener('input', function () {
                 titleCounter.textContent = this.value.length;
             });
 
             // 内容文字カウンター
             const contentTextarea = document.getElementById('content');
             const contentCounter = document.getElementById('contentCounter');
-            contentTextarea.addEventListener('input', function() {
+            contentTextarea.addEventListener('input', function () {
                 contentCounter.textContent = this.value.length;
             });
         });
     </script>
 </body>
+
 </html>

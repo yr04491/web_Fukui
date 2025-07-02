@@ -79,6 +79,11 @@
   background-image: url('../assets/images/logo.png');
   background-size: contain;
   background-repeat: no-repeat;
+  transition: opacity 0.2s;
+}
+
+.navLogo:hover {
+  opacity: 0.8;
 }
 
 .navHeaderTitle {
@@ -94,6 +99,11 @@
   width: 216px;
   height: 9px;
   margin: 0;
+  transition: color 0.2s;
+}
+
+.navHeaderTitle:hover {
+  color: #555;
 }
 
 .navHeaderSubtitle {
@@ -107,6 +117,11 @@
   left: 163px; /* Figma: 186px - padding-left: 23px = 163px */
   top: 32px;  /* Figma: 64px - padding-top: 32px = 32px */
   margin-left: 0;
+  transition: color 0.2s;
+}
+
+.navHeaderSubtitle:hover {
+  color: #555;
 }
 
 /* ナビアイテム */
@@ -118,22 +133,28 @@
   align-items: flex-start;
   padding: 0px 0px 0px 30px;
   gap: 10px;
+  transition: background-color 0.2s;
+  border-radius: 5px;
+}
+
+.navItem:hover {
+  background-color: rgba(0, 0, 0, 0.05);
 }
 
 .navItemHeader {
   display: flex;
-  align-items: center;
+  align-items: flex-start; /* 上揃えに変更（アイコンとテキストの位置合わせ） */
   gap: 8px;
   margin-bottom: 10px;
   width: 100%;
-  height: 20px;
+  min-height: 20px; /* 固定高さではなく最小高さに変更 */
 }
 
 .navIcon {
   width: 26px;
   height: 20px;
   display: flex;
-  align-items: center;
+  align-items: flex-start; /* 上揃えに変更（改行があっても上部に固定） */
   justify-content: center;
   position: relative;
   /* Figmaでは背景として画像が設定されていますが、
@@ -141,6 +162,7 @@
   background-color: transparent;
   color: var(--color-black);
   font-size: var(--font-xs);
+  margin-top: 6px; /* テキストの行高に合わせて微調整 */
 }
 
 .navTitle {
@@ -148,10 +170,19 @@
   font-style: normal;
   font-weight: 600;
   font-size: var(--font-m);
-  line-height: var(--line-height-xxl);
+  line-height: 1.3; /* 行間をより狭くして改行時に自然に見えるよう調整 */
   color: var(--color-black);
   /* leading-trim: both; */
   /* text-edge: cap; */
+  white-space: pre-wrap; /* 改行を許可し、長い文字列は自動で折り返す */
+  word-break: keep-all; /* 単語の途中での改行を防止 */
+  display: flex;
+  flex-direction: column; /* 改行要素を縦に並べる */
+  transition: color 0.2s;
+}
+
+.navItem:hover .navTitle {
+  color: #555; /* ホバー時の色を少し暗く */
 }
 
 .navSubItems {
@@ -173,6 +204,13 @@
   margin-bottom: 8px;
   /* leading-trim: both; */
   /* text-edge: cap; */
+  padding: 2px 5px;
+  border-radius: 3px;
+  transition: background-color 0.2s;
+}
+
+.navSubItem:hover {
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 .navFooter {
@@ -187,9 +225,16 @@
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  padding: 0px;
+  padding: 5px 0;
   gap: 8px;
   height: 23px;
+  transition: color 0.2s, background-color 0.2s;
+  border-radius: 5px;
+}
+
+.navFooter:hover {
+  color: #555;
+  background-color: rgba(0, 0, 0, 0.05);
 }
 
 /* ハンバーガーメニュー用 */

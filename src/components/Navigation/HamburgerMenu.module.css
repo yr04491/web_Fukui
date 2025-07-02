@@ -93,6 +93,12 @@
   align-items: flex-start;
   padding: 0px 0px 0px 30px;
   gap: 10px;
+  transition: background-color 0.2s;
+  border-radius: 5px;
+}
+
+.navItem:hover {
+  background-color: rgba(0, 0, 0, 0.05);
 }
 
 .navItemHeader {
@@ -127,7 +133,7 @@
 
 .navFooter {
   width: 100%;
-  padding: 5px 0;
+  padding: 5px 8px;
   font-family: var(--font-secondary);
   font-style: normal;
   font-weight: 500;
@@ -135,6 +141,13 @@
   line-height: 23px;
   color: var(--color-black);
   margin-top: auto;
+  transition: color 0.2s, background-color 0.2s;
+  border-radius: 5px;
+}
+
+.navFooter:hover {
+  color: #555;
+  background-color: rgba(0, 0, 0, 0.05);
 }
 
 .navHeaderTitle {
@@ -161,6 +174,11 @@
   background-image: url('../../assets/images/logo.png');
   background-size: contain;
   background-repeat: no-repeat;
+  transition: opacity 0.2s;
+}
+
+.navLogo:hover {
+  opacity: 0.8;
 }
 
 .navHeaderSubtitle {
@@ -183,10 +201,15 @@
   font-size: 16px;
   line-height: 32px;
   color: var(--color-black);
-  white-space: nowrap; /* タイトルが途中で改行されないようにする */
+  white-space: nowrap; /* ハンバーガーメニューでは改行せず1行で表示 */
   overflow: hidden;
   text-overflow: ellipsis; /* 必要に応じて省略記号で表示 */
   max-width: 100%; /* 親要素の幅を超えないようにする */
+  transition: color 0.2s;
+}
+
+.navItem:hover .navTitle {
+  color: #555; /* ホバー時の色を少し暗く */
 }
 
 .navSubItem {
@@ -201,6 +224,14 @@
   overflow: hidden;
   text-overflow: ellipsis; /* 必要に応じて省略記号で表示 */
   max-width: 100%; /* 親要素の幅を超えないようにする */
+  padding: 2px 5px;
+  border-radius: 3px;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.navSubItem:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  color: #555;
 }
 
 /* ナビゲーションアイテム間のスペースはgapプロパティで管理 */

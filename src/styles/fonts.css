@@ -1,0 +1,28 @@
+/* フォントの読み込みと設定 */
+
+/* DNP ShueiGoKinStd フォントの設定 
+   実際にはここにWebフォントを読み込む必要があります。
+   サンプルコード：
+   @font-face {
+     font-family: 'DNP ShueiGoKinStd';
+     src: url('../assets/fonts/DNPShueiGoKinStd-Regular.woff2') format('woff2'),
+          url('../assets/fonts/DNPShueiGoKinStd-Regular.woff') format('woff');
+     font-weight: 400;
+     font-style: normal;
+     font-display: swap;
+   }
+   @font-face {
+     font-family: 'DNP ShueiGoKinStd';
+     src: url('../assets/fonts/DNPShueiGoKinStd-Bold.woff2') format('woff2'),
+          url('../assets/fonts/DNPShueiGoKinStd-Bold.woff') format('woff');
+     font-weight: 600;
+     font-style: normal;
+     font-display: swap;
+   }
+*/
+
+/* フォントが利用できない場合に備えたフォールバックフォントの設定 */
+:root {
+  --font-primary: 'DNP ShueiGoKinStd', 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', Meiryo, メイリオ, sans-serif;
+  --font-secondary: 'Zen Kaku Gothic New', 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', Meiryo, メイリオ, sans-serif;
+}

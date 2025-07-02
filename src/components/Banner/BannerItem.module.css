@@ -1,0 +1,16 @@
+/* バナー */
+.banner {
+  width: var(--banner-width); /* CSS変数を使用（200px） */
+  height: 120px;
+  background: var(--color-banner-bg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: var(--font-primary);
+  font-style: normal;
+  font-weight: 600;
+  font-size: var(--font-s);
+  line-height: var(--line-height-xl);
+  color: var(--color-black);
+  position: relative;
+}

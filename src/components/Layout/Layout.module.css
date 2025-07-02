@@ -1,0 +1,23 @@
+/* レイアウト全体のスタイル */
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 51px var(--space-xxl);
+  gap: 72px;
+  isolation: isolate;
+  position: relative;
+  width: 100%;
+  max-width: 1304px;
+  margin: 0 auto;
+  background: var(--color-background);
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    padding: 20px;
+    gap: 20px;
+  }
+}

@@ -1,0 +1,54 @@
+/* ナビゲーション */
+.navigation {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 32px 23px; /* Figmaの値を反映 */
+  gap: 30px; /* Figmaの値を反映 */
+  isolation: isolate;
+  width: var(--nav-width);
+  height: auto;
+  min-height: 670px;
+  background: var(--color-white);
+  border: 2px solid var(--color-black);
+  border-radius: var(--radius-l);
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  z-index: 0;
+  overflow-y: auto;
+  position: relative; /* 疑似要素の位置決めのため */
+}
+
+/* ナビゲーション左側の黒い縦線 - Vector画像を配置 */
+.navigation::before {
+  content: '';
+  position: absolute;
+  width: 17px;
+  height: calc(100% - 249px); /* 「みんなで知恵を出し合おう」までの高さに調整 */
+  left: 23px;
+  top: 149px; /* 99pxから50px下に移動 */
+  background-image: url('../../assets/images/vector.png');
+  background-size: 17px 100%; /* 幅を固定し、高さを100%に拡張 */
+  background-repeat: repeat-y; /* 縦方向に繰り返し */
+  background-position: top;
+  z-index: 8;
+}
+
+.navFooter {
+  font-family: var(--font-secondary);
+  font-style: normal;
+  font-weight: 500;
+  font-size: var(--font-m);
+  line-height: var(--line-height-l);
+  color: var(--color-black);
+  margin-top: auto;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 8px;
+  height: 23px;
+}

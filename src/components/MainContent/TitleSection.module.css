@@ -1,0 +1,62 @@
+/* タイトルセクション */
+.titleSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px;
+  gap: 33px;
+  position: relative;
+  width: 100%;
+  max-width: var(--content-width);
+  height: 350px;
+  border-radius: var(--radius-m) var(--radius-m) 0px 0px;
+  background-image: url('../../assets/images/AdobeStock.png');
+  /* background-color: red; 確認用に追加 */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* メインタイトルとロゴのスタイル */
+.mainTitle {
+  position: absolute;
+  width: 270px;
+  height: 19.88px;
+  left: 135px;
+  top: 73px;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  color: #FFFFFF;
+}
+
+.mainLogo {
+  position: absolute;
+  width: 283.5px;
+  height: 42px;
+  left: 142px;
+  top: 122px;
+  background-image: url('../../assets/images/logo1.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* レスポンシブ対応：タイトルとロゴの位置調整 */
+@media (max-width: 768px) {
+  .mainTitle {
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+  }
+  
+  .mainLogo {
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    max-width: 283.5px;
+  }
+}

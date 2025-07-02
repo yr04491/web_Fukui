@@ -1,0 +1,40 @@
+/* デザイン変数 */
+:root {
+  /* カラーパレット */
+  --color-background: #F4F4EF;
+  --color-white: #FFFFFF;
+  --color-black: #000000;
+  --color-button-bg: #D8D4C9;
+  --color-banner-bg: #D9D9D9;
+  
+  /* スペース */
+  --space-xs: 5px;
+  --space-s: 8px;
+  --space-m: 16px;
+  --space-l: 23px;
+  --space-xl: 30px;
+  --space-xxl: 50px;
+  
+  /* ボーダーラディウス */
+  --radius-s: 5px;
+  --radius-m: 10px;
+  --radius-l: 20px;
+  
+  /* フォントサイズ */
+  --font-xs: 12px;
+  --font-s: 14px;
+  --font-m: 16px;
+  --font-l: 20px;
+  
+  /* 行の高さ */
+  --line-height-s: 15px;
+  --line-height-m: 20px;
+  --line-height-l: 23px;
+  --line-height-xl: 28px;
+  --line-height-xxl: 32px;
+  
+  /* レイアウト */
+  --nav-width: 270px;
+  --content-width: 540px;
+  --banner-width: 200px;
+}

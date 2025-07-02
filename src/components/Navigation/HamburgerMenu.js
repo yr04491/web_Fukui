@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styles from './HamburgerMenu.module.css';
 import NavIcon from '../../assets/icons/NavIcon';
 
@@ -7,28 +7,26 @@ import NavIcon from '../../assets/icons/NavIcon';
 const NavigationHeader = () => {
   return (
     <div className={styles.navHeader}>
-      <div className={styles.navHeaderTitle}>当事者たちでつくる、不登校情報サイト</div>
-      <div className={styles.logoContainer}>
-        <div className={styles.navLogo}></div>
-        <div className={styles.navHeaderSubtitle}>福井県版</div>
-      </div>
+      <p className={styles.navHeaderTitle}>当事者たちでつくる、不登校情報サイト</p>
+      <div className={styles.navLogo}></div>
+      <div className={styles.navHeaderSubtitle}>福井県版</div>
     </div>
   );
 };
 
-const NavigationItem = ({ title, subItems = [] }) => {
+const NavigationItem = ({ title, subItems = [], index }) => {
   return (
     <div className={styles.navItem}>
       <div className={styles.navItemHeader}>
         <div className={styles.navIcon}>
-          <NavIcon />
+          <NavIcon index={index} />
         </div>
         <div className={styles.navTitle}>{title}</div>
       </div>
       {subItems.length > 0 && (
         <div className={styles.navSubItems}>
-          {subItems.map((item, index) => (
-            <div key={index} className={styles.navSubItem}>
+          {subItems.map((item, idx) => (
+            <div key={idx} className={styles.navSubItem}>
               {item}
             </div>
           ))}
@@ -42,10 +40,47 @@ const NavigationItem = ({ title, subItems = [] }) => {
 
 const HamburgerMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
-
+  const [lineHeight, setLineHeight] = useState(0);
+  const navRef = useRef(null);
+  const navItemsRef = useRef(null);
+  
+  // メニュー開閉のトグル
   const toggleMenu = () => {
-    setIsOpen(!isOpen);
+    setIsOpen(prev => !prev);
+    
+    // メニューを開いた場合は、アニメーション後に縦線の高さを計算
+    if (!isOpen) {
+      setTimeout(() => {
+        if (navItemsRef.current) {
+          setLineHeight(navItemsRef.current.offsetHeight);
+        }
+      }, 350); // トランジションが完了する時間 (0.3s) に少し余裕を持たせる
+    }
   };
+  
+  // 縦線の高さを動的に計算
+  useEffect(() => {
+    if (isOpen && navRef.current && navItemsRef.current) {
+      // リサイズイベントでも計算を更新
+      const calculateLineHeight = () => {
+        // ナビゲーション項目の高さを取得
+        const navItemsHeight = navItemsRef.current.offsetHeight;
+        // 縦線の高さをステート変数に設定
+        setLineHeight(navItemsHeight);
+      };
+      
+      // メニューが開いてから少し待って高さを計算（トランジション完了後）
+      const timer = setTimeout(calculateLineHeight, 350);
+      
+      // リサイズイベントでも高さを再計算
+      window.addEventListener('resize', calculateLineHeight);
+      
+      return () => {
+        window.removeEventListener('resize', calculateLineHeight);
+        clearTimeout(timer);
+      };
+    }
+  }, [isOpen]);
 
   const navigationItems = [
     {
@@ -82,19 +117,26 @@ const HamburgerMenu = () => {
         <div className={styles.menuIcon}></div>
       </div>
 
-      <nav className={`${styles.navigation} ${isOpen ? styles.navigationActive : ''}`}>
-        <div className={styles.navHeader}>
-          <NavigationHeader />
-        </div>
+      <nav ref={navRef} className={`${styles.navigation} ${isOpen ? styles.navigationActive : ''}`}>
+        <NavigationHeader />
         
-        {navigationItems.map((item, index) => (
-          <div key={index} className={styles.navItem}>
+        {/* ロゴと「まずどうする？」の間にスペースを追加 */}
+        <div style={{ marginTop: '50px' }}></div>
+        
+        {/* ナビゲーション項目を囲むコンテナ - 高さ計測用 */}
+        <div ref={navItemsRef} className={styles.navItemsContainer}>
+          {/* 縦線を実際のDOMノードとして追加 */}
+          <div className={styles.verticalLine} style={{ height: `${lineHeight}px` }} />
+          
+          {navigationItems.map((item, index) => (
             <NavigationItem
+              key={index}
               title={item.title}
               subItems={item.subItems}
+              index={index}
             />
-          </div>
-        ))}
+          ))}
+        </div>
         
         <div className={styles.navFooter}>
           運営/プロジェクトについて

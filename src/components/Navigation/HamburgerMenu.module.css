@@ -26,16 +26,16 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 32px 23px; /* Figmaの値を反映 */
-  gap: 30px; /* Figmaの値を反映 */
+  padding: 32px 30px; /* 右側のパディングを広げて文字の余白を確保 */
+  gap: 20px; /* 項目間の間隔を少し詰める */
   isolation: isolate;
   position: fixed;
   top: 0;
-  left: -320px; /* 初期状態では画面外に（幅を広げたため調整） */
+  left: -420px; /* 初期状態では画面外に（幅を広げたため調整：-320px→-420px） */
   height: 100vh;
   transition: left 0.3s ease;
   z-index: 100;
-  width: 310px; /* 幅を40px広げて文字の重なりと改行を防止 */
+  width: 410px; /* 幅を100px広げて（310px→410px）文字の改行を防止 */
   overflow-y: auto;
   padding-top: 120px; /* 80pxから110pxに変更（30px下げる） */
   background-color: #FFFFFF;
@@ -50,38 +50,157 @@
   box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2); /* 開いたときに影を追加してより目立たせる */
 }
 
-/* ナビゲーション左側の黒い縦線 - Vector画像を配置 */
-.navigation::before {
-  content: '';
+/* ナビアイテムコンテナ - 縦線の高さ計算のためのコンテナ */
+.navItemsContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* ナビゲーション左側の黒い縦線 - 実際のDOMノードとして追加 */
+.verticalLine {
   position: absolute;
   width: 17px;
-  height: calc(100% - 249px); /* 「みんなで知恵を出し合おう」までの高さに調整 */
-  left: 23px;
-  top: 179px; /* 149px + 30px = 179px */
+  left: -7px; /* ナビアイテムのpadding-left: 30pxを考慮して調整 */
+  top: 0;
   background-image: url('../../assets/images/vector.png');
-  background-size: 17px 100%; /* 幅を固定し、高さを100%に拡張 */
-  background-repeat: repeat-y; /* 縦方向に繰り返し */
+  background-size: 17px 100%;
+  background-repeat: repeat-y;
   background-position: top;
   z-index: 8;
+}
+
+/* ::before擬似要素は無効化 */
+.navigation::before {
+  content: none;
 }
 
 /* モバイル表示時のナビゲーション項目の調整 */
 .navHeader {
   margin-top: -30px; /* ヘッダーは元の位置に戻す */
+  width: 100%;
+  height: 129px; /* 79px + 50px = 129px で下に50pxスペースを追加 */
+  position: relative;
+  margin-bottom: 20px; /* さらに下部にも余白を追加 */
 }
 
-.navHeader, 
-.navItem, 
+.navItem {
+  width: 100%;
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px 0px 0px 30px;
+  gap: 10px;
+}
+
+.navItemHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px; /* アイコンとタイトルの間隔を広げる */
+  margin-bottom: 10px;
+  width: 100%;
+  height: 20px;
+  flex-wrap: nowrap; /* アイテムを折り返さない */
+}
+
+.navIcon {
+  width: 26px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background-color: transparent;
+}
+
+.navSubItems {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px 15px 0px 38px; /* 左右のパディングを調整して表示領域を確保 */
+  gap: 8px;
+  width: 100%;
+  box-sizing: border-box; /* パディングを含めたボックスモデルにする */
+}
+
 .navFooter {
   width: 100%;
   padding: 5px 0;
+  font-family: var(--font-secondary);
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 23px;
+  color: var(--color-black);
+  margin-top: auto;
 }
 
-.navHeaderTitle, 
-.navHeaderSubtitle,
-.navTitle, 
+.navHeaderTitle {
+  font-family: var(--font-primary);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+  color: var(--color-black);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 216px;
+  height: 9px;
+  margin: 0;
+}
+
+.navLogo {
+  position: absolute;
+  width: 151px;
+  height: 30px;
+  left: 6px;
+  top: 49px;
+  background-image: url('../../assets/images/logo.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.navHeaderSubtitle {
+  font-family: var(--font-primary);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+  color: var(--color-black);
+  position: absolute;
+  left: 163px;
+  top: 32px;
+  margin-left: 0;
+}
+
+.navTitle {
+  font-family: var(--font-primary);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 32px;
+  color: var(--color-black);
+  white-space: nowrap; /* タイトルが途中で改行されないようにする */
+  overflow: hidden;
+  text-overflow: ellipsis; /* 必要に応じて省略記号で表示 */
+  max-width: 100%; /* 親要素の幅を超えないようにする */
+}
+
 .navSubItem {
-  color: #000000;
+  font-family: var(--font-primary);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+  color: var(--color-black);
+  margin-bottom: 8px;
+  white-space: nowrap; /* サブアイテムも改行しないようにする */
+  overflow: hidden;
+  text-overflow: ellipsis; /* 必要に応じて省略記号で表示 */
+  max-width: 100%; /* 親要素の幅を超えないようにする */
 }
 
 /* ナビゲーションアイテム間のスペースはgapプロパティで管理 */

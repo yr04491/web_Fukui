@@ -1,0 +1,360 @@
+/* Section 01 スタイル */
+.section01 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+  gap: 30px;
+  position: relative;
+  width: 100%;
+  max-width: 540px;
+  margin: 0 auto; /* 上部マージンを0に変更 */
+  background: rgba(156, 174, 252, 0.15); /* 背景色を変更 */
+  border-radius: var(--radius-m);
+}
+
+/* タイトル周りのスタイル */
+.titleWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  gap: 8px; /* 5pxから8pxに少し広げる */
+  width: 100%;
+  max-width: 500px;
+}
+
+.logoContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 98px;
+  height: 30px;
+  margin-bottom: 0px; /* マイナスマージンを削除 */
+}
+
+.roadText {
+  font-family: var(--font-primary);
+  font-size: 16.5px;
+  font-weight: bold;
+  color: var(--color-black);
+  margin-right: 2px; /* 1pxから2pxに広げる */
+  display: flex;
+  align-items: center;
+  position: relative;
+  top: 10px;
+}
+
+.logoChar {
+  width: auto;
+  height: 33px;
+  max-height: 33px;
+  margin: 0 1px; /* 0pxから1pxに広げる */
+  object-fit: contain;
+}
+
+.mainTitle {
+  width: 100%;
+  max-width: 394px;
+  font-family: var(--font-primary);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 25px;
+  line-height: 32px; /* 30pxから32pxに調整 */
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  color: var(--color-black);
+  margin-top: 0px; /* マイナスマージンを削除 */
+  margin-bottom: 0px; /* マイナスマージンを削除 */
+}
+
+.dotline {
+  width: 100%;
+  max-width: 364px;
+  height: 10px;
+  background-size: contain;
+  background-repeat: repeat-x;
+}
+
+/* コンテンツフレーム */
+.contentFrame {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px 20px;
+  gap: 15px;
+  width: 100%;
+  max-width: 500px;
+  background: var(--color-white);
+  border-radius: 10px;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.contentTitle {
+  width: 100%;
+  max-width: 288px;
+  font-family: var(--font-primary);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center;
+  color: var(--color-black);
+  margin-bottom: -5px;
+}
+
+.contentText {
+  width: 100%;
+  max-width: 460px;
+  font-family: var(--font-primary);
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 28px;
+  letter-spacing: 0.1em;
+  color: var(--color-black);
+}
+
+.projectButton {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 10px;
+  gap: 10px;
+  width: 100%;
+  max-width: 320px; /* 幅を広げる */
+  height: auto; /* 高さを自動に設定 */
+  min-height: 46px; /* 最低高さを設定 */
+  background: #E0E6FF; /* 背景色を変更 */
+  border: 1px solid var(--color-black);
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.playIcon {
+  width: 19.2px;
+  height: 19.2px;
+  object-fit: contain;
+}
+
+.projectButton span {
+  font-family: var(--font-primary);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+  color: var(--color-black);
+  flex-grow: 1;
+  text-align: center;
+}
+
+/* 体験談セクション */
+.experienceSection {
+  width: 100%;
+  max-width: 500px;
+  margin-top: 15px; /* 20pxから15pxに縮小 */
+}
+
+.experienceHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 2px 0px;
+  gap: 5px; /* 8pxから5pxに縮小 */
+  margin-bottom: 10px; /* 15pxから10pxに縮小 */
+  width: 100%;
+}
+
+.experienceTag {
+  font-family: var(--font-primary);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 14px; /* 15pxから14pxに縮小 */
+  color: var(--color-black);
+  margin-bottom: -1px; /* 下部の余白を縮める */
+}
+
+.experienceTitle {
+  font-family: var(--font-primary);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px; /* 32pxから24pxに縮小 */
+  color: var(--color-black);
+  margin-top: -2px; /* 上部の余白を縮める */
+}
+
+.tweetArea {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
+  width: 100%;
+  justify-content: center;
+  margin-bottom: 15px; /* 20pxから15pxに縮小 */
+  margin-top: 5px; /* 上部にマージンを追加 */
+}
+
+.tweetCard {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 15px 20px;
+  gap: 8px;
+  width: 100%;
+  max-width: 240px;
+  height: 149px;
+  background: var(--color-white);
+  border: 1.5px solid var(--color-black);
+  border-radius: 10px;
+}
+
+.tweetText {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 200px;
+  font-family: var(--font-primary);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 0.1em;
+  color: var(--color-black);
+}
+
+.tweetDivider {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 200px;
+  border-bottom: 2px dashed var(--color-black);
+}
+
+.tagArea {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 0;
+  gap: 5px;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 200px;
+}
+
+.tag {
+  font-family: var(--font-primary);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+  color: var(--color-black);
+}
+
+.tweetFooter {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0;
+  gap: 5px;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 200px;
+}
+
+.authorInfo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+}
+
+.authorAvatar {
+  width: 25px;
+  height: 25px;
+  background: #F4BED3;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.authorAvatar span {
+  font-family: var(--font-primary);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--color-black);
+}
+
+.authorName {
+  font-family: var(--font-primary);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+  color: var(--color-black);
+}
+
+.tweetDate {
+  font-family: var(--font-primary);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+  color: var(--color-black);
+}
+
+.moreButton {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 16px;
+  gap: 10px;
+  width: auto;
+  min-width: 270px;
+  height: 40px;
+  background: var(--color-white);
+  border: 1px solid var(--color-black);
+  border-radius: 5px;
+  margin: 20px auto 0;
+  cursor: pointer;
+}
+
+.moreButton span {
+  font-family: var(--font-primary);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+  color: var(--color-black);
+  white-space: nowrap;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+  .section01 {
+    padding: 30px 15px;
+  }
+  
+  .tweetArea {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .tweetCard {
+    max-width: 100%;
+  }
+}

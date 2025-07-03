@@ -17,6 +17,14 @@
   padding-bottom: 40px; /* 下部にパディングを追加 */
 }
 
+/* ギャップを無くすためのクラス */
+.noGap {
+  margin-top: -40px; /* メインコンテンツのgapを打ち消す */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
 /* レスポンシブ対応 */
 @media (max-width: 768px) {
   .mainContent {
@@ -26,5 +34,9 @@
     margin-top: 60px; /* ハンバーガーメニューのスペース */
     gap: 30px; /* モバイル時はセクション間隔を少し狭く */
     padding-bottom: 30px;
+  }
+  
+  .noGap {
+    margin-top: -30px; /* モバイル時のgapに合わせて調整 */
   }
 }

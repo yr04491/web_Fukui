@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/web_Fukui/static/css/main.500ccd68.css",
+    "main.css": "/web_Fukui/static/css/main.c44b80d1.css",
     "main.js": "/web_Fukui/static/js/main.38cd7e67.js",
     "static/js/453.e7e8dd5b.chunk.js": "/web_Fukui/static/js/453.e7e8dd5b.chunk.js",
     "static/media/AdobeStock.png": "/web_Fukui/static/media/AdobeStock.259e2d371e274f6dd485.png",
     "static/media/AdobeStock_Preview.png": "/web_Fukui/static/media/AdobeStock_Preview.1cef9f2510ff80dd2567.png",
     "static/media/girl1.png": "/web_Fukui/static/media/girl1.1aa81062eecbbd2b2590.png",
     "index.html": "/web_Fukui/index.html",
-    "main.500ccd68.css.map": "/web_Fukui/static/css/main.500ccd68.css.map",
+    "main.c44b80d1.css.map": "/web_Fukui/static/css/main.c44b80d1.css.map",
     "main.38cd7e67.js.map": "/web_Fukui/static/js/main.38cd7e67.js.map",
     "453.e7e8dd5b.chunk.js.map": "/web_Fukui/static/js/453.e7e8dd5b.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.500ccd68.css",
+    "static/css/main.c44b80d1.css",
     "static/js/main.38cd7e67.js"
   ]
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './OpeningSection.module.css';
+import newWindowIcon from '../../assets/images/newwindow.png';
 
 const OpeningSection = () => {
   return (
@@ -10,6 +11,7 @@ const OpeningSection = () => {
         今の自分とお子さんに合いそうな解決策を、たくさんの事例から見つけていってもらえたらと思っています。
       </p>
       <button className={styles.projectButton}>
+        <img src={newWindowIcon} alt="新しいウィンドウ" className={styles.newWindowIcon} />
         <span>プロジェクトについて</span>
       </button>
     </div>

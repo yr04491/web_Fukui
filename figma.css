@@ -1,4 +1,4 @@
-/* section_02_copy */
+/* section_03_copy */
 
 /* オートレイアウト */
 display: flex;
@@ -10,9 +10,9 @@ gap: 30px;
 position: relative;
 width: 540px;
 max-width: 540px;
-height: 717.39px;
+height: 1075.02px;
 
-background: rgba(163, 208, 250, 0.25);
+background: #FFFFFF;
 
 
 /* space10 */
@@ -47,7 +47,7 @@ padding: 0px;
 gap: 15px;
 
 width: 500px;
-height: 94.39px;
+height: 129.02px;
 
 
 /* オートレイアウト内部 */
@@ -65,8 +65,8 @@ flex-direction: column;
 align-items: center;
 padding: 0px;
 
-width: 97.84px;
-height: 35.39px;
+width: 97.15px;
+height: 35.02px;
 
 
 /* オートレイアウト内部 */
@@ -77,8 +77,8 @@ flex-grow: 0;
 
 /* _レイヤー_1 */
 
-width: 97.84px;
-height: 35.39px;
+width: 97.15px;
+height: 35.02px;
 
 
 /* オートレイアウト内部 */
@@ -91,9 +91,9 @@ flex-grow: 0;
 
 position: absolute;
 left: 0%;
-right: 90.56%;
-top: 56.09%;
-bottom: 9.5%;
+right: 90.49%;
+top: 55.2%;
+bottom: 10.02%;
 
 background: #000000;
 
@@ -101,10 +101,10 @@ background: #000000;
 /* Vector */
 
 position: absolute;
-left: 10.1%;
-right: 77.63%;
-top: 55.92%;
-bottom: 9.18%;
+left: 10.17%;
+right: 77.47%;
+top: 55%;
+bottom: 9.74%;
 
 background: #000000;
 
@@ -112,10 +112,10 @@ background: #000000;
 /* Vector */
 
 position: absolute;
-left: 22.9%;
-right: 64.99%;
-top: 56.2%;
-bottom: 9.5%;
+left: 23.07%;
+right: 64.75%;
+top: 55.28%;
+bottom: 10.05%;
 
 background: #000000;
 
@@ -123,10 +123,10 @@ background: #000000;
 /* Vector */
 
 position: absolute;
-left: 36.06%;
-right: 53.42%;
-top: 56.12%;
-bottom: 9.38%;
+left: 36.31%;
+right: 53.09%;
+top: 55.23%;
+bottom: 9.91%;
 
 background: #000000;
 
@@ -134,10 +134,10 @@ background: #000000;
 /* Vector */
 
 position: absolute;
-left: 53.76%;
-right: 23.5%;
-top: 7.12%;
-bottom: 0%;
+left: 54.14%;
+right: 22.95%;
+top: 5.71%;
+bottom: 0.43%;
 
 background: #000000;
 
@@ -145,18 +145,18 @@ background: #000000;
 /* Vector */
 
 position: absolute;
-left: 75.39%;
-right: 0%;
-top: -0.03%;
-bottom: 1.84%;
+left: 76.47%;
+right: -0.02%;
+top: 0.09%;
+bottom: -0.03%;
 
 background: #000000;
 
 
-/* 行政が行う公的支援 */
+/* まだまだある！ みんなの居場所 */
 
-width: 225px;
-height: 19px;
+width: 175px;
+height: 54px;
 
 /* h2_見出し */
 font-family: 'DNP ShueiGoKinStd';
@@ -197,181 +197,15 @@ order: 2;
 flex-grow: 0;
 
 
-/* Frame 2 */
-
-/* オートレイアウト */
-display: flex;
-flex-direction: column;
-align-items: center;
-padding: 24px 20px;
-gap: 30px;
-
-width: 500px;
-height: 199px;
-
-background: #FFFFFF;
-border-radius: 10px;
-
-/* オートレイアウト内部 */
-flex: none;
-order: 2;
-align-self: stretch;
-flex-grow: 0;
-
-
-/* ⁨⁩公的な支援機関はいくつかあります */
-
-width: 256px;
-height: 12px;
-
-/* h3_見出し
-
-h3
-*/
-font-family: 'DNP ShueiGoKinStd';
-font-style: normal;
-font-weight: 600;
-font-size: 16px;
-line-height: 32px;
-/* leading-trim and text-edge are draft CSS properties.
-
-Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
-*/
-leading-trim: both;
-text-edge: cap;
-text-align: center;
-
-color: #000000;
-
-
-/* オートレイアウト内部 */
-flex: none;
-order: 0;
-flex-grow: 0;
-
-
-/* ◯ちゃれんじ教室 ◯ソーシャルワーカーなど */
-
-width: 460px;
-height: 39px;
-
-/* p/本文
-
-本文
-*/
-font-family: 'DNP ShueiGoKinStd';
-font-style: normal;
-font-weight: 500;
-font-size: 14px;
-line-height: 28px;
-/* または200% */
-/* leading-trim and text-edge are draft CSS properties.
-
-Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
-*/
-leading-trim: both;
-text-edge: cap;
-letter-spacing: 0.1em;
-
-color: #000000;
-
-
-/* オートレイアウト内部 */
-flex: none;
-order: 1;
-align-self: stretch;
-flex-grow: 0;
-
-
-/* btn_project */
-
-box-sizing: border-box;
-
-/* オートレイアウト */
-display: flex;
-flex-direction: row;
-justify-content: center;
-align-items: center;
-padding: 8px 10px;
-gap: 10px;
-
-width: 280px;
-max-width: 280px;
-height: 40px;
-
-background: #FDF9D5;
-border: 1px solid #000000;
-border-radius: 5px;
-
-/* オートレイアウト内部 */
-flex: none;
-order: 2;
-flex-grow: 0;
-
-
-/* ic:round-play-arrow */
-
-width: 24px;
-height: 24px;
-
-
-/* オートレイアウト内部 */
-flex: none;
-order: 0;
-flex-grow: 0;
-
-
-/* Vector */
-
-position: absolute;
-left: 33.33%;
-right: 24.39%;
-top: 24.25%;
-bottom: 24.24%;
-
-background: #000000;
-
-
-/* 相談の窓口などご紹介。福井県内各所、利用しやすいところを選んでください。 */
-
-width: 226px;
-height: 24px;
-
-/* tag
-
-ハッシュタグ
-*/
-font-family: 'DNP ShueiGoKinStd';
-font-style: normal;
-font-weight: 600;
-font-size: 12px;
-line-height: 15px;
-/* または125% */
-/* leading-trim and text-edge are draft CSS properties.
-
-Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
-*/
-leading-trim: both;
-text-edge: cap;
-
-color: #000000;
-
-
-/* オートレイアウト内部 */
-flex: none;
-order: 1;
-flex-grow: 1;
-
-
 /* Group 2 */
 
 width: 500px;
-height: 194px;
+height: 323px;
 
 
 /* オートレイアウト内部 */
 flex: none;
-order: 3;
+order: 2;
 flex-grow: 0;
 
 
@@ -388,13 +222,13 @@ position: absolute;
 width: 500px;
 height: 33px;
 left: 20px;
-top: 413.39px;
+top: 219.02px;
 
 
 
-/* 実際に活用している話を見てみよう！ */
+/* 平日・休日参加できるところ */
 
-width: 204px;
+width: 156px;
 height: 9px;
 
 /* tag
@@ -423,9 +257,9 @@ order: 0;
 flex-grow: 0;
 
 
-/* 公的支援を利用してどうだった？ */
+/* こどもの居場所 */
 
-width: 240px;
+width: 112px;
 height: 12px;
 
 /* h3_見出し
@@ -464,85 +298,46 @@ gap: 20px;
 
 position: absolute;
 width: 500px;
-height: 149px;
+height: 278px;
 left: 20px;
-top: 458.39px;
+top: 264.02px;
 
 
 
-/* tweet */
+/* place */
 
 box-sizing: border-box;
 
 /* オートレイアウト */
 display: flex;
 flex-direction: column;
-justify-content: space-between;
-align-items: flex-end;
-padding: 15px 20px;
+align-items: flex-start;
+padding: 0px;
 gap: 8px;
 
 width: 240px;
 max-width: 240px;
-height: 149px;
+height: 278px;
 
-background: #FFFFFF;
-border: 1.5px solid #000000;
 border-radius: 10px;
 
 /* オートレイアウト内部 */
 flex: none;
 order: 0;
-flex-grow: 1;
+flex-grow: 0;
 
 
-/* 毎日学校の先生と、UNOや雑談をして30分すごしてます。 */
+/* AdobeStock_422894352_Preview */
 
-margin: 0 auto;
-width: 200px;
-max-width: 200px;
-height: 47px;
+width: 240px;
+height: 200px;
 
-/* p/ツイート文
-
-ツイート本文
-*/
-font-family: 'DNP ShueiGoKinStd';
-font-style: normal;
-font-weight: 600;
-font-size: 14px;
-line-height: 18px;
-/* または129% */
-/* leading-trim and text-edge are draft CSS properties.
-
-Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
-*/
-leading-trim: both;
-text-edge: cap;
-letter-spacing: 0.1em;
-
-color: #000000;
-
+background: url(AdobeStock_422894352_Preview.jpg);
+border-radius: 10px;
 
 /* オートレイアウト内部 */
 flex: none;
 order: 0;
-align-self: stretch;
-flex-grow: 0;
-
-
-/* Vector 1 */
-
-margin: 0 auto;
-width: 200px;
-max-width: 200px;
-height: 0px;
-
-border: 2px dashed #000000;
-
-/* オートレイアウト内部 */
-flex: none;
-order: 1;
 align-self: stretch;
 flex-grow: 0;
 
@@ -558,15 +353,87 @@ align-content: flex-start;
 padding: 0px;
 gap: 5px;
 
-margin: 0 auto;
-width: 200px;
-height: 9px;
+width: 240px;
+height: 35px;
 
 
 /* オートレイアウト内部 */
 flex: none;
-order: 2;
+order: 1;
 align-self: stretch;
+flex-grow: 0;
+
+
+/* tag */
+
+/* オートレイアウト */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 3px 6px;
+gap: 10px;
+
+width: 57px;
+height: 15px;
+
+background: #FDF9D5;
+
+/* オートレイアウト内部 */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* #高校生 */
+
+width: 45px;
+height: 9px;
+
+/* tag
+
+ハッシュタグ
+*/
+font-family: 'DNP ShueiGoKinStd';
+font-style: normal;
+font-weight: 600;
+font-size: 12px;
+line-height: 15px;
+/* または125% */
+/* leading-trim and text-edge are draft CSS properties.
+
+Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
+*/
+leading-trim: both;
+text-edge: cap;
+
+color: #000000;
+
+
+/* オートレイアウト内部 */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* tag */
+
+/* オートレイアウト */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 3px 6px;
+gap: 10px;
+
+width: 57px;
+height: 15px;
+
+background: #FDF9D5;
+
+/* オートレイアウト内部 */
+flex: none;
+order: 1;
 flex-grow: 0;
 
 
@@ -601,61 +468,20 @@ order: 0;
 flex-grow: 0;
 
 
-/* #学校活用術 */
+/* tag */
 
-width: 69px;
-height: 9px;
+/* オートレイアウト */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 3px 6px;
+gap: 10px;
 
-/* tag
+width: 57px;
+height: 15px;
 
-ハッシュタグ
-*/
-font-family: 'DNP ShueiGoKinStd';
-font-style: normal;
-font-weight: 600;
-font-size: 12px;
-line-height: 15px;
-/* または125% */
-/* leading-trim and text-edge are draft CSS properties.
-
-Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
-*/
-leading-trim: both;
-text-edge: cap;
-
-color: #000000;
-
-
-/* オートレイアウト内部 */
-flex: none;
-order: 1;
-flex-grow: 0;
-
-
-/* #学校活用術 */
-
-width: 69px;
-height: 9px;
-
-/* tag
-
-ハッシュタグ
-*/
-font-family: 'DNP ShueiGoKinStd';
-font-style: normal;
-font-weight: 600;
-font-size: 12px;
-line-height: 15px;
-/* または125% */
-/* leading-trim and text-edge are draft CSS properties.
-
-Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
-*/
-leading-trim: both;
-text-edge: cap;
-
-color: #000000;
-
+background: #FDF9D5;
 
 /* オートレイアウト内部 */
 flex: none;
@@ -663,125 +489,61 @@ order: 2;
 flex-grow: 0;
 
 
-/* タグエリア */
+/* #中学生 */
+
+width: 45px;
+height: 9px;
+
+/* tag
+
+ハッシュタグ
+*/
+font-family: 'DNP ShueiGoKinStd';
+font-style: normal;
+font-weight: 600;
+font-size: 12px;
+line-height: 15px;
+/* または125% */
+/* leading-trim and text-edge are draft CSS properties.
+
+Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
+*/
+leading-trim: both;
+text-edge: cap;
+
+color: #000000;
+
+
+/* オートレイアウト内部 */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* tag */
 
 /* オートレイアウト */
 display: flex;
 flex-direction: row;
-flex-wrap: wrap;
-justify-content: space-between;
+justify-content: center;
 align-items: center;
-align-content: flex-start;
-padding: 0px;
-gap: 5px;
+padding: 3px 6px;
+gap: 10px;
 
-margin: 0 auto;
-width: 200px;
-height: 25px;
+width: 105px;
+height: 15px;
 
+background: #FDF9D5;
 
 /* オートレイアウト内部 */
 flex: none;
 order: 3;
-align-self: stretch;
 flex-grow: 0;
 
 
-/* Group 1 */
+/* #フリースクール */
 
-width: 78px;
-height: 25px;
-
-
-/* オートレイアウト内部 */
-flex: none;
-order: 0;
-flex-grow: 0;
-
-
-/* nama_img */
-
-position: absolute;
-width: 25px;
-height: 25px;
-left: 0px;
-top: 0px;
-
-
-
-/* Ellipse 1 */
-
-position: absolute;
-width: 25px;
-height: 25px;
-left: 0px;
-top: 0px;
-
-background: #F4BED3;
-
-
-/* R */
-
-position: absolute;
-width: 8.33px;
-height: 9.17px;
-left: 8.33px;
-top: 7.5px;
-
-/* p/ツイート文
-
-ツイート本文
-*/
-font-family: 'DNP ShueiGoKinStd';
-font-style: normal;
-font-weight: 600;
-font-size: 14px;
-line-height: 18px;
-/* または129% */
-/* leading-trim and text-edge are draft CSS properties.
-
-Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
-*/
-leading-trim: both;
-text-edge: cap;
-letter-spacing: 0.1em;
-
-color: #000000;
-
-
-
-/* ひろまま */
-
-position: absolute;
-width: 48px;
-height: 9px;
-left: 30px;
-top: 8px;
-
-/* tag
-
-ハッシュタグ
-*/
-font-family: 'DNP ShueiGoKinStd';
-font-style: normal;
-font-weight: 600;
-font-size: 12px;
-line-height: 15px;
-/* または125% */
-/* leading-trim and text-edge are draft CSS properties.
-
-Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
-*/
-leading-trim: both;
-text-edge: cap;
-
-color: #000000;
-
-
-
-/* 2025.00.00 */
-
-width: 70px;
+width: 93px;
 height: 9px;
 
 /* tag
@@ -806,83 +568,105 @@ color: #000000;
 
 /* オートレイアウト内部 */
 flex: none;
-order: 1;
-flex-grow: 0;
-
-
-/* tweet */
-
-box-sizing: border-box;
-
-/* オートレイアウト */
-display: flex;
-flex-direction: column;
-justify-content: space-between;
-align-items: flex-end;
-padding: 15px 20px;
-gap: 8px;
-
-width: 240px;
-max-width: 240px;
-height: 149px;
-
-background: #FFFFFF;
-border: 1.5px solid #000000;
-border-radius: 10px;
-
-/* オートレイアウト内部 */
-flex: none;
-order: 1;
-flex-grow: 1;
-
-
-/* 毎日学校の先生と、UNOや雑談をして30分すごしてます。 */
-
-margin: 0 auto;
-width: 200px;
-max-width: 200px;
-height: 47px;
-
-/* p/ツイート文
-
-ツイート本文
-*/
-font-family: 'DNP ShueiGoKinStd';
-font-style: normal;
-font-weight: 600;
-font-size: 14px;
-line-height: 18px;
-/* または129% */
-/* leading-trim and text-edge are draft CSS properties.
-
-Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
-*/
-leading-trim: both;
-text-edge: cap;
-letter-spacing: 0.1em;
-
-color: #000000;
-
-
-/* オートレイアウト内部 */
-flex: none;
 order: 0;
-align-self: stretch;
 flex-grow: 0;
 
 
 /* Vector 1 */
 
-margin: 0 auto;
-width: 200px;
-max-width: 200px;
+width: 240px;
 height: 0px;
 
 border: 2px dashed #000000;
 
 /* オートレイアウト内部 */
 flex: none;
+order: 2;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* コドモノイバショ */
+
+width: 122px;
+max-width: 240px;
+height: 11px;
+
+/* p/ツイート文
+
+ツイート本文
+*/
+font-family: 'DNP ShueiGoKinStd';
+font-style: normal;
+font-weight: 600;
+font-size: 14px;
+line-height: 18px;
+/* または129% */
+/* leading-trim and text-edge are draft CSS properties.
+
+Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
+*/
+leading-trim: both;
+text-edge: cap;
+letter-spacing: 0.1em;
+
+color: #000000;
+
+
+/* オートレイアウト内部 */
+flex: none;
+order: 3;
+flex-grow: 0;
+
+
+/* Vector 2 */
+
+width: 240px;
+height: 0px;
+
+border: 2px dashed #000000;
+
+/* オートレイアウト内部 */
+flex: none;
+order: 4;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* place */
+
+box-sizing: border-box;
+
+/* オートレイアウト */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+gap: 8px;
+
+width: 240px;
+max-width: 240px;
+height: 278px;
+
+border-radius: 10px;
+
+/* オートレイアウト内部 */
+flex: none;
 order: 1;
+flex-grow: 0;
+
+
+/* AdobeStock_422894352_Preview */
+
+width: 240px;
+height: 200px;
+
+background: url(AdobeStock_422894352_Preview.jpg);
+border-radius: 10px;
+
+/* オートレイアウト内部 */
+flex: none;
+order: 0;
 align-self: stretch;
 flex-grow: 0;
 
@@ -898,15 +682,87 @@ align-content: flex-start;
 padding: 0px;
 gap: 5px;
 
-margin: 0 auto;
-width: 200px;
-height: 9px;
+width: 240px;
+height: 35px;
 
 
 /* オートレイアウト内部 */
 flex: none;
-order: 2;
+order: 1;
 align-self: stretch;
+flex-grow: 0;
+
+
+/* tag */
+
+/* オートレイアウト */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 3px 6px;
+gap: 10px;
+
+width: 57px;
+height: 15px;
+
+background: #FDF9D5;
+
+/* オートレイアウト内部 */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* #高校生 */
+
+width: 45px;
+height: 9px;
+
+/* tag
+
+ハッシュタグ
+*/
+font-family: 'DNP ShueiGoKinStd';
+font-style: normal;
+font-weight: 600;
+font-size: 12px;
+line-height: 15px;
+/* または125% */
+/* leading-trim and text-edge are draft CSS properties.
+
+Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
+*/
+leading-trim: both;
+text-edge: cap;
+
+color: #000000;
+
+
+/* オートレイアウト内部 */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* tag */
+
+/* オートレイアウト */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 3px 6px;
+gap: 10px;
+
+width: 57px;
+height: 15px;
+
+background: #FDF9D5;
+
+/* オートレイアウト内部 */
+flex: none;
+order: 1;
 flex-grow: 0;
 
 
@@ -941,61 +797,20 @@ order: 0;
 flex-grow: 0;
 
 
-/* #学校活用術 */
+/* tag */
 
-width: 69px;
-height: 9px;
+/* オートレイアウト */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 3px 6px;
+gap: 10px;
 
-/* tag
+width: 57px;
+height: 15px;
 
-ハッシュタグ
-*/
-font-family: 'DNP ShueiGoKinStd';
-font-style: normal;
-font-weight: 600;
-font-size: 12px;
-line-height: 15px;
-/* または125% */
-/* leading-trim and text-edge are draft CSS properties.
-
-Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
-*/
-leading-trim: both;
-text-edge: cap;
-
-color: #000000;
-
-
-/* オートレイアウト内部 */
-flex: none;
-order: 1;
-flex-grow: 0;
-
-
-/* #学校活用術 */
-
-width: 69px;
-height: 9px;
-
-/* tag
-
-ハッシュタグ
-*/
-font-family: 'DNP ShueiGoKinStd';
-font-style: normal;
-font-weight: 600;
-font-size: 12px;
-line-height: 15px;
-/* または125% */
-/* leading-trim and text-edge are draft CSS properties.
-
-Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
-*/
-leading-trim: both;
-text-edge: cap;
-
-color: #000000;
-
+background: #FDF9D5;
 
 /* オートレイアウト内部 */
 flex: none;
@@ -1003,34 +818,29 @@ order: 2;
 flex-grow: 0;
 
 
-/* タグエリア */
+/* #中学生 */
 
-/* オートレイアウト */
-display: flex;
-flex-direction: row;
-flex-wrap: wrap;
-justify-content: space-between;
-align-items: center;
-align-content: flex-start;
-padding: 0px;
-gap: 5px;
+width: 45px;
+height: 9px;
 
-margin: 0 auto;
-width: 200px;
-height: 25px;
+/* tag
 
+ハッシュタグ
+*/
+font-family: 'DNP ShueiGoKinStd';
+font-style: normal;
+font-weight: 600;
+font-size: 12px;
+line-height: 15px;
+/* または125% */
+/* leading-trim and text-edge are draft CSS properties.
 
-/* オートレイアウト内部 */
-flex: none;
-order: 3;
-align-self: stretch;
-flex-grow: 0;
+Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
+*/
+leading-trim: both;
+text-edge: cap;
 
-
-/* Group 1 */
-
-width: 78px;
-height: 25px;
+color: #000000;
 
 
 /* オートレイアウト内部 */
@@ -1039,34 +849,77 @@ order: 0;
 flex-grow: 0;
 
 
-/* nama_img */
+/* tag */
 
-position: absolute;
-width: 25px;
-height: 25px;
-left: 0px;
-top: 0px;
+/* オートレイアウト */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 3px 6px;
+gap: 10px;
+
+width: 105px;
+height: 15px;
+
+background: #FDF9D5;
+
+/* オートレイアウト内部 */
+flex: none;
+order: 3;
+flex-grow: 0;
 
 
+/* #フリースクール */
 
-/* Ellipse 1 */
+width: 93px;
+height: 9px;
 
-position: absolute;
-width: 25px;
-height: 25px;
-left: 0px;
-top: 0px;
+/* tag
 
-background: #F4BED3;
+ハッシュタグ
+*/
+font-family: 'DNP ShueiGoKinStd';
+font-style: normal;
+font-weight: 600;
+font-size: 12px;
+line-height: 15px;
+/* または125% */
+/* leading-trim and text-edge are draft CSS properties.
+
+Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
+*/
+leading-trim: both;
+text-edge: cap;
+
+color: #000000;
 
 
-/* R */
+/* オートレイアウト内部 */
+flex: none;
+order: 0;
+flex-grow: 0;
 
-position: absolute;
-width: 8.33px;
-height: 9.17px;
-left: 8.33px;
-top: 7.5px;
+
+/* Vector 1 */
+
+width: 240px;
+height: 0px;
+
+border: 2px dashed #000000;
+
+/* オートレイアウト内部 */
+flex: none;
+order: 2;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* コドモノイバショ */
+
+width: 122px;
+max-width: 240px;
+height: 11px;
 
 /* p/ツイート文
 
@@ -1089,64 +942,23 @@ letter-spacing: 0.1em;
 color: #000000;
 
 
-
-/* ひろまま */
-
-position: absolute;
-width: 48px;
-height: 9px;
-left: 30px;
-top: 8px;
-
-/* tag
-
-ハッシュタグ
-*/
-font-family: 'DNP ShueiGoKinStd';
-font-style: normal;
-font-weight: 600;
-font-size: 12px;
-line-height: 15px;
-/* または125% */
-/* leading-trim and text-edge are draft CSS properties.
-
-Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
-*/
-leading-trim: both;
-text-edge: cap;
-
-color: #000000;
+/* オートレイアウト内部 */
+flex: none;
+order: 3;
+flex-grow: 0;
 
 
+/* Vector 2 */
 
-/* 2025.00.00 */
+width: 240px;
+height: 0px;
 
-width: 70px;
-height: 9px;
-
-/* tag
-
-ハッシュタグ
-*/
-font-family: 'DNP ShueiGoKinStd';
-font-style: normal;
-font-weight: 600;
-font-size: 12px;
-line-height: 15px;
-/* または125% */
-/* leading-trim and text-edge are draft CSS properties.
-
-Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
-*/
-leading-trim: both;
-text-edge: cap;
-
-color: #000000;
-
+border: 2px dashed #000000;
 
 /* オートレイアウト内部 */
 flex: none;
-order: 1;
+order: 4;
+align-self: stretch;
 flex-grow: 0;
 
 
@@ -1161,7 +973,7 @@ justify-content: center;
 align-items: center;
 padding: 8px 16px;
 
-width: 236px;
+width: 212px;
 height: 40px;
 
 background: #FFFFFF;
@@ -1170,7 +982,7 @@ border-radius: 5px;
 
 /* オートレイアウト内部 */
 flex: none;
-order: 4;
+order: 3;
 flex-grow: 0;
 
 
@@ -1197,9 +1009,852 @@ bottom: 24.24%;
 background: #000000;
 
 
-/* みんなの体験談をもっと見てみる */
+/* こどもの居場所をもっと見る */
 
-width: 180px;
+width: 156px;
+height: 9px;
+
+/* tag
+
+ハッシュタグ
+*/
+font-family: 'DNP ShueiGoKinStd';
+font-style: normal;
+font-weight: 600;
+font-size: 12px;
+line-height: 15px;
+/* または125% */
+/* leading-trim and text-edge are draft CSS properties.
+
+Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
+*/
+leading-trim: both;
+text-edge: cap;
+
+color: #000000;
+
+
+/* オートレイアウト内部 */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Group 3 */
+
+width: 500px;
+height: 323px;
+
+
+/* オートレイアウト内部 */
+flex: none;
+order: 4;
+flex-grow: 0;
+
+
+/* 体験談タイトル */
+
+/* オートレイアウト */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 2px 0px;
+gap: 8px;
+
+position: absolute;
+width: 500px;
+height: 33px;
+left: 20px;
+top: 642.02px;
+
+
+
+/* 悩みや解決策など、みんなで話してみよう！ */
+
+width: 240px;
+height: 9px;
+
+/* tag
+
+ハッシュタグ
+*/
+font-family: 'DNP ShueiGoKinStd';
+font-style: normal;
+font-weight: 600;
+font-size: 12px;
+line-height: 15px;
+/* または125% */
+/* leading-trim and text-edge are draft CSS properties.
+
+Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
+*/
+leading-trim: both;
+text-edge: cap;
+
+color: #000000;
+
+
+/* オートレイアウト内部 */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* 保護者の居場所 */
+
+width: 112px;
+height: 12px;
+
+/* h3_見出し
+
+h3
+*/
+font-family: 'DNP ShueiGoKinStd';
+font-style: normal;
+font-weight: 600;
+font-size: 16px;
+line-height: 32px;
+/* leading-trim and text-edge are draft CSS properties.
+
+Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
+*/
+leading-trim: both;
+text-edge: cap;
+
+color: #000000;
+
+
+/* オートレイアウト内部 */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* ツイートエリア */
+
+/* オートレイアウト */
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 0px;
+gap: 20px;
+
+position: absolute;
+width: 500px;
+height: 278px;
+left: 20px;
+top: 687.02px;
+
+
+
+/* place */
+
+box-sizing: border-box;
+
+/* オートレイアウト */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+gap: 8px;
+
+width: 240px;
+max-width: 240px;
+height: 278px;
+
+border-radius: 10px;
+
+/* オートレイアウト内部 */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* AdobeStock_422894352_Preview */
+
+width: 240px;
+height: 200px;
+
+background: url(AdobeStock_422894352_Preview.jpg);
+border-radius: 10px;
+
+/* オートレイアウト内部 */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* タグエリア */
+
+/* オートレイアウト */
+display: flex;
+flex-direction: row;
+flex-wrap: wrap;
+align-items: center;
+align-content: flex-start;
+padding: 0px;
+gap: 5px;
+
+width: 240px;
+height: 35px;
+
+
+/* オートレイアウト内部 */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* tag */
+
+/* オートレイアウト */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 3px 6px;
+gap: 10px;
+
+width: 57px;
+height: 15px;
+
+background: #FDF9D5;
+
+/* オートレイアウト内部 */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* #高校生 */
+
+width: 45px;
+height: 9px;
+
+/* tag
+
+ハッシュタグ
+*/
+font-family: 'DNP ShueiGoKinStd';
+font-style: normal;
+font-weight: 600;
+font-size: 12px;
+line-height: 15px;
+/* または125% */
+/* leading-trim and text-edge are draft CSS properties.
+
+Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
+*/
+leading-trim: both;
+text-edge: cap;
+
+color: #000000;
+
+
+/* オートレイアウト内部 */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* tag */
+
+/* オートレイアウト */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 3px 6px;
+gap: 10px;
+
+width: 57px;
+height: 15px;
+
+background: #FDF9D5;
+
+/* オートレイアウト内部 */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* #小学生 */
+
+width: 45px;
+height: 9px;
+
+/* tag
+
+ハッシュタグ
+*/
+font-family: 'DNP ShueiGoKinStd';
+font-style: normal;
+font-weight: 600;
+font-size: 12px;
+line-height: 15px;
+/* または125% */
+/* leading-trim and text-edge are draft CSS properties.
+
+Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
+*/
+leading-trim: both;
+text-edge: cap;
+
+color: #000000;
+
+
+/* オートレイアウト内部 */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* tag */
+
+/* オートレイアウト */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 3px 6px;
+gap: 10px;
+
+width: 57px;
+height: 15px;
+
+background: #FDF9D5;
+
+/* オートレイアウト内部 */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* #中学生 */
+
+width: 45px;
+height: 9px;
+
+/* tag
+
+ハッシュタグ
+*/
+font-family: 'DNP ShueiGoKinStd';
+font-style: normal;
+font-weight: 600;
+font-size: 12px;
+line-height: 15px;
+/* または125% */
+/* leading-trim and text-edge are draft CSS properties.
+
+Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
+*/
+leading-trim: both;
+text-edge: cap;
+
+color: #000000;
+
+
+/* オートレイアウト内部 */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* tag */
+
+/* オートレイアウト */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 3px 6px;
+gap: 10px;
+
+width: 105px;
+height: 15px;
+
+background: #FDF9D5;
+
+/* オートレイアウト内部 */
+flex: none;
+order: 3;
+flex-grow: 0;
+
+
+/* #フリースクール */
+
+width: 93px;
+height: 9px;
+
+/* tag
+
+ハッシュタグ
+*/
+font-family: 'DNP ShueiGoKinStd';
+font-style: normal;
+font-weight: 600;
+font-size: 12px;
+line-height: 15px;
+/* または125% */
+/* leading-trim and text-edge are draft CSS properties.
+
+Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
+*/
+leading-trim: both;
+text-edge: cap;
+
+color: #000000;
+
+
+/* オートレイアウト内部 */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Vector 1 */
+
+width: 240px;
+height: 0px;
+
+border: 2px dashed #000000;
+
+/* オートレイアウト内部 */
+flex: none;
+order: 2;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* コドモノイバショ */
+
+width: 122px;
+max-width: 240px;
+height: 11px;
+
+/* p/ツイート文
+
+ツイート本文
+*/
+font-family: 'DNP ShueiGoKinStd';
+font-style: normal;
+font-weight: 600;
+font-size: 14px;
+line-height: 18px;
+/* または129% */
+/* leading-trim and text-edge are draft CSS properties.
+
+Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
+*/
+leading-trim: both;
+text-edge: cap;
+letter-spacing: 0.1em;
+
+color: #000000;
+
+
+/* オートレイアウト内部 */
+flex: none;
+order: 3;
+flex-grow: 0;
+
+
+/* Vector 2 */
+
+width: 240px;
+height: 0px;
+
+border: 2px dashed #000000;
+
+/* オートレイアウト内部 */
+flex: none;
+order: 4;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* place */
+
+box-sizing: border-box;
+
+/* オートレイアウト */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+gap: 8px;
+
+width: 240px;
+max-width: 240px;
+height: 278px;
+
+border-radius: 10px;
+
+/* オートレイアウト内部 */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* AdobeStock_422894352_Preview */
+
+width: 240px;
+height: 200px;
+
+background: url(AdobeStock_422894352_Preview.jpg);
+border-radius: 10px;
+
+/* オートレイアウト内部 */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* タグエリア */
+
+/* オートレイアウト */
+display: flex;
+flex-direction: row;
+flex-wrap: wrap;
+align-items: center;
+align-content: flex-start;
+padding: 0px;
+gap: 5px;
+
+width: 240px;
+height: 35px;
+
+
+/* オートレイアウト内部 */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* tag */
+
+/* オートレイアウト */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 3px 6px;
+gap: 10px;
+
+width: 57px;
+height: 15px;
+
+background: #FDF9D5;
+
+/* オートレイアウト内部 */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* #高校生 */
+
+width: 45px;
+height: 9px;
+
+/* tag
+
+ハッシュタグ
+*/
+font-family: 'DNP ShueiGoKinStd';
+font-style: normal;
+font-weight: 600;
+font-size: 12px;
+line-height: 15px;
+/* または125% */
+/* leading-trim and text-edge are draft CSS properties.
+
+Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
+*/
+leading-trim: both;
+text-edge: cap;
+
+color: #000000;
+
+
+/* オートレイアウト内部 */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* tag */
+
+/* オートレイアウト */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 3px 6px;
+gap: 10px;
+
+width: 57px;
+height: 15px;
+
+background: #FDF9D5;
+
+/* オートレイアウト内部 */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* #小学生 */
+
+width: 45px;
+height: 9px;
+
+/* tag
+
+ハッシュタグ
+*/
+font-family: 'DNP ShueiGoKinStd';
+font-style: normal;
+font-weight: 600;
+font-size: 12px;
+line-height: 15px;
+/* または125% */
+/* leading-trim and text-edge are draft CSS properties.
+
+Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
+*/
+leading-trim: both;
+text-edge: cap;
+
+color: #000000;
+
+
+/* オートレイアウト内部 */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* tag */
+
+/* オートレイアウト */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 3px 6px;
+gap: 10px;
+
+width: 57px;
+height: 15px;
+
+background: #FDF9D5;
+
+/* オートレイアウト内部 */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* #中学生 */
+
+width: 45px;
+height: 9px;
+
+/* tag
+
+ハッシュタグ
+*/
+font-family: 'DNP ShueiGoKinStd';
+font-style: normal;
+font-weight: 600;
+font-size: 12px;
+line-height: 15px;
+/* または125% */
+/* leading-trim and text-edge are draft CSS properties.
+
+Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
+*/
+leading-trim: both;
+text-edge: cap;
+
+color: #000000;
+
+
+/* オートレイアウト内部 */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* tag */
+
+/* オートレイアウト */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 3px 6px;
+gap: 10px;
+
+width: 105px;
+height: 15px;
+
+background: #FDF9D5;
+
+/* オートレイアウト内部 */
+flex: none;
+order: 3;
+flex-grow: 0;
+
+
+/* #フリースクール */
+
+width: 93px;
+height: 9px;
+
+/* tag
+
+ハッシュタグ
+*/
+font-family: 'DNP ShueiGoKinStd';
+font-style: normal;
+font-weight: 600;
+font-size: 12px;
+line-height: 15px;
+/* または125% */
+/* leading-trim and text-edge are draft CSS properties.
+
+Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
+*/
+leading-trim: both;
+text-edge: cap;
+
+color: #000000;
+
+
+/* オートレイアウト内部 */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Vector 1 */
+
+width: 240px;
+height: 0px;
+
+border: 2px dashed #000000;
+
+/* オートレイアウト内部 */
+flex: none;
+order: 2;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* コドモノイバショ */
+
+width: 122px;
+max-width: 240px;
+height: 11px;
+
+/* p/ツイート文
+
+ツイート本文
+*/
+font-family: 'DNP ShueiGoKinStd';
+font-style: normal;
+font-weight: 600;
+font-size: 14px;
+line-height: 18px;
+/* または129% */
+/* leading-trim and text-edge are draft CSS properties.
+
+Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
+*/
+leading-trim: both;
+text-edge: cap;
+letter-spacing: 0.1em;
+
+color: #000000;
+
+
+/* オートレイアウト内部 */
+flex: none;
+order: 3;
+flex-grow: 0;
+
+
+/* Vector 2 */
+
+width: 240px;
+height: 0px;
+
+border: 2px dashed #000000;
+
+/* オートレイアウト内部 */
+flex: none;
+order: 4;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* btn_project */
+
+box-sizing: border-box;
+
+/* オートレイアウト */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 8px 16px;
+
+width: 212px;
+height: 40px;
+
+background: #FFFFFF;
+border: 1px solid #000000;
+border-radius: 5px;
+
+/* オートレイアウト内部 */
+flex: none;
+order: 5;
+flex-grow: 0;
+
+
+/* ic:round-play-arrow */
+
+width: 24px;
+height: 24px;
+
+
+/* オートレイアウト内部 */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Vector */
+
+position: absolute;
+left: 33.33%;
+right: 24.39%;
+top: 24.25%;
+bottom: 24.24%;
+
+background: #000000;
+
+
+/* 保護者の居場所をもっと見る */
+
+width: 156px;
 height: 9px;
 
 /* tag

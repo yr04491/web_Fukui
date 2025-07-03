@@ -1,0 +1,352 @@
+/* Section 00 スタイル */
+.section00 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+  gap: 30px;
+  position: relative;
+  width: 100%;
+  max-width: 540px;
+  margin: 0 auto;
+  background: rgba(136, 211, 188, 0.15);
+  border-radius: var(--radius-m);
+}
+
+/* タイトル周りのスタイル */
+.titleWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  gap: 15px;
+  width: 100%;
+  max-width: 500px;
+}
+
+.logoContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 98px;
+  height: 33px;
+}
+
+.roadText {
+  font-family: var(--font-primary);
+  font-size: 16.5px;
+  font-weight: bold;
+  color: var(--color-black);
+  margin-right: 3px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  top: 10px; /* 10px下に移動 */
+}
+
+.logoChar {
+  width: auto;
+  height: 33px;
+  max-height: 33px;
+  margin: 0 2px;
+  object-fit: contain;
+}
+
+/* R, O, A, D文字のみ半分のサイズに */
+.logoCharSmall {
+  width: auto;
+  height: 16.5px;
+  max-height: 16.5px;
+  margin: 0 1px;
+  object-fit: contain;
+}
+
+.mainTitle {
+  width: 100%;
+  max-width: 394px;
+  font-family: var(--font-primary);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 25px;
+  line-height: 35px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  color: var(--color-black);
+}
+
+.dotline {
+  width: 100%;
+  max-width: 364px;
+  height: 10px;
+  background-size: contain;
+  background-repeat: repeat-x;
+}
+
+/* コンテンツフレーム */
+.contentFrame {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px 20px;
+  gap: 15px; /* 30pxから15pxに減らす */
+  width: 100%;
+  max-width: 500px;
+  background: var(--color-white);
+  border-radius: 10px;
+}
+
+.contentTitle {
+  width: 100%;
+  max-width: 288px;
+  font-family: var(--font-primary);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px; /* 32pxから20pxに減らす */
+  text-align: center;
+  color: var(--color-black);
+  margin-bottom: -5px; /* 下部に負のマージンを追加 */
+}
+
+.contentText {
+  width: 100%;
+  max-width: 460px;
+  font-family: var(--font-primary);
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 28px;
+  letter-spacing: 0.1em;
+  color: var(--color-black);
+}
+
+.projectButton {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 10px;
+  gap: 10px;
+  width: 100%;
+  max-width: 280px;
+  height: 46px;
+  background: #FDF9D5;
+  border: 1px solid var(--color-black);
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.bookIcon {
+  width: 30px;
+  height: 30px;
+  background-image: url('../../assets/images/note.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.projectButton span {
+  font-family: var(--font-primary);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+  color: var(--color-black);
+  flex-grow: 1;
+  text-align: center;
+}
+
+/* 体験談セクション */
+.experienceSection {
+  width: 100%;
+  max-width: 500px;
+  margin-top: 20px;
+}
+
+.experienceTitle {
+  font-family: var(--font-primary);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 32px;
+  color: var(--color-black);
+  margin-bottom: 15px;
+}
+
+.tweetArea {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
+  width: 100%;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.tweetCard {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 15px 20px;
+  gap: 8px;
+  width: 100%;
+  max-width: 240px;
+  height: 149px;
+  background: var(--color-white);
+  border: 1.5px solid var(--color-black);
+  border-radius: 10px;
+}
+
+.tweetText {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 200px;
+  font-family: var(--font-primary);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 0.1em;
+  color: var(--color-black);
+}
+
+.tweetDivider {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 200px;
+  border-bottom: 2px dashed var(--color-black);
+}
+
+.tagArea {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 0;
+  gap: 5px;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 200px;
+}
+
+.tag {
+  font-family: var(--font-primary);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+  color: var(--color-black);
+}
+
+.tweetFooter {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0;
+  gap: 5px;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 200px;
+}
+
+.authorInfo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+}
+
+.authorAvatar {
+  width: 25px;
+  height: 25px;
+  background: #F4BED3;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.authorAvatar span {
+  font-family: var(--font-primary);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--color-black);
+}
+
+.authorName {
+  font-family: var(--font-primary);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+  color: var(--color-black);
+}
+
+.tweetDate {
+  font-family: var(--font-primary);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+  color: var(--color-black);
+}
+
+.moreButton {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 16px;
+  gap: 10px;
+  width: auto; /* 固定幅から自動幅に変更 */
+  min-width: 236px; /* 最小幅を設定 */
+  height: 40px;
+  background: var(--color-white);
+  border: 1px solid var(--color-black);
+  border-radius: 5px;
+  margin: 20px auto 0;
+  cursor: pointer;
+}
+
+.playIcon {
+  width: 19.2px; /* 24px × 0.8 = 19.2px */
+  height: 19.2px; /* 24px × 0.8 = 19.2px */
+  object-fit: contain;
+}
+
+.moreButton span {
+  font-family: var(--font-primary);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+  color: var(--color-black);
+  white-space: nowrap; /* テキストの改行を防止 */
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+  .section00 {
+    padding: 30px 15px;
+  }
+  
+  .tweetArea {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .tweetCard {
+    max-width: 100%;
+  }
+}

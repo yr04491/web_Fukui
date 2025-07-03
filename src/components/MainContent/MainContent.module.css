@@ -10,6 +10,11 @@
   order: 1;
   flex-grow: 0;
   z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px; /* セクション間の間隔を設定 */
+  padding-bottom: 40px; /* 下部にパディングを追加 */
 }
 
 /* レスポンシブ対応 */
@@ -19,5 +24,7 @@
     min-width: unset;
     max-width: 100%;
     margin-top: 60px; /* ハンバーガーメニューのスペース */
+    gap: 30px; /* モバイル時はセクション間隔を少し狭く */
+    padding-bottom: 30px;
   }
 }

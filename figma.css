@@ -1,4 +1,4 @@
-/* section_01_copy */
+/* section_02_copy */
 
 /* オートレイアウト */
 display: flex;
@@ -10,9 +10,9 @@ gap: 30px;
 position: relative;
 width: 540px;
 max-width: 540px;
-height: 760.6px;
+height: 717.39px;
 
-background: #FFFFFF;
+background: rgba(163, 208, 250, 0.25);
 
 
 /* space10 */
@@ -47,7 +47,7 @@ padding: 0px;
 gap: 15px;
 
 width: 500px;
-height: 94.6px;
+height: 94.39px;
 
 
 /* オートレイアウト内部 */
@@ -65,8 +65,8 @@ flex-direction: column;
 align-items: center;
 padding: 0px;
 
-width: 99.05px;
-height: 35.6px;
+width: 97.84px;
+height: 35.39px;
 
 
 /* オートレイアウト内部 */
@@ -77,8 +77,8 @@ flex-grow: 0;
 
 /* _レイヤー_1 */
 
-width: 99.05px;
-height: 35.6px;
+width: 97.84px;
+height: 35.39px;
 
 
 /* オートレイアウト内部 */
@@ -91,9 +91,9 @@ flex-grow: 0;
 
 position: absolute;
 left: 0%;
-right: 90.67%;
-top: 56.35%;
-bottom: 9.44%;
+right: 90.56%;
+top: 56.09%;
+bottom: 9.5%;
 
 background: #000000;
 
@@ -101,10 +101,10 @@ background: #000000;
 /* Vector */
 
 position: absolute;
-left: 9.97%;
-right: 77.9%;
-top: 56.18%;
-bottom: 9.13%;
+left: 10.1%;
+right: 77.63%;
+top: 55.92%;
+bottom: 9.18%;
 
 background: #000000;
 
@@ -112,10 +112,10 @@ background: #000000;
 /* Vector */
 
 position: absolute;
-left: 22.63%;
-right: 65.42%;
-top: 56.46%;
-bottom: 9.44%;
+left: 22.9%;
+right: 64.99%;
+top: 56.2%;
+bottom: 9.5%;
 
 background: #000000;
 
@@ -123,10 +123,10 @@ background: #000000;
 /* Vector */
 
 position: absolute;
-left: 35.62%;
-right: 53.99%;
-top: 56.38%;
-bottom: 9.32%;
+left: 36.06%;
+right: 53.42%;
+top: 56.12%;
+bottom: 9.38%;
 
 background: #000000;
 
@@ -134,9 +134,9 @@ background: #000000;
 /* Vector */
 
 position: absolute;
-left: 53.1%;
-right: 24.43%;
-top: 7.67%;
+left: 53.76%;
+right: 23.5%;
+top: 7.12%;
 bottom: 0%;
 
 background: #000000;
@@ -145,17 +145,17 @@ background: #000000;
 /* Vector */
 
 position: absolute;
-left: 74.46%;
-right: 0.01%;
-top: 0.03%;
-bottom: 1.32%;
+left: 75.39%;
+right: 0%;
+top: -0.03%;
+bottom: 1.84%;
 
 background: #000000;
 
 
-/* 学校に相談 */
+/* 行政が行う公的支援 */
 
-width: 125px;
+width: 225px;
 height: 19px;
 
 /* h2_見出し */
@@ -207,7 +207,7 @@ padding: 24px 20px;
 gap: 30px;
 
 width: 500px;
-height: 242px;
+height: 199px;
 
 background: #FFFFFF;
 border-radius: 10px;
@@ -219,9 +219,9 @@ align-self: stretch;
 flex-grow: 0;
 
 
-/* 学校には いろんなサポートがあります */
+/* ⁨⁩公的な支援機関はいくつかあります */
 
-width: 278px;
+width: 256px;
 height: 12px;
 
 /* h3_見出し
@@ -250,10 +250,10 @@ order: 0;
 flex-grow: 0;
 
 
-/* ◯スクールカウンセラー紹介 ◯校内サポートルーム ◯ライフパートナー制度　など */
+/* ◯ちゃれんじ教室 ◯ソーシャルワーカーなど */
 
 width: 460px;
-height: 67px;
+height: 39px;
 
 /* p/本文
 
@@ -297,7 +297,7 @@ gap: 10px;
 
 width: 280px;
 max-width: 280px;
-height: 55px;
+height: 40px;
 
 background: #FDF9D5;
 border: 1px solid #000000;
@@ -332,10 +332,10 @@ bottom: 24.24%;
 background: #000000;
 
 
-/* 親側から積極的に支援を求めて下さい。 サポートについて詳しく紹介しています。 */
+/* 相談の窓口などご紹介。福井県内各所、利用しやすいところを選んでください。 */
 
 width: 226px;
-height: 39px;
+height: 24px;
 
 /* tag
 
@@ -388,13 +388,13 @@ position: absolute;
 width: 500px;
 height: 33px;
 left: 20px;
-top: 456.6px;
+top: 413.39px;
 
 
 
-/* 学校もみんなのペースで活用！ */
+/* 実際に活用している話を見てみよう！ */
 
-width: 168px;
+width: 204px;
 height: 9px;
 
 /* tag
@@ -423,9 +423,9 @@ order: 0;
 flex-grow: 0;
 
 
-/* みんなの学校活用術 */
+/* 公的支援を利用してどうだった？ */
 
-width: 144px;
+width: 240px;
 height: 12px;
 
 /* h3_見出し
@@ -466,7 +466,7 @@ position: absolute;
 width: 500px;
 height: 149px;
 left: 20px;
-top: 501.6px;
+top: 458.39px;
 
 
 
@@ -1160,9 +1160,8 @@ flex-direction: row;
 justify-content: center;
 align-items: center;
 padding: 8px 16px;
-gap: 10px;
 
-width: 270px;
+width: 236px;
 height: 40px;
 
 background: #FFFFFF;
@@ -1198,9 +1197,9 @@ bottom: 24.24%;
 background: #000000;
 
 
-/* みんなの学校活用術をもっと見てみる */
+/* みんなの体験談をもっと見てみる */
 
-width: 204px;
+width: 180px;
 height: 9px;
 
 /* tag

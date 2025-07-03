@@ -4,6 +4,7 @@ import TitleSection from './TitleSection';
 import OpeningSection from './OpeningSection';
 import Section00 from './Section00';
 import Section01 from './Section01';
+import Section02 from './Section02';
 
 const MainContent = () => {
   return (
@@ -13,6 +14,9 @@ const MainContent = () => {
       <Section00 />
       <div className={styles.noGap}>
         <Section01 />
+      </div>
+      <div className={styles.noGap}>
+        <Section02 />
       </div>
       
       {/* ここに他のコンテンツセクションを追加 */}

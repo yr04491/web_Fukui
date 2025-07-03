@@ -101,7 +101,7 @@
   flex-direction: column;
   align-items: flex-start;
   padding: 2px 0px;
-  gap: 8px;
+  gap: 3px; /* 8pxから3pxに間隔を縮小 */
   width: 100%;
   height: 33px;
 }

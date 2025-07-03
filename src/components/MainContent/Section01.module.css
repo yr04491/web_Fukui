@@ -202,12 +202,21 @@
 .tweetArea {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
+  flex-wrap: nowrap; /* wrapからnowrapに変更して折り返しを防止 */
   gap: 20px;
   width: 100%;
-  justify-content: center;
+  justify-content: flex-start; /* センターからスタートに変更 */
+  overflow-x: auto; /* 横スクロールを有効にする */
   margin-bottom: 15px; /* 20pxから15pxに縮小 */
   margin-top: 5px; /* 上部にマージンを追加 */
+  -webkit-overflow-scrolling: touch; /* スマホでのスムーズスクロール */
+  scrollbar-width: none; /* Firefoxでスクロールバーを非表示 */
+  -ms-overflow-style: none; /* IEとEdgeでスクロールバーを非表示 */
+}
+
+/* Chrome, Safari, Operaでスクロールバーを非表示 */
+.tweetArea::-webkit-scrollbar {
+  display: none;
 }
 
 /* ツイートカードのスタイルは TweetCard.module.css に移動しました */
@@ -247,8 +256,10 @@
   }
   
   .tweetArea {
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row; /* 横並びを維持 */
+    flex-wrap: nowrap; /* 折り返しなし */
+    align-items: stretch; /* アイテムを伸ばして高さを揃える */
+    justify-content: flex-start; /* 左寄せで配置 */
   }
   /* ツイートカードのレスポンシブスタイルは TweetCard.module.css に移動しました */
 }

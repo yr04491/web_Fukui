@@ -37,12 +37,19 @@
   z-index: 100;
   width: 410px; /* 幅を100px広げて（310px→410px）文字の改行を防止 */
   overflow-y: auto;
+  scrollbar-width: none; /* Firefoxでスクロールバーを非表示 */
+  -ms-overflow-style: none; /* IEとEdgeでスクロールバーを非表示 */
   padding-top: 120px; /* 80pxから110pxに変更（30px下げる） */
   background-color: #FFFFFF;
   background: var(--color-white);
   border: 2px solid var(--color-black);
   border-radius: var(--radius-l);
   min-height: 670px;
+}
+
+/* Chrome, Safari, Operaでスクロールバーを非表示 */
+.navigation::-webkit-scrollbar {
+  display: none;
 }
 
 .navigationActive {

@@ -41,6 +41,7 @@ const Section02 = () => {
           {/* カードID指定でツイートカードを表示 */}
           <TweetCard cardId={5} />
           <TweetCard cardId={6} />
+          <TweetCard cardId={1} />
         </div>
 
         <button className={styles.moreButton}>

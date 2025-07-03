@@ -1,4 +1,4 @@
-/* Section03 スタイル */
+/* Section03 スタイル - Figmaデザインに合わせて修正 */
 .section03 {
   display: flex;
   flex-direction: column;
@@ -9,9 +9,9 @@
   width: 100%;
   max-width: 540px;
   margin: 0 auto; 
-  background: var(--color-white);
-  border-radius: 0; /* 四角にする */
-  overflow-y: visible; /* 縦方向のスクロールが発生しないようにする */
+  background: #FFFFFF;
+  border-radius: 0;
+  overflow: visible;
 }
 
 /* タイトル周りのスタイル */
@@ -81,16 +81,19 @@
   background-repeat: repeat-x;
 }
 
-/* 居場所セクション共通スタイル */
+/* 居場所セクション共通スタイル - Figmaデザインに合わせて調整 */
 .placeSection {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 20px;
+  gap: 15px;
   width: 100%;
   max-width: 500px;
-  gap: 20px;
-  margin-bottom: 20px;
-  overflow: visible; /* コンテンツがはみ出さないようにする */
+  background: #FFF9E5; /* Figmaの色に合わせて調整 */
+  border-radius: 10px;
+  margin-bottom: 5px; /* セクション間の空間を削減 */
+  overflow: visible;
 }
 
 .placeHeader {
@@ -122,7 +125,7 @@
   margin: 0;
 }
 
-/* プレイスカードエリア */
+/* プレイスカードエリア - Figmaデザインに合わせて調整 */
 .placeCardArea {
   display: flex;
   flex-direction: row;
@@ -130,11 +133,10 @@
   padding: 0;
   gap: 20px;
   width: 100%;
-  min-height: 278px;
-  max-height: 278px;
   overflow-x: auto;
-  overflow-y: hidden; /* 縦方向のスクロールを無効化 */
+  overflow-y: hidden;
   flex-wrap: nowrap;
+  margin-bottom: 20px; /* Figmaのスペースに合わせて調整 */
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE and Edge */
 }
@@ -144,23 +146,24 @@
   display: none;
 }
 
-/* プロジェクトボタン */
+/* プロジェクトボタン - Figmaデザインに合わせて修正 */
 .projectButton {
   box-sizing: border-box;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: 8px 16px;
-  min-width: 220px;
-  max-width: fit-content; /* コンテンツに合わせて幅を調整 */
-  height: 40px;
+  padding: 10px 20px;
+  min-width: 250px;
+  max-width: fit-content;
+  height: 44px;
   background: #FFFFFF;
   border: 1px solid #000000;
-  border-radius: 5px;
+  border-radius: 6px;
   cursor: pointer;
-  margin-top: 10px;
-  white-space: nowrap; /* テキストの改行を防ぐ */
+  margin-top: 0;
+  margin-bottom: 20px;
+  white-space: nowrap;
 }
 
 .buttonIconContainer {

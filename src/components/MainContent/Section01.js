@@ -4,6 +4,7 @@ import dotlineImage from '../../assets/images/dotline.png';
 import vectorRB from '../../assets/images/vectorRB.png';
 import vector0 from '../../assets/icons/vector0.png';
 import vector1 from '../../assets/icons/vector1.png';
+import TweetCard from '../common/TweetCard/TweetCard';
 
 
 const Section01 = () => {
@@ -38,45 +39,9 @@ const Section01 = () => {
           <h3 className={styles.experienceTitle}>みんなの学校活用術</h3>
         </div>
         <div className={styles.tweetArea}>
-          {/* ツイートカード1 */}
-          <div className={styles.tweetCard}>
-            <p className={styles.tweetText}>毎日学校の先生と、UNOや雑談をして30分すごしてます。</p>
-            <div className={styles.tweetDivider}></div>
-            <div className={styles.tagArea}>
-              <span className={styles.tag}>#小学生</span>
-              <span className={styles.tag}>#学校活用術</span>
-              <span className={styles.tag}>#学校活用術</span>
-            </div>
-            <div className={styles.tweetFooter}>
-              <div className={styles.authorInfo}>
-                <div className={styles.authorAvatar}>
-                  <span>R</span>
-                </div>
-                <span className={styles.authorName}>ひろまま</span>
-              </div>
-              <span className={styles.tweetDate}>2025.07.03</span>
-            </div>
-          </div>
-
-          {/* ツイートカード2（同じ構造を複製） */}
-          <div className={styles.tweetCard}>
-            <p className={styles.tweetText}>毎日学校の先生と、UNOや雑談をして30分すごしてます。</p>
-            <div className={styles.tweetDivider}></div>
-            <div className={styles.tagArea}>
-              <span className={styles.tag}>#小学生</span>
-              <span className={styles.tag}>#学校活用術</span>
-              <span className={styles.tag}>#学校活用術</span>
-            </div>
-            <div className={styles.tweetFooter}>
-              <div className={styles.authorInfo}>
-                <div className={styles.authorAvatar}>
-                  <span>R</span>
-                </div>
-                <span className={styles.authorName}>ひろまま</span>
-              </div>
-              <span className={styles.tweetDate}>2025.07.03</span>
-            </div>
-          </div>
+          {/* カードID指定でツイートカードを表示 */}
+          <TweetCard cardId={3} />
+          <TweetCard cardId={4} />
         </div>
 
         <button className={styles.moreButton}>

@@ -41,6 +41,13 @@ const placeCards = [
     description: "不登校のお子さんを持つ親同士の交流の場。経験者の話が聞けます。",
     image: require('../assets/images/AdobeStock_Preview.png'),
     tags: ["#保護者向け", "#不登校", "#ピアサポート"]
+  },
+  {
+    id: 7,
+    title: "〇〇オンラインスクール",
+    description: "不登校のお子さんを持つ親同士の交流の場。経験者の話が聞けます。",
+    image: require('../assets/images/AdobeStock_school.png'),
+    tags: ["#高校生", "#小学生", "#中学生", "#フリースクール"]
   }
 ];
 

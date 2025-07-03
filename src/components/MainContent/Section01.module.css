@@ -10,7 +10,7 @@
   max-width: 540px;
   margin: 0 auto; /* 上部マージンを0に変更 */
   background: rgba(156, 174, 252, 0.15); /* 背景色を変更 */
-  border-radius: var(--radius-m);
+  border-radius: 0; /* 四角にする */
 }
 
 /* タイトル周りのスタイル */
@@ -114,9 +114,17 @@
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
-  line-height: 28px;
   letter-spacing: 0.1em;
   color: var(--color-black);
+  text-align: left; /* 中央揃えから左揃えに変更 */
+  padding-left: 40px; /* 左側に余白を追加して中央から少し左寄せに */
+  box-sizing: border-box;
+}
+
+.contentText p {
+  margin: 0;
+  padding: 0;
+  line-height: 24px; /* 各項目の行間を少し狭く */
 }
 
 .projectButton {

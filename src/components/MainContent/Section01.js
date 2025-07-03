@@ -20,10 +20,12 @@ const Section01 = () => {
       </div>
 
       <div className={styles.contentFrame}>
-        <h3 className={styles.contentTitle}>学校には いろんなサポートがあります</h3>
-        <p className={styles.contentText}>
-          ◯スクールカウンセラー紹介 ◯校内サポートルーム ◯ライフパートナー制度　など
-        </p>
+        <h3 className={styles.contentTitle}>学校にはいろんなサポートがあります</h3>
+        <div className={styles.contentText}>
+          <p>◯スクールカウンセラー紹介</p>
+          <p>◯校内サポートルーム</p>
+          <p>◯ライフパートナー制度 など</p>
+        </div>
         <button className={styles.projectButton}>
           <img src={vectorRB} alt="アイコン" className={styles.playIcon} />
           <span>親側から積極的に支援を求めて下さい。サポートについて詳しく紹介しています。</span>

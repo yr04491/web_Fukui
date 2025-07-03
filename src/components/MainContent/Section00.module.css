@@ -10,7 +10,7 @@
   max-width: 540px;
   margin: 0 auto;
   background: rgba(136, 211, 188, 0.15);
-  border-radius: var(--radius-m);
+  border-radius: 0; /* 四角にする */
 }
 
 /* タイトル周りのスタイル */

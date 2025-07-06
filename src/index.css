@@ -1,3 +1,11 @@
+/* 縦スクロールを確実に有効化 */
+html, body {
+  height: auto;
+  min-height: 100vh;
+  overflow-x: hidden; /* 横スクロールバーを隠す */
+  overflow-y: auto; /* 縦スクロールを明示的に有効化 */
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -25,4 +33,5 @@ code {
   justify-content: center;
   width: 100%;
   min-height: 100vh;
+  overflow-x: hidden; /* 横スクロールバーを隠す */
 }

@@ -13,16 +13,26 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 40px; /* セクション間の間隔を設定 */
   padding-bottom: 40px; /* 下部にパディングを追加 */
 }
 
-/* ギャップを無くすためのクラス */
-.noGap {
-  margin-top: -40px; /* メインコンテンツのgapを打ち消す */
+/* ヘッダーセクション：タイトルとオープニング */
+.headerSection {
   width: 100%;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px; /* ヘッダー要素間の間隔 */
+}
+
+/* ROADセクション群：連続的に配置 */
+.roadSections {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0; /* ROADセクション間は隙間なし */
+  margin-top: 40px; /* ヘッダーセクションとの間隔 */
 }
 
 /* レスポンシブ対応 */
@@ -32,11 +42,14 @@
     min-width: unset;
     max-width: 100%;
     margin-top: 60px; /* ハンバーガーメニューのスペース */
-    gap: 30px; /* モバイル時はセクション間隔を少し狭く */
     padding-bottom: 30px;
   }
   
-  .noGap {
-    margin-top: -30px; /* モバイル時のgapに合わせて調整 */
+  .headerSection {
+    gap: 30px; /* モバイル時はヘッダー要素間隔を少し狭く */
+  }
+  
+  .roadSections {
+    margin-top: 30px; /* モバイル時のヘッダーセクションとの間隔 */
   }
 }

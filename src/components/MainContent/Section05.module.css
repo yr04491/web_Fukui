@@ -1,4 +1,4 @@
-/* Section05 スタイル - Figmaデザインに完全に一致 */
+/* Section05 スタイル - 改善されたレイアウト */
 .section05 {
     display: flex;
     flex-direction: column;
@@ -140,7 +140,7 @@
     margin: 0;
 }
 
-/* 体験談セクションスタイル - 相対位置に変更 */
+/* 体験談セクションスタイル - ネガティブマージンを削除 */
 .experienceSection {
     display: flex;
     flex-direction: column;
@@ -151,7 +151,6 @@
     max-width: 500px;
     background: #FFFFFF;
     border-radius: 10px;
-    margin-top: -30px;
     margin-bottom: 20px;
     overflow: visible;
 }
@@ -215,7 +214,6 @@
     max-width: 500px;
     background: #FFFFFF;
     border-radius: 10px;
-    margin-top: -60px;
     margin-bottom: 20px;
 }
 
@@ -259,7 +257,7 @@
     flex-grow: 0;
 }
 
-/* カードエリア - 相対位置に変更 */
+/* カードエリア - 横スクロール対応 */
 .tweetCardArea {
     display: flex;
     flex-direction: row;
@@ -271,10 +269,9 @@
     overflow-y: visible;
     flex-wrap: nowrap;
     margin-bottom: 20px;
-    scrollbar-width: none;
-    /* Firefox */
-    -ms-overflow-style: none;
-    /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+    -webkit-overflow-scrolling: touch; /* スマホでのスムーズスクロール */
 }
 
 /* Chrome, Safari, Opera用のスクロールバーを非表示 */
@@ -282,14 +279,14 @@
     display: none;
 }
 
-/* PicCardのレイアウト */
+/* PicCardのレイアウト - 固定サイズ維持 */
 .tweetCardArea > * {
     display: flex;
     width: 240px;
     max-width: 240px;
     flex-direction: column;
     align-items: center;
-    gap: -10px;
+    flex-shrink: 0; /* 縮小を防ぐ */
     margin-top: 20px;
 }
 
@@ -347,7 +344,7 @@
 /* 不要なクラスを削除 */
 /* .expertButton, .experienceButton クラスは削除 */
 
-/* レスポンシブ対応 */
+/* レスポンシブ対応 - カードサイズは変更せず、コンテナのみ調整 */
 @media (max-width: 768px) {
     .section05 {
         padding: 40px 16px 30px;
@@ -364,6 +361,7 @@
         font-size: 22px;
         line-height: 28px;
         width: 100%;
+        max-width: 300px; /* タイトルの最大幅を制限 */
     }
 
     .introText {
@@ -375,11 +373,19 @@
     .introSection {
         width: 100%;
         max-width: 100%;
+        padding: 24px 16px; /* パディング調整 */
     }
 
     .experienceSection {
         width: 100%;
         max-width: 100%;
+        padding: 20px 16px 40px; /* パディング調整 */
+    }
+
+    .expertSection {
+        width: 100%;
+        max-width: 100%;
+        padding: 20px 16px; /* パディング調整 */
     }
 
     .sectionHeader {
@@ -389,9 +395,11 @@
 
     .tweetCardArea {
         width: 100%;
+        padding: 0 4px; /* 左右に少し余白を追加 */
+        /* カードサイズは変更しない */
     }
 
-    .experienceButton {
+    .projectButton {
         width: 280px;
         margin: 20px auto;
     }
@@ -401,6 +409,7 @@
     .mainTitle {
         font-size: 20px;
         line-height: 26px;
+        max-width: 250px; /* さらに小さい画面での最大幅 */
     }
 
     .sectionTitle {
@@ -413,15 +422,14 @@
         width: 100%;
     }
 
-    .experienceButton {
+    .projectButton {
         width: 240px;
-    }
-
-    .experienceButtonText {
         font-size: 11px;
     }
 
     .tweetCardArea {
         width: 100%;
+        padding: 0 8px; /* より小さい画面で少し余白を増やす */
+        /* カードサイズは変更しない */
     }
 }

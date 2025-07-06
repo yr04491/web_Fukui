@@ -12,22 +12,19 @@ import Section05 from './Section05';
 const MainContent = () => {
   return (
     <div className={styles.mainContent}>
-      <TitleSection />
-      <OpeningSection />
-      <Section00 />
-      <div className={styles.noGap}>
+      {/* ヘッダーセクション */}
+      <div className={styles.headerSection}>
+        <TitleSection />
+        <OpeningSection />
+      </div>
+      
+      {/* ROADセクション群 */}
+      <div className={styles.roadSections}>
+        <Section00 />
         <Section01 />
-      </div>
-      <div className={styles.noGap}>
         <Section02 />
-      </div>
-      <div className={styles.noGap}>
         <Section03 />
-      </div>
-      <div className={styles.noGap}>
         <Section04 />
-      </div>
-      <div className={styles.noGap}>
         <Section05 />
       </div>
       

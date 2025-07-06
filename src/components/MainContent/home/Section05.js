@@ -1,9 +1,9 @@
 import React from 'react';
 import styles from './Section05.module.css';
-import dotlineImage from '../../assets/images/dotline.png';
-import vector0 from '../../assets/icons/vector0.png';
-import vector5 from '../../assets/icons/vector5.png';
-import PicCard from '../common/PicCard/PicCard';
+import dotlineImage from '../../../assets/images/dotline.png';
+import vector0 from '../../../assets/icons/vector0.png';
+import vector5 from '../../../assets/icons/vector5.png';
+import PicCard from '../../common/PicCard/PicCard';
 
 const Section05 = () => {
     return (

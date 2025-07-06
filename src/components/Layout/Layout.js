@@ -3,7 +3,7 @@ import styles from './Layout.module.css';
 import useResponsive from '../../hooks/useResponsive';
 import Navigation from '../Navigation';
 import { HamburgerMenu } from '../Navigation';
-import MainContent from '../MainContent/MainContent';
+import { MainContent } from '../MainContent';
 import Banner from '../Banner/Banner';
 import Overlay from '../common/Overlay/Overlay';
 

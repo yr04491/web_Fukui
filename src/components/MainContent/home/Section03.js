@@ -1,9 +1,9 @@
 import React from 'react';
 import styles from './Section03.module.css';
-import dotlineImage from '../../assets/images/dotline.png';
-import vector0 from '../../assets/icons/vector0.png';
-import vector3 from '../../assets/icons/vector3.png';
-import PlaceCard from '../common/PlaceCard/PlaceCard';
+import dotlineImage from '../../../assets/images/dotline.png';
+import vector0 from '../../../assets/icons/vector0.png';
+import vector3 from '../../../assets/icons/vector3.png';
+import PlaceCard from '../../common/PlaceCard/PlaceCard';
 
 const Section03 = () => {
   return (

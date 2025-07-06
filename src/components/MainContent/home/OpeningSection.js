@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './OpeningSection.module.css';
-import newWindowIcon from '../../assets/images/newwindow.png';
+import newWindowIcon from '../../../assets/images/newwindow.png';
 
 const OpeningSection = () => {
   return (

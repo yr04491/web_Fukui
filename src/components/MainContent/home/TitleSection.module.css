@@ -10,7 +10,7 @@
   max-width: var(--content-width);
   height: 350px;
   border-radius: var(--radius-m) var(--radius-m) 0px 0px;
-  background-image: url('../../assets/images/AdobeStock.png');
+  background-image: url('../../../assets/images/AdobeStock.png');
   /* background-color: red; 確認用に追加 */
   background-size: cover;
   background-position: center;
@@ -39,7 +39,7 @@
   height: 42px;
   left: 142px;
   top: 122px;
-  background-image: url('../../assets/images/logo1.png');
+  background-image: url('../../../assets/images/logo1.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;

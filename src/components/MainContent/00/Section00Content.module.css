@@ -1,0 +1,517 @@
+/* Section00Content専用スタイル */
+.section00Content {
+  width: var(--content-width);
+  min-width: 390px;
+  max-width: var(--content-width);
+  height: auto;
+  background: var(--color-white);
+  border-radius: var(--radius-m);
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+}
+
+/* セクション1: タイトル部分 */
+.section00Top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px 30px 0px;
+  gap: 30px;
+  width: 100%;
+  max-width: 540px;
+  position: relative;
+  isolation: isolate;
+  min-height: 150px; /* 「00」が大きくなった分、最小高さを調整 */
+}
+
+.titleContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 0px 0px 20px;
+  width: 100%;
+  max-width: 490px; /* 「00」が大きくなった分、幅を調整 */
+  height: 48px; /* 「00」の高さに合わせて調整 */
+  position: relative;
+  isolation: isolate;
+}
+
+.roadNumberContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: relative;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.colorNavi {
+  position: absolute;
+  width: 22.71px;
+  height: 92.11px;
+  left: -20px; /* padding分を調整 */
+  top: -32px; /* 位置調整 */
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.colorBar {
+  position: absolute;
+  width: 55.96%; /* 22.71px の約56% */
+  height: 13.78%; /* 各バーの高さ */
+  border-radius: 50%; /* 円形にする */
+}
+
+.colorBar:nth-child(1) {
+  left: 44.03%;
+  right: 0.04%;
+  top: 2.17%;
+  bottom: 84.04%;
+}
+
+.colorBar:nth-child(2) {
+  left: 0%;
+  right: 44.08%;
+  top: 18.46%;
+  bottom: 67.76%;
+}
+
+.colorBar:nth-child(3) {
+  left: 0%;
+  right: 44.08%;
+  top: 34.74%;
+  bottom: 51.47%;
+}
+
+.colorBar:nth-child(4) {
+  left: 0%;
+  right: 44.08%;
+  top: 51.03%;
+  bottom: 35.19%;
+}
+
+.colorBar:nth-child(5) {
+  left: 0%;
+  right: 44.08%;
+  top: 67.31%;
+  bottom: 18.9%;
+}
+
+.colorBar:nth-child(6) {
+  left: 0%;
+  right: 44.08%;
+  top: 83.6%;
+  bottom: 2.62%;
+}
+
+
+.roadNumber {
+  width: 64px;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Oswald', 'Zen Kaku Gothic New', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 48px;
+  line-height: 25px;
+  letter-spacing: -0.05em;
+  color: rgba(255, 255, 255, 0.75);
+  border: 1px solid #000000;
+  border-radius: 20px/50%;
+  background: #FDF9D5;
+  box-shadow: 0 2px 8px 0 rgba(0,0,0,0.10);
+  text-shadow: 3px 3px 0px #FDF9D5, 1px 1px 2px #00000022;
+  position: relative;
+  overflow: hidden;
+}
+
+.mainTitle {
+  width: 400px; /* 「00」が大きくなった分、調整 */
+  height: 48px; /* 「00」の高さに合わせて調整 */
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 25px;
+  line-height: 36px;
+  display: flex;
+  align-items: center;
+  color: #000000;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  margin: 0;
+}
+
+.subtitle {
+  width: 100%;
+  max-width: 480px;
+  height: 46px;
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 23px;
+  text-align: center;
+  color: #000000;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  margin: 0;
+}
+
+.description {
+  width: 100%;
+  max-width: 480px;
+  height: 125px;
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 25px;
+  letter-spacing: -0.05em;
+  color: #000000;
+  flex: none;
+  order: 2;
+  flex-grow: 0;
+  margin: 0;
+}
+
+/* セクション2: 不登校と引きこもりの違い */
+.section00Middle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px 30px 0px;
+  gap: 30px;
+  width: 100%;
+  max-width: 540px;
+}
+
+.sectionTitle {
+  width: 100%;
+  max-width: 480px;
+  height: 23px;
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 23px;
+  text-align: center;
+  color: #000000;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  margin: 0;
+}
+
+.sectionDescription {
+  width: 100%;
+  max-width: 480px;
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 25px;
+  letter-spacing: -0.05em;
+  color: #000000;
+  flex: none;
+  flex-grow: 0;
+  margin: 0;
+}
+
+.quoteBox {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  gap: 10px;
+  width: 100%;
+  max-width: 480px;
+  border: 1px dashed #000000;
+  border-radius: 10px;
+  flex: none;
+  flex-grow: 0;
+}
+
+.quoteText {
+  width: 100%;
+  max-width: 460px;
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 17px;
+  color: #000000;
+  flex: none;
+  order: 0;
+  flex-grow: 1;
+  margin: 0;
+}
+
+.longDescription {
+  width: 100%;
+  max-width: 480px;
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 25px;
+  letter-spacing: -0.05em;
+  color: #000000;
+  flex: none;
+  flex-grow: 0;
+  margin: 0;
+}
+
+.projectButton {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 10px;
+  gap: 10px;
+  width: 280px;
+  max-width: 280px;
+  height: 50px;
+  background: #FDF9D5;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  flex: none;
+  flex-grow: 0;
+  transition: background-color 0.3s ease;
+}
+
+.projectButton:hover {
+  background: #F5F1C8;
+}
+
+.buttonIcon {
+  width: 32px;
+  height: 30px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.projectButton span {
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 20px;
+  letter-spacing: -0.05em;
+  color: #000000;
+  flex: none;
+  order: 1;
+  flex-grow: 1;
+  text-align: center;
+}
+
+/* セクション3: 子どもへの接し方 */
+.section00Bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px 30px;
+  gap: 30px;
+  width: 100%;
+  max-width: 540px;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+  .section00Content {
+    width: 100%;
+    min-width: unset;
+    max-width: 100%;
+    margin-top: 60px; /* ハンバーガーメニューのスペース */
+  }
+  
+  .section00Top,
+  .section00Middle,
+  .section00Bottom {
+    padding: 40px 20px;
+    gap: 20px;
+    max-width: 100%;
+  }
+  
+  .titleContainer {
+    flex-direction: column;
+    gap: 10px;
+    height: auto;
+    padding: 0;
+    align-items: center;
+  }
+  
+  .roadNumberContainer {
+    justify-content: center;
+  }
+  
+  .colorNavi {
+    width: 18px;
+    height: 70px;
+    left: -15px;
+    top: -25px;
+  }
+  
+  .roadNumber {
+    width: 52px;
+    height: 36px; /* 縦長に調整 */
+  }
+  
+  .roadNumber::before,
+  .roadNumber::after {
+    width: 23px;
+    height: 36px; /* 縦長に調整 */
+    border: 2px solid #000000;
+  }
+  
+  .mainTitle {
+    width: 100%;
+    font-size: 20px;
+    line-height: 28px;
+    text-align: center;
+  }
+  
+  .subtitle {
+    width: 100%;
+    height: auto;
+    font-size: 14px;
+    line-height: 20px;
+  }
+  
+  .description,
+  .sectionDescription,
+  .longDescription {
+    width: 100%;
+    height: auto;
+    font-size: 13px;
+    line-height: 22px;
+  }
+  
+  .sectionTitle {
+    width: 100%;
+    height: auto;
+    font-size: 15px;
+    line-height: 21px;
+  }
+  
+  .quoteBox {
+    width: 100%;
+    max-width: 100%;
+    padding: 8px;
+  }
+  
+  .quoteText {
+    width: 100%;
+    max-width: 100%;
+    font-size: 11px;
+    line-height: 16px;
+  }
+  
+  .projectButton {
+    width: 100%;
+    max-width: 280px;
+    height: 45px;
+    padding: 5px 8px;
+    gap: 8px;
+  }
+  
+  .buttonIcon {
+    width: 24px;
+    height: 22px;
+  }
+  
+  .projectButton span {
+    font-size: 11px;
+    line-height: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section00Top,
+  .section00Middle,
+  .section00Bottom {
+    padding: 30px 15px;
+    gap: 15px;
+  }
+  
+  .colorNavi {
+    width: 15px;
+    height: 55px;
+    left: -12px;
+    top: -20px;
+  }
+  
+  .roadNumber {
+    width: 44px;
+    height: 30px; /* 縦長に調整 */
+  }
+  
+  .roadNumber::before,
+  .roadNumber::after {
+    width: 19px;
+    height: 30px; /* 縦長に調整 */
+    border: 1.5px solid #000000;
+  }
+  
+  .mainTitle {
+    font-size: 18px;
+    line-height: 25px;
+  }
+  
+  .subtitle {
+    font-size: 13px;
+    line-height: 18px;
+  }
+  
+  .description,
+  .sectionDescription,
+  .longDescription {
+    font-size: 12px;
+    line-height: 20px;
+  }
+  
+  .sectionTitle {
+    font-size: 14px;
+    line-height: 19px;
+  }
+  
+  .quoteText {
+    font-size: 10px;
+    line-height: 15px;
+  }
+  
+  .projectButton {
+    height: 40px;
+    padding: 4px 6px;
+    gap: 6px;
+  }
+  
+  .buttonIcon {
+    width: 20px;
+    height: 18px;
+  }
+  
+  .projectButton span {
+    font-size: 10px;
+    line-height: 16px;
+  }
+}

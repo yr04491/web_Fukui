@@ -1,10 +1,10 @@
 import React from 'react';
 import styles from './Section00.module.css';
-import dotlineImage from '../../assets/images/dotline.png';
-import vector0_1 from '../../assets/icons/vector0.png';
-import vector0_2 from '../../assets/icons/vector0.png';
-import vectorRB from '../../assets/images/vectorRB.png';
-import TweetCard from '../common/TweetCard/TweetCard';
+import dotlineImage from '../../../assets/images/dotline.png';
+import vector0_1 from '../../../assets/icons/vector0.png';
+import vector0_2 from '../../../assets/icons/vector0.png';
+import vectorRB from '../../../assets/images/vectorRB.png';
+import TweetCard from '../../common/TweetCard/TweetCard';
 
 const Section00 = () => {
   return (

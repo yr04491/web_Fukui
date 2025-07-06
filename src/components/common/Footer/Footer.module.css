@@ -1,0 +1,195 @@
+/* Footer スタイル */
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px 30px;
+  gap: 8px;
+  width: 100%;
+  max-width: 540px;
+  height: 208.88px;
+  background: #EFAB94;
+  flex: none;
+  order: 3;
+  flex-grow: 0;
+  margin-top: 0;
+  border-radius: 0 0 var(--radius-m) var(--radius-m); /* 下部の角丸のみ適用 */
+  box-sizing: border-box; /* ボックスサイジングを追加 */
+}
+
+.footerContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+}
+
+.footerTitle {
+  width: 270px;
+  height: 19.88px;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #FFFFFF;
+  text-align: center;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  margin: 0;
+}
+
+.footerLogo {
+  width: 187px;
+  height: 28px;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.3s ease, transform 0.2s ease;
+  border-radius: 4px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+}
+
+.footerLogo:hover {
+  opacity: 0.8;
+  transform: scale(1.05);
+}
+
+.footerLogo:focus {
+  outline: 2px solid #FFFFFF;
+  outline-offset: 2px;
+}
+
+.footerLogo:active {
+  transform: scale(0.98);
+}
+
+.logoImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none; /* 画像自体のクリックイベントを無効化 */
+  user-select: none; /* テキスト選択を無効化 */
+}
+
+.footerMenu {
+  width: 100%;
+  max-width: 480px;
+  height: 25px;
+  flex: none;
+  order: 2;
+  flex-grow: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.menuItem {
+  width: 100%;
+  max-width: 480px;
+  height: 25px;
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 25px;
+  letter-spacing: -0.05em;
+  color: #000000;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  flex: none;
+  order: 2;
+  flex-grow: 0;
+  padding: 0;
+  margin: 0;
+  transition: opacity 0.3s ease;
+}
+
+.menuItem:hover {
+  opacity: 0.8;
+}
+
+.menuItem:focus {
+  outline: 2px solid #000000;
+  outline-offset: 2px;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+  .footer {
+    padding: 40px 20px;
+    height: auto;
+    max-width: 100%;
+    gap: 6px;
+  }
+  
+  .footerContent {
+    gap: 6px;
+  }
+  
+  .footerTitle {
+    width: 100%;
+    max-width: 270px;
+    height: auto;
+    font-size: 13px;
+    line-height: 16px;
+  }
+  
+  .footerLogo {
+    width: 150px;
+    height: 22px;
+  }
+  
+  .footerMenu {
+    width: 100%;
+    height: auto;
+  }
+  
+  .menuItem {
+    width: 100%;
+    height: auto;
+    font-size: 11px;
+    line-height: 22px;
+    padding: 2px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding: 30px 15px;
+    gap: 4px;
+  }
+  
+  .footerContent {
+    gap: 4px;
+  }
+  
+  .footerTitle {
+    font-size: 12px;
+    line-height: 15px;
+  }
+  
+  .footerLogo {
+    width: 120px;
+    height: 18px;
+  }
+  
+  .menuItem {
+    font-size: 10px;
+    line-height: 20px;
+    padding: 1px 0;
+  }
+}

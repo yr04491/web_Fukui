@@ -1,6 +1,6 @@
 import React from 'react';
 import Layout from '../components/Layout/Layout';
-import Section00Content from '../components/MainContent/Section00Content';
+import { Section00Content } from '../components/MainContent';
 
 const Section00Page = () => {
   return (

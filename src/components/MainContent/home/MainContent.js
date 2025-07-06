@@ -8,6 +8,7 @@ import Section02 from './Section02';
 import Section03 from './Section03';
 import Section04 from './Section04';
 import Section05 from './Section05';
+import Footer from '../../common/Footer';
 
 const MainContent = () => {
   return (
@@ -28,7 +29,8 @@ const MainContent = () => {
         <Section05 />
       </div>
       
-      {/* ここに他のコンテンツセクションを追加 */}
+      {/* フッター */}
+      <Footer />
     </div>
   );
 };

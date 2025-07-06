@@ -1,0 +1,22 @@
+/* 00 */
+
+width: 64px;
+height: 25px;
+
+font-family: 'Oswald';
+font-style: normal;
+font-weight: 400;
+font-size: 48px;
+line-height: 25px;
+/* ボックスの高さと同一、または52% */
+letter-spacing: -0.05em;
+
+color: rgba(255, 255, 255, 0.75);
+
+border: 1px solid #000000;
+text-shadow: 3px 3px 0px #FDF9D5;
+
+/* オートレイアウト内部 */
+flex: none;
+order: 0;
+flex-grow: 0;

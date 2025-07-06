@@ -3,7 +3,7 @@
   width: var(--content-width);
   min-width: 390px;
   max-width: var(--content-width);
-  height: auto;
+  min-height: 100vh; /* 最小高さをビューポートに設定 */
   background: var(--color-white);
   border-radius: var(--radius-m);
   flex: none;
@@ -13,7 +13,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-bottom: 40px; /* 下部にパディングを追加 */
+  padding-bottom: 0; /* フッターがあるのでパディングを削除 */
+  position: relative; /* 相対位置を設定 */
 }
 
 /* ヘッダーセクション：タイトルとオープニング */
@@ -42,7 +43,8 @@
     min-width: unset;
     max-width: 100%;
     margin-top: 60px; /* ハンバーガーメニューのスペース */
-    padding-bottom: 30px;
+    padding-bottom: 0; /* フッターがあるのでパディングを削除 */
+    min-height: calc(100vh - 60px); /* ハンバーガーメニュー分を差し引いた高さ */
   }
   
   .headerSection {

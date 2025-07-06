@@ -144,7 +144,7 @@
 .bookIcon {
   width: 30px;
   height: 30px;
-  background-image: url('../../assets/images/note.png');
+  background-image: url('../../../assets/images/note.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;

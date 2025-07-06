@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from '../../styles/Main.module.css';
 import hamburgerStyles from './HamburgerMenu.module.css';
 import NavIcon from '../../assets/icons/NavIcon';
@@ -13,6 +14,8 @@ import NavIcon from '../../assets/icons/NavIcon';
  * @param {boolean} isHamburger - ハンバーガーメニュー内で使用されるかどうか
  */
 const NavigationItem = ({ title, subItems = [], index, isHamburger = false }) => {
+  const navigate = useNavigate();
+  
   // ハンバーガーメニューかどうかでスタイルを切り替え
   const itemStyles = isHamburger ? hamburgerStyles : styles;
   
@@ -32,15 +35,22 @@ const NavigationItem = ({ title, subItems = [], index, isHamburger = false }) =>
   // クリックハンドラ
   const handleItemClick = () => {
     console.log(`ナビゲーション項目 "${title}" がクリックされました`);
-    // 実際のページ遷移処理
-    // window.location.href = `/category/${index + 1}`;
+    
+    // 「まずどうする？」の場合は専用ページに遷移
+    if (title === "まずどうする？") {
+      navigate('/section00');
+    }
+    // 他のページも今後追加予定
+    // else if (title === "学校に相談") {
+    //   navigate('/section01');
+    // }
   };
   
   const handleSubItemClick = (subItem) => (e) => {
     e.stopPropagation(); // 親要素へのイベント伝播を停止
     console.log(`サブ項目 "${subItem}" がクリックされました`);
     // 実際のページ遷移処理
-    // window.location.href = `/subcategory/${encodeURIComponent(subItem)}`;
+    // navigate(`/subcategory/${encodeURIComponent(subItem)}`);
   };
 
   return (

@@ -1,25 +1,26 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from '../../styles/Main.module.css';
 import hamburgerstyles from './HamburgerMenu.module.css';
 
 // 共通のNavigationHeaderコンポーネント
 const NavigationHeader = ({ isHamburger = false }) => {
+  const navigate = useNavigate();
+  
   // ハンバーガーメニューとメインナビで適用するスタイルを分ける
   const headerStyles = isHamburger ? hamburgerstyles : styles;
 
   // タップ/クリック時の処理
   const handleLogoClick = () => {
-    // ホームページやメインページに遷移する処理
-    console.log('ロゴがクリックされました');
-    // 実際の遷移処理はこのようになります
-    // window.location.href = '/'; または
-    // history.push('/');
+    // ホームページに遷移する処理
+    console.log('ロゴがクリックされました - ホームページに遷移');
+    navigate('/');
   };
 
   const handleTitleClick = () => {
-    console.log('タイトルがクリックされました');
-    // 例: プロジェクト概要ページに遷移
-    // window.location.href = '/about';
+    console.log('タイトルがクリックされました - ホームページに遷移');
+    // タイトルクリック時もホームページに遷移
+    navigate('/');
   };
 
   return (

@@ -7,14 +7,14 @@ import MainContent from '../MainContent/MainContent';
 import Banner from '../Banner/Banner';
 import Overlay from '../common/Overlay/Overlay';
 
-const Layout = () => {
+const Layout = ({ children }) => {
   const { isMobile } = useResponsive();
 
   return (
     <>
       <div className={styles.container}>
         {!isMobile && <Navigation />}
-        <MainContent />
+        {children || <MainContent />}
         {!isMobile && <Banner />}
       </div>
       

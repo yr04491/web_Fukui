@@ -117,27 +117,57 @@
   bottom: 2.62%;
 }
 
-
 .roadNumber {
-  width: 64px;
-  height: 25px;
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
-  font-family: 'Oswald', 'Zen Kaku Gothic New', sans-serif;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 48px;
-  line-height: 25px;
-  letter-spacing: -0.05em;
-  color: rgba(255, 255, 255, 0.75);
-  border: 1px solid #000000;
-  border-radius: 20px/50%;
-  background: #FDF9D5;
-  box-shadow: 0 2px 8px 0 rgba(0,0,0,0.10);
-  text-shadow: 3px 3px 0px #FDF9D5, 1px 1px 2px #00000022;
+  gap: 3px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  margin: 0;
+  z-index: 0;
+  font-size: 0; /* テキストを非表示にして、疑似要素で0を作成 */
+  width: 68px;
+  height: 48px; /* より縦長に調整 */
   position: relative;
-  overflow: hidden;
+}
+
+/* 1つ目の0 */
+.roadNumber::before {
+  content: '';
+  width: 30px;
+  height: 48px; /* より縦長にする */
+  background: linear-gradient(145deg, #FDF9D5 0%, #F5F1C8 30%, #EDE9B8 70%, #E0D3A6 100%);
+  border: 2.5px solid #000000;
+  border-radius: 50%; /* 楕円形になる */
+  display: inline-block;
+  position: relative;
+  box-shadow: 
+    3px 3px 6px rgba(0, 0, 0, 0.4),
+    1px 1px 2px rgba(0, 0, 0, 0.2),
+    inset -2px -2px 4px rgba(0, 0, 0, 0.15),
+    inset 2px 2px 4px rgba(255, 255, 255, 0.7);
+  transform: translateZ(0); /* 立体感を強化 */
+}
+
+/* 2つ目の0 */
+.roadNumber::after {
+  content: '';
+  width: 30px;
+  height: 48px; /* より縦長にする */
+  background: linear-gradient(145deg, #FDF9D5 0%, #F5F1C8 30%, #EDE9B8 70%, #E0D3A6 100%);
+  border: 2.5px solid #000000;
+  border-radius: 50%; /* 楕円形になる */
+  display: inline-block;
+  position: relative;
+  box-shadow: 
+    3px 3px 6px rgba(0, 0, 0, 0.4),
+    1px 1px 2px rgba(0, 0, 0, 0.2),
+    inset -2px -2px 4px rgba(0, 0, 0, 0.15),
+    inset 2px 2px 4px rgba(255, 255, 255, 0.7);
+  transform: translateZ(0); /* 立体感を強化 */
 }
 
 .mainTitle {

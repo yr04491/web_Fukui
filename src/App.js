@@ -6,7 +6,7 @@ import './App.css';
 
 function App() {
   return (
-    <Router>
+    <Router basename="/web_Fukui">
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/section00" element={<Section00Page />} />

@@ -49,10 +49,12 @@
 
 .logoChar {
   width: auto;
-  height: 33px;
-  max-height: 33px;
+  height: 66px; /* 33pxから66pxに変更 */
+  max-height: 66px; /* 33pxから66pxに変更 */
   margin: 0 1px;
   object-fit: contain;
+  position: relative;
+  top: 5px;
 }
 
 .mainTitle {

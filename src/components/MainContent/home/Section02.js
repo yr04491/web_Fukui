@@ -2,8 +2,7 @@ import React from 'react';
 import styles from './Section02.module.css';
 import dotlineImage from '../../../assets/images/dotline.png';
 import vectorRB from '../../../assets/images/vectorRB.png';
-import vector0 from '../../../assets/icons/vector0.png';
-import vector2 from '../../../assets/icons/vector2.png';
+import roadNumberImage from '../../../assets/icons/02_0.png';
 import TweetCard from '../../common/TweetCard/TweetCard';
 
 const Section02 = () => {
@@ -12,8 +11,7 @@ const Section02 = () => {
       <div className={styles.titleWrapper}>
         <div className={styles.logoContainer}>
           <span className={styles.roadText}>ROAD</span>
-          <img src={vector0} alt="0" className={styles.logoChar} />
-          <img src={vector2} alt="2" className={styles.logoChar} />
+          <img src={roadNumberImage} alt="02" className={styles.logoChar} />
         </div>
         <h2 className={styles.mainTitle}>行政が行う公的支援</h2>
         <div className={styles.dotline} style={{ backgroundImage: `url(${dotlineImage})` }}></div>

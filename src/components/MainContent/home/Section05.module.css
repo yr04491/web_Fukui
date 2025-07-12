@@ -4,7 +4,7 @@
     flex-direction: column;
     align-items: center;
     padding: 60px 20px 40px;
-    gap: 30px;
+    /*gap: 30px;*/
     position: relative;
     width: 100%;
     max-width: 540px;
@@ -24,52 +24,39 @@
     gap: 15px;
     width: 100%;
     max-width: 500px;
+    margin-bottom: 30px; /* ← この行を追加 */
 }
 
 .logoContainer {
-    display: flex;
-    flex-direction: row;
-    align-items: baseline;
-    /* centerからbaselineに変更し、下端揃えの基準を設定 */
-    justify-content: center;
-    padding: 0;
-    width: 101.46px;
-    height: 33.92px;
-    flex: none;
-    order: 0;
-    flex-grow: 0;
-    margin-bottom: 5px;
-    /* タイトルとの間隔を調整 */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 98px;
+  height: 30px;
+  margin-bottom: 0px;
 }
 
 .roadText {
-    font-family: 'DNP ShueiGoKinStd', var(--font-primary);
-    font-size: 16.5px;
-    font-weight: bold;
-    color: var(--color-black);
-    margin-right: 2px;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    padding-bottom: 0;
-    /* 微調整のため0にリセット */
-    line-height: 1;
-    position: relative;
-    top: 5px;
-    /* 他のセクションに合わせて下に移動 */
+  font-family: var(--font-primary);
+  font-size: 16.5px;
+  font-weight: bold;
+  color: var(--color-black);
+  margin-right: 2px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  top: 10px;
 }
 
 .logoChar {
-    width: auto;
-    height: 30px;
-    max-height: 30px;
-    margin: 0 1px;
-    object-fit: contain;
-    display: inline-block;
-    vertical-align: bottom;
-    position: relative;
-    top: 0;
-    /* 基準となるため0にリセット */
+  width: auto;
+  height: 66px;
+  max-height: 66px;
+  margin: 0 1px;
+  object-fit: contain;
+  position: relative;
+  top: 5px;
 }
 
 .mainTitle {
@@ -109,6 +96,7 @@
     max-width: 500px;
     background: #FFFFFF;
     border-radius: 10px;
+    margin-bottom: 30px; /* ← この行を追加 */
 }
 
 .introTitle {
@@ -151,8 +139,11 @@
     max-width: 500px;
     background: #FFFFFF;
     border-radius: 10px;
-    margin-bottom: 20px;
+    /*margin-bottom: -50px;*/
     overflow: visible;
+    margin-top: 30px; /* ← introSectionとの間に空間を設ける場合はこちらで調整 */
+    margin-bottom: 30px; /* ← expertSectionとの間の空間を維持 */
+
 }
 
 /* 体験談セクションのボタン */
@@ -215,6 +206,7 @@
     background: #FFFFFF;
     border-radius: 10px;
     margin-bottom: 20px;
+    margin-top: 0;
 }
 
 .sectionHeader {

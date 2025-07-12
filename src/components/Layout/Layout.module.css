@@ -17,7 +17,11 @@
 @media (max-width: 768px) {
   .container {
     flex-direction: column;
-    padding: 0; /* 上部の余白を削除 */
+    padding: 0;
+    /* 上部の余白を削除 */
     gap: 20px;
+    align-items: center;
+    /* この行を追加 */
+
   }
 }

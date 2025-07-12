@@ -1,8 +1,7 @@
 import React from 'react';
 import styles from './Section03.module.css';
 import dotlineImage from '../../../assets/images/dotline.png';
-import vector0 from '../../../assets/icons/vector0.png';
-import vector3 from '../../../assets/icons/vector3.png';
+import roadNumberImage from '../../../assets/icons/03_0.png';
 import PlaceCard from '../../common/PlaceCard/PlaceCard';
 
 const Section03 = () => {
@@ -11,8 +10,7 @@ const Section03 = () => {
       <div className={styles.titleWrapper}>
         <div className={styles.logoContainer}>
           <span className={styles.roadText}>ROAD</span>
-          <img src={vector0} alt="0" className={styles.logoChar} />
-          <img src={vector3} alt="3" className={styles.logoChar} />
+          <img src={roadNumberImage} alt="03" className={styles.logoChar} />
         </div>
         <h1 className={styles.mainTitle}>まだまだある！ みんなの居場所</h1>
         <div className={styles.dotline} style={{ backgroundImage: `url(${dotlineImage})` }}></div>

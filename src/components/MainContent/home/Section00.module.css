@@ -48,10 +48,12 @@
 
 .logoChar {
   width: auto;
-  height: 33px;
-  max-height: 33px;
+  height: 66px;
+  max-height: 66px;
   margin: 0 2px;
   object-fit: contain;
+  position: relative;
+  top: 5px;
 }
 
 /* R, O, A, D文字のみ半分のサイズに */

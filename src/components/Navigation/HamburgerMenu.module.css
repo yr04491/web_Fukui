@@ -126,6 +126,7 @@
   display: flex;
   flex-direction: column;
   position: relative;
+  margin-top: 90px; /* この行を追加 */
 }
 
 /* ナビゲーション左側の黒い縦線 - 実際のDOMノードとして追加 */

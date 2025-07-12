@@ -2,8 +2,7 @@ import React from 'react';
 import styles from './Section01.module.css';
 import dotlineImage from '../../../assets/images/dotline.png';
 import vectorRB from '../../../assets/images/vectorRB.png';
-import vector0 from '../../../assets/icons/vector0.png';
-import vector1 from '../../../assets/icons/vector1.png';
+import roadNumberImage from '../../../assets/icons/01_0.png';
 import TweetCard from '../../common/TweetCard/TweetCard';
 
 
@@ -13,8 +12,7 @@ const Section01 = () => {
       <div className={styles.titleWrapper}>
         <div className={styles.logoContainer}>
           <span className={styles.roadText}>ROAD</span>
-          <img src={vector0} alt="1" className={styles.logoChar} />
-          <img src={vector1} alt="1" className={styles.logoChar} />
+          <img src={roadNumberImage} alt="01" className={styles.logoChar} />
         </div>
         <h2 className={styles.mainTitle}>学校に相談</h2>
         <div className={styles.dotline} style={{ backgroundImage: `url(${dotlineImage})` }}></div>

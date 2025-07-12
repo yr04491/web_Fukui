@@ -40,10 +40,15 @@ const NavigationItem = ({ title, subItems = [], index, isHamburger = false }) =>
     if (title === "まずどうする？") {
       navigate('/section00');
     }
+    // 「学校に相談」の場合は01ページに遷移
+    else if (title === "学校に相談") {
+      navigate('/section01');
+    }
+    // 「行政が行う公的支援」の場合は02ページに遷移
+    else if (title === "行政が行う公的支援") {
+      navigate('/section02');
+    }
     // 他のページも今後追加予定
-    // else if (title === "学校に相談") {
-    //   navigate('/section01');
-    // }
   };
   
   const handleSubItemClick = (subItem) => (e) => {

@@ -14,8 +14,8 @@ const Layout = ({ children }) => {
     <>
       <div className={styles.container}>
         {!isMobile && <Navigation />}
-        {children || <MainContent />}
         {!isMobile && <Banner />}
+        {children || <MainContent />}
       </div>
       
       {/* ハンバーガーメニューを常に表示（モバイル時のみ可視） */}

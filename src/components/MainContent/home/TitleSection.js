@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './TitleSection.module.css';
 import rainbowImage from '../../../assets/icons/rainbow.png';
-import adobeStockImage from '../../../assets/images/AdobeStock2.png';
+import adobeStockImage from '../../../assets/images/main_img.png';
 
 const TitleSection = () => {
   return (

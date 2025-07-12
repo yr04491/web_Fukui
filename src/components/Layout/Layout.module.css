@@ -13,15 +13,20 @@
   background: var(--color-background);
 }
 
+/* モバイル表示時の上部スペーサー */
+.mobileSpacer {
+  height: 80px; /* ハンバーガーメニューの高さ + 余白 */
+  width: 100%;
+  background: transparent;
+}
+
 /* レスポンシブデザイン */
 @media (max-width: 768px) {
   .container {
     flex-direction: column;
-    padding: 0;
-    /* 上部の余白を削除 */
-    gap: 20px;
-    align-items: center;
-    /* この行を追加 */
-
+    /* ↓↓↓↓ ここから下を変更・追記 ↓↓↓↓ */
+    padding: 0; /* 左右の大きな余白をなくす */
+    gap: 0; /* 要素間の隙間をなくす */
+    align-items: center; 
   }
 }

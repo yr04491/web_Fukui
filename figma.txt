@@ -1,37 +1,117 @@
-/* title */
+/* main_contents */
+
+width: 540px;
+height: 1712px;
+
+background: #FFFFFF;
+
+/* オートレイアウト内部 */
+flex: none;
+order: 1;
+flex-grow: 0;
+z-index: 1;
+
+
+/* fotter */
 
 /* オートレイアウト */
 display: flex;
 flex-direction: column;
-justify-content: flex-end;
 align-items: center;
-padding: 0px;
-gap: 33px;
-isolation: isolate;
+padding: 60px 30px;
+gap: 8px;
 
 position: absolute;
 width: 540px;
-max-width: 540px;
-height: 513px;
-left: 0px;
-top: 0px;
+height: 208.88px;
+left: calc(50% - 540px/2 - 0.09px);
+top: 1503.09px;
 
-border-radius: 10px 10px 0px 0px;
+background: #EFAB94;
 
 
 /* 当事者たちでつくる、不登校情報サイト */
 
-position: absolute;
 width: 270px;
 height: 19.88px;
-left: 32px;
-top: 30px;
 
 font-family: 'Inter';
 font-style: normal;
 font-weight: 400;
 font-size: 14px;
 line-height: 17px;
+
+color: #FFFFFF;
+
+
+/* オートレイアウト内部 */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* logo１ 1 */
+
+width: 187px;
+height: 28px;
+
+background: url(logo１.png);
+
+/* オートレイアウト内部 */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* ・運営について　（ここにフッターメニュー） */
+
+width: 480px;
+height: 25px;
+
+font-family: 'Zen Kaku Gothic New';
+font-style: normal;
+font-weight: 700;
+font-size: 12px;
+line-height: 25px;
+/* ボックスの高さと同一、または208% */
+letter-spacing: -0.05em;
+
+color: #000000;
+
+
+/* オートレイアウト内部 */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* section_00 */
+
+/* オートレイアウト */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 60px 30px 0px;
+gap: 30px;
+
+position: absolute;
+width: 540px;
+height: 711px;
+left: calc(50% - 540px/2 - 0.09px);
+top: 446.09px;
+
+
+
+/* 学校の中にどんな支援があるの？ 支援の種類 */
+
+width: 480px;
+height: 46px;
+
+font-family: 'Zen Kaku Gothic New';
+font-style: normal;
+font-weight: 700;
+font-size: 16px;
+line-height: 23px;
 text-align: center;
 
 color: #000000;
@@ -41,16 +121,515 @@ color: #000000;
 flex: none;
 order: 0;
 flex-grow: 0;
+
+
+/* 福井県や各市町が提供している不登校支援には主に以下のものがあります。 ※すべて無料 */
+
+width: 480px;
+height: 50px;
+
+font-family: 'Zen Kaku Gothic New';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 25px;
+/* または179% */
+letter-spacing: -0.05em;
+
+color: #000000;
+
+
+/* オートレイアウト内部 */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* 引用１ */
+
+/* オートレイアウト */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding: 10px;
+gap: 10px;
+
+width: 480px;
+height: 115px;
+
+border: 1px dashed #000000;
+border-radius: 10px;
+
+/* オートレイアウト内部 */
+flex: none;
+order: 2;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* スクールカウンセラーの紹介 */
+
+width: 460px;
+height: 25px;
+
+font-family: 'Zen Kaku Gothic New';
+font-style: normal;
+font-weight: 500;
+font-size: 14px;
+line-height: 25px;
+/* ボックスの高さと同一、または179% */
+letter-spacing: -0.05em;
+
+color: #000000;
+
+
+/* オートレイアウト内部 */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* 悩みを聞く専門家であるカウンセラーが、児童生徒の悩みや思いを聞いたり、ア ドバイスしたりします。先生には言えない（言いにくい）ことも話せます。 保護者も相談できます。 ※相談依頼は、各学校へお問い合わせください。 */
+
+width: 460px;
+height: 60px;
+
+font-family: 'Zen Kaku Gothic New';
+font-style: normal;
+font-weight: 400;
+font-size: 12px;
+line-height: 20px;
+/* または167% */
+letter-spacing: -0.05em;
+
+color: #000000;
+
+
+/* オートレイアウト内部 */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* 引用１ */
+
+/* オートレイアウト */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding: 10px;
+gap: 10px;
+
+width: 480px;
+height: 125px;
+
+border: 1px dashed #000000;
+border-radius: 10px;
+
+/* オートレイアウト内部 */
+flex: none;
+order: 3;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* 校内サポートルーム */
+
+width: 460px;
+height: 25px;
+
+font-family: 'Zen Kaku Gothic New';
+font-style: normal;
+font-weight: 500;
+font-size: 14px;
+line-height: 25px;
+/* ボックスの高さと同一、または179% */
+letter-spacing: -0.05em;
+
+color: #000000;
+
+
+/* オートレイアウト内部 */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* 県内５０校に設置　詳しくはどこにかいてあるのかな？ */
+
+width: 460px;
+height: 20px;
+
+font-family: 'Zen Kaku Gothic New';
+font-style: normal;
+font-weight: 400;
+font-size: 12px;
+line-height: 20px;
+/* ボックスの高さと同一、または167% */
+letter-spacing: -0.05em;
+
+color: #000000;
+
+
+/* オートレイアウト内部 */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* btn_project */
+
+/* オートレイアウト */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 5px 10px;
+gap: 10px;
+
+width: 223px;
+max-width: 280px;
+height: 40px;
+
+background: rgba(163, 208, 250, 0.46);
+border-radius: 5px;
+
+/* オートレイアウト内部 */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* note */
+
+width: 32px;
+height: 30px;
+
+background: url(yubi.png);
+
+/* オートレイアウト内部 */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* 校内サポートルーム情報を見る */
+
+width: 161px;
+height: 20px;
+
+font-family: 'Zen Kaku Gothic New';
+font-style: normal;
+font-weight: 700;
+font-size: 12px;
+line-height: 20px;
+/* ボックスの高さと同一、または167% */
+letter-spacing: -0.05em;
+
+color: #000000;
+
+
+/* オートレイアウト内部 */
+flex: none;
+order: 1;
+flex-grow: 1;
+
+
+/* 引用１ */
+
+/* オートレイアウト */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding: 10px;
+gap: 10px;
+
+width: 480px;
+height: 125px;
+
+border: 1px dashed #000000;
+border-radius: 10px;
+
+/* オートレイアウト内部 */
+flex: none;
+order: 4;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* ライフパートナー制度 */
+
+width: 460px;
+height: 25px;
+
+font-family: 'Zen Kaku Gothic New';
+font-style: normal;
+font-weight: 500;
+font-size: 14px;
+line-height: 25px;
+/* ボックスの高さと同一、または179% */
+letter-spacing: -0.05em;
+
+color: #000000;
+
+
+/* オートレイアウト内部 */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* 大学生が一人ひとりをサポートしてくれる　詳しくはこちら（リンクはないのか？） */
+
+width: 460px;
+height: 20px;
+
+font-family: 'Zen Kaku Gothic New';
+font-style: normal;
+font-weight: 400;
+font-size: 12px;
+line-height: 20px;
+/* ボックスの高さと同一、または167% */
+letter-spacing: -0.05em;
+
+color: #000000;
+
+
+/* オートレイアウト内部 */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* btn_project */
+
+/* オートレイアウト */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 5px 10px;
+gap: 10px;
+
+width: 245px;
+max-width: 280px;
+height: 40px;
+
+background: rgba(163, 208, 250, 0.46);
+border-radius: 5px;
+
+/* オートレイアウト内部 */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* note */
+
+width: 32px;
+height: 30px;
+
+background: url(yubi.png);
+
+/* オートレイアウト内部 */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* ライフパートナー制度の情報を見る */
+
+width: 183px;
+height: 20px;
+
+font-family: 'Zen Kaku Gothic New';
+font-style: normal;
+font-weight: 700;
+font-size: 12px;
+line-height: 20px;
+/* ボックスの高さと同一、または167% */
+letter-spacing: -0.05em;
+
+color: #000000;
+
+
+/* オートレイアウト内部 */
+flex: none;
+order: 1;
+flex-grow: 1;
+
+
+/* btn_project */
+
+/* オートレイアウト */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 5px 10px;
+gap: 10px;
+
+width: 166px;
+max-width: 280px;
+height: 40px;
+
+background: #A3D0FA;
+border-radius: 5px;
+
+/* オートレイアウト内部 */
+flex: none;
+order: 5;
+flex-grow: 0;
+
+
+/* note */
+
+width: 32px;
+height: 30px;
+
+background: url(yubi.png);
+
+/* オートレイアウト内部 */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* 体験談をみてみよう */
+
+width: 104px;
+height: 20px;
+
+font-family: 'Zen Kaku Gothic New';
+font-style: normal;
+font-weight: 700;
+font-size: 12px;
+line-height: 20px;
+/* ボックスの高さと同一、または167% */
+letter-spacing: -0.05em;
+
+color: #000000;
+
+
+/* オートレイアウト内部 */
+flex: none;
+order: 1;
+flex-grow: 1;
+
+
+/* section_02 */
+
+/* オートレイアウト */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 60px 30px;
+gap: 30px;
+isolation: isolate;
+
+position: absolute;
+width: 540px;
+height: 538px;
+left: calc(50% - 540px/2 - 0.91px);
+top: 0.09px;
+
+
+
+/* H1 02 */
+
+/* オートレイアウト */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 0px 0px 0px 20px;
+
+width: 480px;
+height: 27px;
+
+
+/* オートレイアウト内部 */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
 z-index: 0;
 
 
-/* Group 18 */
+/* 02 */
 
-position: absolute;
-width: 100px;
-height: 44px;
-left: 419px;
-top: 33px;
+margin: 0 auto;
+width: 64px;
+height: 27px;
+
+font-family: 'Oswald';
+font-style: normal;
+font-weight: 400;
+font-size: 48px;
+line-height: 25px;
+/* または52% */
+letter-spacing: -0.05em;
+
+color: rgba(255, 255, 255, 0.75);
+
+border: 1px solid #000000;
+text-shadow: 3px 3px 0px #88D3BC;
+
+/* オートレイアウト内部 */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* 行政が行う公的支援 */
+
+margin: 0 auto;
+width: 394px;
+height: 27px;
+
+/* zenkaku25
+
+H1
+*/
+font-family: 'Zen Kaku Gothic New';
+font-style: normal;
+font-weight: 500;
+font-size: 25px;
+line-height: 36px;
+display: flex;
+align-items: center;
+
+color: #000000;
+
+
+/* オートレイアウト内部 */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* 　学校以外で支援や相談に乗ってくれるところです。 まずは各窓口へ。※すべて無料 */
+
+width: 480px;
+height: 46px;
+
+font-family: 'Zen Kaku Gothic New';
+font-style: normal;
+font-weight: 700;
+font-size: 16px;
+line-height: 23px;
+text-align: center;
+
+color: #000000;
 
 
 /* オートレイアウト内部 */
@@ -60,115 +639,149 @@ flex-grow: 0;
 z-index: 1;
 
 
-/* Rectangle 12 */
+/* 引用１ */
 
-box-sizing: border-box;
+/* オートレイアウト */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding: 10px;
+gap: 10px;
 
-position: absolute;
-width: 100px;
-height: 44px;
-left: 419px;
-top: 33px;
+width: 480px;
+height: 125px;
 
-border: 1.5px solid #000000;
-border-radius: 5px;
+border: 1px dashed #000000;
+border-radius: 10px;
+
+/* オートレイアウト内部 */
+flex: none;
+order: 2;
+align-self: stretch;
+flex-grow: 0;
+z-index: 2;
 
 
-/* MENU */
+/* チャレンジきょうしつ */
 
-position: absolute;
-width: 59px;
-height: 13px;
-left: 428px;
-top: 50px;
+width: 460px;
+height: 25px;
 
-font-family: 'DNP ShueiGoKinStd';
+font-family: 'Zen Kaku Gothic New';
 font-style: normal;
-font-weight: 600;
-font-size: 16px;
-line-height: 0px;
-/* または0% */
-/* leading-trim and text-edge are draft CSS properties.
-
-Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
-*/
-leading-trim: both;
-text-edge: cap;
-text-align: center;
+font-weight: 500;
+font-size: 14px;
+line-height: 25px;
+/* ボックスの高さと同一、または179% */
+letter-spacing: -0.05em;
 
 color: #000000;
 
 
-
-/* Group 19 */
-
-position: absolute;
-width: 19px;
-height: 11.62px;
-left: 487px;
-top: 50px;
+/* オートレイアウト内部 */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
 
 
+/* 県内５０校に設置　詳しくはどこにかいてあるのかな？ */
 
-/* Rectangle 13 */
+width: 460px;
+height: 20px;
 
-position: absolute;
-width: 19px;
-height: 1.29px;
-left: 487px;
-top: 50px;
+font-family: 'Zen Kaku Gothic New';
+font-style: normal;
+font-weight: 400;
+font-size: 12px;
+line-height: 20px;
+/* ボックスの高さと同一、または167% */
+letter-spacing: -0.05em;
 
-background: #000000;
-
-
-/* Rectangle 14 */
-
-position: absolute;
-width: 19px;
-height: 1.29px;
-left: 487px;
-top: 55.16px;
-
-background: #000000;
+color: #000000;
 
 
-/* Rectangle 15 */
-
-position: absolute;
-width: 19px;
-height: 1.29px;
-left: 487px;
-top: 60.32px;
-
-background: #000000;
+/* オートレイアウト内部 */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
 
 
-/*  logo 2 */
+/* btn_project */
 
-position: absolute;
-width: 271.21px;
-height: 54px;
-left: 39px;
-top: 55px;
+/* オートレイアウト */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 5px 10px;
+gap: 10px;
 
-background: url( logo.png);
+width: 211px;
+max-width: 280px;
+height: 40px;
+
+background: rgba(136, 211, 188, 0.52);
+border-radius: 5px;
 
 /* オートレイアウト内部 */
 flex: none;
 order: 2;
 flex-grow: 0;
-z-index: 2;
 
 
-/* アセット 5 1 */
+/* note */
 
-position: absolute;
-width: 662.77px;
-height: 367px;
-left: -61px;
-top: 101px;
+width: 32px;
+height: 30px;
 
-background: url(アセット 5.png);
+background: url(yubi.png);
+
+/* オートレイアウト内部 */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* チャレンジ教室の情報を見る */
+
+width: 149px;
+height: 20px;
+
+font-family: 'Zen Kaku Gothic New';
+font-style: normal;
+font-weight: 700;
+font-size: 12px;
+line-height: 20px;
+/* ボックスの高さと同一、または167% */
+letter-spacing: -0.05em;
+
+color: #000000;
+
+
+/* オートレイアウト内部 */
+flex: none;
+order: 1;
+flex-grow: 1;
+
+
+/* ◯ちゃれんじ教室 ◯ソーシャルワーカー　など */
+
+width: 480px;
+height: 50px;
+
+font-family: 'Zen Kaku Gothic New';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 25px;
+/* または179% */
+letter-spacing: -0.05em;
+
+color: #000000;
+
 
 /* オートレイアウト内部 */
 flex: none;
@@ -177,15 +790,22 @@ flex-grow: 0;
 z-index: 3;
 
 
-/* AdobeStock_678464031 1 */
+/* btn_project */
 
-position: absolute;
-width: 406.62px;
-height: 387px;
-left: 155px;
-top: 140px;
+/* オートレイアウト */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 5px 10px;
+gap: 10px;
 
-background: url(AdobeStock_678464031.png);
+width: 280px;
+max-width: 280px;
+height: 50px;
+
+background: #88D3BC;
+border-radius: 5px;
 
 /* オートレイアウト内部 */
 flex: none;
@@ -194,22 +814,48 @@ flex-grow: 0;
 z-index: 4;
 
 
-/* 福井県版 */
+/* note */
 
-position: absolute;
-width: 270px;
-height: 19.88px;
-left: 32px;
-top: 120px;
+width: 32px;
+height: 30px;
 
-font-family: 'Inter';
+background: url(yubi.png);
+
+/* オートレイアウト内部 */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* 窓口の紹介です。嶺南にもあるので、 利用しやすいところ選んでください。 */
+
+width: 218px;
+height: 40px;
+
+font-family: 'Zen Kaku Gothic New';
 font-style: normal;
-font-weight: 400;
-font-size: 14px;
-line-height: 17px;
-text-align: center;
+font-weight: 700;
+font-size: 12px;
+line-height: 20px;
+/* または167% */
+letter-spacing: -0.05em;
 
 color: #000000;
+
+
+/* オートレイアウト内部 */
+flex: none;
+order: 1;
+flex-grow: 1;
+
+
+/* color_navi */
+
+position: absolute;
+width: 22.71px;
+height: 92.11px;
+left: 19px;
+top: 26px;
 
 
 /* オートレイアウト内部 */
@@ -217,3 +863,69 @@ flex: none;
 order: 5;
 flex-grow: 0;
 z-index: 5;
+
+
+/* Vector */
+
+position: absolute;
+left: 0%;
+right: 44.08%;
+top: 2.17%;
+bottom: 84.04%;
+
+background: #FDF9D5;
+
+
+/* Vector */
+
+position: absolute;
+left: 0%;
+right: 44.08%;
+top: 18.46%;
+bottom: 67.76%;
+
+background: #A3D0FA;
+
+
+/* Vector */
+
+position: absolute;
+left: 44.03%;
+right: 0.04%;
+top: 34.74%;
+bottom: 51.47%;
+
+background: #88D3BC;
+
+
+/* Vector */
+
+position: absolute;
+left: 0%;
+right: 44.08%;
+top: 51.03%;
+bottom: 35.19%;
+
+background: #F4BED3;
+
+
+/* Vector */
+
+position: absolute;
+left: 0%;
+right: 44.08%;
+top: 67.31%;
+bottom: 18.9%;
+
+background: #EFAB94;
+
+
+/* Vector */
+
+position: absolute;
+left: 0%;
+right: 44.08%;
+top: 83.6%;
+bottom: 2.62%;
+
+background: #B695CE;

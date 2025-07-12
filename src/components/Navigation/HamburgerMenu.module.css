@@ -1,23 +1,86 @@
-/* ハンバーガーメニュー用 */
+/* ハンバーガーメニュー用 - 非表示設定 */
 .hamburgerMenu {
-  display: block;
+  display: none; /* ハンバーガーメニューを非表示 */
   position: fixed;
-  top: 20px;
-  left: 20px;
-  z-index: 101;
-  background-color: rgba(255, 255, 255, 0.95);
-  padding: 10px;
+  top: 33px;        /* figma.txt仕様 */
+  left: 419px;      /* figma.txt仕様: left: 419px */
+  z-index: 1000;    /* より高いz-indexでタイトル上に表示 */
+  
+  /* 指定された仕様 */
+  width: 100px;
+  height: 44px;
+  flex-shrink: 0;
+  
+  /* Group 18 - MEMUボタン背景 */
+  box-sizing: border-box;
+  background-color: rgba(255, 255, 255, 0.9); /* 半透明の白背景を追加 */
+  border: 1.5px solid #000000;
   border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   cursor: pointer;
+  
+  /* MEMUテキストとアイコンの配置用 */
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 9px;   /* 左右の余白調整 */
+  
+  /* タイトルに重なっても見やすくするためのスタイル */
+  backdrop-filter: blur(2px); /* 背景をぼかす効果 */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* 軽い影を追加 */
 }
 
+/* MEMUテキスト */
+.menuText {
+  font-family: 'DNP ShueiGoKinStd', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 0px;
+  text-align: center;
+  color: #000000;
+  flex-grow: 1;
+}
+
+/* ハンバーガーアイコンコンテナ - figma.txt Group 19仕様 */
+.menuIconContainer {
+  position: relative;
+  width: 19px;
+  height: 11.62px;
+}
+
+/* ハンバーガーアイコンの線 - figma.txt Rectangle 13,14,15仕様 */
 .menuIcon {
-  width: 30px;
-  height: 3px;
-  background-color: #000;
-  margin: 6px 0;
-  border-radius: 2px;
+  position: absolute;
+  width: 19px;
+  height: 1.29px;
+  background: #000000;
+  border-radius: 0;
+  margin: 0;
+}
+
+.menuIcon:nth-child(1) {
+  top: 0px;         /* Rectangle 13 */
+}
+
+.menuIcon:nth-child(2) {
+  top: 5.16px;      /* Rectangle 14 */
+}
+
+.menuIcon:nth-child(3) {
+  top: 10.32px;     /* Rectangle 15 */
+}
+
+/* Close X アイコンのスタイル - 文字として表示 */
+.closeIconText {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  color: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 19px;
+  height: 11.62px;
+  line-height: 1;
 }
 
 /* モバイル版ナビゲーション */
@@ -26,20 +89,20 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 32px 30px; /* 右側のパディングを広げて文字の余白を確保 */
-  gap: 20px; /* 項目間の間隔を少し詰める */
+  padding: 32px 30px;
+  gap: 20px;
   isolation: isolate;
   position: fixed;
   top: 0;
-  left: -420px; /* 初期状態では画面外に（幅を広げたため調整：-320px→-420px） */
+  right: -420px; /* 右側に変更 - 初期状態では画面外に */
   height: 100vh;
-  transition: left 0.3s ease;
-  z-index: 100;
-  width: 410px; /* 幅を100px広げて（310px→410px）文字の改行を防止 */
+  transition: right 0.3s ease; /* right プロパティで遷移 */
+  z-index: 999;    /* ハンバーガーボタンより少し低く設定 */
+  width: 410px;
   overflow-y: auto;
-  scrollbar-width: none; /* Firefoxでスクロールバーを非表示 */
-  -ms-overflow-style: none; /* IEとEdgeでスクロールバーを非表示 */
-  padding-top: 120px; /* 80pxから110pxに変更（30px下げる） */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding-top: 40px; /* ヘッダー削除により上部パディングを減らす */
   background-color: #FFFFFF;
   background: var(--color-white);
   border: 2px solid var(--color-black);
@@ -53,8 +116,8 @@
 }
 
 .navigationActive {
-  left: 0; /* メニューが開いたとき */
-  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2); /* 開いたときに影を追加してより目立たせる */
+  right: 0; /* メニューが開いたとき - 右から表示 */
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2); /* 右側メニューに合わせて影の方向も変更 */
 }
 
 /* ナビアイテムコンテナ - 縦線の高さ計算のためのコンテナ */
@@ -81,15 +144,6 @@
 /* ::before擬似要素は無効化 */
 .navigation::before {
   content: none;
-}
-
-/* モバイル表示時のナビゲーション項目の調整 */
-.navHeader {
-  margin-top: -30px; /* ヘッダーは元の位置に戻す */
-  width: 100%;
-  height: 129px; /* 79px + 50px = 129px で下に50pxスペースを追加 */
-  position: relative;
-  margin-bottom: 20px; /* さらに下部にも余白を追加 */
 }
 
 .navItem {
@@ -157,6 +211,31 @@
   background-color: rgba(0, 0, 0, 0.05);
 }
 
+.navHeader {
+  width: 100%;
+  height: 79px; /* Figmaのレイアウトに合わせ、タイトルとロゴが収まる高さを確保 */
+  position: relative;
+  margin-bottom: 0; /* gapで管理するためリセット */
+  padding-bottom: 0; /* 不要なため削除 */
+}
+
+/* ロゴ画像のためのスタイル */
+.navLogo {
+  position: absolute;
+  width: 151px;
+  height: 30px;
+  left: 6px; /* Figma: 29px - padding-left: 23px = 6px */
+  top: 49px; /* Figmaの値を反映 */
+  background-image: url('../../assets/images/logo.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  transition: opacity 0.2s;
+}
+
+.navLogo:hover {
+  opacity: 0.8;
+}
+
 .navHeaderTitle {
   font-family: var(--font-primary);
   font-style: normal;
@@ -170,22 +249,11 @@
   width: 216px;
   height: 9px;
   margin: 0;
+  transition: color 0.2s;
 }
 
-.navLogo {
-  position: absolute;
-  width: 151px;
-  height: 30px;
-  left: 6px;
-  top: 49px;
-  background-image: url('../../assets/images/logo.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  transition: opacity 0.2s;
-}
-
-.navLogo:hover {
-  opacity: 0.8;
+.navHeaderTitle:hover {
+  color: #555;
 }
 
 .navHeaderSubtitle {
@@ -199,6 +267,11 @@
   left: 163px;
   top: 32px;
   margin-left: 0;
+  transition: color 0.2s;
+}
+
+.navHeaderSubtitle:hover {
+  color: #555;
 }
 
 .navTitle {
@@ -243,74 +316,31 @@
 
 /* ナビゲーションアイテム間のスペースはgapプロパティで管理 */
 
-/* 大画面用のレスポンシブ対応 */
-@media (min-width: 768px) {
+/* 大画面用のレスポンシブ対応 - メインコンテンツ位置に影響しない */
+@media (min-width: 769px) {
   .hamburgerMenu {
     display: none; /* 大画面ではハンバーガーメニューを非表示 */
   }
 
   .navigation {
-    position: static; /* fixed配置を解除 */
-    left: 0; /* 左側の位置を初期化 */
-    width: 100%; /* 全幅を使用 */
-    height: auto; /* 高さを自動調整 */
-    min-height: auto; /* 最小高さを解除 */
-    padding: 20px; /* パディングを調整 */
-    padding-top: 20px; /* 上部のパディングを減らす */
-    background: transparent; /* 背景を透明に */
-    border: none; /* ボーダーを削除 */
-    border-radius: 0; /* ボーダーラジアスを削除 */
-    box-shadow: none; /* シャドウを削除 */
-    flex-direction: row; /* 横方向に並べる */
-    flex-wrap: wrap; /* 必要に応じて折り返し */
-    align-items: flex-start; /* 上端に揃える */
-    justify-content: space-between; /* 横方向に均等配置 */
-    gap: 20px; /* アイテム間のスペースを調整 */
-    overflow: visible; /* オーバーフローを表示 */
+    display: none; /* 大画面ではモバイルナビゲーションを完全に非表示 */
   }
+}
 
-  .navigation::before {
-    display: none; /* 大画面では縦線を非表示 */
+/* モバイル画面でハンバーガーメニュー表示 */
+@media (max-width: 768px) {
+  .hamburgerMenu {
+    display: flex; /* モバイルでは表示 */
+    /* 小画面での位置調整 - メインコンテンツ幅内に配置 */
+    left: calc(100vw - 140px); /* 画面右端から140px内側（120px + 20px） */
+    top: 33px; /* 上位置は固定 */
   }
+}
 
-  .navHeader {
-    width: 100%; /* ヘッダーは全幅を使用 */
-    margin-top: 0; /* マージンをリセット */
-    margin-bottom: 20px; /* 下側にマージンを追加 */
-    order: -1; /* ヘッダーを最初に表示 */
-  }
-
-  .navItem {
-    width: auto; /* 幅を自動調整 */
-    flex: 1; /* 均等に幅を分割 */
-    min-width: 150px; /* 最小幅を設定 */
-    padding: 10px; /* パディングを調整 */
-  }
-
-  .navFooter {
-    width: 100%; /* フッターは全幅を使用 */
-    margin-top: 20px; /* 上側にマージンを追加 */
-    text-align: center; /* 中央揃え */
-  }
-
-  .navTitle {
-    font-size: 14px; /* フォントサイズを調整 */
-    line-height: 1.4; /* 行の高さを調整 */
-    text-align: center; /* 中央揃え */
-    white-space: normal; /* テキストの折り返しを許可 */
-    word-wrap: break-word; /* 単語の途中でも折り返し */
-  }
-
-  .navSubItems {
-    margin-top: 10px; /* 上側のマージンを追加 */
-  }
-
-  .navSubItem {
-    font-size: 12px; /* フォントサイズを小さく */
-    line-height: 1.3; /* 行の高さを調整 */
-    text-align: center; /* 中央揃え */
-    white-space: normal; /* テキストの折り返しを許可 */
-    word-wrap: break-word; /* 単語の途中でも折り返し */
-    margin: 5px 0; /* 上下のマージンを追加 */
+/* 非常に小さい画面での調整 */
+@media (max-width: 540px) {
+  .hamburgerMenu {
+    display: flex; /* 小画面でも表示 */
+    left: calc(100vw - 130px); /* より小さい画面では130px内側（110px + 20px） */
   }
 }

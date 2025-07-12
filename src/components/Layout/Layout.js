@@ -18,7 +18,8 @@ const Layout = ({ children }) => {
         {!isMobile && <Banner />}
       </div>
       
-      {isMobile && <HamburgerMenu />}
+      {/* ハンバーガーメニューを常に表示（モバイル時のみ可視） */}
+      <HamburgerMenu />
       <Overlay />
     </>
   );

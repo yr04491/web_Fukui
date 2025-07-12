@@ -39,19 +39,22 @@
 /* レスポンシブ対応 */
 @media (max-width: 768px) {
   .mainContent {
-    width: 100%;
+    width: 100vw; /* 画面幅いっぱい */
     min-width: unset;
-    max-width: 100%;
-    margin-top: 60px; /* ハンバーガーメニューのスペース */
-    padding-bottom: 0; /* フッターがあるのでパディングを削除 */
-    min-height: calc(100vh - 60px); /* ハンバーガーメニュー分を差し引いた高さ */
+    max-width: 100vw; /* 画面幅いっぱい */
+    margin: 0; /* 全てのマージンを削除 */
+    padding: 0; /* 全てのパディングを削除 */
+    border-radius: 0; /* モバイルでは角丸を削除 */
+    min-height: 100vh; /* フル高さ */
   }
   
   .headerSection {
     gap: 30px; /* モバイル時はヘッダー要素間隔を少し狭く */
+    padding: 0 10px; /* 左右に少しパディング */
   }
   
   .roadSections {
     margin-top: 30px; /* モバイル時のヘッダーセクションとの間隔 */
+    padding: 0 10px; /* 左右に少しパディング */
   }
 }

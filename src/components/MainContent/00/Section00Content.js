@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './Section00Content.module.css';
 import yubiIcon from '../../../assets/images/yubi.png';
 import Footer from '../../common/Footer';
+import roadNumberImage from '../../../assets/icons/00.png';
 
 const Section00Content = () => {
   return (
@@ -12,14 +13,14 @@ const Section00Content = () => {
           <div className={styles.roadNumberContainer}>
             {/* カラーナビ（縦線） */}
             <div className={styles.colorNavi}>
-              <div className={styles.colorBar} style={{background: 'linear-gradient(145deg, #FDF9D5, #F5F1C8)', boxShadow: '1px 1px 3px rgba(0,0,0,0.2)'}}></div>
-              <div className={styles.colorBar} style={{background: 'linear-gradient(145deg, #A3D0FA, #85C1E9)', boxShadow: '1px 1px 3px rgba(0,0,0,0.2)'}}></div>
-              <div className={styles.colorBar} style={{background: 'linear-gradient(145deg, #88D3BC, #76C7C0)', boxShadow: '1px 1px 3px rgba(0,0,0,0.2)'}}></div>
-              <div className={styles.colorBar} style={{background: 'linear-gradient(145deg, #F4BED3, #F1A7C7)', boxShadow: '1px 1px 3px rgba(0,0,0,0.2)'}}></div>
-              <div className={styles.colorBar} style={{background: 'linear-gradient(145deg, #EFAB94, #E99578)', boxShadow: '1px 1px 3px rgba(0,0,0,0.2)'}}></div>
-              <div className={styles.colorBar} style={{background: 'linear-gradient(145deg, #B695CE, #A37FB8)', boxShadow: '1px 1px 3px rgba(0,0,0,0.2)'}}></div>
+              <div className={styles.colorBar} style={{background: 'linear-gradient(145deg, #FDF9D5, #F5F1C8)'}}></div>
+              <div className={styles.colorBar} style={{background: 'linear-gradient(145deg, #A3D0FA, #85C1E9)'}}></div>
+              <div className={styles.colorBar} style={{background: 'linear-gradient(145deg, #88D3BC, #76C7C0)'}}></div>
+              <div className={styles.colorBar} style={{background: 'linear-gradient(145deg, #F4BED3, #F1A7C7)'}}></div>
+              <div className={styles.colorBar} style={{background: 'linear-gradient(145deg, #EFAB94, #E99578)'}}></div>
+              <div className={styles.colorBar} style={{background: 'linear-gradient(145deg, #B695CE, #A37FB8)'}}></div>
             </div>
-            <div className={styles.roadNumber}>00</div>
+            <div className={styles.roadNumber}><img src={roadNumberImage} alt="00" className={styles.roadNumberImage} /></div>
           </div>
           <h1 className={styles.mainTitle}>まずどうする</h1>
         </div>
@@ -83,7 +84,7 @@ const Section00Content = () => {
 
         <button className={styles.projectButton}>
           <img src={yubiIcon} alt="アイコン" className={styles.buttonIcon} />
-          <span>小中学校の卒業について※◯◯のサイトにリンクします</span>
+          <span>小中学校の卒業について</span>
         </button>
       </div>
 

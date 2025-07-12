@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styles from './HamburgerMenu.module.css';
-import NavigationHeader from './NavigationHeader';
 import NavigationItem from './NavigationItem';
+import NavigationHeader from './NavigationHeader';
 
 // --- Main HamburgerMenu Component ---
 
@@ -79,16 +79,25 @@ const HamburgerMenu = () => {
   return (
     <>
       <div className={styles.hamburgerMenu} onClick={toggleMenu}>
-        <div className={styles.menuIcon}></div>
-        <div className={styles.menuIcon}></div>
-        <div className={styles.menuIcon}></div>
+        <span className={styles.menuText}>{isOpen ? 'CLOSE' : 'MENU'}</span>
+        <div className={styles.menuIconContainer}>
+          {isOpen ? (
+            // Close X アイコン - 文字として表示
+            <span className={styles.closeIconText}>×</span>
+          ) : (
+            // ハンバーガーアイコン
+            <>
+              <div className={styles.menuIcon}></div>
+              <div className={styles.menuIcon}></div>
+              <div className={styles.menuIcon}></div>
+            </>
+          )}
+        </div>
       </div>
 
       <nav ref={navRef} className={`${styles.navigation} ${isOpen ? styles.navigationActive : ''}`}>
+        {/* ナビゲーションヘッダー - 通常ナビと同じ */}
         <NavigationHeader isHamburger={true} />
-        
-        {/* ロゴと「まずどうする？」の間にスペースを追加 */}
-        <div style={{ marginTop: '50px' }}></div>
         
         {/* ナビゲーション項目を囲むコンテナ - 高さ計測用 */}
         <div ref={navItemsRef} className={styles.navItemsContainer}>

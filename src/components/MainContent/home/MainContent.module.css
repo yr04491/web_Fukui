@@ -2,8 +2,8 @@
 .mainContent {
   width: var(--content-width);
   min-width: 390px;
-  max-width: var(--content-width);
-  min-height: 100vh; /* 最小高さをビューポートに設定 */
+  max-width: var(--content-max-width);/* 新しい変数を適用 */
+  min-height: 100vh;  /* 最小高さをビューポートに設定 */
   background: var(--color-white);
   border-radius: var(--radius-m);
   flex: none;
@@ -13,8 +13,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-bottom: 0; /* フッターがあるのでパディングを削除 */
-  position: relative; /* 相対位置を設定 */
+  padding-bottom: 0;
+  /* フッターがあるのでパディングを削除 */
+  position: relative;
+  /* 相対位置を設定 */
 }
 
 /* ヘッダーセクション：タイトルとオープニング */
@@ -23,7 +25,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 40px; /* ヘッダー要素間の間隔 */
+  gap: 40px;
+  /* ヘッダー要素間の間隔 */
 }
 
 /* ROADセクション群：連続的に配置 */
@@ -32,31 +35,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0; /* ROADセクション間は隙間なし */
-  margin-top: 40px; /* ヘッダーセクションとの間隔 */
-}
-
-/* レスポンシブ対応 */
-@media (max-width: 768px) {
-  .mainContent {
-    width: 100%; /* vwから%に変更して、親要素に対する100%を保証 */
-    min-width: unset;
-    max-width: 100%;
-    margin: 0;
-    padding: 0; 
-    border-radius: 0;
-    min-height: 100vh;
-  }
-  
-  .headerSection {
-    gap: 30px; 
-    padding: 0 10px; 
-    width: 100%; /* コンテンツがはみ出ないように幅を100%に */
-  }
-  
-  .roadSections {
-    margin-top: 30px; 
-    padding: 0; /* 左右のパディングを削除 */
-    width: 100%; /* コンテンツがはみ出ないように幅を100%に */
-  }
+  gap: 0;
+  /* ROADセクション間は隙間なし */
+  margin-top: 40px;
+  /* ヘッダーセクションとの間隔 */
 }

@@ -251,16 +251,3 @@
 }
 
 /* レスポンシブ対応 */
-@media (max-width: 768px) {
-  .section02 {
-    padding: 30px 15px;
-  }
-  
-  .tweetArea {
-    flex-direction: row; /* 横並びを維持 */
-    flex-wrap: nowrap; /* 折り返しなし */
-    align-items: stretch; /* アイテムを伸ばして高さを揃える */
-    justify-content: flex-start; /* 左寄せで配置 */
-  }
-  /* ツイートカードのレスポンシブスタイルは TweetCard.module.css に移動しました */
-}

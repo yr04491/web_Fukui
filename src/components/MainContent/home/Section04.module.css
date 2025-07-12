@@ -200,28 +200,3 @@
 }
 
 /* レスポンシブ対応 */
-@media (max-width: 768px) {
-  .section04 {
-    padding: 40px 16px 30px;
-  }
-  
-  .mainTitle {
-    font-size: 22px;
-    line-height: 28px;
-  }
-}
-
-@media (max-width: 480px) {
-  .mainTitle {
-    font-size: 20px;
-    line-height: 26px;
-  }
-  
-  .placeTitle {
-    font-size: 15px;
-  }
-  
-  .placeTag {
-    font-size: 13px;
-  }
-}

@@ -35,6 +35,7 @@
   
   /* レイアウト */
   --nav-width: 270px;
-  --content-width: 540px;
+  --content-width: 100vw; /* 画面幅いっぱいに設定 */
+  --content-max-width: 540px; /* PCでの最大幅を指定 */
   --banner-width: 200px;
 }

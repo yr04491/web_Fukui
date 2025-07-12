@@ -23,10 +23,10 @@
 /* レスポンシブデザイン */
 @media (max-width: 768px) {
   .container {
-    flex-direction: column;
-    /* ↓↓↓↓ ここから下を変更・追記 ↓↓↓↓ */
-    padding: 0; /* 左右の大きな余白をなくす */
-    gap: 0; /* 要素間の隙間をなくす */
-    align-items: center; 
+    flex-direction: row; /* rowを維持 */
+    justify-content: center; /* 中央寄せを追加 */
+    padding: 0;
+    gap: 0;
+    align-items: flex-start; /* 上揃えを維持 */
   }
 }

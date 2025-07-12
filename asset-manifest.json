@@ -1,23 +1,25 @@
 {
   "files": {
-    "main.css": "/web_Fukui/static/css/main.56fbd1cc.css",
-    "main.js": "/web_Fukui/static/js/main.1d187846.js",
+    "main.css": "/web_Fukui/static/css/main.8dadc3dd.css",
+    "main.js": "/web_Fukui/static/js/main.6cda9727.js",
     "static/js/453.e7e8dd5b.chunk.js": "/web_Fukui/static/js/453.e7e8dd5b.chunk.js",
-    "static/media/AdobeStock2.png": "/web_Fukui/static/media/AdobeStock2.866d7e7a63bb81be2874.png",
+    "static/media/main_img.png": "/web_Fukui/static/media/main_img.7657c464d023fdf33215.png",
     "static/media/AdobeStock.png": "/web_Fukui/static/media/AdobeStock.259e2d371e274f6dd485.png",
     "static/media/AdobeStock_Preview.png": "/web_Fukui/static/media/AdobeStock_Preview.1cef9f2510ff80dd2567.png",
     "static/media/AdobeStock_school.png": "/web_Fukui/static/media/AdobeStock_school.02eac749d7952fd3ba82.png",
     "static/media/rainbow.png": "/web_Fukui/static/media/rainbow.8a2dc94fa8a590ba0142.png",
     "static/media/AdobeStock_cat.png": "/web_Fukui/static/media/AdobeStock_cat.749cd4dff0f4368a1984.png",
     "static/media/girl1.png": "/web_Fukui/static/media/girl1.1aa81062eecbbd2b2590.png",
+    "static/media/02.png": "/web_Fukui/static/media/02.5f8a3d9b1a05b2e14321.png",
     "static/media/00.png": "/web_Fukui/static/media/00.1db74d8e68a890434680.png",
+    "static/media/01.png": "/web_Fukui/static/media/01.eb89ff38af7e6a31e32e.png",
     "index.html": "/web_Fukui/index.html",
-    "main.56fbd1cc.css.map": "/web_Fukui/static/css/main.56fbd1cc.css.map",
-    "main.1d187846.js.map": "/web_Fukui/static/js/main.1d187846.js.map",
+    "main.8dadc3dd.css.map": "/web_Fukui/static/css/main.8dadc3dd.css.map",
+    "main.6cda9727.js.map": "/web_Fukui/static/js/main.6cda9727.js.map",
     "453.e7e8dd5b.chunk.js.map": "/web_Fukui/static/js/453.e7e8dd5b.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.56fbd1cc.css",
-    "static/js/main.1d187846.js"
+    "static/css/main.8dadc3dd.css",
+    "static/js/main.6cda9727.js"
   ]
 }

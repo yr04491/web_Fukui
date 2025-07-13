@@ -14,3 +14,17 @@
   z-index: 2;
   position: relative; /* 絶対配置の基準点として設定 */
 }
+
+/* GirlImage.module.cssから移動したスタイル */
+.girlImage {
+  position: absolute;
+  width: 136px;
+  height: 268px;
+  /* 指定された位置に配置 - 100px右に移動、100px上に移動 */
+  right: 77px;
+  top: 353px;
+  background-image: url('../../assets/images/girl1.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 3;
+}

@@ -3,12 +3,12 @@
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  padding: 51px var(--space-xxl);
-  gap: 72px;
+  padding: 5rem var(--space-xxl);
+  gap: 2rem;
   isolation: isolate;
   position: relative;
   width: 100%;
-  max-width: 1304px;
+  max-width: 100%;
   margin: 0 auto;
   background: var(--color-background);
 }
@@ -17,8 +17,8 @@
 @media (max-width: 768px) {
   .container {
     flex-direction: column;
-    padding: 20px;
-    gap: 20px;
+    padding: 2rem;
+    gap: 2rem;
   }
 }
 
@@ -28,12 +28,12 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 32px 23px; /* Figmaの値を反映 */
-  gap: 30px; /* Figmaの値を反映 */
+  padding: 3.2rem 2.3rem; /* Figmaの値を反映 */
+  gap: 3rem; /* Figmaの値を反映 */
   isolation: isolate;
   width: var(--nav-width);
   height: auto;
-  min-height: 670px;
+  min-height: 67rem;
   background: var(--color-white);
   border: 2px solid var(--color-black);
   border-radius: var(--radius-l);
@@ -49,12 +49,12 @@
 .navigation::before {
   content: '';
   position: absolute;
-  width: 17px;
-  height: calc(100% - 249px); /* 「みんなで知恵を出し合おう」までの高さに調整 */
-  left: 23px;
-  top: 149px; /* 99pxから50px下に移動 */
+  width: 1.7rem;
+  height: calc(100% - 24.9rem); /* 「みんなで知恵を出し合おう」までの高さに調整 */
+  left: 2.3rem;
+  top: 14.9rem; /* 9.9remから5rem下に移動 */
   background-image: url('../assets/images/vector.png');
-  background-size: 17px 100%; /* 幅を固定し、高さを100%に拡張 */
+  background-size: 1.7rem 100%; /* 幅を固定し、高さを100%に拡張 */
   background-repeat: repeat-y; /* 縦方向に繰り返し */
   background-position: top;
   z-index: 8;
@@ -63,7 +63,7 @@
 /* ナビヘッダー */
 .navHeader {
   width: 100%;
-  height: 79px; /* Figmaのレイアウトに合わせ、タイトルとロゴが収まる高さを確保 */
+  height: 7.9rem; /* Figmaのレイアウトに合わせ、タイトルとロゴが収まる高さを確保 */
   position: relative;
   margin-bottom: 0; /* gapで管理するためリセット */
   padding-bottom: 0; /* 不要なため削除 */
@@ -72,10 +72,10 @@
 /* ロゴ画像のためのスタイル */
 .navLogo {
   position: absolute;
-  width: 151px;
-  height: 30px;
-  left: 6px; /* Figma: 29px - padding-left: 23px = 6px */
-  top: 49px; /* Figmaの値を反映 */
+  width: 15.1rem;
+  height: 3rem;
+  left: 0.6rem; /* Figma: 29px - padding-left: 23px = 6px */
+  top: 4.9rem; /* Figmaの値を反映 */
   background-image: url('../assets/images/logo.png');
   background-size: contain;
   background-repeat: no-repeat;
@@ -90,14 +90,14 @@
   font-family: var(--font-primary);
   font-style: normal;
   font-weight: 600;
-  font-size: var(--font-xs);
-  line-height: var(--line-height-s);
+  font-size: 1.2rem;
+  line-height: 1.5rem;
   color: var(--color-black);
   position: absolute; /* 絶対配置に変更 */
   left: 0; /* paddingで管理されているため0 */
   top: 0; /* Figma: 32px - padding-top: 32px = 0 */
-  width: 216px;
-  height: 9px;
+  width: 21.6rem;
+  height: 0.9rem;
   margin: 0;
   transition: color 0.2s;
 }
@@ -110,12 +110,12 @@
   font-family: var(--font-primary);
   font-style: normal;
   font-weight: 600;
-  font-size: var(--font-xs);
-  line-height: var(--line-height-s);
+  font-size: 1.2rem;
+  line-height: 1.5rem;
   color: var(--color-black);
   position: absolute; /* 絶対配置に変更 */
-  left: 163px; /* Figma: 186px - padding-left: 23px = 163px */
-  top: 32px;  /* Figma: 64px - padding-top: 32px = 32px */
+  left: 16.3rem; /* Figma: 186px - padding-left: 23px = 163px */
+  top: 3.2rem;  /* Figma: 64px - padding-top: 32px = 32px */
   margin-left: 0;
   transition: color 0.2s;
 }
@@ -127,14 +127,14 @@
 /* ナビアイテム */
 .navItem {
   width: 100%;
-  margin-bottom: 15px;
+  margin-bottom: 1.5rem;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 0px 0px 0px 30px;
-  gap: 10px;
+  padding: 0px 0px 0px 3rem;
+  gap: 1rem;
   transition: background-color 0.2s;
-  border-radius: 5px;
+  border-radius: 0.5rem;
 }
 
 .navItem:hover {
@@ -143,43 +143,35 @@
 
 .navItemHeader {
   display: flex;
-  align-items: flex-start; /* 上揃えに変更（アイコンとテキストの位置合わせ） */
-  gap: 8px;
-  margin-bottom: 10px;
+  align-items: center;
+  gap: 1.2rem; /* アイコンとタイトルの間隔を広げる */
+  margin-bottom: 1rem;
   width: 100%;
-  min-height: 20px; /* 固定高さではなく最小高さに変更 */
+  height: 2rem;
+  flex-wrap: nowrap; /* アイテムを折り返さない */
 }
 
 .navIcon {
-  width: 26px;
-  height: 20px;
+  width: 2.6rem;
+  height: 2rem;
   display: flex;
-  align-items: flex-start; /* 上揃えに変更（改行があっても上部に固定） */
+  align-items: center;
   justify-content: center;
   position: relative;
-  /* Figmaでは背景として画像が設定されていますが、
-     ここではシンプルに背景色を使用します */
   background-color: transparent;
-  color: var(--color-black);
-  font-size: var(--font-xs);
-  margin-top: 6px; /* テキストの行高に合わせて微調整 */
 }
 
 .navTitle {
   font-family: var(--font-primary);
   font-style: normal;
   font-weight: 600;
-  font-size: var(--font-m);
-  line-height: 1.3; /* 行間をより狭くして改行時に自然に見えるよう調整 */
+  font-size: 1.6rem; /* 16px */
+  line-height: 3.2rem; /* 32px */
   color: var(--color-black);
-  /* leading-trim: both; */
-  /* text-edge: cap; */
-  white-space: pre-wrap; /* 改行を許可し、長い文字列は自動で折り返す */
-  word-break: keep-all; /* 単語の途中での改行を防止 */
-  display: flex;
-  flex-direction: column; /* 改行要素を縦に並べる */
+  white-space: pre-wrap; /* PCでは改行を許可 */
   transition: color 0.2s;
 }
+
 
 .navItem:hover .navTitle {
   color: #555; /* ホバー時の色を少し暗く */
@@ -189,24 +181,27 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 0px 0px 0px 35px;
-  gap: 8px;
+  padding: 0px 1.5rem 0px 3.8rem; /* 左右のパディングを調整して表示領域を確保 */
+  gap: 0.8rem;
   width: 100%;
+  box-sizing: border-box; /* パディングを含めたボックスモデルにする */
 }
 
 .navSubItem {
   font-family: var(--font-primary);
   font-style: normal;
   font-weight: 600;
-  font-size: var(--font-xs);
-  line-height: var(--line-height-s);
+  font-size: 1.2rem; /* 12px */
+  line-height: 1.5rem; /* 15px */
   color: var(--color-black);
-  margin-bottom: 8px;
-  /* leading-trim: both; */
-  /* text-edge: cap; */
-  padding: 2px 5px;
-  border-radius: 3px;
-  transition: background-color 0.2s;
+  margin-bottom: 0.8rem;
+  white-space: nowrap; /* サブアイテムも改行しないようにする */
+  overflow: hidden;
+  text-overflow: ellipsis; /* 必要に応じて省略記号で表示 */
+  max-width: 100%; /* 親要素の幅を超えないようにする */
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.3rem;
+  transition: background-color 0.2s, color 0.2s;
 }
 
 .navSubItem:hover {
@@ -214,22 +209,17 @@
 }
 
 .navFooter {
+  width: 100%;
+  padding: 0.5rem 0.8rem;
   font-family: var(--font-secondary);
   font-style: normal;
   font-weight: 500;
-  font-size: var(--font-m);
-  line-height: var(--line-height-l);
+  font-size: 1.6rem;
+  line-height: 2.3rem;
   color: var(--color-black);
   margin-top: auto;
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  padding: 5px 0;
-  gap: 8px;
-  height: 23px;
   transition: color 0.2s, background-color 0.2s;
-  border-radius: 5px;
+  border-radius: 0.5rem;
 }
 
 .navFooter:hover {
@@ -244,17 +234,17 @@
 }
 
 .menuIcon {
-  width: 30px;
-  height: 3px;
+  width: 3rem;
+  height: 0.3rem;
   background-color: #000;
-  margin: 6px 0;
-  border-radius: 2px;
+  margin: 0.6rem 0;
+  border-radius: 0.2rem;
 }
 
 /* メインコンテンツ */
 .mainContent {
   width: var(--content-width);
-  min-width: 390px;
+  min-width: 39rem;
   max-width: var(--content-width);
   height: auto;
   background: var(--color-white);
@@ -274,7 +264,7 @@
   padding: 0px;
   gap: var(--space-xl);
   width: var(--banner-width); /* CSS変数を使用（200px） */
-  height: 270px;
+  height: 27rem;
   flex: none;
   order: 2;
   flex-grow: 0;
@@ -285,7 +275,7 @@
 /* バナー */
 .banner {
   width: var(--banner-width); /* CSS変数を使用（200px） */
-  height: 120px;
+  height: 12rem;
   background: var(--color-banner-bg);
   display: flex;
   justify-content: center;
@@ -302,11 +292,11 @@
 /* ガール画像 - Figmaでは右下に配置されています */
 .girlImage {
   position: absolute;
-  width: 136px;
-  height: 268px;
+  width: 13.6rem;
+  height: 26.8rem;
   /* 指定された位置に配置 - 100px右に移動、100px上に移動 */
-  right: 77px;
-  top: 353px;
+  right: 7.7rem;
+  top: 35.3rem;
   background-image: url('../assets/images/girl1.png');
   background-size: contain;
   background-repeat: no-repeat;
@@ -318,7 +308,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 40px 30px;
+  padding: 4rem 3rem;
   gap: var(--space-xl);
   position: relative;
   width: 100%;
@@ -328,7 +318,7 @@
 
 .openingText {
   width: 100%;
-  max-width: 480px;
+  max-width: 48rem;
   font-family: var(--font-primary);
   font-style: normal;
   font-weight: 500;
@@ -346,10 +336,10 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: 8px var(--space-m);
-  gap: 10px;
-  width: 180px;
-  height: 40px;
+  padding: 0.8rem var(--space-m);
+  gap: 1rem;
+  width: 18rem;
+  height: 4rem;
   background: var(--color-button-bg);
   border: 1px solid var(--color-black);
   border-radius: var(--radius-s);
@@ -370,11 +360,11 @@
   flex-direction: column;
   align-items: center;
   padding: 0px;
-  gap: 33px;
+  gap: 3.3rem;
   position: relative;
   width: 100%;
   max-width: var(--content-width);
-  height: 350px;
+  height: 35rem;
   border-radius: var(--radius-m) var(--radius-m) 0px 0px;
   background-image: url('../assets/images/AdobeStock.png');
   /* background-color: red; 確認用に追加 */
@@ -386,25 +376,25 @@
 /* メインタイトルとロゴのスタイル */
 .mainTitle {
   position: absolute;
-  width: 270px;
-  height: 19.88px;
-  left: 135px;
-  top: 73px;
+  width: 27rem;
+  height: 1.988rem;
+  left: 13.5rem;
+  top: 7.3rem;
   font-family: 'Inter', sans-serif;
   font-style: normal;
   font-weight: 400;
-  font-size: 14px;
-  line-height: 17px;
+  font-size: 1.4rem;
+  line-height: 1.7rem;
   text-align: center;
   color: #FFFFFF;
 }
 
 .mainLogo {
   position: absolute;
-  width: 283.5px;
-  height: 42px;
-  left: 142px;
-  top: 122px;
+  width: 28.35rem;
+  height: 4.2rem;
+  left: 14.2rem;
+  top: 12.2rem;
   background-image: url('../assets/images/logo1.png');
   background-size: contain;
   background-repeat: no-repeat;
@@ -416,38 +406,38 @@
   .navigation {
     position: fixed;
     top: 0;
-    left: -320px; /* 初期状態では画面外に（幅を広げたため調整） */
+    left: -32rem; /* 初期状態では画面外に（幅を広げたため調整） */
     height: 100vh;
     transition: left 0.3s ease;
     z-index: 100;
-    width: 310px; /* 幅を40px広げて文字の重なりと改行を防止 */
+    width: 31rem; /* 幅を40px広げて文字の重なりと改行を防止 */
     overflow-y: auto;
-    padding-top: 120px; /* 80pxから110pxに変更（30px下げる） */
+    padding-top: 12rem; /* 8remから11remに変更（3rem下げる） */
     background-color: #FFFFFF;
   }
   
   .navigationActive {
     left: 0; /* メニューが開いたとき */
-    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2); /* 開いたときに影を追加してより目立たせる */
+    box-shadow: 0.2rem 0 1rem rgba(0, 0, 0, 0.2); /* 開いたときに影を追加してより目立たせる */
   }
   
   .hamburgerMenu {
     display: block;
     position: fixed;
-    top: 20px;
-    left: 20px;
+    top: 2rem;
+    left: 2rem;
     z-index: 101;
     background-color: rgba(255, 255, 255, 0.95);
-    padding: 10px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.2);
   }
   
   .mainContent {
     width: 100%;
     min-width: unset;
     max-width: 100%;
-    margin-top: 60px; /* ハンバーガーメニューのスペース */
+    margin-top: 6rem; /* ハンバーガーメニューのスペース */
   }
   
   /* レスポンシブ対応：タイトルとロゴの位置調整 */
@@ -461,7 +451,7 @@
     left: 50%;
     transform: translateX(-50%);
     width: 80%;
-    max-width: 283.5px;
+    max-width: 28.35rem;
   }
   
   .bannerArea {
@@ -471,11 +461,11 @@
   /* モバイル表示時のナビゲーション項目の調整 */
   .navHeader, .navItem, .navFooter {
     width: 100%;
-    padding: 5px 0;
+    padding: 0.5rem 0;
   }
   
   .navHeader {
-    margin-top: -30px; /* ヘッダーは元の位置に戻す */
+    margin-top: -3rem; /* ヘッダーは元の位置に戻す */
   }
   
   .navHeaderTitle, .navHeaderSubtitle {
@@ -488,12 +478,12 @@
   
   /* ナビゲーションアイテム間のスペースを確保 */
   .navItem {
-    margin-bottom: 20px;
+    margin-bottom: 2rem;
   }
   
   /* モバイル表示時のvector.pngの位置調整 */
   .navigation::before {
-    top: 179px; /* 149px + 30px = 179px */
+    top: 17.9rem; /* 14.9rem + 3rem = 17.9rem */
   }
 }
   
@@ -503,5 +493,5 @@
   
   /* ナビゲーションアイテム間のスペースを確保 */
   .navItem {
-    margin-bottom: 20px;
+    margin-bottom: 2rem;
   }

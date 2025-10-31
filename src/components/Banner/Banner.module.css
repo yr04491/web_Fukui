@@ -7,10 +7,13 @@
   padding: 0px;
   gap: var(--space-xl);
   width: var(--banner-width); /* CSS変数を使用（200px） */
-  height: 270px;
+  height: auto;
+  min-height: 270px;
   flex: none;
   order: 2;
   flex-grow: 0;
-  z-index: 2;
-  position: relative; /* 絶対配置の基準点として設定 */
+  z-index: 100;
+  position: fixed;
+  top: 51px;
+  right: var(--space-xxl);
 }

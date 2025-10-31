@@ -28,21 +28,31 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 32px 23px; /* Figmaの値を反映 */
-  gap: 30px; /* Figmaの値を反映 */
+  padding: 32px 30px; /* HamburgerMenuに合わせる */
+  gap: 20px; /* HamburgerMenuに合わせる */
   isolation: isolate;
   width: var(--nav-width);
-  height: auto;
-  min-height: 670px;
+  height: calc(100vh - 102px);
+  max-height: calc(100vh - 102px);
   background: var(--color-white);
   border: 2px solid var(--color-black);
   border-radius: var(--radius-l);
   flex: none;
   order: 0;
-  flex-grow: 0;
-  z-index: 0;
+  flex-shrink: 0;
+  z-index: 100;
   overflow-y: auto;
-  position: relative; /* 疑似要素の位置決めのため */
+  overflow-x: hidden;
+  scrollbar-width: none; /* Firefox用 */
+  -ms-overflow-style: none; /* IE/Edge用 */
+  position: fixed;
+  left: var(--space-xxl);
+  top: 51px;
+}
+
+/* Chrome, Safari, Operaでスクロールバーを非表示 */
+.navigation::-webkit-scrollbar {
+  display: none;
 }
 
 /* ナビゲーション左側の黒い縦線 - Vector画像を配置 */
@@ -143,26 +153,22 @@
 
 .navItemHeader {
   display: flex;
-  align-items: flex-start; /* 上揃えに変更（アイコンとテキストの位置合わせ） */
-  gap: 8px;
+  align-items: center; /* HamburgerMenuに合わせる */
+  gap: 12px; /* HamburgerMenuに合わせる */
   margin-bottom: 10px;
   width: 100%;
-  min-height: 20px; /* 固定高さではなく最小高さに変更 */
+  height: 20px; /* HamburgerMenuに合わせる */
+  flex-wrap: nowrap;
 }
 
 .navIcon {
   width: 26px;
   height: 20px;
   display: flex;
-  align-items: flex-start; /* 上揃えに変更（改行があっても上部に固定） */
+  align-items: center;
   justify-content: center;
   position: relative;
-  /* Figmaでは背景として画像が設定されていますが、
-     ここではシンプルに背景色を使用します */
   background-color: transparent;
-  color: var(--color-black);
-  font-size: var(--font-xs);
-  margin-top: 6px; /* テキストの行高に合わせて微調整 */
 }
 
 .navTitle {
@@ -189,9 +195,10 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 0px 0px 0px 35px;
+  padding: 0px 15px 0px 38px; /* HamburgerMenuに合わせる */
   gap: 8px;
   width: 100%;
+  box-sizing: border-box;
 }
 
 .navSubItem {
@@ -263,39 +270,7 @@
   order: 1;
   flex-grow: 0;
   z-index: 1;
-}
-
-/* バナーエリア */
-.bannerArea {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 0px;
-  gap: var(--space-xl);
-  width: var(--banner-width); /* CSS変数を使用（200px） */
-  height: 270px;
-  flex: none;
-  order: 2;
-  flex-grow: 0;
-  z-index: 2;
-  position: relative; /* 絶対配置の基準点として設定 */
-}
-
-/* バナー */
-.banner {
-  width: var(--banner-width); /* CSS変数を使用（200px） */
-  height: 120px;
-  background: var(--color-banner-bg);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: var(--font-primary);
-  font-style: normal;
-  font-weight: 600;
-  font-size: var(--font-s);
-  line-height: var(--line-height-xl);
-  color: var(--color-black);
+  margin: 0 auto;
   position: relative;
 }
 

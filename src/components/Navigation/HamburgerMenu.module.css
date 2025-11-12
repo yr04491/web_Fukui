@@ -25,7 +25,8 @@
   .hamburgerMenu {
     display: flex;
     top: 20px;
-    left: 20px;
+    right: 20px; /* 右上に配置 */
+    left: auto; /* leftをリセット */
   }
 }
 
@@ -326,32 +327,3 @@
 }
 
 /* ナビゲーションアイテム間のスペースはgapプロパティで管理 */
-
-/* 大画面用のレスポンシブ対応 - メインコンテンツ位置に影響しない */
-@media (min-width: 769px) {
-  .hamburgerMenu {
-    display: none; /* 大画面ではハンバーガーメニューを非表示 */
-  }
-
-  .navigation {
-    display: none; /* 大画面ではモバイルナビゲーションを完全に非表示 */
-  }
-}
-
-/* モバイル画面でハンバーガーメニュー表示 */
-@media (max-width: 768px) {
-  .hamburgerMenu {
-    display: flex; /* モバイルでは表示 */
-    /* 小画面での位置調整 - メインコンテンツ幅内に配置 */
-    left: calc(100vw - 140px); /* 画面右端から140px内側（120px + 20px） */
-    top: 33px; /* 上位置は固定 */
-  }
-}
-
-/* 非常に小さい画面での調整 */
-@media (max-width: 540px) {
-  .hamburgerMenu {
-    display: flex; /* 小画面でも表示 */
-    left: calc(100vw - 130px); /* より小さい画面では130px内側（110px + 20px） */
-  }
-}

@@ -15,18 +15,19 @@
   z-index: 100;
   position: fixed;
   top: 51px;
-  right: 100px; /* 1304px以下のデフォルト */
+  right: 100px; /* 1305px以上のデフォルト */
 }
 
-/* 1254px以下で右余白を50pxに */
-@media (max-width: 1254px) {
+/* 1304px以下で右余白を可変に（1px〜100px） */
+@media (max-width: 1304px) {
   .bannerArea {
-    right: 50px;
+    right: calc(100vw - 1204px); /* 画面幅に応じて可変 */
+    /* 例: 1205pxの時 right: 1px */
   }
 }
 
-/* 1253px以下でバナー非表示 */
-@media (max-width: 1253px) {
+/* 1204px以下でバナー非表示 */
+@media (max-width: 1204px) {
   .bannerArea {
     display: none;
   }

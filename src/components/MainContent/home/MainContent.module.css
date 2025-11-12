@@ -13,14 +13,15 @@
   align-items: center;
   padding-bottom: 0; /* フッターがあるのでパディングを削除 */
   position: relative; /* 相対位置を設定 */
-  margin: 0 auto; /* 左右中央に配置 */
+  margin-left: 392px; /* 50 + 270 + 72 = 392px デスクトップ時 */
+  margin-right: 0;
 }
 
 /* 982px以下でメインコンテンツを中央配置 */
 @media (max-width: 982px) {
   .mainContent {
     width: 540px;
-    margin: 0 auto;
+    margin: 0 auto; /* 中央寄せに戻す */
   }
 }
 

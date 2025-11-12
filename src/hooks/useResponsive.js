@@ -5,7 +5,7 @@ const useResponsive = () => {
 
   useEffect(() => {
     const checkScreenSize = () => {
-      setIsMobile(window.innerWidth <= 768);
+      setIsMobile(window.innerWidth <= 982); // 982pxに変更
     };
 
     // 初期チェック

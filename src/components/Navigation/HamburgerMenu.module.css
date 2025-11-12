@@ -100,7 +100,8 @@
   height: 100vh;
   transition: right 0.3s ease;
   z-index: 999;
-  width: 270px; /* 固定幅 */
+  width: 270px; /* 常に固定幅270px */
+  min-width: 270px; /* 最小幅も270px */
   overflow-y: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
@@ -110,15 +111,6 @@
   border: 2px solid var(--color-black);
   border-radius: var(--radius-l);
   min-height: 670px;
-}
-
-/* 560px以下で比率ベース */
-@media (max-width: 560px) {
-  .navigation {
-    width: 46.55%; /* 270/580 */
-    max-width: 270px;
-    right: -46.55%;
-  }
 }
 
 /* Chrome, Safari, Operaでスクロールバーを非表示 */

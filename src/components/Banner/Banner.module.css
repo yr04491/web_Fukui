@@ -6,9 +6,7 @@
   align-items: flex-start;
   padding: 0px;
   gap: var(--space-xl);
-  width: 15.34%; /* 200/1304 - デスクトップ基準 */
-  max-width: 200px; /* 最大幅を制限 */
-  /* min-widthを削除 - 比率を優先 */
+  width: 200px; /* 固定幅 */
   height: auto;
   min-height: 270px;
   flex: none;
@@ -17,5 +15,19 @@
   z-index: 100;
   position: fixed;
   top: 51px;
-  right: 7.67%; /* 100/1304 - デスクトップ基準の右余白 */
+  right: 100px; /* 1304px以下のデフォルト */
+}
+
+/* 1254px以下で右余白を50pxに */
+@media (max-width: 1254px) {
+  .bannerArea {
+    right: 50px;
+  }
+}
+
+/* 1253px以下でバナー非表示 */
+@media (max-width: 1253px) {
+  .bannerArea {
+    display: none;
+  }
 }

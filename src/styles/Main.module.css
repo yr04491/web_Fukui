@@ -31,9 +31,7 @@
   padding: 32px 30px;
   gap: 20px;
   isolation: isolate;
-  width: 20.70%; /* 270/1304 - デスクトップ基準 */
-  max-width: 270px; /* 最大幅を制限 */
-  /* min-widthを削除 - 比率を優先 */
+  width: 270px; /* 固定幅 */
   height: calc(100vh - 102px);
   max-height: calc(100vh - 102px);
   min-height: 670px;
@@ -49,8 +47,15 @@
   scrollbar-width: none; /* Firefox用 */
   -ms-overflow-style: none; /* IE/Edge用 */
   position: fixed;
-  left: 3.83%; /* 50/1304 - デスクトップ基準の左余白 */
+  left: 50px; /* 固定値 */
   top: 51px;
+}
+
+/* 982px以下でナビ非表示 */
+@media (max-width: 982px) {
+  .navigation {
+    display: none;
+  }
 }
 
 /* Chrome, Safari, Operaでスクロールバーを非表示 */
@@ -183,10 +188,9 @@
   color: var(--color-black);
   /* leading-trim: both; */
   /* text-edge: cap; */
-  white-space: pre-wrap; /* 改行を許可し、長い文字列は自動で折り返す */
-  word-break: keep-all; /* 単語の途中での改行を防止 */
-  display: flex;
-  flex-direction: column; /* 改行要素を縦に並べる */
+  white-space: nowrap; /* 改行を防止 */
+  overflow: hidden; /* はみ出た部分を隠す */
+  text-overflow: ellipsis; /* 省略記号(...)を表示 */
   transition: color 0.2s;
 }
 

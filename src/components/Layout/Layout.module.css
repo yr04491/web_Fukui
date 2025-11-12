@@ -3,13 +3,13 @@
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  padding: 51px 0; /* 左右のパディングを削除し、各要素で個別管理 */
-  gap: 5.52%; /* 72/1304 - デスクトップ基準の要素間隔 */
+  padding: 51px 0;
+  gap: 72px; /* 固定間隔 */
   isolation: isolate;
   position: relative;
   width: 100%;
   max-width: 1304px;
-  margin: 0 auto;
+  margin: 0 auto; /* 1304px以上で中央寄せ */
   background: var(--color-background);
 }
 
@@ -20,13 +20,12 @@
   background: transparent;
 }
 
-/* レスポンシブデザイン */
-@media (max-width: 768px) {
+/* 982px以下でモバイルレイアウト */
+@media (max-width: 982px) {
   .container {
     flex-direction: column;
-    padding: 0; /* 左右の余白をなくす */
-    gap: 0; /* 要素間の隙間をなくす */
+    padding: 0;
+    gap: 0;
     align-items: center;
-    max-width: 580px; /* モバイル基準の最大幅 */
   }
 }

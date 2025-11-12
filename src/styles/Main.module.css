@@ -63,6 +63,15 @@
   display: none;
 }
 
+/* ナビアイテムコンテナ - ハンバーガーメニューと同じ構造 */
+.navItemsContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin-top: 90px; /* ヘッダーとの間隔を確保 */
+}
+
 /* ナビゲーション左側の黒い縦線 - Vector画像を配置 */
 .navigation::before {
   content: '';
@@ -76,174 +85,6 @@
   background-repeat: repeat-y; /* 縦方向に繰り返し */
   background-position: top;
   z-index: 8;
-}
-
-/* ナビヘッダー */
-.navHeader {
-  width: 100%;
-  height: 79px; /* ハンバーガーメニューと同じ */
-  position: relative;
-  margin-bottom: 0; /* gapで管理するためリセット */
-  padding-bottom: 0; /* 不要なため削除 */
-}
-
-/* ロゴ画像のためのスタイル */
-.navLogo {
-  position: absolute;
-  width: 151px;
-  height: 30px;
-  left: 6px; /* Figma: 29px - padding-left: 23px = 6px */
-  top: 49px; /* Figmaの値を反映 */
-  background-image: url('../assets/images/logo.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  transition: opacity 0.2s;
-}
-
-.navLogo:hover {
-  opacity: 0.8;
-}
-
-.navHeaderTitle {
-  font-family: var(--font-primary);
-  font-style: normal;
-  font-weight: 600;
-  font-size: 12px; /* ハンバーガーメニューと同じ */
-  line-height: 15px; /* ハンバーガーメニューと同じ */
-  color: var(--color-black);
-  position: absolute; /* 絶対配置に変更 */
-  left: 0; /* ハンバーガーメニューと同じ */
-  top: 0; /* ハンバーガーメニューと同じ */
-  width: 216px;
-  height: 9px;
-  margin: 0;
-  transition: color 0.2s;
-}
-
-.navHeaderTitle:hover {
-  color: #555;
-}
-
-.navHeaderSubtitle {
-  font-family: var(--font-primary);
-  font-style: normal;
-  font-weight: 600;
-  font-size: 12px; /* ハンバーガーメニューと同じ */
-  line-height: 15px; /* ハンバーガーメニューと同じ */
-  color: var(--color-black);
-  position: absolute; /* 絶対配置に変更 */
-  left: 163px; /* ハンバーガーメニューと同じ */
-  top: 32px; /* ハンバーガーメニューと同じ */
-  margin-left: 0;
-  transition: color 0.2s;
-}
-
-.navHeaderSubtitle:hover {
-  color: #555;
-}
-
-/* ナビアイテム */
-.navItem {
-  width: 100%;
-  margin-bottom: 15px; /* ハンバーガーメニューと同じ */
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 0px 0px 0px 30px; /* ハンバーガーメニューと同じ */
-  gap: 10px; /* ハンバーガーメニューと同じ */
-  transition: background-color 0.2s;
-  border-radius: 5px;
-}
-
-.navItem:hover {
-  background-color: rgba(0, 0, 0, 0.05);
-}
-
-.navItemHeader {
-  display: flex;
-  align-items: center; /* HamburgerMenuに合わせる */
-  gap: 12px; /* HamburgerMenuに合わせる */
-  margin-bottom: 10px;
-  width: 100%;
-  height: 20px; /* HamburgerMenuに合わせる */
-  flex-wrap: nowrap; /* ハンバーガーメニューと同じ */
-}
-
-.navIcon {
-  width: 26px;
-  height: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  background-color: transparent;
-}
-
-.navTitle {
-  font-family: var(--font-primary);
-  font-style: normal;
-  font-weight: 600;
-  font-size: 16px; /* ハンバーガーメニューと同じ */
-  line-height: 32px; /* ハンバーガーメニューと同じ */
-  color: var(--color-black);
-  /* leading-trim: both; */
-  /* text-edge: cap; */
-  white-space: nowrap; /* 改行を防止 */
-  overflow: hidden; /* はみ出た部分を隠す */
-  text-overflow: ellipsis; /* 省略記号(...)を表示 */
-  transition: color 0.2s;
-}
-
-.navItem:hover .navTitle {
-  color: #555; /* ホバー時の色を少し暗く */
-}
-
-.navSubItems {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 0px 15px 0px 38px; /* ハンバーガーメニューと同じ */
-  gap: 8px; /* ハンバーガーメニューと同じ */
-  width: 100%;
-  box-sizing: border-box; /* ハンバーガーメニューと同じ */
-}
-
-.navSubItem {
-  font-family: var(--font-primary);
-  font-style: normal;
-  font-weight: 600;
-  font-size: 12px; /* ハンバーガーメニューと同じ */
-  line-height: 15px; /* ハンバーガーメニューと同じ */
-  color: var(--color-black);
-  margin-bottom: 0; /* ハンバーガーメニューに合わせてリセット(gapで管理) */
-  /* leading-trim: both; */
-  /* text-edge: cap; */
-  padding: 2px 5px;
-  border-radius: 3px;
-  transition: background-color 0.2s;
-}
-
-.navSubItem:hover {
-  background-color: rgba(0, 0, 0, 0.1);
-}
-
-.navFooter {
-  font-family: var(--font-secondary);
-  font-style: normal;
-  font-weight: 500;
-  font-size: 16px; /* ハンバーガーメニューと同じ */
-  line-height: 23px; /* ハンバーガーメニューと同じ */
-  color: var(--color-black);
-  margin-top: auto;
-  width: 100%;
-  padding: 5px 8px; /* ハンバーガーメニューと同じ */
-  transition: color 0.2s, background-color 0.2s;
-  border-radius: 5px;
-}
-
-.navFooter:hover {
-  color: #555;
-  background-color: rgba(0, 0, 0, 0.05);
 }
 
 /* ハンバーガーメニュー用 */

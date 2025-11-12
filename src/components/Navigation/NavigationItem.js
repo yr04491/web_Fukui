@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from '../../styles/Main.module.css';
 import hamburgerStyles from './HamburgerMenu.module.css';
+import commonStyles from './NavigationCommon.module.css';
 import NavIcon from '../../assets/icons/NavIcon';
 
 /**
@@ -59,19 +60,19 @@ const NavigationItem = ({ title, subItems = [], index, isHamburger = false }) =>
   };
 
   return (
-    <div className={itemStyles.navItem} onClick={handleItemClick} style={{ cursor: 'pointer' }}>
-      <div className={itemStyles.navItemHeader}>
-        <div className={itemStyles.navIcon}>
+    <div className={commonStyles.navItem} onClick={handleItemClick} style={{ cursor: 'pointer' }}>
+      <div className={commonStyles.navItemHeader}>
+        <div className={commonStyles.navIcon}>
           <NavIcon index={index} />
         </div>
-        <div className={itemStyles.navTitle}>{formattedTitle}</div>
+        <div className={commonStyles.navTitle}>{formattedTitle}</div>
       </div>
       {subItems.length > 0 && (
-        <div className={itemStyles.navSubItems}>
+        <div className={commonStyles.navSubItems}>
           {subItems.map((item, idx) => (
             <div 
               key={idx} 
-              className={itemStyles.navSubItem} 
+              className={commonStyles.navSubItem} 
               onClick={handleSubItemClick(item)}
               style={{ cursor: 'pointer' }}
             >

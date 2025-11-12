@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from '../../styles/Main.module.css';
+import commonStyles from './NavigationCommon.module.css';
 import NavigationHeader from './NavigationHeader';
 import NavigationItem from './NavigationItem';
 
@@ -45,18 +46,21 @@ const Navigation = () => {
       {/* ナビゲーションヘッダー */}
       <NavigationHeader isHamburger={false} />
       
-      {/* ナビゲーション項目 */}
-      {navItems.map((item, index) => (
-        <NavigationItem 
-          key={index} 
-          title={item.title} 
-          subItems={item.subItems} 
-          index={index}
-        />
-      ))}
+      {/* ナビゲーション項目を囲むコンテナ - ハンバーガーメニューと同じ構造 */}
+      <div className={styles.navItemsContainer}>
+        {/* ナビゲーション項目 */}
+        {navItems.map((item, index) => (
+          <NavigationItem 
+            key={index} 
+            title={item.title} 
+            subItems={item.subItems} 
+            index={index}
+          />
+        ))}
+      </div>
       
       <div 
-        className={styles.navFooter}
+        className={commonStyles.navFooter}
         onClick={handleFooterClick}
         style={{ cursor: 'pointer' }}
       >

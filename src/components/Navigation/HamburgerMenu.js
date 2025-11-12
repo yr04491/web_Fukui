@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styles from './HamburgerMenu.module.css';
+import commonStyles from './NavigationCommon.module.css';
 import NavigationItem from './NavigationItem';
 import NavigationHeader from './NavigationHeader';
 
@@ -116,7 +117,7 @@ const HamburgerMenu = () => {
         </div>
         
         <div 
-          className={styles.navFooter}
+          className={commonStyles.navFooter}
           onClick={() => console.log("運営/プロジェクトについてがクリックされました")}
           style={{ cursor: 'pointer' }}
         >

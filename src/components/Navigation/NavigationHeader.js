@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from '../../styles/Main.module.css';
 import hamburgerstyles from './HamburgerMenu.module.css';
+import commonStyles from './NavigationCommon.module.css';
 
 // 共通のNavigationHeaderコンポーネント
 const NavigationHeader = ({ isHamburger = false }) => {
@@ -24,9 +25,9 @@ const NavigationHeader = ({ isHamburger = false }) => {
   };
 
   return (
-    <div className={headerStyles.navHeader}>
+    <div className={commonStyles.navHeader}>
       <p 
-        className={headerStyles.navHeaderTitle}
+        className={commonStyles.navHeaderTitle}
         onClick={handleTitleClick}
         style={{ cursor: 'pointer' }}
       >
@@ -34,13 +35,13 @@ const NavigationHeader = ({ isHamburger = false }) => {
       </p>
       
       <div 
-        className={headerStyles.navLogo}
+        className={commonStyles.navLogo}
         onClick={handleLogoClick}
         style={{ cursor: 'pointer' }}
       ></div>
       
       <div 
-        className={headerStyles.navHeaderSubtitle}
+        className={commonStyles.navHeaderSubtitle}
         onClick={handleTitleClick}
         style={{ cursor: 'pointer' }}
       >

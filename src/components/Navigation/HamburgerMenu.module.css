@@ -94,11 +94,13 @@
   isolation: isolate;
   position: fixed;
   top: 0;
-  right: -420px; /* 右側に変更 - 初期状態では画面外に */
+  right: -46.55%; /* 初期状態では画面外に (270/580) */
   height: 100vh;
   transition: right 0.3s ease; /* right プロパティで遷移 */
   z-index: 999;    /* ハンバーガーボタンより少し低く設定 */
-  width: 410px;
+  width: 46.55%; /* 270/580 - モバイル基準 */
+  max-width: 270px; /* 最大幅を制限 */
+  /* min-widthを削除 - 比率を優先 */
   overflow-y: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;

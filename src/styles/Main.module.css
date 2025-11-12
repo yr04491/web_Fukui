@@ -28,12 +28,15 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 32px 30px; /* HamburgerMenuに合わせる */
-  gap: 20px; /* HamburgerMenuに合わせる */
+  padding: 32px 30px;
+  gap: 20px;
   isolation: isolate;
-  width: var(--nav-width);
+  width: 20.70%; /* 270/1304 - デスクトップ基準 */
+  max-width: 270px; /* 最大幅を制限 */
+  /* min-widthを削除 - 比率を優先 */
   height: calc(100vh - 102px);
   max-height: calc(100vh - 102px);
+  min-height: 670px;
   background: var(--color-white);
   border: 2px solid var(--color-black);
   border-radius: var(--radius-l);
@@ -46,7 +49,7 @@
   scrollbar-width: none; /* Firefox用 */
   -ms-overflow-style: none; /* IE/Edge用 */
   position: fixed;
-  left: var(--space-xxl);
+  left: 3.83%; /* 50/1304 - デスクトップ基準の左余白 */
   top: 51px;
 }
 
@@ -61,7 +64,7 @@
   position: absolute;
   width: 17px;
   height: calc(100% - 249px); /* 「みんなで知恵を出し合おう」までの高さに調整 */
-  left: 23px;
+  left: 23px; /* ハンバーガーメニューの-7pxとパディング30pxを考慮して23px */
   top: 149px; /* 99pxから50px下に移動 */
   background-image: url('../assets/images/vector.png');
   background-size: 17px 100%; /* 幅を固定し、高さを100%に拡張 */
@@ -73,7 +76,7 @@
 /* ナビヘッダー */
 .navHeader {
   width: 100%;
-  height: 79px; /* Figmaのレイアウトに合わせ、タイトルとロゴが収まる高さを確保 */
+  height: 79px; /* ハンバーガーメニューと同じ */
   position: relative;
   margin-bottom: 0; /* gapで管理するためリセット */
   padding-bottom: 0; /* 不要なため削除 */
@@ -100,12 +103,12 @@
   font-family: var(--font-primary);
   font-style: normal;
   font-weight: 600;
-  font-size: var(--font-xs);
-  line-height: var(--line-height-s);
+  font-size: 12px; /* ハンバーガーメニューと同じ */
+  line-height: 15px; /* ハンバーガーメニューと同じ */
   color: var(--color-black);
   position: absolute; /* 絶対配置に変更 */
-  left: 0; /* paddingで管理されているため0 */
-  top: 0; /* Figma: 32px - padding-top: 32px = 0 */
+  left: 0; /* ハンバーガーメニューと同じ */
+  top: 0; /* ハンバーガーメニューと同じ */
   width: 216px;
   height: 9px;
   margin: 0;
@@ -120,12 +123,12 @@
   font-family: var(--font-primary);
   font-style: normal;
   font-weight: 600;
-  font-size: var(--font-xs);
-  line-height: var(--line-height-s);
+  font-size: 12px; /* ハンバーガーメニューと同じ */
+  line-height: 15px; /* ハンバーガーメニューと同じ */
   color: var(--color-black);
   position: absolute; /* 絶対配置に変更 */
-  left: 163px; /* Figma: 186px - padding-left: 23px = 163px */
-  top: 32px;  /* Figma: 64px - padding-top: 32px = 32px */
+  left: 163px; /* ハンバーガーメニューと同じ */
+  top: 32px; /* ハンバーガーメニューと同じ */
   margin-left: 0;
   transition: color 0.2s;
 }
@@ -137,12 +140,12 @@
 /* ナビアイテム */
 .navItem {
   width: 100%;
-  margin-bottom: 15px;
+  margin-bottom: 15px; /* ハンバーガーメニューと同じ */
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 0px 0px 0px 30px;
-  gap: 10px;
+  padding: 0px 0px 0px 30px; /* ハンバーガーメニューと同じ */
+  gap: 10px; /* ハンバーガーメニューと同じ */
   transition: background-color 0.2s;
   border-radius: 5px;
 }
@@ -158,7 +161,7 @@
   margin-bottom: 10px;
   width: 100%;
   height: 20px; /* HamburgerMenuに合わせる */
-  flex-wrap: nowrap;
+  flex-wrap: nowrap; /* ハンバーガーメニューと同じ */
 }
 
 .navIcon {
@@ -175,8 +178,8 @@
   font-family: var(--font-primary);
   font-style: normal;
   font-weight: 600;
-  font-size: var(--font-m);
-  line-height: 1.3; /* 行間をより狭くして改行時に自然に見えるよう調整 */
+  font-size: 16px; /* ハンバーガーメニューと同じ */
+  line-height: 32px; /* ハンバーガーメニューと同じ */
   color: var(--color-black);
   /* leading-trim: both; */
   /* text-edge: cap; */
@@ -195,20 +198,20 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 0px 15px 0px 38px; /* HamburgerMenuに合わせる */
-  gap: 8px;
+  padding: 0px 15px 0px 38px; /* ハンバーガーメニューと同じ */
+  gap: 8px; /* ハンバーガーメニューと同じ */
   width: 100%;
-  box-sizing: border-box;
+  box-sizing: border-box; /* ハンバーガーメニューと同じ */
 }
 
 .navSubItem {
   font-family: var(--font-primary);
   font-style: normal;
   font-weight: 600;
-  font-size: var(--font-xs);
-  line-height: var(--line-height-s);
+  font-size: 12px; /* ハンバーガーメニューと同じ */
+  line-height: 15px; /* ハンバーガーメニューと同じ */
   color: var(--color-black);
-  margin-bottom: 8px;
+  margin-bottom: 0; /* ハンバーガーメニューに合わせてリセット(gapで管理) */
   /* leading-trim: both; */
   /* text-edge: cap; */
   padding: 2px 5px;
@@ -224,17 +227,12 @@
   font-family: var(--font-secondary);
   font-style: normal;
   font-weight: 500;
-  font-size: var(--font-m);
-  line-height: var(--line-height-l);
+  font-size: 16px; /* ハンバーガーメニューと同じ */
+  line-height: 23px; /* ハンバーガーメニューと同じ */
   color: var(--color-black);
   margin-top: auto;
   width: 100%;
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  padding: 5px 0;
-  gap: 8px;
-  height: 23px;
+  padding: 5px 8px; /* ハンバーガーメニューと同じ */
   transition: color 0.2s, background-color 0.2s;
   border-radius: 5px;
 }

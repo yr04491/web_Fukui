@@ -6,7 +6,9 @@
   align-items: flex-start;
   padding: 0px;
   gap: var(--space-xl);
-  width: var(--banner-width); /* CSS変数を使用（200px） */
+  width: 15.34%; /* 200/1304 - デスクトップ基準 */
+  max-width: 200px; /* 最大幅を制限 */
+  /* min-widthを削除 - 比率を優先 */
   height: auto;
   min-height: 270px;
   flex: none;
@@ -15,5 +17,5 @@
   z-index: 100;
   position: fixed;
   top: 51px;
-  right: var(--space-xxl);
+  right: 7.67%; /* 100/1304 - デスクトップ基準の右余白 */
 }

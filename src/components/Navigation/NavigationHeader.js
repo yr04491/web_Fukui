@@ -1,15 +1,10 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import styles from '../../styles/Main.module.css';
-import hamburgerstyles from './HamburgerMenu.module.css';
 import commonStyles from './NavigationCommon.module.css';
 
 // 共通のNavigationHeaderコンポーネント
 const NavigationHeader = ({ isHamburger = false }) => {
   const navigate = useNavigate();
-  
-  // ハンバーガーメニューとメインナビで適用するスタイルを分ける
-  const headerStyles = isHamburger ? hamburgerstyles : styles;
 
   // タップ/クリック時の処理
   const handleLogoClick = () => {

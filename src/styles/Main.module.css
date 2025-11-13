@@ -22,6 +22,57 @@
   }
 }
 
+/* 982px以下: ナビ非表示、ハンバーガーメニュー表示、メイン540px中央配置 */
+@media (max-width: 982px) {
+  .container {
+    padding: 0;
+    gap: 0;
+  }
+
+  .mainContent {
+    width: 540px;
+    min-width: 540px;
+    max-width: 540px;
+    margin: 60px auto 0; /* 上60px、左右auto（中央配置） */
+  }
+
+  .hamburgerMenu {
+    display: block;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 101;
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+
+  /* タイトルとロゴの位置調整 */
+  .mainTitle {
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+  }
+  
+  .mainLogo {
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    max-width: 283.5px;
+  }
+}
+
+/* 560px以下: 比率ベース（メイン96.43%、左右余白1.79%ずつ） */
+@media (max-width: 560px) {
+  .mainContent {
+    width: 96.43%;
+    min-width: unset;
+    max-width: 96.43%;
+    margin: 60px 1.79%; /* 上60px、左右1.79% */
+  }
+}
+
 /* ナビゲーション */
 .navigation {
   box-sizing: border-box;
@@ -229,97 +280,4 @@
   background-position: center;
 }
 
-/* レスポンシブデザイン */
-@media (max-width: 768px) {
-  .navigation {
-    position: fixed;
-    top: 0;
-    left: -320px; /* 初期状態では画面外に（幅を広げたため調整） */
-    height: 100vh;
-    transition: left 0.3s ease;
-    z-index: 100;
-    width: 310px; /* 幅を40px広げて文字の重なりと改行を防止 */
-    overflow-y: auto;
-    padding-top: 120px; /* 80pxから110pxに変更（30px下げる） */
-    background-color: #FFFFFF;
-  }
-  
-  .navigationActive {
-    left: 0; /* メニューが開いたとき */
-    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2); /* 開いたときに影を追加してより目立たせる */
-  }
-  
-  .hamburgerMenu {
-    display: block;
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    z-index: 101;
-    background-color: rgba(255, 255, 255, 0.95);
-    padding: 10px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  }
-  
-  .mainContent {
-    width: 100%;
-    min-width: unset;
-    max-width: 100%;
-    margin-top: 60px; /* ハンバーガーメニューのスペース */
-  }
-  
-  /* レスポンシブ対応：タイトルとロゴの位置調整 */
-  .mainTitle {
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80%;
-  }
-  
-  .mainLogo {
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80%;
-    max-width: 283.5px;
-  }
-  
-  .bannerArea {
-    display: none; /* モバイル表示ではバナーを非表示 */
-  }
-  
-  /* モバイル表示時のナビゲーション項目の調整 */
-  .navHeader, .navItem, .navFooter {
-    width: 100%;
-    padding: 5px 0;
-  }
-  
-  .navHeader {
-    margin-top: -30px; /* ヘッダーは元の位置に戻す */
-  }
-  
-  .navHeaderTitle, .navHeaderSubtitle {
-    color: #000000;
-  }
-  
-  .navTitle, .navSubItem {
-    color: #000000;
-  }
-  
-  /* ナビゲーションアイテム間のスペースを確保 */
-  .navItem {
-    margin-bottom: 20px;
-  }
-  
-  /* モバイル表示時のvector.pngの位置調整 */
-  .navigation::before {
-    top: 179px; /* 149px + 30px = 179px */
-  }
-}
-  
-  .navTitle, .navSubItem {
-    color: #000000;
-  }
-  
-  /* ナビゲーションアイテム間のスペースを確保 */
-  .navItem {
-    margin-bottom: 20px;
-  }
+/* 982px以下でナビ非表示（既に上で定義済み） */

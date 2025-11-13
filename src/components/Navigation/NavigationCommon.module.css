@@ -2,7 +2,8 @@
 
 /* ナビアイテム */
 .navItem {
-  width: 100%;
+  width: fit-content; /* 100% → fit-content テキスト幅に合わせる */
+  min-width: 100%; /* 最小幅は親の100%を確保 */
   margin-bottom: 15px;
   display: flex;
   flex-direction: column;
@@ -12,6 +13,7 @@
   transition: background-color 0.2s;
   border-radius: 5px;
   cursor: pointer; /* 全体をクリック可能に */
+  overflow: visible;
 }
 
 .navItem:hover {
@@ -111,7 +113,9 @@
   font-size: 16px;
   line-height: 23px;
   color: var(--color-black);
-  padding: 0px 0px 0px 30px;
+  padding: 0px 0px 0px 0px;
+  text-align: center;
+  width: 100%;
 }
 
 /* 点線 */
@@ -142,6 +146,10 @@
   cursor: pointer;
   transition: color 0.2s, background-color 0.2s;
   border-radius: 5px;
+  white-space: nowrap;
+  width: fit-content;
+  min-width: 100%;
+  overflow: visible;
 }
 
 .searchItem:hover {
@@ -151,7 +159,8 @@
 
 /* ナビフッター */
 .navFooter {
-  width: 100%;
+  width: fit-content; /* 100% → fit-content テキスト幅に合わせる */
+  min-width: 100%; /* 最小幅は親の100%を確保 */
   padding: 5px 8px;
   font-family: var(--font-secondary);
   font-style: normal;
@@ -162,6 +171,8 @@
   margin-top: -30px; /* 0px → -30px navigationのgapを打ち消す */
   transition: color 0.2s, background-color 0.2s;
   border-radius: 5px;
+  white-space: nowrap;
+  overflow: visible;
 }
 
 .navFooter:hover {

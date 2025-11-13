@@ -8,9 +8,10 @@
   flex-direction: column;
   align-items: flex-start;
   padding: 0px 0px 0px 30px;
-  gap: 10px;
+  gap: 5px; /* 10px → 5px に変更 タイトルとサブメニューの間隔を狭める */
   transition: background-color 0.2s;
   border-radius: 5px;
+  cursor: pointer; /* 全体をクリック可能に */
 }
 
 .navItem:hover {
@@ -21,11 +22,12 @@
 .navItemHeader {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px; /* 12px → 8px に変更 */
   margin-bottom: 10px;
   width: 100%;
   height: 20px;
   flex-wrap: nowrap;
+  pointer-events: none; /* ホバー検知を親要素に任せる */
 }
 
 /* ナビアイコン */
@@ -45,7 +47,8 @@
   font-style: normal;
   font-weight: 600;
   font-size: 16px;
-  line-height: 32px;
+  line-height: 28px; /* 32px → 28px に変更 */
+  letter-spacing: 0.05em; /* 追加 */
   color: var(--color-black);
   white-space: nowrap;
   overflow: hidden;
@@ -54,6 +57,7 @@
   transition: color 0.2s;
 }
 
+/* 親要素ホバー時にタイトルの色を変更 */
 .navItem:hover .navTitle {
   color: #555;
 }
@@ -63,10 +67,11 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 0px 15px 0px 38px;
+  padding: 0px 0px 0px 35px; /* 0px 15px 0px 38px → 0px 0px 0px 35px に変更 */
   gap: 8px;
   width: 100%;
   box-sizing: border-box;
+  pointer-events: none; /* ホバー検知を親要素に任せる */
 }
 
 /* サブアイテム */
@@ -82,13 +87,11 @@
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 100%;
-  padding: 2px 5px;
-  border-radius: 3px;
-  transition: background-color 0.2s, color 0.2s;
+  transition: color 0.2s;
 }
 
-.navSubItem:hover {
-  background-color: rgba(0, 0, 0, 0.1);
+/* 親要素ホバー時にサブアイテムの色を変更 */
+.navItem:hover .navSubItem {
   color: #555;
 }
 

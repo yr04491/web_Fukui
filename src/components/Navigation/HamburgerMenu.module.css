@@ -91,8 +91,8 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 32px 30px;
-  gap: 20px;
+  padding: 32px 23px; /* 32px 30px → 32px 23px に変更 */
+  gap: 30px; /* 20px → 30px に変更 */
   isolation: isolate;
   position: fixed;
   top: 0;

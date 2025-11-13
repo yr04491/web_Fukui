@@ -4,11 +4,11 @@
  */
 export const navigationItems = [
   {
-    title: 'まずどうする？',
-    subItems: ['おうちの人が焦らないヒント']
+    title: 'まずは、どうする？',
+    subItems: ['慌てず情報収集。']
   },
   {
-    title: '学校に相談',
+    title: '学校に相談してみよう',
     subItems: ['学校にある支援の種類']
   },
   {

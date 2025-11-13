@@ -105,7 +105,7 @@
   overflow-y: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
-  padding-top: 40px;
+  padding-top: 68px; /* 84px → 60px Main.module 74px→50pxに合わせて24px下げる */
   background-color: #FFFFFF;
   background: var(--color-white);
   border: 2px solid var(--color-black);
@@ -129,7 +129,7 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  margin-top: 90px; /* この行を追加 */
+  margin-top: 54px; /* 90px → 66px Main.module 74px→50pxに合わせて24px下げる */
 }
 
 /* ナビゲーション左側の黒い縦線 - 実際のDOMノードとして追加 */
@@ -137,7 +137,7 @@
   position: absolute;
   width: 17px;
   left: -7px; /* ナビアイテムのpadding-left: 30pxを考慮して調整 */
-  top: 0;
+  top: 0px; /* 0 → 24px Main.module 74px→50pxに合わせて24px下げる */
   background-image: url('../../assets/images/vector.png');
   background-size: 17px 100%;
   background-repeat: repeat-y;

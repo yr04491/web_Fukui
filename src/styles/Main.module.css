@@ -29,12 +29,12 @@
   flex-direction: column;
   align-items: flex-start;
   padding: 32px 23px; /* 32px 30px → 32px 23px に変更 */
-  gap: 30px; /* 20px → 30px に変更 */
+  gap: 30px; /* 0px → 30px 上部の間隔を保つため戻す */
   isolation: isolate;
   width: 270px; /* 固定幅 */
-  height: calc(100vh - 102px);
-  max-height: calc(100vh - 102px);
-  min-height: 670px;
+  height: auto; /* calc(100vh - 102px) → auto 画面サイズに適応 */
+  max-height: calc(100vh - 51px - 20px); /* top(51px) + 下部余白(20px)を引く */
+  min-height: auto; /* 670px → auto 画面サイズに応じて調整 */
   background: var(--color-white);
   border: 2px solid var(--color-black);
   border-radius: var(--radius-l);
@@ -69,7 +69,7 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  margin-top: 90px; /* ヘッダーとの間隔を確保 */
+  margin-top: 50px; /* 90px → 74px: ヘッダー(44px) + gap(30px) = Figma準拠 */
 }
 
 /* ナビゲーション左側の黒い縦線 - Vector画像を配置 */
@@ -77,12 +77,12 @@
   content: '';
   position: absolute;
   width: 17px;
-  height: calc(100% - 249px); /* 「みんなで知恵を出し合おう」までの高さに調整 */
+  height: calc(100% - 210px); /* 「みんなで知恵を出し合おう」までの高さに調整 */
   left: 23px; /* ハンバーガーメニューの-7pxとパディング30pxを考慮して23px */
-  top: 149px; /* 99pxから50px下に移動 */
+  top: 114px; /* 149px → 125px margin-top 74px→50pxに合わせて24px上げる */
   background-image: url('../assets/images/vector.png');
-  background-size: 17px 100%; /* 幅を固定し、高さを100%に拡張 */
-  background-repeat: repeat-y; /* 縦方向に繰り返し */
+  background-size: 17px 100%; /* 幅を固定し、高さを94%に調整 */
+  background-repeat: repeat-y; /* 繰り返しなし */
   background-position: top;
   z-index: 8;
 }

@@ -3,14 +3,20 @@ import styles from '../../styles/Main.module.css';
 import commonStyles from './NavigationCommon.module.css';
 import NavigationHeader from './NavigationHeader';
 import NavigationItem from './NavigationItem';
-import { navigationItems } from '../../data/navigationItems';
+import { navigationItems, searchItems } from '../../data/navigationItems';
 
 // メインの Navigation コンポーネント
 const Navigation = () => {
 
+  // 検索項目クリックハンドラ
+  const handleSearchItemClick = (item) => {
+    console.log(`「${item}」がクリックされました`);
+    // 実際のページ遷移処理
+  };
+
   // フッタークリックハンドラ
   const handleFooterClick = () => {
-    console.log("「運営/プロジェクトについて」がクリックされました");
+    console.log("「プロジェクトと私たちについて」がクリックされました");
     // 運営/プロジェクトページへの遷移処理
     // window.location.href = '/about';
   };
@@ -32,13 +38,30 @@ const Navigation = () => {
           />
         ))}
       </div>
+
+      {/* 探してみようセクション */}
+      <div className={commonStyles.searchSection}>
+        <div className={commonStyles.searchTitle}>探してみよう</div>
+        <div className={commonStyles.dividerLine}></div>
+        <div className={commonStyles.searchItems}>
+          {searchItems.map((item, index) => (
+            <div 
+              key={index}
+              className={commonStyles.searchItem}
+              onClick={() => handleSearchItemClick(item)}
+            >
+              {item}
+            </div>
+          ))}
+        </div>
+      </div>
       
       <div 
         className={commonStyles.navFooter}
         onClick={handleFooterClick}
         style={{ cursor: 'pointer' }}
       >
-        運営/プロジェクトについて
+        プロジェクトと私たちについて
       </div>
     </div>
   );

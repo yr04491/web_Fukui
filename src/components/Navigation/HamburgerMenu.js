@@ -3,7 +3,7 @@ import styles from './HamburgerMenu.module.css';
 import commonStyles from './NavigationCommon.module.css';
 import NavigationItem from './NavigationItem';
 import NavigationHeader from './NavigationHeader';
-import { navigationItems } from '../../data/navigationItems';
+import { navigationItems, searchItems } from '../../data/navigationItems';
 
 // --- Main HamburgerMenu Component ---
 
@@ -104,13 +104,30 @@ const HamburgerMenu = () => {
             />
           ))}
         </div>
+
+        {/* 探してみようセクション */}
+        <div className={commonStyles.searchSection}>
+          <div className={commonStyles.searchTitle}>探してみよう</div>
+          <div className={commonStyles.dividerLine}></div>
+          <div className={commonStyles.searchItems}>
+            {searchItems.map((item, index) => (
+              <div 
+                key={index}
+                className={commonStyles.searchItem}
+                onClick={() => console.log(`「${item}」がクリックされました`)}
+              >
+                {item}
+              </div>
+            ))}
+          </div>
+        </div>
         
         <div 
           className={commonStyles.navFooter}
-          onClick={() => console.log("運営/プロジェクトについてがクリックされました")}
+          onClick={() => console.log("プロジェクトと私たちについてがクリックされました")}
           style={{ cursor: 'pointer' }}
         >
-          運営/プロジェクトについて
+          プロジェクトと私たちについて
         </div>
       </nav>
     </>

@@ -1,52 +1,42 @@
 import React from 'react';
 import styles from './Section02.module.css';
-import dotlineImage from '../../../assets/images/dotline.png';
 import vectorRB from '../../../assets/images/vectorRB.png';
 import roadNumberImage from '../../../assets/icons/02_0.png';
-import TweetCard from '../../common/TweetCard/TweetCard';
+import SectionTitle from '../../common/SectionTitle';
+import ContentFrame from '../../common/ContentFrame';
+import ExperienceSection from '../../common/ExperienceSection';
 
 const Section02 = () => {
   return (
     <div className={styles.section02}>
-      <div className={styles.titleWrapper}>
-        <div className={styles.logoContainer}>
-          <span className={styles.roadText}>ROAD</span>
-          <img src={roadNumberImage} alt="02" className={styles.logoChar} />
-        </div>
-        <h2 className={styles.mainTitle}>行政が行う公的支援</h2>
-        <div className={styles.dotline} style={{ backgroundImage: `url(${dotlineImage})` }}></div>
-      </div>
+      <SectionTitle 
+        roadNumber="02" 
+        title="行政が行う公的支援" 
+        roadNumberImage={roadNumberImage} 
+      />
 
-      <div className={styles.contentFrame}>
-        <h3 className={styles.contentTitle}>公的な支援機関はいくつかあります</h3>
-        <div className={styles.contentText}>
+      <ContentFrame
+        title="公的な支援機関はいくつかあります"
+        buttonElement={
+          <button className={styles.projectButton}>
+            <img src={vectorRB} alt="アイコン" className={styles.playIcon} />
+            <span>相談の窓口などご紹介。福井県内各所、利用しやすいところを選んでください。</span>
+          </button>
+        }
+      >
+        <div className={styles.contentList}>
           <p>◯ちゃれんじ教室</p>
           <p>◯ソーシャルワーカー</p>
           <p>など</p>
         </div>
-        <button className={styles.projectButton}>
-          <img src={vectorRB} alt="アイコン" className={styles.playIcon} />
-          <span>相談の窓口などご紹介。福井県内各所、利用しやすいところを選んでください。</span>
-        </button>
-      </div>
+      </ContentFrame>
 
-      <div className={styles.experienceSection}>
-        <div className={styles.experienceHeader}>
-          <span className={styles.experienceTag}>実際に活用している話を見てみよう！</span>
-          <h3 className={styles.experienceTitle}>公的支援を利用してどうだった？</h3>
-        </div>
-        <div className={styles.tweetArea}>
-          {/* カードID指定でツイートカードを表示 */}
-          <TweetCard cardId={5} />
-          <TweetCard cardId={6} />
-          <TweetCard cardId={1} />
-        </div>
-
-        <button className={styles.moreButton}>
-          <img src={vectorRB} alt="アイコン" className={styles.playIcon} />
-          <span>みんなの体験談をもっと見てみる</span>
-        </button>
-      </div>
+      <ExperienceSection 
+        tag="実際に活用している話を見てみよう！"
+        title="公的支援を利用してどうだった？"
+        tweetCardIds={[5, 6, 1]}
+        moreButtonText="みんなの体験談をもっと見てみる"
+      />
     </div>
   );
 };

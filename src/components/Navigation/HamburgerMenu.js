@@ -3,6 +3,7 @@ import styles from './HamburgerMenu.module.css';
 import commonStyles from './NavigationCommon.module.css';
 import NavigationItem from './NavigationItem';
 import NavigationHeader from './NavigationHeader';
+import { navigationItems } from '../../data/navigationItems';
 
 // --- Main HamburgerMenu Component ---
 
@@ -50,32 +51,20 @@ const HamburgerMenu = () => {
     }
   }, [isOpen]);
 
-  const navigationItems = [
-    {
-      title: "まずどうする？",
-      subItems: ["おうちの人が焦らないヒント"]
-    },
-    {
-      title: "学校に相談",
-      subItems: ["学校にある支援の種類"]
-    },
-    {
-      title: "行政が行う公的支援",
-      subItems: ["公的機関の支援の種類"]
-    },
-    {
-      title: "まだまだある！\nみんなの居場所",
-      subItems: ["こどもの居場所", "保護者の居場所"]
-    },
-    {
-      title: "中学卒業のこと",
-      subItems: ["定時制高校", "通信制高校", "広域通信制サポート校"]
-    },
-    {
-      title: "みんなで知恵を出し合おう！",
-      subItems: ["当事者の体験談", "専門家のQ&A"]
-    }
-  ];
+  // 画面サイズが変更されたらメニューを自動で閉じる
+  useEffect(() => {
+    const handleResize = () => {
+      if (isOpen) {
+        setIsOpen(false);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [isOpen]);
 
   return (
     <>

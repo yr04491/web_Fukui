@@ -1,20 +1,17 @@
 import React from 'react';
 import styles from './Section04.module.css';
-import dotlineImage from '../../../assets/images/dotline.png';
 import roadNumberImage from '../../../assets/icons/04_0.png';
 import PlaceCard from '../../common/PlaceCard/PlaceCard';
+import SectionTitle from '../../common/SectionTitle';
 
 const Section04 = () => {
     return (
         <div className={styles.section04}>
-            <div className={styles.titleWrapper}>
-                <div className={styles.logoContainer}>
-                    <span className={styles.roadText}>ROAD</span>
-                    <img src={roadNumberImage} alt="04" className={styles.logoChar} />
-                </div>
-                <h1 className={styles.mainTitle}>中学卒業後のこと</h1>
-                <div className={styles.dotline} style={{ backgroundImage: `url(${dotlineImage})` }}></div>
-            </div>
+            <SectionTitle 
+                roadNumber="04" 
+                title="中学卒業後のこと" 
+                roadNumberImage={roadNumberImage} 
+            />
 
             {/* 学校・フリースクール紹介セクション */}
             <div className={styles.placeSection}>

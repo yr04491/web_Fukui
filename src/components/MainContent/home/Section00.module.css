@@ -89,42 +89,7 @@
 }
 
 /* コンテンツフレーム */
-.contentFrame {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 24px 20px;
-  gap: 15px; /* 30pxから15pxに減らす */
-  width: 100%;
-  max-width: 500px;
-  background: var(--color-white);
-  border-radius: 10px;
-}
-
-.contentTitle {
-  width: 100%;
-  max-width: 288px;
-  font-family: var(--font-primary);
-  font-style: normal;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 20px; /* 32pxから20pxに減らす */
-  text-align: center;
-  color: var(--color-black);
-  margin-bottom: -5px; /* 下部に負のマージンを追加 */
-}
-
-.contentText {
-  width: 100%;
-  max-width: 460px;
-  font-family: var(--font-primary);
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 28px;
-  letter-spacing: 0.1em;
-  color: var(--color-black);
-}
+/* .contentFrameスタイルは削除 - ContentFrame.module.cssに移動 */
 
 .projectButton {
   box-sizing: border-box;

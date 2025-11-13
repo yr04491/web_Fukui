@@ -1,588 +1,167 @@
-/* main_contents */
+/* navi */
 
-width: 540px;
-height: 1712px;
-
-background: #FFFFFF;
-
-/* オートレイアウト内部 */
-flex: none;
-order: 1;
-flex-grow: 0;
-z-index: 1;
-
-
-/* fotter */
+box-sizing: border-box;
 
 /* オートレイアウト */
 display: flex;
 flex-direction: column;
-align-items: center;
-padding: 60px 30px;
-gap: 8px;
-
-position: absolute;
-width: 540px;
-height: 208.88px;
-left: calc(50% - 540px/2 - 0.09px);
-top: 1503.09px;
-
-background: #EFAB94;
-
-
-/* 当事者たちでつくる、不登校情報サイト */
-
-width: 270px;
-height: 19.88px;
-
-font-family: 'Inter';
-font-style: normal;
-font-weight: 400;
-font-size: 14px;
-line-height: 17px;
-
-color: #FFFFFF;
-
-
-/* オートレイアウト内部 */
-flex: none;
-order: 0;
-flex-grow: 0;
-
-
-/* logo１ 1 */
-
-width: 187px;
-height: 28px;
-
-background: url(logo１.png);
-
-/* オートレイアウト内部 */
-flex: none;
-order: 1;
-flex-grow: 0;
-
-
-/* ・運営について　（ここにフッターメニュー） */
-
-width: 480px;
-height: 25px;
-
-font-family: 'Zen Kaku Gothic New';
-font-style: normal;
-font-weight: 700;
-font-size: 12px;
-line-height: 25px;
-/* ボックスの高さと同一、または208% */
-letter-spacing: -0.05em;
-
-color: #000000;
-
-
-/* オートレイアウト内部 */
-flex: none;
-order: 2;
-flex-grow: 0;
-
-
-/* section_00 */
-
-/* オートレイアウト */
-display: flex;
-flex-direction: column;
-align-items: center;
-padding: 60px 30px 0px;
-gap: 30px;
-
-position: absolute;
-width: 540px;
-height: 711px;
-left: calc(50% - 540px/2 - 0.09px);
-top: 446.09px;
-
-
-
-/* 学校の中にどんな支援があるの？ 支援の種類 */
-
-width: 480px;
-height: 46px;
-
-font-family: 'Zen Kaku Gothic New';
-font-style: normal;
-font-weight: 700;
-font-size: 16px;
-line-height: 23px;
-text-align: center;
-
-color: #000000;
-
-
-/* オートレイアウト内部 */
-flex: none;
-order: 0;
-flex-grow: 0;
-
-
-/* 福井県や各市町が提供している不登校支援には主に以下のものがあります。 ※すべて無料 */
-
-width: 480px;
-height: 50px;
-
-font-family: 'Zen Kaku Gothic New';
-font-style: normal;
-font-weight: 400;
-font-size: 14px;
-line-height: 25px;
-/* または179% */
-letter-spacing: -0.05em;
-
-color: #000000;
-
-
-/* オートレイアウト内部 */
-flex: none;
-order: 1;
-flex-grow: 0;
-
-
-/* 引用１ */
-
-/* オートレイアウト */
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-padding: 10px;
-gap: 10px;
-
-width: 480px;
-height: 115px;
-
-border: 1px dashed #000000;
-border-radius: 10px;
-
-/* オートレイアウト内部 */
-flex: none;
-order: 2;
-align-self: stretch;
-flex-grow: 0;
-
-
-/* スクールカウンセラーの紹介 */
-
-width: 460px;
-height: 25px;
-
-font-family: 'Zen Kaku Gothic New';
-font-style: normal;
-font-weight: 500;
-font-size: 14px;
-line-height: 25px;
-/* ボックスの高さと同一、または179% */
-letter-spacing: -0.05em;
-
-color: #000000;
-
-
-/* オートレイアウト内部 */
-flex: none;
-order: 0;
-align-self: stretch;
-flex-grow: 0;
-
-
-/* 悩みを聞く専門家であるカウンセラーが、児童生徒の悩みや思いを聞いたり、ア ドバイスしたりします。先生には言えない（言いにくい）ことも話せます。 保護者も相談できます。 ※相談依頼は、各学校へお問い合わせください。 */
-
-width: 460px;
-height: 60px;
-
-font-family: 'Zen Kaku Gothic New';
-font-style: normal;
-font-weight: 400;
-font-size: 12px;
-line-height: 20px;
-/* または167% */
-letter-spacing: -0.05em;
-
-color: #000000;
-
-
-/* オートレイアウト内部 */
-flex: none;
-order: 1;
-align-self: stretch;
-flex-grow: 0;
-
-
-/* 引用１ */
-
-/* オートレイアウト */
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-padding: 10px;
-gap: 10px;
-
-width: 480px;
-height: 125px;
-
-border: 1px dashed #000000;
-border-radius: 10px;
-
-/* オートレイアウト内部 */
-flex: none;
-order: 3;
-align-self: stretch;
-flex-grow: 0;
-
-
-/* 校内サポートルーム */
-
-width: 460px;
-height: 25px;
-
-font-family: 'Zen Kaku Gothic New';
-font-style: normal;
-font-weight: 500;
-font-size: 14px;
-line-height: 25px;
-/* ボックスの高さと同一、または179% */
-letter-spacing: -0.05em;
-
-color: #000000;
-
-
-/* オートレイアウト内部 */
-flex: none;
-order: 0;
-align-self: stretch;
-flex-grow: 0;
-
-
-/* 県内５０校に設置　詳しくはどこにかいてあるのかな？ */
-
-width: 460px;
-height: 20px;
-
-font-family: 'Zen Kaku Gothic New';
-font-style: normal;
-font-weight: 400;
-font-size: 12px;
-line-height: 20px;
-/* ボックスの高さと同一、または167% */
-letter-spacing: -0.05em;
-
-color: #000000;
-
-
-/* オートレイアウト内部 */
-flex: none;
-order: 1;
-align-self: stretch;
-flex-grow: 0;
-
-
-/* btn_project */
-
-/* オートレイアウト */
-display: flex;
-flex-direction: row;
-justify-content: center;
-align-items: center;
-padding: 5px 10px;
-gap: 10px;
-
-width: 223px;
-max-width: 280px;
-height: 40px;
-
-background: rgba(163, 208, 250, 0.46);
-border-radius: 5px;
-
-/* オートレイアウト内部 */
-flex: none;
-order: 2;
-flex-grow: 0;
-
-
-/* note */
-
-width: 32px;
-height: 30px;
-
-background: url(yubi.png);
-
-/* オートレイアウト内部 */
-flex: none;
-order: 0;
-flex-grow: 0;
-
-
-/* 校内サポートルーム情報を見る */
-
-width: 161px;
-height: 20px;
-
-font-family: 'Zen Kaku Gothic New';
-font-style: normal;
-font-weight: 700;
-font-size: 12px;
-line-height: 20px;
-/* ボックスの高さと同一、または167% */
-letter-spacing: -0.05em;
-
-color: #000000;
-
-
-/* オートレイアウト内部 */
-flex: none;
-order: 1;
-flex-grow: 1;
-
-
-/* 引用１ */
-
-/* オートレイアウト */
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-padding: 10px;
-gap: 10px;
-
-width: 480px;
-height: 125px;
-
-border: 1px dashed #000000;
-border-radius: 10px;
-
-/* オートレイアウト内部 */
-flex: none;
-order: 4;
-align-self: stretch;
-flex-grow: 0;
-
-
-/* ライフパートナー制度 */
-
-width: 460px;
-height: 25px;
-
-font-family: 'Zen Kaku Gothic New';
-font-style: normal;
-font-weight: 500;
-font-size: 14px;
-line-height: 25px;
-/* ボックスの高さと同一、または179% */
-letter-spacing: -0.05em;
-
-color: #000000;
-
-
-/* オートレイアウト内部 */
-flex: none;
-order: 0;
-align-self: stretch;
-flex-grow: 0;
-
-
-/* 大学生が一人ひとりをサポートしてくれる　詳しくはこちら（リンクはないのか？） */
-
-width: 460px;
-height: 20px;
-
-font-family: 'Zen Kaku Gothic New';
-font-style: normal;
-font-weight: 400;
-font-size: 12px;
-line-height: 20px;
-/* ボックスの高さと同一、または167% */
-letter-spacing: -0.05em;
-
-color: #000000;
-
-
-/* オートレイアウト内部 */
-flex: none;
-order: 1;
-align-self: stretch;
-flex-grow: 0;
-
-
-/* btn_project */
-
-/* オートレイアウト */
-display: flex;
-flex-direction: row;
-justify-content: center;
-align-items: center;
-padding: 5px 10px;
-gap: 10px;
-
-width: 245px;
-max-width: 280px;
-height: 40px;
-
-background: rgba(163, 208, 250, 0.46);
-border-radius: 5px;
-
-/* オートレイアウト内部 */
-flex: none;
-order: 2;
-flex-grow: 0;
-
-
-/* note */
-
-width: 32px;
-height: 30px;
-
-background: url(yubi.png);
-
-/* オートレイアウト内部 */
-flex: none;
-order: 0;
-flex-grow: 0;
-
-
-/* ライフパートナー制度の情報を見る */
-
-width: 183px;
-height: 20px;
-
-font-family: 'Zen Kaku Gothic New';
-font-style: normal;
-font-weight: 700;
-font-size: 12px;
-line-height: 20px;
-/* ボックスの高さと同一、または167% */
-letter-spacing: -0.05em;
-
-color: #000000;
-
-
-/* オートレイアウト内部 */
-flex: none;
-order: 1;
-flex-grow: 1;
-
-
-/* btn_project */
-
-/* オートレイアウト */
-display: flex;
-flex-direction: row;
-justify-content: center;
-align-items: center;
-padding: 5px 10px;
-gap: 10px;
-
-width: 166px;
-max-width: 280px;
-height: 40px;
-
-background: #A3D0FA;
-border-radius: 5px;
-
-/* オートレイアウト内部 */
-flex: none;
-order: 5;
-flex-grow: 0;
-
-
-/* note */
-
-width: 32px;
-height: 30px;
-
-background: url(yubi.png);
-
-/* オートレイアウト内部 */
-flex: none;
-order: 0;
-flex-grow: 0;
-
-
-/* 体験談をみてみよう */
-
-width: 104px;
-height: 20px;
-
-font-family: 'Zen Kaku Gothic New';
-font-style: normal;
-font-weight: 700;
-font-size: 12px;
-line-height: 20px;
-/* ボックスの高さと同一、または167% */
-letter-spacing: -0.05em;
-
-color: #000000;
-
-
-/* オートレイアウト内部 */
-flex: none;
-order: 1;
-flex-grow: 1;
-
-
-/* section_02 */
-
-/* オートレイアウト */
-display: flex;
-flex-direction: column;
-align-items: center;
-padding: 60px 30px;
+align-items: flex-start;
+padding: 32px 23px;
 gap: 30px;
 isolation: isolate;
 
-position: absolute;
-width: 540px;
-height: 538px;
-left: calc(50% - 540px/2 - 0.91px);
-top: 0.09px;
+width: 270px;
+height: 793px;
 
-
-
-/* H1 02 */
-
-/* オートレイアウト */
-display: flex;
-flex-direction: row;
-justify-content: space-between;
-align-items: center;
-padding: 0px 0px 0px 20px;
-
-width: 480px;
-height: 27px;
-
+background: #FFFFFF;
+border: 2px solid #000000;
+border-radius: 20px;
 
 /* オートレイアウト内部 */
 flex: none;
 order: 0;
-align-self: stretch;
 flex-grow: 0;
 z-index: 0;
 
 
-/* 02 */
+/* Group 7 */
 
-margin: 0 auto;
-width: 64px;
-height: 27px;
+width: 216px;
+height: 44px;
 
-font-family: 'Oswald';
+
+/* オートレイアウト内部 */
+flex: none;
+order: 0;
+flex-grow: 0;
+z-index: 0;
+
+
+/* ⁨当事者たちでつくる、不登校情報サイト */
+
+position: absolute;
+width: 216px;
+height: 9px;
+left: 23px;
+top: 32px;
+
+/* tag
+
+ハッシュタグ
+*/
+font-family: 'DNP ShueiGoKinStd';
 font-style: normal;
-font-weight: 400;
-font-size: 48px;
-line-height: 25px;
-/* または52% */
-letter-spacing: -0.05em;
+font-weight: 600;
+font-size: 12px;
+line-height: 15px;
+/* または125% */
+/* leading-trim and text-edge are draft CSS properties.
 
-color: rgba(255, 255, 255, 0.75);
+Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
+*/
+leading-trim: both;
+text-edge: cap;
 
-border: 1px solid #000000;
-text-shadow: 3px 3px 0px #88D3BC;
+color: #000000;
+
+
+
+/* Group 6 */
+
+position: absolute;
+width: 205px;
+height: 30px;
+left: 29px;
+top: 46px;
+
+
+
+/*  logo 1 */
+
+position: absolute;
+width: 151px;
+height: 30px;
+left: 29px;
+top: 46px;
+
+background: url( logo.png);
+
+
+/* ⁨福井県版 */
+
+position: absolute;
+width: 48px;
+height: 9px;
+left: 186px;
+top: 61px;
+
+/* tag
+
+ハッシュタグ
+*/
+font-family: 'DNP ShueiGoKinStd';
+font-style: normal;
+font-weight: 600;
+font-size: 12px;
+line-height: 15px;
+/* または125% */
+/* leading-trim and text-edge are draft CSS properties.
+
+Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
+*/
+leading-trim: both;
+text-edge: cap;
+
+color: #000000;
+
+
+
+/* 00 */
+
+/* オートレイアウト */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px 0px 0px 30px;
+gap: 10px;
+
+width: 224px;
+height: 39px;
+
+
+/* オートレイアウト内部 */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+z-index: 1;
+
+
+/* Title */
+
+/* オートレイアウト */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 8px;
+
+width: 194px;
+height: 20px;
+
+
+/* オートレイアウト内部 */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* _レイヤー_1 */
+
+width: 26px;
+height: 20px;
+
 
 /* オートレイアウト内部 */
 flex: none;
@@ -590,44 +169,50 @@ order: 0;
 flex-grow: 0;
 
 
-/* 行政が行う公的支援 */
+/* Vector */
 
-margin: 0 auto;
-width: 394px;
-height: 27px;
+position: absolute;
+left: 0%;
+right: 50.98%;
+top: 0%;
+bottom: 0%;
 
-/* zenkaku25
+background: #000000;
 
-H1
+
+/* Vector */
+
+position: absolute;
+left: 50.98%;
+right: 0%;
+top: 0.04%;
+bottom: 0%;
+
+background: #000000;
+
+
+/* まずは、どうする？ */
+
+width: 151px;
+height: 12px;
+
+/* h3_見出し
+
+h3
 */
-font-family: 'Zen Kaku Gothic New';
+font-family: 'DNP ShueiGoKinStd';
 font-style: normal;
-font-weight: 500;
-font-size: 25px;
-line-height: 36px;
-display: flex;
-align-items: center;
-
-color: #000000;
-
-
-/* オートレイアウト内部 */
-flex: none;
-order: 1;
-flex-grow: 0;
-
-
-/* 　学校以外で支援や相談に乗ってくれるところです。 まずは各窓口へ。※すべて無料 */
-
-width: 480px;
-height: 46px;
-
-font-family: 'Zen Kaku Gothic New';
-font-style: normal;
-font-weight: 700;
+font-weight: 600;
 font-size: 16px;
-line-height: 23px;
-text-align: center;
+line-height: 28px;
+/* または175% */
+/* leading-trim and text-edge are draft CSS properties.
+
+Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
+*/
+leading-trim: both;
+text-edge: cap;
+letter-spacing: 0.05em;
 
 color: #000000;
 
@@ -636,24 +221,70 @@ color: #000000;
 flex: none;
 order: 1;
 flex-grow: 0;
-z-index: 1;
 
 
-/* 引用１ */
+/* menu */
 
 /* オートレイアウト */
 display: flex;
 flex-direction: column;
-justify-content: center;
-align-items: center;
-padding: 10px;
+align-items: flex-start;
+padding: 0px 0px 0px 35px;
+gap: 8px;
+
+width: 131px;
+height: 9px;
+
+
+/* オートレイアウト内部 */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* 慌てず情報収集。 */
+
+width: 96px;
+height: 9px;
+
+/* tag
+
+ハッシュタグ
+*/
+font-family: 'DNP ShueiGoKinStd';
+font-style: normal;
+font-weight: 600;
+font-size: 12px;
+line-height: 15px;
+/* または125% */
+/* leading-trim and text-edge are draft CSS properties.
+
+Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
+*/
+leading-trim: both;
+text-edge: cap;
+
+color: #000000;
+
+
+/* オートレイアウト内部 */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* 1 */
+
+/* オートレイアウト */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px 0px 0px 30px;
 gap: 10px;
 
-width: 480px;
-height: 125px;
+width: 224px;
+height: 39px;
 
-border: 1px dashed #000000;
-border-radius: 10px;
 
 /* オートレイアウト内部 */
 flex: none;
@@ -663,81 +294,31 @@ flex-grow: 0;
 z-index: 2;
 
 
-/* チャレンジきょうしつ */
-
-width: 460px;
-height: 25px;
-
-font-family: 'Zen Kaku Gothic New';
-font-style: normal;
-font-weight: 500;
-font-size: 14px;
-line-height: 25px;
-/* ボックスの高さと同一、または179% */
-letter-spacing: -0.05em;
-
-color: #000000;
-
-
-/* オートレイアウト内部 */
-flex: none;
-order: 0;
-align-self: stretch;
-flex-grow: 0;
-
-
-/* 県内５０校に設置　詳しくはどこにかいてあるのかな？ */
-
-width: 460px;
-height: 20px;
-
-font-family: 'Zen Kaku Gothic New';
-font-style: normal;
-font-weight: 400;
-font-size: 12px;
-line-height: 20px;
-/* ボックスの高さと同一、または167% */
-letter-spacing: -0.05em;
-
-color: #000000;
-
-
-/* オートレイアウト内部 */
-flex: none;
-order: 1;
-align-self: stretch;
-flex-grow: 0;
-
-
-/* btn_project */
+/* Title */
 
 /* オートレイアウト */
 display: flex;
 flex-direction: row;
-justify-content: center;
 align-items: center;
-padding: 5px 10px;
-gap: 10px;
+padding: 0px;
+gap: 8px;
 
-width: 211px;
-max-width: 280px;
-height: 40px;
+width: 194px;
+height: 20px;
 
-background: rgba(136, 211, 188, 0.52);
-border-radius: 5px;
 
 /* オートレイアウト内部 */
 flex: none;
-order: 2;
+order: 0;
+align-self: stretch;
 flex-grow: 0;
 
 
-/* note */
+/* _レイヤー_1 */
 
-width: 32px;
-height: 30px;
+width: 26px;
+height: 20px;
 
-background: url(yubi.png);
 
 /* オートレイアウト内部 */
 flex: none;
@@ -745,18 +326,50 @@ order: 0;
 flex-grow: 0;
 
 
-/* チャレンジ教室の情報を見る */
+/* Vector */
 
-width: 149px;
-height: 20px;
+position: absolute;
+left: 0%;
+right: 52.08%;
+top: 7.73%;
+bottom: 0%;
 
-font-family: 'Zen Kaku Gothic New';
+background: #000000;
+
+
+/* Vector */
+
+position: absolute;
+left: 45.52%;
+right: 0%;
+top: 0%;
+bottom: 1.36%;
+
+background: #000000;
+
+
+/* 学校に相談してみよう */
+
+width: 168px;
+height: 12px;
+
+/* h3_見出し
+
+h3
+*/
+font-family: 'DNP ShueiGoKinStd';
 font-style: normal;
-font-weight: 700;
-font-size: 12px;
-line-height: 20px;
-/* ボックスの高さと同一、または167% */
-letter-spacing: -0.05em;
+font-weight: 600;
+font-size: 16px;
+line-height: 28px;
+/* または175% */
+/* leading-trim and text-edge are draft CSS properties.
+
+Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
+*/
+leading-trim: both;
+text-edge: cap;
+letter-spacing: 0.05em;
 
 color: #000000;
 
@@ -764,62 +377,105 @@ color: #000000;
 /* オートレイアウト内部 */
 flex: none;
 order: 1;
-flex-grow: 1;
+flex-grow: 0;
 
 
-/* ◯ちゃれんじ教室 ◯ソーシャルワーカー　など */
+/* menu */
 
-width: 480px;
-height: 50px;
+/* オートレイアウト */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px 0px 0px 35px;
+gap: 8px;
 
-font-family: 'Zen Kaku Gothic New';
+width: 155px;
+height: 9px;
+
+
+/* オートレイアウト内部 */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* 学校にある支援の種類 */
+
+width: 120px;
+height: 9px;
+
+/* tag
+
+ハッシュタグ
+*/
+font-family: 'DNP ShueiGoKinStd';
 font-style: normal;
-font-weight: 400;
-font-size: 14px;
-line-height: 25px;
-/* または179% */
-letter-spacing: -0.05em;
+font-weight: 600;
+font-size: 12px;
+line-height: 15px;
+/* または125% */
+/* leading-trim and text-edge are draft CSS properties.
+
+Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
+*/
+leading-trim: both;
+text-edge: cap;
 
 color: #000000;
+
+
+/* オートレイアウト内部 */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* 2 */
+
+/* オートレイアウト */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px 0px 0px 30px;
+gap: 10px;
+
+width: 224px;
+height: 39px;
 
 
 /* オートレイアウト内部 */
 flex: none;
 order: 3;
+align-self: stretch;
 flex-grow: 0;
 z-index: 3;
 
 
-/* btn_project */
+/* Title */
 
 /* オートレイアウト */
 display: flex;
 flex-direction: row;
-justify-content: center;
 align-items: center;
-padding: 5px 10px;
-gap: 10px;
+padding: 0px;
+gap: 8px;
 
-width: 280px;
-max-width: 280px;
-height: 50px;
+width: 194px;
+height: 20px;
 
-background: #88D3BC;
-border-radius: 5px;
 
 /* オートレイアウト内部 */
 flex: none;
-order: 4;
+order: 0;
+align-self: stretch;
 flex-grow: 0;
-z-index: 4;
 
 
-/* note */
+/* _レイヤー_1 */
 
-width: 32px;
-height: 30px;
+width: 26px;
+height: 20px;
 
-background: url(yubi.png);
 
 /* オートレイアウト内部 */
 flex: none;
@@ -827,18 +483,50 @@ order: 0;
 flex-grow: 0;
 
 
-/* 窓口の紹介です。嶺南にもあるので、 利用しやすいところ選んでください。 */
+/* Vector */
 
-width: 218px;
-height: 40px;
+position: absolute;
+left: 0%;
+right: 50.8%;
+top: 7.17%;
+bottom: 0%;
 
-font-family: 'Zen Kaku Gothic New';
+background: #000000;
+
+
+/* Vector */
+
+position: absolute;
+left: 46.73%;
+right: 0%;
+top: 0.04%;
+bottom: 1.71%;
+
+background: #000000;
+
+
+/* 行政が行う公的支援 */
+
+width: 151px;
+height: 12px;
+
+/* h3_見出し
+
+h3
+*/
+font-family: 'DNP ShueiGoKinStd';
 font-style: normal;
-font-weight: 700;
-font-size: 12px;
-line-height: 20px;
-/* または167% */
-letter-spacing: -0.05em;
+font-weight: 600;
+font-size: 16px;
+line-height: 28px;
+/* または175% */
+/* leading-trim and text-edge are draft CSS properties.
+
+Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
+*/
+leading-trim: both;
+text-edge: cap;
+letter-spacing: 0.05em;
 
 color: #000000;
 
@@ -846,86 +534,847 @@ color: #000000;
 /* オートレイアウト内部 */
 flex: none;
 order: 1;
-flex-grow: 1;
+flex-grow: 0;
 
 
-/* color_navi */
+/* menu */
+
+/* オートレイアウト */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px 0px 0px 35px;
+gap: 8px;
+
+width: 155px;
+height: 9px;
+
+
+/* オートレイアウト内部 */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* 公的機関の支援の種類 */
+
+width: 120px;
+height: 9px;
+
+/* tag
+
+ハッシュタグ
+*/
+font-family: 'DNP ShueiGoKinStd';
+font-style: normal;
+font-weight: 600;
+font-size: 12px;
+line-height: 15px;
+/* または125% */
+/* leading-trim and text-edge are draft CSS properties.
+
+Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
+*/
+leading-trim: both;
+text-edge: cap;
+
+color: #000000;
+
+
+/* オートレイアウト内部 */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* 3 */
+
+/* オートレイアウト */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px 0px 0px 30px;
+gap: 10px;
+
+width: 224px;
+height: 68px;
+
+
+/* オートレイアウト内部 */
+flex: none;
+order: 4;
+align-self: stretch;
+flex-grow: 0;
+z-index: 4;
+
+
+/* Title */
+
+/* オートレイアウト */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 8px;
+
+width: 194px;
+height: 32px;
+
+
+/* オートレイアウト内部 */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* _レイヤー_1 */
+
+width: 26px;
+height: 20px;
+
+
+/* オートレイアウト内部 */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Vector */
 
 position: absolute;
-width: 22.71px;
-height: 92.11px;
-left: 19px;
-top: 26px;
+left: 0.04%;
+right: 50.04%;
+top: 5.65%;
+bottom: 0.5%;
+
+background: #000000;
+
+
+/* Vector */
+
+position: absolute;
+left: 48.58%;
+right: 0%;
+top: -0.05%;
+bottom: 0.1%;
+
+background: #000000;
+
+
+/* まだまだある！ みんなの居場所 */
+
+width: 112px;
+height: 32px;
+
+/* navi_title
+
+ナビのタイトル
+*/
+font-family: 'DNP ShueiGoKinStd';
+font-style: normal;
+font-weight: 600;
+font-size: 16px;
+line-height: 20px;
+/* または125% */
+/* leading-trim and text-edge are draft CSS properties.
+
+Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
+*/
+leading-trim: both;
+text-edge: cap;
+
+color: #000000;
+
+
+/* オートレイアウト内部 */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* menu */
+
+/* オートレイアウト */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px 0px 0px 35px;
+gap: 8px;
+
+width: 119px;
+height: 26px;
+
+
+/* オートレイアウト内部 */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* ⁨⁩こどもの居場所 */
+
+width: 84px;
+height: 9px;
+
+/* tag
+
+ハッシュタグ
+*/
+font-family: 'DNP ShueiGoKinStd';
+font-style: normal;
+font-weight: 600;
+font-size: 12px;
+line-height: 15px;
+/* または125% */
+/* leading-trim and text-edge are draft CSS properties.
+
+Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
+*/
+leading-trim: both;
+text-edge: cap;
+
+color: #000000;
+
+
+/* オートレイアウト内部 */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* 保護者の居場所 */
+
+width: 84px;
+height: 9px;
+
+/* tag
+
+ハッシュタグ
+*/
+font-family: 'DNP ShueiGoKinStd';
+font-style: normal;
+font-weight: 600;
+font-size: 12px;
+line-height: 15px;
+/* または125% */
+/* leading-trim and text-edge are draft CSS properties.
+
+Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
+*/
+leading-trim: both;
+text-edge: cap;
+
+color: #000000;
+
+
+/* オートレイアウト内部 */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* 4 */
+
+/* オートレイアウト */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px 0px 0px 30px;
+gap: 10px;
+
+width: 224px;
+height: 51px;
 
 
 /* オートレイアウト内部 */
 flex: none;
 order: 5;
+align-self: stretch;
 flex-grow: 0;
 z-index: 5;
 
 
-/* Vector */
+/* Title */
 
-position: absolute;
-left: 0%;
-right: 44.08%;
-top: 2.17%;
-bottom: 84.04%;
+/* オートレイアウト */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 8px;
 
-background: #FDF9D5;
-
-
-/* Vector */
-
-position: absolute;
-left: 0%;
-right: 44.08%;
-top: 18.46%;
-bottom: 67.76%;
-
-background: #A3D0FA;
+width: 194px;
+height: 32px;
 
 
-/* Vector */
-
-position: absolute;
-left: 44.03%;
-right: 0.04%;
-top: 34.74%;
-bottom: 51.47%;
-
-background: #88D3BC;
+/* オートレイアウト内部 */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
 
 
-/* Vector */
+/* _レイヤー_1 */
 
-position: absolute;
-left: 0%;
-right: 44.08%;
-top: 51.03%;
-bottom: 35.19%;
+width: 26px;
+height: 20px;
 
-background: #F4BED3;
+
+/* オートレイアウト内部 */
+flex: none;
+order: 0;
+flex-grow: 0;
 
 
 /* Vector */
 
 position: absolute;
 left: 0%;
-right: 44.08%;
-top: 67.31%;
-bottom: 18.9%;
+right: 51.87%;
+top: 6.75%;
+bottom: 0%;
 
-background: #EFAB94;
+background: #000000;
+
+
+/* Vector */
+
+position: absolute;
+left: 46.85%;
+right: 0%;
+top: 0.04%;
+bottom: 3.7%;
+
+background: #000000;
+
+
+/* インタビュー 不登校とぼくら */
+
+width: 112px;
+height: 32px;
+
+/* navi_title
+
+ナビのタイトル
+*/
+font-family: 'DNP ShueiGoKinStd';
+font-style: normal;
+font-weight: 600;
+font-size: 16px;
+line-height: 20px;
+/* または125% */
+/* leading-trim and text-edge are draft CSS properties.
+
+Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
+*/
+leading-trim: both;
+text-edge: cap;
+
+color: #000000;
+
+
+/* オートレイアウト内部 */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* menu */
+
+/* オートレイアウト */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px 0px 0px 35px;
+gap: 8px;
+
+width: 179px;
+height: 9px;
+
+
+/* オートレイアウト内部 */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* ⁨⁩当事者の声を聞いてみよう */
+
+width: 144px;
+height: 9px;
+
+/* tag
+
+ハッシュタグ
+*/
+font-family: 'DNP ShueiGoKinStd';
+font-style: normal;
+font-weight: 600;
+font-size: 12px;
+line-height: 15px;
+/* または125% */
+/* leading-trim and text-edge are draft CSS properties.
+
+Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
+*/
+leading-trim: both;
+text-edge: cap;
+
+color: #000000;
+
+
+/* オートレイアウト内部 */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* 5 */
+
+/* オートレイアウト */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px 0px 0px 30px;
+gap: 10px;
+
+width: 224px;
+height: 39px;
+
+
+/* オートレイアウト内部 */
+flex: none;
+order: 6;
+align-self: stretch;
+flex-grow: 0;
+z-index: 6;
+
+
+/* Title */
+
+/* オートレイアウト */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 8px;
+
+width: 194px;
+height: 20px;
+
+
+/* オートレイアウト内部 */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* _レイヤー_1 */
+
+width: 26px;
+height: 20px;
+
+
+/* オートレイアウト内部 */
+flex: none;
+order: 0;
+flex-grow: 0;
 
 
 /* Vector */
 
 position: absolute;
 left: 0%;
-right: 44.08%;
-top: 83.6%;
-bottom: 2.62%;
+right: 54.47%;
+top: 3.17%;
+bottom: -0.04%;
 
-background: #B695CE;
+background: #000000;
+
+
+/* Vector */
+
+position: absolute;
+left: 42.71%;
+right: 0.03%;
+top: -0.04%;
+bottom: -0.04%;
+
+background: #000000;
+
+
+/* 中学卒業のこと */
+
+width: 112px;
+height: 12px;
+
+/* navi_title
+
+ナビのタイトル
+*/
+font-family: 'DNP ShueiGoKinStd';
+font-style: normal;
+font-weight: 600;
+font-size: 16px;
+line-height: 20px;
+/* または125% */
+/* leading-trim and text-edge are draft CSS properties.
+
+Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
+*/
+leading-trim: both;
+text-edge: cap;
+
+color: #000000;
+
+
+/* オートレイアウト内部 */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* menu */
+
+/* オートレイアウト */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px 0px 0px 35px;
+gap: 8px;
+
+width: 143px;
+height: 9px;
+
+
+/* オートレイアウト内部 */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* 義務教育後の選択肢 */
+
+width: 108px;
+height: 9px;
+
+/* tag
+
+ハッシュタグ
+*/
+font-family: 'DNP ShueiGoKinStd';
+font-style: normal;
+font-weight: 600;
+font-size: 12px;
+line-height: 15px;
+/* または125% */
+/* leading-trim and text-edge are draft CSS properties.
+
+Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
+*/
+leading-trim: both;
+text-edge: cap;
+
+color: #000000;
+
+
+/* オートレイアウト内部 */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* navi_menu */
+
+/* オートレイアウト */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+gap: 10px;
+
+width: 224px;
+height: 200px;
+
+
+/* オートレイアウト内部 */
+flex: none;
+order: 7;
+align-self: stretch;
+flex-grow: 0;
+z-index: 7;
+
+
+/* title */
+
+/* オートレイアウト */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: flex-start;
+padding: 0px;
+gap: 8px;
+
+width: 224px;
+height: 23px;
+
+
+/* オートレイアウト内部 */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* 探してみよう */
+
+width: 96px;
+height: 23px;
+
+font-family: 'Zen Kaku Gothic New';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 23px;
+
+color: #000000;
+
+
+/* オートレイアウト内部 */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Vector 1 */
+
+width: 224px;
+height: 0px;
+
+border: 2px dashed #000000;
+transform: rotate(0.51deg);
+
+/* オートレイアウト内部 */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* title */
+
+/* オートレイアウト */
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 0px;
+gap: 8px;
+
+width: 224px;
+height: 23px;
+
+
+/* オートレイアウト内部 */
+flex: none;
+order: 2;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* ◯体験談を探す */
+
+width: 112px;
+height: 23px;
+
+font-family: 'Zen Kaku Gothic New';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 23px;
+
+color: #000000;
+
+
+/* オートレイアウト内部 */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* title */
+
+/* オートレイアウト */
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 0px;
+gap: 8px;
+
+width: 224px;
+height: 23px;
+
+
+/* オートレイアウト内部 */
+flex: none;
+order: 3;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* ◯居場所を探す */
+
+width: 112px;
+height: 23px;
+
+font-family: 'Zen Kaku Gothic New';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 23px;
+
+color: #000000;
+
+
+/* オートレイアウト内部 */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* title */
+
+/* オートレイアウト */
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 0px;
+gap: 8px;
+
+width: 224px;
+height: 23px;
+
+
+/* オートレイアウト内部 */
+flex: none;
+order: 4;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* ◯卒業後の進路を探す */
+
+width: 160px;
+height: 23px;
+
+font-family: 'Zen Kaku Gothic New';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 23px;
+
+color: #000000;
+
+
+/* オートレイアウト内部 */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* title */
+
+/* オートレイアウト */
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 0px;
+gap: 8px;
+
+width: 224px;
+height: 23px;
+
+
+/* オートレイアウト内部 */
+flex: none;
+order: 5;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* ◯学校・行政・医療情報の一覧 */
+
+width: 224px;
+height: 23px;
+
+font-family: 'Zen Kaku Gothic New';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 23px;
+
+color: #000000;
+
+
+/* オートレイアウト内部 */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* title */
+
+/* オートレイアウト */
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 0px;
+gap: 8px;
+
+width: 224px;
+height: 23px;
+
+
+/* オートレイアウト内部 */
+flex: none;
+order: 6;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* プロジェクトと私たちについて */
+
+width: 224px;
+height: 23px;
+
+font-family: 'Zen Kaku Gothic New';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 23px;
+
+color: #000000;
+
+
+/* オートレイアウト内部 */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Vector */
+
+position: absolute;
+width: 17px;
+height: 452.1px;
+left: 23px;
+top: 99px;
+
+background: #000000;
+
+/* オートレイアウト内部 */
+flex: none;
+order: 8;
+flex-grow: 0;
+z-index: 8;

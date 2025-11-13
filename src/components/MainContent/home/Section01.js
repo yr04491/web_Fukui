@@ -1,53 +1,43 @@
 import React from 'react';
 import styles from './Section01.module.css';
-import dotlineImage from '../../../assets/images/dotline.png';
 import vectorRB from '../../../assets/images/vectorRB.png';
 import roadNumberImage from '../../../assets/icons/01_0.png';
-import TweetCard from '../../common/TweetCard/TweetCard';
+import SectionTitle from '../../common/SectionTitle';
+import ContentFrame from '../../common/ContentFrame';
+import ExperienceSection from '../../common/ExperienceSection';
 
 
 const Section01 = () => {
   return (
     <div className={styles.section01}>
-      <div className={styles.titleWrapper}>
-        <div className={styles.logoContainer}>
-          <span className={styles.roadText}>ROAD</span>
-          <img src={roadNumberImage} alt="01" className={styles.logoChar} />
-        </div>
-        <h2 className={styles.mainTitle}>学校に相談</h2>
-        <div className={styles.dotline} style={{ backgroundImage: `url(${dotlineImage})` }}></div>
-      </div>
+      <SectionTitle 
+        roadNumber="01" 
+        title="学校に相談" 
+        roadNumberImage={roadNumberImage} 
+      />
 
-      <div className={styles.contentFrame}>
-        <h3 className={styles.contentTitle}>学校にはいろんなサポートがあります</h3>
-        <div className={styles.contentText}>
+      <ContentFrame
+        title="学校にはいろんなサポートがあります"
+        buttonElement={
+          <button className={styles.projectButton}>
+            <img src={vectorRB} alt="アイコン" className={styles.playIcon} />
+            <span>親側から積極的に支援を求めて下さい。サポートについて詳しく紹介しています。</span>
+          </button>
+        }
+      >
+        <div className={styles.contentList}>
           <p>◯スクールカウンセラー紹介</p>
           <p>◯校内サポートルーム</p>
           <p>◯ライフパートナー制度 など</p>
         </div>
-        <button className={styles.projectButton}>
-          <img src={vectorRB} alt="アイコン" className={styles.playIcon} />
-          <span>親側から積極的に支援を求めて下さい。サポートについて詳しく紹介しています。</span>
-        </button>
-      </div>
+      </ContentFrame>
 
-      <div className={styles.experienceSection}>
-        <div className={styles.experienceHeader}>
-          <span className={styles.experienceTag}>学校もみんなのペースで活用！</span>
-          <h3 className={styles.experienceTitle}>みんなの学校活用術</h3>
-        </div>
-        <div className={styles.tweetArea}>
-          {/* カードID指定でツイートカードを表示 */}
-          <TweetCard cardId={3} />
-          <TweetCard cardId={4} />
-          <TweetCard cardId={5} />
-        </div>
-
-        <button className={styles.moreButton}>
-          <img src={vectorRB} alt="アイコン" className={styles.playIcon} />
-          <span>みんなの学校活用術をもっと見てみる</span>
-        </button>
-      </div>
+      <ExperienceSection 
+        tag="学校もみんなのペースで活用！"
+        title="みんなの学校活用術"
+        tweetCardIds={[3, 4, 5]}
+        moreButtonText="みんなの学校活用術をもっと見てみる"
+      />
     </div>
   );
 };

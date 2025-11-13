@@ -83,33 +83,10 @@
 }
 
 /* コンテンツフレーム */
-.contentFrame {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 24px 20px;
-  gap: 15px;
-  width: 100%;
-  max-width: 500px;
-  background: var(--color-white);
-  border-radius: 10px;
-  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
-}
+/* .contentFrameスタイルは削除 - ContentFrame.module.cssに移動 */
 
-.contentTitle {
-  width: 100%;
-  max-width: 288px;
-  font-family: var(--font-primary);
-  font-style: normal;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 20px;
-  text-align: center;
-  color: var(--color-black);
-  margin-bottom: -5px;
-}
-
-.contentText {
+/* contentListはSection02固有のスタイルなので保持 */
+.contentList {
   width: 100%;
   max-width: 460px;
   font-family: var(--font-primary);
@@ -118,15 +95,15 @@
   font-size: 14px;
   letter-spacing: 0.1em;
   color: var(--color-black);
-  text-align: left; /* 左揃え */
-  padding-left: 40px; /* 左側に余白を追加して左寄せに */
+  text-align: left;
+  padding-left: 40px;
   box-sizing: border-box;
 }
 
-.contentText p {
+.contentList p {
   margin: 0;
   padding: 0;
-  line-height: 24px; /* 各項目の行間を少し狭く */
+  line-height: 24px;
 }
 
 .projectButton {

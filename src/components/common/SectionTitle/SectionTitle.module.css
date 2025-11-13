@@ -1,0 +1,67 @@
+/* セクションタイトル共通スタイル */
+.titleWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  gap: 15px;
+  width: 100%;
+  max-width: 500px;
+}
+
+.logoContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 98px;
+  height: 33px;
+}
+
+.roadText {
+  font-family: var(--font-primary);
+  font-size: 16.5px;
+  font-weight: bold;
+  color: var(--color-black);
+  margin-right: 3px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  top: 10px;
+}
+
+.logoChar {
+  width: auto;
+  height: 66px;
+  max-height: 66px;
+  margin: 0 2px;
+  object-fit: contain;
+  position: relative;
+  top: 5px;
+}
+
+.mainTitle {
+  width: 100%;
+  max-width: 394px;
+  font-family: var(--font-primary);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 25px;
+  line-height: 35px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  color: var(--color-black);
+  margin: 0;
+}
+
+.dotline {
+  width: 100%;
+  max-width: 364px;
+  height: 10px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}

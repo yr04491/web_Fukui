@@ -5,7 +5,6 @@ import Section00Page from './pages/Section00Page';
 import Section01Page from './pages/Section01Page';
 import Section02Page from './pages/Section02Page';
 import ScrollToTop from './components/ScrollToTop';
-import './App.css';
 
 function App() {
   return (

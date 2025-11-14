@@ -1,35 +1,19 @@
 /* src/components/MainContent/00/Section00Content.module.css */
 
-/* --- 修正箇所 開始 --- */
 /*
-  .section00Content から、マージン、幅、背景、@mediaクエリなど、
-  「外枠」のスタイルをすべて削除します。
-  「内側」のレイアウト（flexコンテナ）に必要なスタイルのみを残します。
+  「外枠」のスタイル（width, margin, backgroundなど）は
+  commonPageLayout.module.css で定義されます。
+  ここでは「内側」のレイアウトに必要なスタイルのみを定義します。
 */
 .section00Content {
-  /* 以下の「内側」レイアウト指定のみを残す */
   display: flex;
   flex-direction: column;
   align-items: center;
-  
-  /* 削除されたスタイル：
-    width, min-width, max-width, height, background, border-radius, 
-    flex, order, flex-grow, z-index, padding, margin
-  */
-  
-  /* width: 100% を指定していた場合、
-    それも削除し、子要素（.section00Top など）が 100% を持つようにします。
-    （元のファイル構造を維持）
-  */
 }
 
-/* .section00Content に関する @media クエリ（もしあれば）は
-  commonPageLayout.module.css に移動したため、削除します。
-*/
-/* --- 修正箇所 終了 --- */
 
-
-/* セクション1: タイトル部分 (変更なし) */
+/* Section00 上部 */
+/* 01ページと同一のスタイルを適用 */
 .section00Top {
   display: flex;
   flex-direction: column;
@@ -40,10 +24,26 @@
   max-width: 540px;
   position: relative;
   isolation: isolate;
-  min-height: 150px; /* 「00」が大きくなった分、最小高さを調整 */
+  min-height: 150px;
 }
 
-/* (以下、.titleContainer から .section00Bottom まで、すべての固有スタイルを変更なし) */
+/* Section00 中部 (と 下部) */
+/* 01ページと同一のスタイルを適用 */
+.section00Middle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px 30px 0px;
+  gap: 30px;
+  
+  position: relative;
+  width: 540px;
+  /* 01のmin-heightを流用。必要に応じて調整してください */
+  min-height: 700px; 
+}
+
+/* (以下、01と共通のスタイル定義) */
+
 .titleContainer {
   display: flex;
   flex-direction: row;
@@ -51,12 +51,19 @@
   align-items: center;
   padding: 0px 0px 0px 20px;
   width: 100%;
-  max-width: 490px; /* 「00」が大きくなった分、幅を調整 */
-  height: 48px; /* 「00」の高さに合わせて調整 */
+  max-width: 490px;
+  height: 48px;
   position: relative;
   isolation: isolate;
+  
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+  z-index: 0;
 }
 
+/* ロードナンバーコンテナ */
 .roadNumberContainer {
   display: flex;
   flex-direction: row;
@@ -67,12 +74,13 @@
   flex-grow: 0;
 }
 
+/* カラーナビ（縦線） */
 .colorNavi {
   position: absolute;
   width: 22.71px;
   height: 92.11px;
-  left: -20px; /* padding分を調整 */
-  top: -32px; /* 位置調整 */
+  left: -20px;
+  top: -32px;
   flex: none;
   order: 1;
   flex-grow: 0;
@@ -83,9 +91,9 @@
 
 .colorBar {
   position: absolute;
-  width: 55.96%; /* 22.71px の約56% */
-  height: 13.78%; /* 各バーの高さ */
-  border-radius: 50%; /* 円形にする */
+  width: 55.96%;
+  height: 13.78%;
+  border-radius: 50%;
   box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
 }
 
@@ -131,6 +139,7 @@
   bottom: 2.62%;
 }
 
+/* ロードナンバー */
 .roadNumber {
   display: flex;
   flex-direction: row;
@@ -142,9 +151,9 @@
   flex-grow: 0;
   margin: 0;
   z-index: 0;
-  font-size: 0; /* テキストを非表示にして、疑似要素で0を作成 */
+  font-size: 0;
   width: 68px;
-  height: 48px; /* より縦長に調整 */
+  height: 48px;
   position: relative;
 }
 
@@ -154,11 +163,10 @@
   object-fit: contain;
 }
 
-
-
+/* メインタイトル */
 .mainTitle {
-  width: 400px; /* 「00」が大きくなった分、調整 */
-  height: 48px; /* 「00」の高さに合わせて調整 */
+  width: 400px;
+  height: 48px;
   font-family: 'Zen Kaku Gothic New', sans-serif;
   font-style: normal;
   font-weight: 500;
@@ -166,90 +174,110 @@
   line-height: 36px;
   display: flex;
   align-items: center;
+  
   color: #000000;
+  
   flex: none;
   order: 1;
   flex-grow: 0;
   margin: 0;
 }
 
+/* サブタイトル */
 .subtitle {
-  width: 100%;
-  max-width: 480px;
-  height: 46px;
-  font-family: 'Zen Kaku Gothic New', sans-serif;
+  width: 480px;
+  /* 00ページは2行になる可能性があるため、01の固定高(23px)ではなく auto (または min-height) にします */
+  height: auto;
+  min-height: 23px; 
+  
+  font-family: 'Zen Kaku Gothic New';
   font-style: normal;
   font-weight: 700;
   font-size: 16px;
   line-height: 23px;
   text-align: center;
+  
   color: #000000;
+  
   flex: none;
   order: 1;
   flex-grow: 0;
+  z-index: 1;
   margin: 0;
 }
 
-.description {
-  width: 100%;
-  max-width: 480px;
-  height: 125px;
-  font-family: 'Zen Kaku Gothic New', sans-serif;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 25px;
-  letter-spacing: -0.05em;
-  color: #000000;
-  flex: none;
-  order: 2;
-  flex-grow: 0;
-  margin: 0;
-}
-
-/* セクション2: 不登校と引きこもりの違い */
-.section00Middle {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 60px 30px 0px;
-  gap: 30px;
-  width: 100%;
-  max-width: 540px;
-}
-
+/* セクションタイトル */
 .sectionTitle {
-  width: 100%;
-  max-width: 480px;
-  height: 23px;
-  font-family: 'Zen Kaku Gothic New', sans-serif;
+  width: 480px;
+  /* 01の固定高(46px)ではなく auto (または min-height) にします */
+  height: auto;
+  min-height: 23px; /* 1行分の高さを担保 */
+  
+  font-family: 'Zen Kaku Gothic New';
   font-style: normal;
   font-weight: 700;
   font-size: 16px;
   line-height: 23px;
   text-align: center;
+  
   color: #000000;
+  
   flex: none;
   order: 0;
   flex-grow: 0;
   margin: 0;
 }
 
+/* セクション説明文 */
 .sectionDescription {
-  width: 100%;
-  max-width: 480px;
-  font-family: 'Zen Kaku Gothic New', sans-serif;
+  width: 480px;
+  /* 01の固定高(50px)ではなく auto (または min-height) にします */
+  height: auto;
+  min-height: 25px; /* 1行分の高さを担保 */
+  
+  font-family: 'Zen Kaku Gothic New';
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: 25px;
   letter-spacing: -0.05em;
+  
   color: #000000;
+  
   flex: none;
+  order: 1;
   flex-grow: 0;
   margin: 0;
 }
 
+/* 説明文 */
+/* ▼ 00ページで使われる .longDescription も同じスタイルを適用 ▼ */
+.description,
+.longDescription {
+  width: 480px;
+  /* 01の固定高(50px)ではなく auto (または min-height) にします */
+  height: auto;
+  min-height: 25px; /* 1行分の高さを担保 */
+  
+  font-family: 'Zen Kaku Gothic New';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 25px;
+  letter-spacing: -0.05em;
+  
+  color: #000000;
+  
+  flex: none;
+  order: 2;
+  flex-grow: 0;
+  z-index: 2;
+  margin: 0;
+}
+/* ▲ 00ページで使われる .longDescription も同じスタイルを適用 ▲ */
+
+
+/* 引用ボックス */
 .quoteBox {
   display: flex;
   flex-direction: row;
@@ -257,44 +285,104 @@
   align-items: center;
   padding: 10px;
   gap: 10px;
-  width: 100%;
-  max-width: 480px;
+  
+  width: 480px;
+  /* 00ページは内容が多いため、01の固定高(80px)ではなく auto (または min-height) にします */
+  height: auto;
+  min-height: 80px;
+  
   border: 1px dashed #000000;
   border-radius: 10px;
+  
   flex: none;
+  order: 3;
+  align-self: stretch;
   flex-grow: 0;
+  z-index: 3;
 }
 
 .quoteText {
-  width: 100%;
-  max-width: 460px;
-  font-family: 'Zen Kaku Gothic New', sans-serif;
+  width: 460px;
+  /* 00ページは内容が多いため、01の固定高(60px)ではなく auto (または min-height) にします */
+  height: auto;
+  min-height: 60px;
+  
+  font-family: 'Zen Kaku Gothic New';
   font-style: normal;
   font-weight: 400;
-  font-size: 12px;
-  line-height: 17px;
+  font-size: 13px;
+  line-height: 20px;
+  letter-spacing: -0.05em;
+  
   color: #000000;
+  
   flex: none;
   order: 0;
   flex-grow: 1;
   margin: 0;
 }
 
-.longDescription {
-  width: 100%;
-  max-width: 480px;
-  font-family: 'Zen Kaku Gothic New', sans-serif;
+/* サポートボックス (00ページでは未使用だが、01と共通化のため定義) */
+.supportBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  gap: 10px;
+  
+  width: 480px;
+  min-height: 115px;
+  
+  border: 1px dashed #000000;
+  border-radius: 10px;
+  
+  flex: none;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.supportTitle {
+  width: 460px;
+  height: 25px;
+  
+  font-family: 'Zen Kaku Gothic New';
   font-style: normal;
-  font-weight: 400;
+  font-weight: 500;
   font-size: 14px;
   line-height: 25px;
   letter-spacing: -0.05em;
+  
   color: #000000;
+  
   flex: none;
+  order: 0;
+  align-self: stretch;
   flex-grow: 0;
   margin: 0;
 }
 
+.supportDescription {
+  width: 460px;
+  min-height: 40px;
+  
+  font-family: 'Zen Kaku Gothic New';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+  letter-spacing: -0.05em;
+  
+  color: #000000;
+  
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+  margin: 0;
+}
+
+/* プロジェクトボタン */
 .projectButton {
   display: flex;
   flex-direction: row;
@@ -302,53 +390,112 @@
   align-items: center;
   padding: 5px 10px;
   gap: 10px;
-  width: 280px;
+  
   max-width: 280px;
-  height: 50px;
-  background: #FDF9D5;
+  height: 40px;
+  
+  background: rgba(163, 208, 250, 0.46);
   border-radius: 5px;
   border: none;
   cursor: pointer;
+  
   flex: none;
+  order: 2;
   flex-grow: 0;
-  transition: background-color 0.3s ease;
 }
 
-.projectButton:hover {
-  background: #F5F1C8;
+.projectButtonHighlight {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 10px;
+  gap: 10px;
+  
+  width: 166px;
+  max-width: 280px;
+  height: 40px;
+  
+  background: #A3D0FA;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  
+  flex: none;
+  order: 5;
+  flex-grow: 0;
 }
 
 .buttonIcon {
   width: 32px;
   height: 30px;
+  
   flex: none;
   order: 0;
   flex-grow: 0;
 }
 
-.projectButton span {
-  font-family: 'Zen Kaku Gothic New', sans-serif;
+.projectButton span,
+.projectButtonHighlight span {
+  font-family: 'Zen Kaku Gothic New';
   font-style: normal;
   font-weight: 700;
   font-size: 12px;
   line-height: 20px;
   letter-spacing: -0.05em;
+  
   color: #000000;
+  
   flex: none;
   order: 1;
   flex-grow: 1;
-  text-align: center;
 }
 
-/* セクション3: 子どもへの接し方 */
-.section00Bottom {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 60px 30px;
-  gap: 30px;
-  width: 100%;
-  max-width: 540px;
+/* 励ましのテキスト (00ページでは未使用だが、01と共通化のため定義) */
+.encouragementText {
+  width: 480px;
+  height: 46px;
+  
+  font-family: 'Zen Kaku Gothic New';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 23px;
+  text-align: center;
+  
+  color: #000000;
+  
+  flex: none;
+  order: 4;
+  flex-grow: 0;
+  z-index: 4;
+  margin: 0;
 }
 
 /* レスポンシブ対応 */
+@media (max-width: 768px) {
+  /* .section00Content のレスポンシブスタイルは commonPageLayout.module.css にあります */
+  
+  .section00Top,
+  .section00Middle {
+    width: 100%;
+    padding: 40px 20px 0px;
+  }
+  
+  .titleContainer {
+    width: 100%;
+    max-width: 480px;
+  }
+  
+  .subtitle,
+  .description,
+  .quoteBox,
+  .encouragementText,
+  .sectionTitle,
+  .sectionDescription,
+  .supportBox,
+  .longDescription { /* ▼ 00ページ用に .longDescription を追加 ▼ */
+    width: 100%;
+    max-width: 480px;
+  } /* ▲ 00ページ用に .longDescription を追加 ▲ */
+}

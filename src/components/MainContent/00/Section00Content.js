@@ -2,9 +2,11 @@
 
 import React from 'react';
 /* --- 修正箇所 開始 --- */
-import layoutStyles from '../commonPageLayout.module.css'; // 共通CSS（外枠）をインポート
+// 共通CSS（外枠）をインポート
+import layoutStyles from '../commonPageLayout.module.css'; 
+// 00ページ専用のCSS（上記で作成したもの）をインポート
+import styles from './Section00Content.module.css'; 
 /* --- 修正箇所 終了 --- */
-import styles from './Section00Content.module.css'; // 固有CSS（内側）
 import yubiIcon from '../../../assets/images/yubi.png';
 import Footer from '../../common/Footer';
 import roadNumberImage from '../../../assets/icons/00.png';
@@ -16,7 +18,8 @@ const Section00Content = () => {
     <div className={`${layoutStyles.pageContainer} ${styles.section00Content}`}>
     {/* --- 修正箇所 終了 --- */ }
       {/* セクション1: タイトル部分 */}
-      <div className={styles.section00Top}>
+      {/* 00専用のクラス名を適用 */}
+      <div className={styles.section00Top}> 
         <div className={styles.titleContainer}>
           <div className={styles.roadNumberContainer}>
             {/* カラーナビ（縦線） */}
@@ -39,13 +42,16 @@ const Section00Content = () => {
         <p className={styles.description}>
           不登校になっても人生が終わる訳ではありません。<br />
           お子さんは今、自分の心を守るため、必死に戦っているところです。<br />
+          {/* --- ▼ 修正箇所 開始 (タイポ修正) ▼ --- */}
           サボりたいが為に不登校になる子どもはほとんどいません。<br />
+          {/* --- ▲ 修正箇所 終了 (タイポ修正) ▲ --- */}
           お子さんの心が回復できるように、周囲が慌てず、落ち着いて、子どもが安心できる家庭を維持する事を意識してください。
         </p>
       </div>
 
       {/* セクション2: 不登校と引きこもりの違い */}
-      <div className={styles.section00Middle}>
+      {/* 00専用のクラス名を適用 */}
+      <div className={styles.section00Middle}> 
         <h3 className={styles.sectionTitle}>
           注意…不登校から引きこもりへ悪化させてはいけない
         </h3>
@@ -84,6 +90,7 @@ const Section00Content = () => {
           </p>
         </div>
 
+        {/* longDescription クラスを適用 */}
         <p className={styles.longDescription}>
           そうならせないためには、不登校になったお子さんへの接し方が何より大切です。<br />
           まず覚えておいていただきたいのは、小学校・中学校は登校しなくても卒業できます。高校の受験にも登校日数は関係ありません。<br />
@@ -97,10 +104,13 @@ const Section00Content = () => {
       </div>
 
       {/* セクション3: 子どもへの接し方 */}
-      <div className={styles.section00Bottom}>
+      {/* --- ▼ 修正箇所 開始 (section00Bottom を section00Middle に変更) ▼ --- */}
+      <div className={styles.section00Middle}>
+      {/* --- ▲ 修正箇所 終了 (section00Bottom を section00Middle に変更) ▲ --- */}
         <h3 className={styles.sectionTitle}>
           まずは、子どもを責めないこと。
         </h3>
+        {/* longDescription クラスを適用 */}
         <p className={styles.longDescription}>
           「なんで行かないの？」「いつまで休むの？」と問い詰められると、子どもはますます自信を失い、自分の居場所を見失ってしまいます。今は「心を回復する時間」だととらえて、そっと見守ってあげてください。<br /><br />
           そして、リビングなど家族の集まる場所を、子どもにとって「過ごしやすい場所」にしておくことも大切です。話しかけなくてもいい、一緒にテレビを見るだけでもいい、安心していられる空間があるだけで、子どもは少しずつ外の世界に目を向ける力を取り戻していきます。<br /><br />

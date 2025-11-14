@@ -109,15 +109,17 @@
 }
 
 .colorBar:nth-child(1) {
-  left: 44.03%;
-  right: 0.04%;
+  /* 1番目を左に寄せる */
+  left: 0%;
+  right: 44.08%;
   top: 2.17%;
   bottom: 84.04%;
 }
 
 .colorBar:nth-child(2) {
-  left: 0%;
-  right: 44.08%;
+  /* 2番目を右にずらす */
+  left: 44.03%;
+  right: 0.04%;
   top: 18.46%;
   bottom: 67.76%;
 }

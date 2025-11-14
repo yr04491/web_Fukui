@@ -134,3 +134,59 @@
 /* 元々あった @media ルールは、
   今回の修正方法（アスペクト比固定＋%指定）では不要になるため削除しています。
 */
+
+/* 3つのテキストボックスに共通のスタイル */
+/* .frame17, .frame18, .frame19 に共通のスタイルを適用 */
+.frame17,
+.frame18,
+.frame19 {
+  position: absolute;
+  z-index: 5; /* adobeStockImage (z-index: 4) より手前に表示 */
+  
+  /* 見た目 (Figma 476.jpg 参照) */
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(2px); /* 背景のぼかし */
+  border-radius: 8px; /* 角丸 */
+  padding: 5px 10px; /* 内側の余白 */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+  border: 1px solid black; /* 外側を1pxの黒線で囲む */
+
+  /* テキストスタイル (ここで統一) */
+  font-family: var(--font-primary);
+  font-weight: 500;
+  color: var(--color-black);
+  text-align: center;
+  /* 画面幅に応じてサイズが変わるようにし、すべて同じサイズにする */
+  font-size: clamp(16px, 3.5vw, 20px); 
+  line-height: 1.4;
+  
+  /* margin: 外側の余白。0にリセット */
+  margin: 0; 
+  
+  /* --- ▼ 修正箇所 ▼ --- */
+  /* transform: 要素の変形。translateX(-50%)は、要素自体の幅の50%(半分)だけ左に移動させる */
+  /* これと left: 50% を組み合わせることで、要素を親の中心に配置できます */
+  /* transform: translateX(-50%); */ /* ← 左揃えのため、中央寄せ指定を削除 */
+  /* --- ▲ 修正箇所 ▲ --- */
+}
+
+/* Frame 17: このサイトは */
+.frame17 {
+  top: 66%;
+  left: 3%; 
+}
+
+/* Frame 18: 当事者たちによる... */
+.frame18 {
+  top: 75%;
+  left: 3%; 
+  white-space: nowrap; /* <br> 以外の自動改行は禁止 */
+}
+
+/* Frame 19: 白い枠 */
+.frame19 {
+  top: 84%;
+  left: 3%; 
+  white-space: nowrap; 
+}

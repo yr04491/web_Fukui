@@ -15,7 +15,7 @@ const Section00 = () => {
       />
 
       <ContentFrame
-        title="＼　大丈夫です。なんとかなります。／"
+        title="＼　大丈夫です。なんとかなります。／まずは慌てず落ち着きましょう。"
         buttonElement={
           <button className={styles.projectButton}>
             <div className={styles.bookIcon}></div>
@@ -24,14 +24,15 @@ const Section00 = () => {
         }
       >
         <p>
-          お子さんは今、自分の心を守るため、必死に戦っているところです。サボりたいが為に不登校になる子どもはほとんどいません。お子さんの心が回復できるように、周囲が慌てず、落ち着いて、子どもが安心できる家庭を維持する事を意識してください。
+          お子さんの急な不登校宣言。驚きますよね。<br />
+          どうしたの？何かあったの？いじめ！？聞きたくなる気持ちはわかります。ただ、お子さんは今、傷ついた自分の心を守るため、必死に戦っています。お子さんの心が回復できるように、まずはお父さん、お母さんが、慌てず落ち着いて、子どもが安心できる家庭を維持する事を意識してください。
         </p>
       </ContentFrame>
 
       <ExperienceSection 
         title="みんなの体験談を見てみよう"
-        tweetCardIds={[1, 2, 3]}
-        moreButtonText="みんなの体験談をもっと見てみる"
+        tweetCardIds={[1, 2]}
+        moreButtonText="不登校になったきっかけの体験談を見る"
       />
     </div>
   );

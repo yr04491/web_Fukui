@@ -1,49 +1,31 @@
 /* src/components/MainContent/home/MainContent.module.css */
 
-/* このファイルは変更不要です。
-  ここの .mainContent の定義（@media クエリも含む）が、
-  すべてのページで使われるレイアウトのお手本となります。
+/* --- 修正箇所 開始 --- */
+/*
+  .mainContent から、マージン、幅、背景、@mediaクエリなど、
+  「外枠」のスタイルをすべて削除します。
+  「内側」のレイアウト（flexコンテナ）に必要なスタイルのみを残します。
 */
-
-/* メインコンテンツ */
 .mainContent {
-  width: 540px; /* 固定幅 */
-  min-height: 100vh; /* 最小高さをビューポートに設定 */
-  background: var(--color-white);
-  border-radius: var(--radius-m);
-  flex: none;
-  order: 1;
-  flex-grow: 0;
-  z-index: 1;
+  /* 以下の「内側」レイアウト指定のみを残す */
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-bottom: 0; /* フッターがあるのでパディングを削除 */
-  position: relative; /* 相対位置を設定 */
-  margin-left: 392px; /* 50 + 270 + 72 = 392px デスクトップ時 */
-  margin-right: 0;
+  
+  /* 削除されたスタイル：
+    width, min-height, background, border-radius, flex, order, 
+    flex-grow, z-index, padding-bottom, position, margin-left, margin-right
+  */
 }
 
-/* 982px以下でメインコンテンツを中央配置 */
-@media (max-width: 982px) {
-  .mainContent {
-    width: 540px;
-    margin: 0 auto; /* 中央寄せに戻す */
-  }
-}
+/* .mainContent に関する @media クエリはすべて commonPageLayout.module.css に
+  移動したため、このファイルからは削除します。
+  (max-width: 982px) と (max-width: 560px) の .mainContent 定義を削除。
+*/
+/* --- 修正箇所 終了 --- */
 
-/* 560px以下で比率ベース */
-@media (max-width: 560px) {
-  .mainContent {
-    width: 96.43%; /* 540/560 */
-    max-width: 540px;
-    margin: 0 1.79%; /* 左右1.79% */
-    border-radius: 0;
-    min-height: 100vh;
-  }
-}
 
-/* ヘッダーセクション：タイトルとオープニング */
+/* ヘッダーセクション：タイトルとオープニング (変更なし) */
 .headerSection {
   width: 100%;
   display: flex;
@@ -52,7 +34,7 @@
   gap: 40px; /* ヘッダー要素間の間隔 */
 }
 
-/* ROADセクション群：連続的に配置 */
+/* ROADセクション群：連続的に配置 (変更なし) */
 .roadSections {
   width: 100%;
   display: flex;
@@ -62,7 +44,7 @@
   margin-top: 40px; /* ヘッダーセクションとの間隔 */
 }
 
-/* レスポンシブ対応 */
+/* レスポンシブ対応 (変更なし) */
 @media (max-width: 982px) {
   .headerSection {
     gap: 30px; 
@@ -78,11 +60,16 @@
 }
 
 @media (max-width: 560px) {
+  /* --- 修正箇所 開始 --- */
+  /* .mainContent の @media 定義は共通ファイルに移動したため削除 */
+  /*
   .mainContent {
     border-radius: 0;
     min-height: 100vh;
   }
-  
+  */
+  /* --- 修正箇所 終了 --- */
+
   .headerSection {
     gap: 30px; 
     padding: 0 10px; 

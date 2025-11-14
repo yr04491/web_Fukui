@@ -1,15 +1,20 @@
 // src/components/MainContent/02/Section02Content.js
-// （変更不要・確認用）
 
 import React from 'react';
-import styles from './Section02Content.module.css'; // ← 自身のCSSのみをインポート
+/* --- 修正箇所 開始 --- */
+import layoutStyles from '../commonPageLayout.module.css'; // 共通CSS（外枠）をインポート
+/* --- 修正箇所 終了 --- */
+import styles from './Section02Content.module.css'; // 固有CSS（内側）
 import yubiIcon from '../../../assets/images/yubi.png';
 import Footer from '../../common/Footer';
 import roadNumberImage from '../../../assets/icons/02.png';
 
 const Section02Content = () => {
   return (
-    <div className={styles.section02Content}> {/* ← 自身のクラス名を使用 */}
+    /* --- 修正箇所 開始 --- */
+    // 共通の「外枠」と、02ページ固有の「内側」のスタイルを両方適用
+    <div className={`${layoutStyles.pageContainer} ${styles.section02Content}`}>
+    {/* --- 修正箇所 終了 --- */ }
       {/* セクション1: タイトル部分 */}
       <div className={styles.section02Top}>
         <div className={styles.titleContainer}>

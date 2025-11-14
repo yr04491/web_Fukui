@@ -1,54 +1,35 @@
 /* src/components/MainContent/00/Section00Content.module.css */
 
 /* --- 修正箇所 開始 --- */
-/* 既存の .section00Content の定義を、HomePageと同じレイアウト定義で置き換えます。
-  これにより、マージン、幅、背景（白い枠）、レスポンシブ動作が
-  HomePage と完全に同一になります。
+/*
+  .section00Content から、マージン、幅、背景、@mediaクエリなど、
+  「外枠」のスタイルをすべて削除します。
+  「内側」のレイアウト（flexコンテナ）に必要なスタイルのみを残します。
 */
 .section00Content {
-  width: 540px; /* 固定幅 */
-  min-height: 100vh; /* 最小高さをビューポートに設定 */
-  background: var(--color-white);
-  border-radius: var(--radius-m);
-  flex: none;
-  order: 1;
-  flex-grow: 0;
-  z-index: 1;
+  /* 以下の「内側」レイアウト指定のみを残す */
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-bottom: 0; /* フッターがあるのでパディングを削除 */
-  position: relative; /* 相対位置を設定 */
-  margin-left: 392px; /* 50 + 270 + 72 = 392px デスクトップ時 */
-  margin-right: 0;
+  
+  /* 削除されたスタイル：
+    width, min-width, max-width, height, background, border-radius, 
+    flex, order, flex-grow, z-index, padding, margin
+  */
+  
+  /* width: 100% を指定していた場合、
+    それも削除し、子要素（.section00Top など）が 100% を持つようにします。
+    （元のファイル構造を維持）
+  */
 }
 
-/* 982px以下でメインコンテンツを中央配置 */
-@media (max-width: 982px) {
-  .section00Content {
-    width: 540px;
-    margin: 0 auto; /* 中央寄せに戻す */
-  }
-}
-
-/* 560px以下で比率ベース */
-@media (max-width: 560px) {
-  .section00Content {
-    width: 96.43%; /* 540/560 */
-    max-width: 540px;
-    margin: 0 1.79%; /* 左右1.79% */
-    border-radius: 0;
-    min-height: 100vh;
-  }
-}
+/* .section00Content に関する @media クエリ（もしあれば）は
+  commonPageLayout.module.css に移動したため、削除します。
+*/
 /* --- 修正箇所 終了 --- */
 
 
-/* これ以降のスタイル（.section00Top や .titleContainer など）は、
-  このページ固有のスタイルなので、一切変更しません。
-*/
-
-/* セクション1: タイトル部分 */
+/* セクション1: タイトル部分 (変更なし) */
 .section00Top {
   display: flex;
   flex-direction: column;
@@ -62,6 +43,7 @@
   min-height: 150px; /* 「00」が大きくなった分、最小高さを調整 */
 }
 
+/* (以下、.titleContainer から .section00Bottom まで、すべての固有スタイルを変更なし) */
 .titleContainer {
   display: flex;
   flex-direction: row;

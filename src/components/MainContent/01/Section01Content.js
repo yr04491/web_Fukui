@@ -1,12 +1,15 @@
+// src/components/MainContent/01/Section01Content.js
+// （変更不要・確認用）
+
 import React from 'react';
-import styles from './Section01Content.module.css';
+import styles from './Section01Content.module.css'; // ← 自身のCSSのみをインポート
 import yubiIcon from '../../../assets/images/yubi.png';
 import Footer from '../../common/Footer';
 import roadNumberImage from '../../../assets/icons/01.png';
 
 const Section01Content = () => {
   return (
-    <div className={styles.section01Content}>
+    <div className={styles.section01Content}> {/* ← 自身のクラス名を使用 */}
       {/* セクション1: タイトル部分 */}
       <div className={styles.section01Top}>
         <div className={styles.titleContainer}>

@@ -1,3 +1,10 @@
+/* src/components/MainContent/home/MainContent.module.css */
+
+/* このファイルは変更不要です。
+  ここの .mainContent の定義（@media クエリも含む）が、
+  すべてのページで使われるレイアウトのお手本となります。
+*/
+
 /* メインコンテンツ */
 .mainContent {
   width: 540px; /* 固定幅 */
@@ -31,6 +38,8 @@
     width: 96.43%; /* 540/560 */
     max-width: 540px;
     margin: 0 1.79%; /* 左右1.79% */
+    border-radius: 0;
+    min-height: 100vh;
   }
 }
 

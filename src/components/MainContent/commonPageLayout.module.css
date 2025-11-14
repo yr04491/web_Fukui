@@ -1,0 +1,36 @@
+.pageContainer {
+  width: 540px; /* 固定幅 */
+  min-height: 100vh;
+  background: var(--color-white);
+  border-radius: var(--radius-m);
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 0;
+  position: relative;
+  margin-left: 392px; /* デスクトップ時 */
+  margin-right: 0;
+}
+
+/* 982px以下でメインコンテンツを中央配置 */
+@media (max-width: 982px) {
+  .pageContainer {
+    width: 540px;
+    margin: 0 auto; /* 中央寄せ */
+  }
+}
+
+/* 560px以下で比率ベース */
+@media (max-width: 560px) {
+  .pageContainer {
+    width: 96.43%; /* 540/560 */
+    max-width: 540px;
+    margin: 0 1.79%; /* 左右1.79% */
+    border-radius: 0;
+    min-height: 100vh;
+  }
+}

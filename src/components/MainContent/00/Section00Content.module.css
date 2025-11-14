@@ -1,9 +1,13 @@
-/* Section00Content専用スタイル */
+/* src/components/MainContent/00/Section00Content.module.css */
+
+/* --- 修正箇所 開始 --- */
+/* 既存の .section00Content の定義を、HomePageと同じレイアウト定義で置き換えます。
+  これにより、マージン、幅、背景（白い枠）、レスポンシブ動作が
+  HomePage と完全に同一になります。
+*/
 .section00Content {
-  width: var(--content-width);
-  min-width: 390px;
-  max-width: var(--content-width);
-  height: auto;
+  width: 540px; /* 固定幅 */
+  min-height: 100vh; /* 最小高さをビューポートに設定 */
   background: var(--color-white);
   border-radius: var(--radius-m);
   flex: none;
@@ -13,9 +17,36 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0;
-  margin: 0;
+  padding-bottom: 0; /* フッターがあるのでパディングを削除 */
+  position: relative; /* 相対位置を設定 */
+  margin-left: 392px; /* 50 + 270 + 72 = 392px デスクトップ時 */
+  margin-right: 0;
 }
+
+/* 982px以下でメインコンテンツを中央配置 */
+@media (max-width: 982px) {
+  .section00Content {
+    width: 540px;
+    margin: 0 auto; /* 中央寄せに戻す */
+  }
+}
+
+/* 560px以下で比率ベース */
+@media (max-width: 560px) {
+  .section00Content {
+    width: 96.43%; /* 540/560 */
+    max-width: 540px;
+    margin: 0 1.79%; /* 左右1.79% */
+    border-radius: 0;
+    min-height: 100vh;
+  }
+}
+/* --- 修正箇所 終了 --- */
+
+
+/* これ以降のスタイル（.section00Top や .titleContainer など）は、
+  このページ固有のスタイルなので、一切変更しません。
+*/
 
 /* セクション1: タイトル部分 */
 .section00Top {

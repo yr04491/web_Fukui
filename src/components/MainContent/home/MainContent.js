@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './MainContent.module.css';
+import styles from './MainContent.module.css'; // ← 自身のCSSのみをインポート
 import TitleSection from './TitleSection';
 import OpeningSection from './OpeningSection';
 import Section00 from './Section00';
@@ -12,7 +12,7 @@ import Footer from '../../common/Footer';
 
 const MainContent = () => {
   return (
-    <div className={styles.mainContent}>
+    <div className={styles.mainContent}> {/* ← 自身のクラス名を使用 */}
       {/* ヘッダーセクション */}
       <div className={styles.headerSection}>
         <TitleSection />

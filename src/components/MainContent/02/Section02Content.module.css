@@ -1,79 +1,35 @@
 /* src/components/MainContent/02/Section02Content.module.css */
+/* 02ページ 固有のスタイル */
 
-/* --- 修正箇所 開始 --- */
-/*
-  .section02Content から、マージン、幅、背景、@mediaクエリなど、
-  「外枠」のスタイルをすべて削除します。
-  「内側」のレイアウト（flexコンテナ）に必要なスタイルのみを残します。
-*/
+/* ページ基本レイアウト */
 .section02Content {
-  /* 以下の「内側」レイアウト指定のみを残す */
   display: flex;
   flex-direction: column;
   align-items: center;
-  
-  /* 削除されたスタイル：
-    width, background, flex, order, flex-grow, z-index
-  */
 }
 
-/* .section02Content に関する @media クエリ（@media (max-width: 768px)）は
-  commonPageLayout.module.css に移動したため、このファイルからは削除します。
-*/
-/* --- 修正箇所 終了 --- */
-
-
-/* これ以降のスタイル（.section02Top や .titleContainer など）は、
-  このページ固有のスタイルなので、一切変更しません。
-*/
-
-/* Section02 上部 */
 .section02Top {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 60px 30px;
+  padding: 60px 30px 0px;
   gap: 30px;
-  isolation: isolate;
-  
-  position: relative;
   width: 100%;
   max-width: 540px;
-  min-height: 538px;
-}
-
-/* (以下、.titleContainer から .projectButtonHighlight span まで、すべての固有スタイルを変更なし) */
-.titleContainer {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0px 0px 0px 20px;
-  width: 100%;
-  max-width: 490px;
-  height: 48px;
   position: relative;
   isolation: isolate;
-  
-  flex: none;
-  order: 0;
-  align-self: stretch;
-  flex-grow: 0;
-  z-index: 0;
+  min-height: 150px;
 }
 
-/* ロードナンバーコンテナ */
-.roadNumberContainer {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  position: relative;
-  flex: none;
-  order: 0;
-  flex-grow: 0;
-}
+/* --- ▼ 修正箇所 開始 ▼ --- */
+/*
+  .supportBox の空のルールセットを削除しました。
+  (共通スタイルが適用されるため、ここでの定義は不要でした)
+*/
+/* --- ▲ 修正箇所 終了 ▲ --- */
 
-/* カラーナビ（縦線） */
+
+/* ▼ 02ページ固有の「玉のずれ」 ▼ */
 .colorNavi {
   position: absolute;
   width: 22.71px;
@@ -81,9 +37,9 @@
   left: -20px;
   top: -32px;
   flex: none;
-  order: 5;
+  order: 1;
   flex-grow: 0;
-  z-index: 5;
+  z-index: 1;
   display: flex;
   flex-direction: column;
 }
@@ -97,8 +53,9 @@
 }
 
 .colorBar:nth-child(1) {
-  left: 0%;
-  right: 44.08%;
+  /* 02ページは1番目もずれている */
+  left: 44.03%;
+  right: 0.04%;
   top: 2.17%;
   bottom: 84.04%;
 }
@@ -111,6 +68,7 @@
 }
 
 .colorBar:nth-child(3) {
+  /* 02ページは3番目もずれている */
   left: 44.03%;
   right: 0.04%;
   top: 34.74%;
@@ -137,270 +95,13 @@
   top: 83.6%;
   bottom: 2.62%;
 }
+/* ▲ 02ページ固有の「玉のずれ」 ▲ */
 
-/* ロードナンバー */
-.roadNumber {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  gap: 3px;
-  flex: none;
-  order: 0;
-  flex-grow: 0;
-  margin: 0;
-  z-index: 0;
-  font-size: 0;
-  width: 68px;
-  height: 48px;
-  position: relative;
-}
-
-.roadNumberImage {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-/* メインタイトル */
-.mainTitle {
-  width: 400px;
-  height: 48px;
-  font-family: 'Zen Kaku Gothic New', sans-serif;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 25px;
-  line-height: 36px;
-  display: flex;
-  align-items: center;
-  
-  color: #000000;
-  
-  flex: none;
-  order: 1;
-  flex-grow: 0;
-  margin: 0;
-}
-
-/* サブタイトル */
-.subtitle {
-  width: 480px;
-  height: 46px;
-  
-  font-family: 'Zen Kaku Gothic New';
-  font-style: normal;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 23px;
-  text-align: center;
-  
-  color: #000000;
-  
-  flex: none;
-  order: 1;
-  flex-grow: 0;
-  z-index: 1;
-  margin: 0;
-}
-
-/* 説明文 */
-.description {
-  width: 480px;
-  height: 50px;
-  
-  font-family: 'Zen Kaku Gothic New';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 25px;
-  letter-spacing: -0.05em;
-  
-  color: #000000;
-  
-  flex: none;
-  order: 3;
-  flex-grow: 0;
-  z-index: 3;
-  margin: 0;
-}
-
-/* サポートボックス */
-.supportBox {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 10px;
-  gap: 10px;
-  
-  width: 480px;
-  height: 125px;
-  
-  border: 1px dashed #000000;
-  border-radius: 10px;
-  
-  flex: none;
-  order: 2;
-  align-self: stretch;
-  flex-grow: 0;
-  z-index: 2;
-}
-
-.supportTitle {
-  width: 460px;
-  height: 25px;
-  
-  font-family: 'Zen Kaku Gothic New';
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 25px;
-  letter-spacing: -0.05em;
-  
-  color: #000000;
-  
-  flex: none;
-  order: 0;
-  align-self: stretch;
-  flex-grow: 0;
-  margin: 0;
-}
-
-.supportDescription {
-  width: 460px;
-  height: 20px;
-  
-  font-family: 'Zen Kaku Gothic New';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 20px;
-  letter-spacing: -0.05em;
-  
-  color: #000000;
-  
-  flex: none;
-  order: 1;
-  align-self: stretch;
-  flex-grow: 0;
-  margin: 0;
-}
-
-/* プロジェクトボタン */
-.projectButton {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  padding: 5px 10px;
-  gap: 10px;
-  
-  width: 211px;
-  max-width: 280px;
-  height: 40px;
-  
-  background: rgba(136, 211, 188, 0.52);
-  border-radius: 5px;
-  border: none;
-  cursor: pointer;
-  
-  flex: none;
-  order: 2;
-  flex-grow: 0;
-}
-
-.projectButtonHighlight {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  padding: 5px 10px;
-  gap: 10px;
-  
-  width: 280px;
-  max-width: 280px;
-  height: 50px;
-  
-  background: #88D3BC;
-  border-radius: 5px;
-  border: none;
-  cursor: pointer;
-  
-  flex: none;
-  order: 4;
-  flex-grow: 0;
-  z-index: 4;
-}
-
-.buttonIcon {
-  width: 32px;
-  height: 30px;
-  
-  flex: none;
-  order: 0;
-  flex-grow: 0;
-}
-
-.projectButton span {
-  width: 149px;
-  height: 20px;
-  font-family: 'Zen Kaku Gothic New';
-  font-style: normal;
-  font-weight: 700;
-  font-size: 12px;
-  line-height: 20px;
-  letter-spacing: -0.05em;
-  
-  color: #000000;
-  
-  flex: none;
-  order: 1;
-  flex-grow: 1;
-}
-
-.projectButtonHighlight span {
-  width: 218px;
-  height: 40px;
-  font-family: 'Zen Kaku Gothic New';
-  font-style: normal;
-  font-weight: 700;
-  font-size: 12px;
-  line-height: 20px;
-  letter-spacing: -0.05em;
-  
-  color: #000000;
-  
-  flex: none;
-  order: 1;
-  flex-grow: 1;
-}
 
 /* レスポンシブ対応 */
 @media (max-width: 768px) {
-  /* --- 修正箇所 開始 --- */
-  /* この .section02Content の指定は共通ファイルに移動したため削除 */
-  /*
-  .section02Content {
-    width: 100%;
-    max-width: 540px;
-  }
-  */
-  /* --- 修正箇所 終了 --- */
-
   .section02Top {
     width: 100%;
-    padding: 40px 20px;
-  }
-  
-  .titleContainer {
-    width: 100%;
-    max-width: 480px;
-  }
-  
-  .subtitle,
-  .description,
-  .supportBox {
-    width: 100%;
-    max-width: 480px;
+    padding: 40px 20px 0px;
   }
 }

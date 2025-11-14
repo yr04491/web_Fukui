@@ -35,6 +35,7 @@ const Navigation = () => {
             title={item.title} 
             subItems={item.subItems} 
             index={index}
+            path={item.path} // 
           />
         ))}
       </div>

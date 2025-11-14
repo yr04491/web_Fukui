@@ -5,14 +5,13 @@ import NavIcon from '../../assets/icons/NavIcon';
 
 /**
  * 共通NavigationItemコンポーネント
- * 通常ナビゲーション（改行あり）とハンバーガーメニュー（改行なし）の両方に対応
- * 
- * @param {string} title - ナビゲーション項目のタイトル
- * @param {Array} subItems - サブ項目の配列
- * @param {number} index - ナビゲーション項目のインデックス
- * @param {boolean} isHamburger - ハンバーガーメニュー内で使用されるかどうか
+ * * @param {string} title - タイトル
+ * @param {Array} subItems - サブ項目
+ * @param {number} index - インデックス
+ * @param {boolean} isHamburger - ハンバーガーメニューか
+ * @param {string} path - (追加) 遷移先のパス
  */
-const NavigationItem = ({ title, subItems = [], index, isHamburger = false }) => {
+const NavigationItem = ({ title, subItems = [], index, isHamburger = false, path }) => {
   const navigate = useNavigate();
   
   // タイトルの処理（ハンバーガーメニューでは改行なし、通常ナビでは改行あり）
@@ -28,23 +27,17 @@ const NavigationItem = ({ title, subItems = [], index, isHamburger = false }) =>
           </React.Fragment>
         ));
   
-  // クリックハンドラ
+  // クリックハンドラ (
   const handleItemClick = () => {
-    console.log(`ナビゲーション項目 "${title}" がクリックされました`);
+    // path が props として渡されていれば、そのパスに遷移する
+    if (path) {
+      console.log(`ナビゲーション項目 "${title.replace(/\\n|\n/g, ' ')}" がクリックされました -> ${path} へ遷移`);
+      navigate(path);
+    } else {
+      console.log(`ナビゲーション項目 "${title.replace(/\\n|\n/g, ' ')}" がクリックされました (遷移パスなし)`);
+    }
     
-    // 「まずは、どうする？」の場合は専用ページに遷移
-    if (title === "まずは、どうする？") {
-      navigate('/section00');
-    }
-    // 「学校に相談してみよう」の場合は01ページに遷移
-    else if (title === "学校に相談してみよう") {
-      navigate('/section01');
-    }
-    // 「行政が行う公的支援」の場合は02ページに遷移
-    else if (title === "行政が行う公的支援") {
-      navigate('/section02');
-    }
-    // 他のページも今後追加予定
+    // 以前の if...else if ブロックはすべて不要になります
   };
 
   return (

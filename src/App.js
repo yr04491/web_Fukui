@@ -1,20 +1,41 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage';
-import Section00Page from './pages/Section00Page';
-import Section01Page from './pages/Section01Page';
-import Section02Page from './pages/Section02Page';
+import Layout from './components/Layout/Layout'; // 
+import { navigationItems } from './data/navigationItems'; // 
 import ScrollToTop from './components/ScrollToTop';
+// SectionXXPage のインポートは不要になります
 
 function App() {
   return (
     <Router basename="/web_Fukui">
       <ScrollToTop />
       <Routes>
+        {/* ホーム画面用のルート */}
         <Route path="/" element={<HomePage />} />
-        <Route path="/section00" element={<Section00Page />} />
-        <Route path="/section01" element={<Section01Page />} />
-        <Route path="/section02" element={<Section02Page />} />
+
+        {/* ナビゲーション項目から動的にルートを生成 */}
+        {navigationItems.map((item, index) => {
+          // コンポーネントとパスが存在しない項目はスキップ
+          if (!item.component || !item.path) {
+            return null;
+          }
+          
+          const PageComponent = item.component;
+          
+          return (
+            <Route 
+              key={index}
+              path={item.path} 
+              element={
+                // 各ページを Layout でラップして表示
+                <Layout>
+                  <PageComponent />
+                </Layout>
+              } 
+            />
+          );
+        })}
       </Routes>
     </Router>
   );

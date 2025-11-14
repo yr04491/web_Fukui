@@ -1,0 +1,114 @@
+/* src/components/MainContent/03/Section03Content.module.css */
+/* 03ページ 固有のスタイル */
+/* (01ページからコピー) */
+
+/* ページ基本レイアウト */
+.section03Content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.section03Top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px 30px 0px;
+  gap: 30px;
+  width: 100%;
+  max-width: 540px;
+  position: relative;
+  isolation: isolate;
+  min-height: 150px;
+}
+
+.section03Middle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px 30px 0px;
+  gap: 30px;
+  position: relative;
+  width: 540px;
+  min-height: 700px;
+}
+
+
+/* ▼ 03ページ固有の「玉のずれ」（一旦 01 と同じ） ▼ */
+.colorNavi {
+  position: absolute;
+  width: 22.71px;
+  height: 92.11px;
+  left: -20px;
+  top: -32px;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.colorBar {
+  position: absolute;
+  width: 55.96%;
+  height: 13.78%;
+  border-radius: 50%;
+  box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+
+.colorBar:nth-child(1) {
+  /* 1番目を左に寄せる (01と同じ) */
+  left: 0%;
+  right: 44.08%;
+  top: 2.17%;
+  bottom: 84.04%;
+}
+
+.colorBar:nth-child(2) {
+  /* 2番目を右にずらす (01と同じ) */
+  left: 44.03%;
+  right: 0.04%;
+  top: 18.46%;
+  bottom: 67.76%;
+}
+
+/* ★TODO: 本来は 03 ページ用の玉ずれデザインに変更する */
+.colorBar:nth-child(3) {
+  left: 0%;
+  right: 44.08%;
+  top: 34.74%;
+  bottom: 51.47%;
+}
+
+.colorBar:nth-child(4) {
+  left: 0%;
+  right: 44.08%;
+  top: 51.03%;
+  bottom: 35.19%;
+}
+
+.colorBar:nth-child(5) {
+  left: 0%;
+  right: 44.08%;
+  top: 67.31%;
+  bottom: 18.9%;
+}
+
+.colorBar:nth-child(6) {
+  left: 0%;
+  right: 44.08%;
+  top: 83.6%;
+  bottom: 2.62%;
+}
+/* ▲ 03ページ固有の「玉のずれ」 ▲ */
+
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+  .section03Top,
+  .section03Middle {
+    width: 100%;
+    padding: 40px 20px 0px;
+  }
+}

@@ -101,6 +101,7 @@ const HamburgerMenu = () => {
               subItems={item.subItems}
               index={index}
               isHamburger={true}
+              path={item.path} // 
             />
           ))}
         </div>

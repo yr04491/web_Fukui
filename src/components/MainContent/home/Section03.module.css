@@ -83,6 +83,40 @@
   background-repeat: repeat-x;
 }
 
+/* 説明テキストエリア */
+.description {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  width: 100%;
+  max-width: 480px;
+  padding: 0 10px;
+}
+
+.descriptionTitle {
+  font-family: var(--font-primary);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--color-black);
+  margin: 0;
+  text-align: center;
+  width: 100%;
+}
+
+.descriptionText {
+  font-family: var(--font-primary);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--color-black);
+  margin: 0;
+  text-align: left;
+}
+
 /* 居場所セクション共通スタイル - Figmaデザインに合わせて調整 */
 .placeSection {
   display: flex;
@@ -92,7 +126,7 @@
   gap: 15px;
   width: 100%;
   max-width: 500px;
-  background: #FFF9E5; /* Figmaの色に合わせて調整 */
+  background: #FFFFFF; /* 白に変更 */
   border-radius: 10px;
   margin-bottom: 5px; /* セクション間の空間を削減 */
   overflow: visible;

@@ -9,9 +9,21 @@ const Section03 = () => {
     <div className={styles.section03}>
       <SectionTitle 
         roadNumber="03" 
-        title="まだまだある！ みんなの居場所" 
+        title="まだまだある！
+みんなの居場所" 
         roadNumberImage={roadNumberImage} 
       />
+      
+      {/* 説明テキスト */}
+      <div className={styles.description}>
+        <p className={styles.descriptionTitle}>
+          子どもだけじゃない。<br />
+          保護者のみなさんの居場所もあります。
+        </p>
+        <p className={styles.descriptionText}>
+          多くの民間団体やサークルが、不登校の子どもたちや保護者の居場所を作ってくれています。保護者のみなさんや、子どもたちに合う場所を見つけてみてください。
+        </p>
+      </div>
 
       {/* こどもの居場所セクション */}
       <div className={styles.placeSection}>

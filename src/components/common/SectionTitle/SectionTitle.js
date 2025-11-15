@@ -11,13 +11,23 @@ import dotlineImage from '../../../assets/images/dotline.png';
  * @param {string} roadNumberImage - ROAD番号画像のパス
  */
 const SectionTitle = ({ roadNumber, title, roadNumberImage }) => {
+  // 改行を処理する
+  const titleLines = title.split('\n');
+  
   return (
     <div className={styles.titleWrapper}>
       <div className={styles.logoContainer}>
         <span className={styles.roadText}>ROAD</span>
         <img src={roadNumberImage} alt={roadNumber} className={styles.logoChar} />
       </div>
-      <h2 className={styles.mainTitle}>{title}</h2>
+      <h2 className={styles.mainTitle}>
+        {titleLines.map((line, index) => (
+          <React.Fragment key={index}>
+            {line}
+            {index < titleLines.length - 1 && <br />}
+          </React.Fragment>
+        ))}
+      </h2>
       <div 
         className={styles.dotline} 
         style={{ backgroundImage: `url(${dotlineImage})` }}

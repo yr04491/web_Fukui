@@ -1,53 +1,52 @@
 // src/components/MainContent/04/Section04Content.js
 
 import React from 'react';
-import layoutStyles from '../commonPageLayout.module.css'; // 共通CSS（外枠）
-import styles from './Section04Content.module.css'; // 04ページ固有CSS
-import commonStyles from '../SectionCommon.module.css'; // 共通CSS（コンポーネント）
+import layoutStyles from '../commonPageLayout.module.css';
+import styles from './Section04Content.module.css';
 import Footer from '../../common/Footer';
 import Breadcrumbs from '../../common/Breadcrumbs';
-import roadNumberImage from '../../../assets/icons/04_0.png'; // 04の画像に変更
+import InterviewCard from '../../common/InterviewCard/InterviewCard';
+import road04Image from '../../../assets/icons/ROAD04.png';
+import dotlineImage from '../../../assets/images/dotline.png';
 
 const Section04Content = () => {
   return (
-    // ページレイアウト (styles)
     <div className={`${layoutStyles.pageContainer} ${styles.section04Content}`}>
 
       {/* パンくずリスト */}
-      <Breadcrumbs sectionNumber="04" sectionTitle="インタビュー 不登校とぼくら" />
+      <Breadcrumbs sectionNumber="04" sectionTitle="不登校とぼくら" />
 
-      {/* セクション1: タイトル部分 (styles) */}
-      <div className={styles.section04Top}>
-        {/* titleContainer (commonStyles) */}
-        <div className={commonStyles.titleContainer}>
-          {/* roadNumberContainer (commonStyles) */}
-          <div className={commonStyles.roadNumberContainer}>
-            {/* roadNumber (commonStyles) */}
-            <div className={commonStyles.roadNumber}>
-              <img src={roadNumberImage} alt="04" className={commonStyles.roadNumberImage} />
-            </div>
-          </div>
-          {/* mainTitle (commonStyles) */}
-          <h1 className={commonStyles.mainTitle}>インタビュー 不登校とぼくら</h1>
-        </div>
-        {/* subtitle (commonStyles) */}
-        <h2 className={commonStyles.subtitle}>当事者の声を聞いてみよう</h2>
-        {/* description (commonStyles) */}
-        <p className={commonStyles.description}>
-          ここには Section04（インタビュー）に関するコンテンツが入ります。
-          (デザインは一旦なし)
+      {/* タイトル部分 */}
+      <div className={styles.titleSection}>
+        <img src={road04Image} alt="ROAD 04" className={styles.roadImage} />
+        <p className={styles.subTitle}>インタビュー</p>
+        <h1 className={styles.mainTitle}>不登校とぼくら</h1>
+        <img src={dotlineImage} alt="点線" className={styles.dotline} />
+      </div>
+
+      {/* 説明セクション */}
+      <div className={styles.descriptionSection}>
+        <h2 className={styles.descriptionTitle}>
+          大丈夫。あなただけじゃない。
+        </h2>
+        <p className={styles.descriptionText}>
+          福井県内で不登校を身近に経験した方々にインタビューをしました。当時のこと、今のこと、今から考えること・・・<br />
+          なにかヒントが見つかるかもしれません。
         </p>
       </div>
 
-      {/* セクション2: (デザイン一旦なしのため最小限) */}
-      <div className={styles.section04Middle}>
-        {/* sectionTitle (commonStyles) */}
-        <h3 className={commonStyles.sectionTitle}>
-          コンテンツエリア
-        </h3>
-        <p className={commonStyles.sectionDescription}>
-          （ここに詳細コンテンツが入ります）
-        </p>
+      {/* インタビューセクション */}
+      <div className={styles.interviewSection}>
+        <div className={styles.sectionHeader}>
+          <h3 className={styles.sectionTitle}>
+            <span className={styles.titleLine1}>自分と同じ気持ちの人はいるかな。</span>
+            <span className={styles.titleLine2}>みんなのインタビューを見てみよう！</span>
+          </h3>
+        </div>
+        <div className={styles.interviewCardArea}>
+          <InterviewCard cardId={1} />
+          <InterviewCard cardId={2} />
+        </div>
       </div>
 
       {/* フッター */}

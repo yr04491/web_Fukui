@@ -1,54 +1,58 @@
 // src/components/MainContent/05/Section05Content.js
 
 import React from 'react';
-import layoutStyles from '../commonPageLayout.module.css'; // 共通CSS（外枠）
-import styles from './Section05Content.module.css'; // 05ページ固有CSS
-import commonStyles from '../SectionCommon.module.css'; // 共通CSS（コンポーネント）
+import layoutStyles from '../commonPageLayout.module.css';
+import styles from './Section05Content.module.css';
 import Footer from '../../common/Footer';
 import Breadcrumbs from '../../common/Breadcrumbs';
-import roadNumberImage from '../../../assets/icons/05_0.png'; // 05の画像に変更
+import PlaceCard from '../../common/PlaceCard/PlaceCard';
+import road05Image from '../../../assets/icons/ROAD05.png';
+import dotlineImage from '../../../assets/images/dotline.png';
+import vectorRB from '../../../assets/images/vectorRB.png';
 
 const Section05Content = () => {
   return (
-    // ページレイアウト (styles)
     <div className={`${layoutStyles.pageContainer} ${styles.section05Content}`}>
 
       {/* パンくずリスト */}
-      <Breadcrumbs sectionNumber="05" sectionTitle="中学卒業のこと" />
+      <Breadcrumbs sectionNumber="05" sectionTitle="中学卒業後のこと" />
 
-      {/* セクション1: タイトル部分 (styles) */}
-      <div className={styles.section05Top}>
-        {/* titleContainer (commonStyles) */}
-        <div className={commonStyles.titleContainer}>
-          {/* roadNumberContainer (commonStyles) */}
-          <div className={commonStyles.roadNumberContainer}>
-            {/* roadNumber (commonStyles) */}
-            <div className={commonStyles.roadNumber}>
-              <img src={roadNumberImage} alt="05" className={commonStyles.roadNumberImage} />
-            </div>
-          </div>
-          {/* mainTitle (commonStyles) */}
-          <h1 className={commonStyles.mainTitle}>中学卒業のこと</h1>
+      {/* タイトル部分 */}
+      <div className={styles.titleSection}>
+        <img src={road05Image} alt="ROAD 05" className={styles.roadImage} />
+        <h1 className={styles.mainTitle}>中学卒業後のこと</h1>
+        <img src={dotlineImage} alt="点線" className={styles.dotline} />
+      </div>
+
+      {/* 説明セクション */}
+      <div className={styles.descriptionSection}>
+        <h2 className={styles.descriptionTitle}>
+          ここにこにはもはいれる。ここにこにはもはいれる。ここにこにはもはいれる。
+        </h2>
+        <div className={styles.dividerLine}></div>
+        <p className={styles.descriptionText}>
+          ここに予定の文章が入ります。ここに予定の文章が入ります。ここに予定の文章が入ります。ここに予定の文章が入ります。ここに予定の文章が入ります。
+        </p>
+      </div>
+
+      {/* 検索機能セクション */}
+      <div className={styles.searchSection}>
+        <h3 className={styles.searchTitle}>検索機能</h3>
+        <div className={styles.dividerLine}></div>
+        <div className={styles.placeCardArea}>
+          <PlaceCard cardId={1} />
+          <PlaceCard cardId={2} />
+          <PlaceCard cardId={3} />
+          <PlaceCard cardId={1} />
+          <PlaceCard cardId={2} />
         </div>
-        {/* subtitle (commonStyles) */}
-        <h2 className={commonStyles.subtitle}>義務教育後の選択肢</h2>
-        {/* description (commonStyles) */}
-        <p className={commonStyles.description}>
-          ここには Section05（中学卒業のこと）に関するコンテンツが入ります。
-          (デザインは一旦なし)
-        </p>
       </div>
 
-      {/* セクション2: (デザイン一旦なしのため最小限) */}
-      <div className={styles.section05Middle}>
-        {/* sectionTitle (commonStyles) */}
-        <h3 className={commonStyles.sectionTitle}>
-          コンテンツエリア
-        </h3>
-        <p className={commonStyles.sectionDescription}>
-          （ここに詳細コンテンツが入ります）
-        </p>
-      </div>
+      {/* 中学卒業後の進路ボタン */}
+      <button className={styles.pathButton}>
+        <img src={vectorRB} alt="アイコン" className={styles.playIcon} />
+        <span>中学卒業後の進路を考える</span>
+      </button>
 
       {/* フッター */}
       <Footer />

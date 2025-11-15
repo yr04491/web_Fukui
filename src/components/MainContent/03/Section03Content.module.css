@@ -1,114 +1,153 @@
 /* src/components/MainContent/03/Section03Content.module.css */
-/* 03ページ 固有のスタイル */
-/* (01ページからコピー) */
 
-/* ページ基本レイアウト */
 .section03Content {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.section03Top {
+/* タイトルセクション */
+.titleSection {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 60px 30px 0px;
-  gap: 30px;
+  padding: 0 30px 20px;
+  gap: 5px;
   width: 100%;
   max-width: 540px;
-  position: relative;
-  isolation: isolate;
-  min-height: 150px;
 }
 
-.section03Middle {
+.roadImage {
+  height: auto;
+  max-width: 200px;
+  margin-bottom: -10px;
+}
+
+.mainTitle {
+  font-family: var(--font-primary);
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--color-black);
+  text-align: center;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.dotline {
+  width: 100%;
+  max-width: 480px;
+  height: auto;
+  margin: 5px 0;
+}
+
+/* 説明セクション */
+.descriptionSection {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+  padding: 20px 30px;
+  gap: 15px;
+  width: 100%;
+  max-width: 540px;
+}
+
+.descriptionTitle {
+  font-family: var(--font-primary);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--color-black);
+  margin: 0;
+}
+
+.dividerLine {
+  width: 100%;
+  border-bottom: 1px solid #CCCCCC;
+}
+
+.descriptionText {
+  font-family: var(--font-primary);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--color-black);
+  margin: 0;
+}
+
+/* みんなの居場所一覧セクション */
+.placeListSection {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 20px 30px;
+  gap: 15px;
+  width: 100%;
+  max-width: 540px;
+}
+
+.placeListTitle {
+  font-family: var(--font-primary);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--color-black);
+  margin: 0;
+}
+
+/* PlaceCardエリア */
+.placeCardArea {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 10px 0;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.placeCardArea::-webkit-scrollbar {
+  display: none;
+}
+
+/* みんなの居場所検索ページボタン */
+.searchButton {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
   align-items: center;
-  padding: 60px 30px 0px;
-  gap: 30px;
-  position: relative;
-  width: 540px;
-  min-height: 700px;
+  padding: 12px 20px;
+  gap: 8px;
+  width: auto;
+  max-width: 360px;
+  height: auto;
+  background: #88D3BC;
+  border: 1px solid var(--color-black);
+  border-radius: 8px;
+  font-family: var(--font-primary);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--color-black);
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+  margin: 20px 0;
 }
 
-
-/* ▼ 03ページ固有の「玉のずれ」（一旦 01 と同じ） ▼ */
-.colorNavi {
-  position: absolute;
-  width: 22.71px;
-  height: 92.11px;
-  left: -20px;
-  top: -32px;
-  flex: none;
-  order: 1;
-  flex-grow: 0;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
+.searchButton:hover {
+  background-color: #7bc4ad;
 }
 
-.colorBar {
-  position: absolute;
-  width: 55.96%;
-  height: 13.78%;
-  border-radius: 50%;
-  box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+.searchButton:active {
+  transform: scale(0.98);
 }
 
-.colorBar:nth-child(1) {
-  /* 1番目を左に寄せる (01と同じ) */
-  left: 0%;
-  right: 44.08%;
-  top: 2.17%;
-  bottom: 84.04%;
-}
-
-.colorBar:nth-child(2) {
-  /* 2番目を右にずらす (01と同じ) */
-  left: 44.03%;
-  right: 0.04%;
-  top: 18.46%;
-  bottom: 67.76%;
-}
-
-/* ★TODO: 本来は 03 ページ用の玉ずれデザインに変更する */
-.colorBar:nth-child(3) {
-  left: 0%;
-  right: 44.08%;
-  top: 34.74%;
-  bottom: 51.47%;
-}
-
-.colorBar:nth-child(4) {
-  left: 0%;
-  right: 44.08%;
-  top: 51.03%;
-  bottom: 35.19%;
-}
-
-.colorBar:nth-child(5) {
-  left: 0%;
-  right: 44.08%;
-  top: 67.31%;
-  bottom: 18.9%;
-}
-
-.colorBar:nth-child(6) {
-  left: 0%;
-  right: 44.08%;
-  top: 83.6%;
-  bottom: 2.62%;
-}
-/* ▲ 03ページ固有の「玉のずれ」 ▲ */
-
-
-/* レスポンシブ対応 */
-@media (max-width: 768px) {
-  .section03Top,
-  .section03Middle {
-    width: 100%;
-    padding: 40px 20px 0px;
-  }
+.playIcon {
+  width: 20px;
+  height: 20px;
 }

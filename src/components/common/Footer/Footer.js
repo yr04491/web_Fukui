@@ -1,16 +1,13 @@
+// src/components/common/Footer/Footer.js
+
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './Footer.module.css';
-import logo1 from '../../../assets/images/logo1.png';
+// 1. logo1 から Footer_logo.png にインポートを変更
+import footerLogo from '../../../assets/icons/Footer_logo.png'; 
 
 const Footer = () => {
   const navigate = useNavigate();
-
-  const handleAboutClick = () => {
-    console.log('運営について がクリックされました');
-    // 運営ページへの遷移処理（今後実装予定）
-    // navigate('/about');
-  };
 
   const handleLogoClick = () => {
     console.log('フッターロゴがクリックされました - ホームページに遷移');
@@ -23,29 +20,32 @@ const Footer = () => {
     });
   };
 
+  // 2. リスト項目用のクリックハンドラを追加
+  const handleListClick = (item) => {
+    console.log(`${item} がクリックされました`);
+    // 今後、各検索ページへの遷移などを実装
+  };
+
   return (
     <footer className={styles.footer}>
       <div className={styles.footerContent}>
-        <p className={styles.footerTitle}>
-          当事者たちでつくる、不登校情報サイト
-        </p>
-        
         <button 
           className={styles.footerLogo}
           onClick={handleLogoClick}
           aria-label="ホームページに戻る"
         >
-          <img src={logo1} alt="ロゴ" className={styles.logoImage} />
+          {/* 3. src と alt を変更 */}
+          <img src={footerLogo} alt="ぼくらのみち 福井県版" className={styles.logoImage} />
         </button>
         
-        <div className={styles.footerMenu}>
-          <button 
-            className={styles.menuItem}
-            onClick={handleAboutClick}
-          >
-            ・運営について　（ここにフッターメニュー）
-          </button>
-        </div>
+        {/* 4. 既存の .footerMenu を削除し、新しい .footerList に変更 */}
+        <ul className={styles.footerList}>
+          <li onClick={() => handleListClick('学校・行政・医療情報の一覧')}>学校・行政・医療情報の一覧</li>
+          <li onClick={() => handleListClick('みんなの居場所を探す')}>みんなの居場所を探す</li>
+          <li onClick={() => handleListClick('中学卒業後の進路を探す')}>中学卒業後の進路を探す</li>
+          <li onClick={() => handleListClick('体験談を探す')}>体験談を探す</li>
+          <li onClick={() => handleListClick('体験談の投稿')}>体験談の投稿</li>
+        </ul>
       </div>
     </footer>
   );

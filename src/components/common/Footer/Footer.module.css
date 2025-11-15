@@ -1,42 +1,54 @@
-/* Footer スタイル */
+/* src/components/common/Footer/Footer.module.css */
+/* Figmaデザイン (スクリーンショット 481) に合わせて修正 */
+
 .footer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 60px 30px;
-  gap: 8px;
+  /* パディングを調整 (上下50px, 左右30px) */
+  padding: 50px 30px; 
+  /* 要素間のギャップを調整 */
+  gap: 30px; 
   width: 100%;
   max-width: 540px;
-  height: 208.88px;
-  background: #EFAB94;
+  /* 高さを自動に変更 */
+  height: auto; 
+  /* ▼ 背景色をミントグリーンに変更 ▼ */
+  background: #E2F3E2; 
   flex: none;
   order: 3;
   flex-grow: 0;
   margin-top: 0;
-  border-radius: 0 0 var(--radius-m) var(--radius-m); /* 下部の角丸のみ適用 */
-  box-sizing: border-box; /* ボックスサイジングを追加 */
+  border-radius: 0 0 var(--radius-m) var(--radius-m); 
+  box-sizing: border-box; 
 }
 
 .footerContent {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 8px;
+  /* ▼ 左寄せに変更 ▼ */
+  align-items: flex-start; 
+  /* ギャップを調整 */
+  gap: 15px; 
   width: 100%;
+  /* コンテンツの最大幅（左右の余白を考慮） */
+  max-width: 480px; 
   height: 100%;
   justify-content: center;
 }
 
 .footerTitle {
-  width: 270px;
-  height: 19.88px;
-  font-family: 'Inter', sans-serif;
+  width: auto; 
+  height: auto;
+  font-family: 'Zen Kaku Gothic New', sans-serif;
   font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 17px;
-  color: #FFFFFF;
-  text-align: center;
+  font-weight: 400; /* Medium or Regular */
+  font-size: 12px; /* 12px */
+  line-height: 1.5;
+  /* ▼ 文字色を濃いグレーに変更 ▼ */
+  color: #555555; 
+  /* ▼ 左寄せに変更 ▼ */
+  text-align: left; 
   flex: none;
   order: 0;
   flex-grow: 0;
@@ -44,14 +56,16 @@
 }
 
 .footerLogo {
-  width: 187px;
-  height: 28px;
+  /* ▼ ロゴのサイズを調整 ▼ */
+  width: 270px; 
+  height: auto; 
   flex: none;
   order: 1;
   flex-grow: 0;
   display: flex;
-  justify-content: center;
+  justify-content: center; /* 中央寄せに変更 */ 
   align-items: center;
+  align-self: center; /* この要素自体を中央寄せにするため追加 */
   transition: opacity 0.3s ease, transform 0.2s ease;
   border-radius: 4px;
   background: transparent;
@@ -59,6 +73,7 @@
   cursor: pointer;
   padding: 0;
   margin: 0;
+  margin-top: -5px; /* タイトルとの間隔を詰める */
 }
 
 .footerLogo:hover {
@@ -67,7 +82,8 @@
 }
 
 .footerLogo:focus {
-  outline: 2px solid #FFFFFF;
+  /* アウトラインをロゴの色に合わせるか、黒にする */
+  outline: 2px solid #555555; 
   outline-offset: 2px;
 }
 
@@ -79,53 +95,48 @@
   width: 100%;
   height: 100%;
   object-fit: contain;
-  pointer-events: none; /* 画像自体のクリックイベントを無効化 */
-  user-select: none; /* テキスト選択を無効化 */
+  pointer-events: none; 
+  user-select: none; 
 }
 
-.footerMenu {
-  width: 100%;
-  max-width: 480px;
-  height: 25px;
-  flex: none;
-  order: 2;
-  flex-grow: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.menuItem {
-  width: 100%;
-  max-width: 480px;
-  height: 25px;
-  font-family: 'Zen Kaku Gothic New', sans-serif;
-  font-style: normal;
-  font-weight: 700;
-  font-size: 12px;
-  line-height: 25px;
-  letter-spacing: -0.05em;
-  color: #000000;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  text-align: center;
-  flex: none;
-  order: 2;
-  flex-grow: 0;
+/* ▼ 既存の .footerMenu と .menuItem を .footerList に変更 ▼ */
+.footerList {
+  /* 箇条書きの点を削除 */
+  list-style: none; 
   padding: 0;
   margin: 0;
-  transition: opacity 0.3s ease;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  /* 左寄せ */
+  align-items: flex-start; 
+  /* 項目間のギャップ */
+  gap: 2px; 
+  flex: none;
+  order: 2;
+  flex-grow: 0;
+  /* ロゴとの間隔 */
+  margin-top: 15px; 
 }
 
-.menuItem:hover {
-  opacity: 0.8;
+.footerList li {
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-style: normal;
+  font-weight: 500; /* Medium */
+  font-size: 14px;
+  line-height: 1.5; /* 行間 */
+  /* 文字色を濃いグレーに */
+  color: #555555; 
+  cursor: pointer;
+  transition: color 0.2s;
 }
 
-.menuItem:focus {
-  outline: 2px solid #000000;
-  outline-offset: 2px;
+/* ▼ ホバー時に文字色を黒に変更 ▼ */
+.footerList li:hover {
+  color: #000000; 
 }
+/* ▲ スタイル変更ここまで ▲ */
+
 
 /* レスポンシブ対応 */
 @media (max-width: 768px) {
@@ -133,63 +144,49 @@
     padding: 40px 20px;
     height: auto;
     max-width: 100%;
-    gap: 6px;
+    gap: 20px;
   }
   
   .footerContent {
-    gap: 6px;
+    gap: 15px; 
+    /* レスポンシブでも最大幅を指定 */
+    max-width: 480px; 
+    width: 100%;
   }
   
   .footerTitle {
-    width: 100%;
-    max-width: 270px;
-    height: auto;
-    font-size: 13px;
-    line-height: 16px;
+    font-size: 12px;
   }
   
   .footerLogo {
-    width: 150px;
-    height: 22px;
+    width: 240px; 
   }
   
-  .footerMenu {
-    width: 100%;
-    height: auto;
-  }
-  
-  .menuItem {
-    width: 100%;
-    height: auto;
-    font-size: 11px;
-    line-height: 22px;
-    padding: 2px 0;
+  .footerList li {
+    font-size: 13px;
   }
 }
 
 @media (max-width: 480px) {
   .footer {
-    padding: 30px 15px;
-    gap: 4px;
+    padding: 30px 20px; 
+    gap: 15px;
   }
   
   .footerContent {
-    gap: 4px;
+    gap: 10px;
+    max-width: 100%; /* スマホでは最大幅を解除 */
   }
   
   .footerTitle {
-    font-size: 12px;
-    line-height: 15px;
+    font-size: 11px;
   }
   
   .footerLogo {
-    width: 120px;
-    height: 18px;
+    width: 220px;
   }
   
-  .menuItem {
-    font-size: 10px;
-    line-height: 20px;
-    padding: 1px 0;
+  .footerList li {
+    font-size: 13px;
   }
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from './Section02.module.css';
 import vectorRB from '../../../assets/images/vectorRB.png';
 import roadNumberImage from '../../../assets/icons/02_0.png';
@@ -7,6 +8,7 @@ import ContentFrame from '../../common/ContentFrame';
 import ExperienceSection from '../../common/ExperienceSection';
 
 const Section02 = () => {
+  const navigate = useNavigate();
   return (
     <div className={styles.section02}>
       <SectionTitle 
@@ -18,7 +20,10 @@ const Section02 = () => {
       <ContentFrame
         title="公的な支援機関はいくつかあります"
         buttonElement={
-          <button className={styles.projectButton}>
+          <button 
+            className={styles.projectButton}
+            onClick={() => navigate('/section02')}
+          >
             <img src={vectorRB} alt="アイコン" className={styles.playIcon} />
             <span>相談の窓口などご紹介。福井県内各所、利用しやすいところを選んでください。</span>
           </button>

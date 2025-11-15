@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from './Section00.module.css';
 import roadNumberImage from '../../../assets/icons/00_0.png';
 import SectionTitle from '../../common/SectionTitle';
@@ -6,6 +7,8 @@ import ContentFrame from '../../common/ContentFrame';
 import ExperienceSection from '../../common/ExperienceSection';
 
 const Section00 = () => {
+  const navigate = useNavigate();
+
   return (
     <div className={styles.section00}>
       <SectionTitle 
@@ -17,7 +20,10 @@ const Section00 = () => {
       <ContentFrame
         title="＼　大丈夫です。なんとかなります。／まずは慌てず落ち着きましょう。"
         buttonElement={
-          <button className={styles.projectButton}>
+          <button 
+            className={styles.projectButton}
+            onClick={() => navigate('/section00')}
+          >
             <div className={styles.bookIcon}></div>
             <span>心が落ち着くかも。私たちの想いを読んでみてください</span>
           </button>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from './Section01.module.css';
 import vectorRB from '../../../assets/images/vectorRB.png';
 import roadNumberImage from '../../../assets/icons/01_0.png';
@@ -8,6 +9,7 @@ import ExperienceSection from '../../common/ExperienceSection';
 
 
 const Section01 = () => {
+  const navigate = useNavigate();
   return (
     <div className={styles.section01}>
       <SectionTitle 
@@ -19,7 +21,10 @@ const Section01 = () => {
       <ContentFrame
         title="学校にはいろんなサポートがあります"
         buttonElement={
-          <button className={styles.projectButton}>
+          <button 
+            className={styles.projectButton}
+            onClick={() => navigate('/section01')}
+          >
             <img src={vectorRB} alt="アイコン" className={styles.playIcon} />
             <span>親側から積極的に支援を求めて下さい。サポートについて詳しく紹介しています。</span>
           </button>

@@ -1,18 +1,45 @@
-import React from 'react';
+import React, { useState } from 'react';
 import layoutStyles from '../commonPageLayout.module.css'; // 共通CSS（外枠）
 import styles from './ExperiencesContent.module.css';
 import Breadcrumbs from '../../common/Breadcrumbs';
 import Footer from '../../common/Footer';
 import TweetCard from '../../common/TweetCard/TweetCard';
+import FilterModal from '../../common/FilterModal';
 import dotlineImage from '../../../assets/images/dotline.png';
 import SearchIcon from '../../../assets/icons/SearchIcon';
 import FilterIcon from '../../../assets/icons/FilterIcon';
 
 const ExperiencesContent = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [filterCount, setFilterCount] = useState(0);
+
   const breadcrumbItems = [
     { label: 'TOP', path: '/' },
     { label: '体験談を探す', path: '/experiences' }
   ];
+
+  const filterConfig = {
+    selectedColor: '#EF9F94',
+    buttonColor: '#EF9F94',
+    categories: [
+      {
+        title: 'お子さんの学年から探す',
+        options: ['小学生', '中学生', '高校生', '卒業生']
+      },
+      {
+        title: 'きっかけから探す',
+        options: ['不登校', '病気', 'いじめ', '発達障がい', 'その他']
+      },
+      {
+        title: '状況から探す',
+        options: ['自宅学習', '学校復帰', '進学', '就職', 'その他']
+      },
+      {
+        title: '支援体験から探す',
+        options: ['フリースクール', '適応指導教室', 'オンライン学習', '家庭教師', 'その他']
+      }
+    ]
+  };
 
   return (
     <div className={layoutStyles.pageContainer}>
@@ -36,9 +63,12 @@ const ExperiencesContent = () => {
           
           {/* ボタンエリア */}
           <div className={styles.buttonArea}>
-            <button className={styles.filterButton}>
+            <button 
+              className={styles.filterButton}
+              onClick={() => setIsModalOpen(true)}
+            >
               <FilterIcon size={16} color="#EF9F94" />
-              <span>絞り込み</span>
+              <span>絞り込み{filterCount > 0 && `(${filterCount})`}</span>
             </button>
             
             <button className={styles.searchButton}>
@@ -67,6 +97,13 @@ const ExperiencesContent = () => {
           <TweetCard cardId={3} />
         </div>
       </div>
+
+      <FilterModal 
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        filterConfig={filterConfig}
+        onApply={setFilterCount}
+      />
 
       <Footer />
     </div>

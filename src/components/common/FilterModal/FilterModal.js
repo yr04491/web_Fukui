@@ -1,0 +1,97 @@
+import React, { useState } from 'react';
+import styles from './FilterModal.module.css';
+
+const FilterModal = ({ isOpen, onClose, filterConfig, onApply }) => {
+  const [selectedTags, setSelectedTags] = useState([]);
+
+  if (!isOpen) return null;
+
+  const toggleTag = (tag, categoryIndex) => {
+    const uniqueTag = `${categoryIndex}_${tag}`;
+    setSelectedTags(prev => 
+      prev.includes(uniqueTag) 
+        ? prev.filter(t => t !== uniqueTag)
+        : [...prev, uniqueTag]
+    );
+  };
+
+  const getDisplayTag = (uniqueTag) => {
+    return uniqueTag.split('_').slice(1).join('_');
+  };
+
+  const isTagSelected = (tag, categoryIndex) => {
+    const uniqueTag = `${categoryIndex}_${tag}`;
+    return selectedTags.includes(uniqueTag);
+  };
+
+  const handleDecide = () => {
+    if (onApply) {
+      onApply(selectedTags.length);
+    }
+    onClose();
+  };
+
+  return (
+    <>
+      <div className={styles.overlay} onClick={onClose} />
+      <div className={styles.modal}>
+        <button className={styles.closeButton} onClick={onClose}>×</button>
+        
+        <div className={styles.searchSection}>
+          <div className={styles.searchBar}>
+            <div className={styles.tagContainer}>
+              {selectedTags.map(uniqueTag => (
+                <span key={uniqueTag} className={styles.selectedTag}>
+                  {getDisplayTag(uniqueTag)}
+                  <button onClick={() => toggleTag(getDisplayTag(uniqueTag), parseInt(uniqueTag.split('_')[0]))} className={styles.tagRemove}>×</button>
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className={styles.filterContent}>
+          {filterConfig.categories.map((category, index) => (
+            <div key={index} className={styles.filterCategory}>
+              <h3 className={styles.categoryTitle}>{category.title}</h3>
+              <div className={styles.buttonGroup}>
+                {category.options.map((option, optionIndex) => (
+                  <button
+                    key={optionIndex}
+                    className={`${styles.filterButton} ${
+                      isTagSelected(option, index) ? styles.selected : ''
+                    }`}
+                    style={{
+                      backgroundColor: isTagSelected(option, index) 
+                        ? filterConfig.selectedColor 
+                        : '#FFFFFF',
+                      color: isTagSelected(option, index) 
+                        ? '#FFFFFF' 
+                        : '#333333',
+                      borderColor: isTagSelected(option, index)
+                        ? filterConfig.selectedColor
+                        : '#E0E0E0'
+                    }}
+                    onClick={() => toggleTag(option, index)}
+                  >
+                    {option}
+                  </button>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <button 
+          className={styles.decideButton}
+          style={{ backgroundColor: filterConfig.buttonColor }}
+          onClick={handleDecide}
+        >
+          決定
+        </button>
+      </div>
+    </>
+  );
+};
+
+export default FilterModal;

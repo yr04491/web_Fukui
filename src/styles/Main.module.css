@@ -92,7 +92,7 @@
   flex: none;
   order: 0;
   flex-shrink: 0;
-  z-index: 100;
+  z-index: 1;
   overflow-y: auto;
   overflow-x: hidden;
   scrollbar-width: none; /* Firefox用 */

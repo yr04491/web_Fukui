@@ -26,8 +26,7 @@ const Section02 = () => {
       >
         <div className={styles.contentList}>
           <p>◯ちゃれんじ教室</p>
-          <p>◯ソーシャルワーカー</p>
-          <p>など</p>
+          <p>◯ソーシャルワーカー　など</p>
         </div>
       </ContentFrame>
 

@@ -9,7 +9,7 @@
   width: 100%;
   max-width: 540px;
   margin: 0 auto; /* 上部マージンを0に変更 */
-  background: rgba(156, 174, 252, 0.15); /* 背景色を変更 */
+  background: #FFFFFF; /* 背景色を白に変更 */
   border-radius: 0; /* 四角にする */
 }
 
@@ -96,7 +96,7 @@
   letter-spacing: 0.1em;
   color: var(--color-black);
   text-align: left;
-  padding-left: 40px;
+  padding-left: 0;
   box-sizing: border-box;
 }
 
@@ -118,7 +118,7 @@
   max-width: 320px; /* 幅を広げる */
   height: auto; /* 高さを自動に設定 */
   min-height: 46px; /* 最低高さを設定 */
-  background: #E0E6FF; /* 背景色を変更 */
+  background: #FFF9CC; /* 背景色を黄色に変更 */
   border: 1px solid var(--color-black);
   border-radius: 5px;
   cursor: pointer;
@@ -226,6 +226,10 @@
   line-height: 15px;
   color: var(--color-black);
   white-space: nowrap;
+}
+/* Section01専用のExperienceSection */
+.experience01 :global(.titleLine2) {
+  font-size: 18px !important;
 }
 
 /* レスポンシブ対応 */

@@ -25,6 +25,10 @@ const Section01 = () => {
           </button>
         }
       >
+        <p>
+          まずは、担任の先生や学年主任の先生、養護の先生に現状を相談するのが良いかもしれません。<br />
+          ただ、全ての先生が不登校に詳しいというわけではありません。そして子どもも親も先生も人間です。合う・合わないは必ずあります。学校は、「利用するもの」という意識を持つと少し楽になるかもしれません。
+        </p>
         <div className={styles.contentList}>
           <p>◯スクールカウンセラー紹介</p>
           <p>◯校内サポートルーム</p>
@@ -33,10 +37,11 @@ const Section01 = () => {
       </ContentFrame>
 
       <ExperienceSection 
-        tag="学校もみんなのペースで活用！"
-        title="みんなの学校活用術"
+        title="みんなの体験談を見てみよう！
+みんなの学校活用術"
         tweetCardIds={[3, 4, 5]}
         moreButtonText="みんなの学校活用術をもっと見てみる"
+        customClass={styles.experience01}
       />
     </div>
   );

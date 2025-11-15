@@ -200,6 +200,11 @@
   white-space: nowrap; /* テキストの改行を防止 */
 }
 
+/* Section00専用のExperienceSection */
+.experience00 :global(.titleLine2) {
+  font-size: 18px !important;
+}
+
 /* レスポンシブ対応 */
 @media (max-width: 768px) {
   .section00 {

@@ -11,13 +11,14 @@ import TweetCard from '../TweetCard/TweetCard';
  * @param {string} title - セクションタイトル
  * @param {Array<number>} tweetCardIds - 表示するTweetCardのID配列
  * @param {string} moreButtonText - 「もっと見る」ボタンのテキスト
+ * @param {string} customClass - カスタムCSSクラス (オプショナル)
  */
-const ExperienceSection = ({ tag, title, tweetCardIds, moreButtonText }) => {
+const ExperienceSection = ({ tag, title, tweetCardIds, moreButtonText, customClass }) => {
   // titleを改行で分割
   const titleLines = title.split('\n');
   
   return (
-    <div className={styles.experienceSection}>
+    <div className={`${styles.experienceSection} ${customClass || ''}`}>
       {tag && (
         <div className={styles.experienceHeader}>
           <span className={styles.experienceTag}>{tag}</span>

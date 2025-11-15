@@ -34,6 +34,7 @@ const Section00 = () => {
 不登校になったきっかけは？"
         tweetCardIds={[1, 2]}
         moreButtonText="不登校になったきっかけの体験談を見る"
+        customClass={styles.experience00}
       />
     </div>
   );

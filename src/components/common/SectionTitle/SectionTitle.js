@@ -23,7 +23,7 @@ const SectionTitle = ({ roadNumber, title, roadNumberImage }) => {
       <h2 className={styles.mainTitle}>
         {titleLines.map((line, index) => (
           <React.Fragment key={index}>
-            {line}
+            <span className={`titleLine${index + 1}`}>{line}</span>
             {index < titleLines.length - 1 && <br />}
           </React.Fragment>
         ))}

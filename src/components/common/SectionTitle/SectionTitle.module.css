@@ -49,10 +49,8 @@
   font-weight: 600;
   font-size: 25px;
   line-height: 35px;
-  display: flex;
-  align-items: center;
+  display: block;
   text-align: center;
-  justify-content: center;
   color: var(--color-black);
   margin: 0;
 }

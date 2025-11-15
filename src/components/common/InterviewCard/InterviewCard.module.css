@@ -1,0 +1,148 @@
+/* インタビューカード */
+.interviewCard {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  padding: 0;
+  gap: 15px;
+  width: 100%;
+  max-width: 460px;
+  min-width: 320px;
+  background: #FFFFFF;
+  border: 1px solid var(--color-black);
+  border-radius: 10px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.imageContainer {
+  width: 140px;
+  min-width: 140px;
+  height: auto;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cardImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.contentContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 15px 15px 12px 0;
+  flex: 1;
+  gap: 10px;
+}
+
+.mainContent {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cardTitle {
+  font-family: var(--font-primary);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.4;
+  color: var(--color-black);
+  margin: 0;
+}
+
+.cardDescription {
+  font-family: var(--font-primary);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--color-black);
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background-image: repeating-linear-gradient(
+    to right,
+    var(--color-black) 0,
+    var(--color-black) 4px,
+    transparent 4px,
+    transparent 8px
+  );
+  margin: 5px 0;
+}
+
+.cardFooter {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
+.authorIcon {
+  width: 24px;
+  height: 24px;
+  background: #FFB5C2;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-primary);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  color: var(--color-black);
+  flex-shrink: 0;
+}
+
+.authorName {
+  font-family: var(--font-primary);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: var(--color-black);
+}
+
+.cardDate {
+  font-family: var(--font-primary);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: var(--color-black);
+  margin-left: auto;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+  .interviewCard {
+    max-width: 100%;
+    min-width: 280px;
+  }
+
+  .imageContainer {
+    width: 120px;
+    min-width: 120px;
+  }
+
+  .cardTitle {
+    font-size: 14px;
+  }
+
+  .cardDescription {
+    font-size: 11px;
+  }
+}

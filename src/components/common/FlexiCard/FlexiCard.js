@@ -6,9 +6,19 @@ import React from 'react';
 import styles from './FlexiCard.module.css';
 
 const FlexiCard = ({ title, description, buttonText, onButtonClick }) => {
+  // タイトル内の\nを改行に変換
+  const renderTitle = () => {
+    return title.split('\n').map((line, index, array) => (
+      <React.Fragment key={index}>
+        {line}
+        {index < array.length - 1 && <br />}
+      </React.Fragment>
+    ));
+  };
+
   return (
     <div className={styles.flexiCard}>
-      <h4 className={styles.flexiCardTitle} dangerouslySetInnerHTML={{ __html: title }} />
+      <h4 className={styles.flexiCardTitle}>{renderTitle()}</h4>
       <div className={styles.flexiCardDivider}></div>
       <p className={styles.flexiCardDescription}>{description}</p>
       {buttonText && (

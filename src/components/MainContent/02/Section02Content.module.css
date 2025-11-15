@@ -1,107 +1,174 @@
 /* src/components/MainContent/02/Section02Content.module.css */
-/* 02ページ 固有のスタイル */
 
-/* ページ基本レイアウト */
 .section02Content {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.section02Top {
+/* タイトルセクション */
+.titleSection {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 60px 30px 0px;
-  gap: 30px;
+  padding: 0 30px 20px;
+  gap: 5px;
   width: 100%;
   max-width: 540px;
-  position: relative;
-  isolation: isolate;
-  min-height: 150px;
 }
 
-/* --- ▼ 修正箇所 開始 ▼ --- */
-/*
-  .supportBox の空のルールセットを削除しました。
-  (共通スタイルが適用されるため、ここでの定義は不要でした)
-*/
-/* --- ▲ 修正箇所 終了 ▲ --- */
+.roadImage {
+  height: auto;
+  max-width: 200px;
+  margin-bottom: -10px;
+}
 
+.mainTitle {
+  font-family: var(--font-primary);
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--color-black);
+  text-align: center;
+  margin: 0;
+  line-height: 1.3;
+}
 
-/* ▼ 02ページ固有の「玉のずれ」 ▼ */
-.colorNavi {
-  position: absolute;
-  width: 22.71px;
-  height: 92.11px;
-  left: -20px;
-  top: -32px;
-  flex: none;
-  order: 1;
-  flex-grow: 0;
-  z-index: 1;
+.dotline {
+  width: 100%;
+  max-width: 480px;
+  height: auto;
+  margin: 5px 0;
+}
+
+/* 説明セクション */
+.descriptionSection {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+  padding: 20px 30px;
+  gap: 15px;
+  width: 100%;
+  max-width: 540px;
 }
 
-.colorBar {
-  position: absolute;
-  width: 55.96%;
-  height: 13.78%;
-  border-radius: 50%;
-  box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+.descriptionTitle {
+  font-family: var(--font-primary);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--color-black);
+  margin: 0;
 }
 
-.colorBar:nth-child(1) {
-  /* 02ページは1番目もずれている */
-  left: 44.03%;
-  right: 0.04%;
-  top: 2.17%;
-  bottom: 84.04%;
+.dividerLine {
+  width: 100%;
+  border-bottom: 1px solid #CCCCCC;
 }
 
-.colorBar:nth-child(2) {
-  left: 0%;
-  right: 44.08%;
-  top: 18.46%;
-  bottom: 67.76%;
+.descriptionText {
+  font-family: var(--font-primary);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--color-black);
+  margin: 0;
 }
 
-.colorBar:nth-child(3) {
-  /* 02ページは3番目もずれている */
-  left: 44.03%;
-  right: 0.04%;
-  top: 34.74%;
-  bottom: 51.47%;
+/* 相談窓口セクション */
+.consultationSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 30px;
+  gap: 20px;
+  width: 100%;
+  max-width: 540px;
 }
 
-.colorBar:nth-child(4) {
-  left: 0%;
-  right: 44.08%;
-  top: 51.03%;
-  bottom: 35.19%;
+/* 各市町の情報セクション */
+.municipalSection {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 20px 30px;
+  gap: 15px;
+  width: 100%;
+  max-width: 540px;
 }
 
-.colorBar:nth-child(5) {
-  left: 0%;
-  right: 44.08%;
-  top: 67.31%;
-  bottom: 18.9%;
+.municipalIntro {
+  font-family: var(--font-primary);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--color-black);
+  margin: 0;
 }
 
-.colorBar:nth-child(6) {
-  left: 0%;
-  right: 44.08%;
-  top: 83.6%;
-  bottom: 2.62%;
+.municipalDescription {
+  font-family: var(--font-primary);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--color-black);
+  margin: 0;
 }
-/* ▲ 02ページ固有の「玉のずれ」 ▲ */
 
+/* FlexiCardエリア */
+.flexiCardArea {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 10px 0;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
 
-/* レスポンシブ対応 */
-@media (max-width: 768px) {
-  .section02Top {
-    width: 100%;
-    padding: 40px 20px 0px;
-  }
+.flexiCardArea::-webkit-scrollbar {
+  display: none;
+}
+
+/* 行政・医療機関一覧ボタン */
+.listButton {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 20px;
+  gap: 8px;
+  width: auto;
+  max-width: 360px;
+  height: auto;
+  background: var(--color-white);
+  border: 1px solid var(--color-black);
+  border-radius: 8px;
+  font-family: var(--font-primary);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--color-black);
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+  margin: 20px 0;
+}
+
+.listButton:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.listButton:active {
+  transform: scale(0.98);
+}
+
+.playIcon {
+  width: 20px;
+  height: 20px;
 }

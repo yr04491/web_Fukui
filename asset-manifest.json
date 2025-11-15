@@ -1,25 +1,26 @@
 {
   "files": {
-    "main.css": "/web_Fukui/static/css/main.c8193f32.css",
-    "main.js": "/web_Fukui/static/js/main.347d563a.js",
+    "main.css": "/web_Fukui/static/css/main.a10260f3.css",
+    "main.js": "/web_Fukui/static/js/main.27735992.js",
     "static/js/453.e7e8dd5b.chunk.js": "/web_Fukui/static/js/453.e7e8dd5b.chunk.js",
     "static/media/main_img.png": "/web_Fukui/static/media/main_img.7657c464d023fdf33215.png",
     "static/media/AdobeStock.png": "/web_Fukui/static/media/AdobeStock.259e2d371e274f6dd485.png",
     "static/media/AdobeStock_Preview.png": "/web_Fukui/static/media/AdobeStock_Preview.1cef9f2510ff80dd2567.png",
     "static/media/AdobeStock_school.png": "/web_Fukui/static/media/AdobeStock_school.02eac749d7952fd3ba82.png",
     "static/media/rainbow.png": "/web_Fukui/static/media/rainbow.8a2dc94fa8a590ba0142.png",
+    "static/media/Footer_logo.png": "/web_Fukui/static/media/Footer_logo.4efc7dd01816dca33b2b.png",
     "static/media/AdobeStock_cat.png": "/web_Fukui/static/media/AdobeStock_cat.749cd4dff0f4368a1984.png",
     "static/media/girl1.png": "/web_Fukui/static/media/girl1.1aa81062eecbbd2b2590.png",
     "static/media/02.png": "/web_Fukui/static/media/02.5f8a3d9b1a05b2e14321.png",
-    "static/media/00.png": "/web_Fukui/static/media/00.1db74d8e68a890434680.png",
-    "static/media/01.png": "/web_Fukui/static/media/01.eb89ff38af7e6a31e32e.png",
+    "static/media/ROAD01.png": "/web_Fukui/static/media/ROAD01.1aa2a61ee9d6325201c0.png",
+    "static/media/ROAD00.png": "/web_Fukui/static/media/ROAD00.3ccfebe1eb3269be911d.png",
     "index.html": "/web_Fukui/index.html",
-    "main.c8193f32.css.map": "/web_Fukui/static/css/main.c8193f32.css.map",
-    "main.347d563a.js.map": "/web_Fukui/static/js/main.347d563a.js.map",
+    "main.a10260f3.css.map": "/web_Fukui/static/css/main.a10260f3.css.map",
+    "main.27735992.js.map": "/web_Fukui/static/js/main.27735992.js.map",
     "453.e7e8dd5b.chunk.js.map": "/web_Fukui/static/js/453.e7e8dd5b.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.c8193f32.css",
-    "static/js/main.347d563a.js"
+    "static/css/main.a10260f3.css",
+    "static/js/main.27735992.js"
   ]
 }

@@ -7,15 +7,24 @@ import { navigationItems, searchItems } from '../../data/navigationItems';
 
 // --- Main HamburgerMenu Component ---
 
-const HamburgerMenu = () => {
-  const [isOpen, setIsOpen] = useState(false);
+const HamburgerMenu = ({ isOpen: externalIsOpen, onToggle }) => {
+  const [internalIsOpen, setInternalIsOpen] = useState(false);
   const [lineHeight, setLineHeight] = useState(0);
   const navRef = useRef(null);
   const navItemsRef = useRef(null);
   
+  // 外部から状態が制御されている場合はそれを使用
+  const isOpen = externalIsOpen !== undefined ? externalIsOpen : internalIsOpen;
+  
   // メニュー開閉のトグル
   const toggleMenu = () => {
-    setIsOpen(prev => !prev);
+    const newState = !isOpen;
+    
+    if (onToggle) {
+      onToggle(newState);
+    } else {
+      setInternalIsOpen(newState);
+    }
     
     // メニューを開いた場合は、アニメーション後に縦線の高さを計算
     if (!isOpen) {
@@ -26,6 +35,13 @@ const HamburgerMenu = () => {
       }, 350); // トランジションが完了する時間 (0.3s) に少し余裕を持たせる
     }
   };
+  
+  // 外部からの状態変更を監視
+  useEffect(() => {
+    if (externalIsOpen !== undefined) {
+      setInternalIsOpen(externalIsOpen);
+    }
+  }, [externalIsOpen]);
   
   // 縦線の高さを動的に計算
   useEffect(() => {
@@ -55,7 +71,11 @@ const HamburgerMenu = () => {
   useEffect(() => {
     const handleResize = () => {
       if (isOpen) {
-        setIsOpen(false);
+        if (onToggle) {
+          onToggle(false);
+        } else {
+          setInternalIsOpen(false);
+        }
       }
     };
 

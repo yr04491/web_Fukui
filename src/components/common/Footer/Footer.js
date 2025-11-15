@@ -23,6 +23,11 @@ const Footer = () => {
   // 2. リスト項目用のクリックハンドラを追加
   const handleListClick = (item) => {
     console.log(`${item} がクリックされました`);
+    // 体験談を探すページに遷移
+    if (item === '体験談を探す') {
+      navigate('/experiences');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
     // 今後、各検索ページへの遷移などを実装
   };
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from '../../styles/Main.module.css';
 import commonStyles from './NavigationCommon.module.css';
 import NavigationHeader from './NavigationHeader';
@@ -7,10 +8,15 @@ import { navigationItems, searchItems } from '../../data/navigationItems';
 
 // メインの Navigation コンポーネント
 const Navigation = () => {
+  const navigate = useNavigate();
 
   // 検索項目クリックハンドラ
   const handleSearchItemClick = (item) => {
     console.log(`「${item}」がクリックされました`);
+    if (item === '◯体験談を探す') {
+      navigate('/experiences');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
     // 実際のページ遷移処理
   };
 

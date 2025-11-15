@@ -6,6 +6,7 @@ import {
   Section04Content, // 
   Section05Content  // 
 } from '../components/MainContent';
+import ExperiencesContent from '../components/MainContent/experiences';
 
 /**
  * ナビゲーション項目データ

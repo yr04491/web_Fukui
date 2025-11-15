@@ -12,8 +12,9 @@ import TweetCard from '../TweetCard/TweetCard';
  * @param {Array<number>} tweetCardIds - 表示するTweetCardのID配列
  * @param {string} moreButtonText - 「もっと見る」ボタンのテキスト
  * @param {string} customClass - カスタムCSSクラス (オプショナル)
+ * @param {Function} onMoreClick - 「もっと見る」ボタンのクリックハンドラ (オプショナル)
  */
-const ExperienceSection = ({ tag, title, tweetCardIds, moreButtonText, customClass }) => {
+const ExperienceSection = ({ tag, title, tweetCardIds, moreButtonText, customClass, onMoreClick }) => {
   // titleを改行で分割
   const titleLines = title.split('\n');
   
@@ -47,7 +48,7 @@ const ExperienceSection = ({ tag, title, tweetCardIds, moreButtonText, customCla
         ))}
       </div>
 
-      <button className={styles.moreButton}>
+      <button className={styles.moreButton} onClick={onMoreClick}>
         <img src={vectorRB} alt="アイコン" className={styles.playIcon} />
         <span>{moreButtonText}</span>
       </button>

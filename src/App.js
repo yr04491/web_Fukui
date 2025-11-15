@@ -4,6 +4,7 @@ import HomePage from './pages/HomePage';
 import Layout from './components/Layout/Layout'; // 
 import { navigationItems } from './data/navigationItems'; // 
 import ScrollToTop from './components/ScrollToTop';
+import ExperiencesContent from './components/MainContent/experiences';
 // SectionXXPage のインポートは不要になります
 
 function App() {
@@ -13,6 +14,13 @@ function App() {
       <Routes>
         {/* ホーム画面用のルート */}
         <Route path="/" element={<HomePage />} />
+
+        {/* 体験談を探すページ */}
+        <Route path="/experiences" element={
+          <Layout>
+            <ExperiencesContent />
+          </Layout>
+        } />
 
         {/* ナビゲーション項目から動的にルートを生成 */}
         {navigationItems.map((item, index) => {

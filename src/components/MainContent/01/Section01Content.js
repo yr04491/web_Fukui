@@ -1,6 +1,7 @@
 // src/components/MainContent/01/Section01Content.js
 
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import layoutStyles from '../commonPageLayout.module.css'; // 共通CSS（外枠）
 import styles from './Section01Content.module.css'; // 01ページ固有CSS
 import Footer from '../../common/Footer';
@@ -13,6 +14,7 @@ import dotlineImage from '../../../assets/images/dotline.png';
 import vectorRB from '../../../assets/images/vectorRB.png';
 
 const Section01Content = () => {
+  const navigate = useNavigate();
   return (
     <div className={`${layoutStyles.pageContainer} ${styles.section01Content}`}>
 
@@ -66,7 +68,10 @@ const Section01Content = () => {
           <TweetCard cardId={1} />
           <TweetCard cardId={2} />
         </div>
-        <button className={styles.moreButton}>
+        <button 
+          className={styles.moreButton}
+          onClick={() => navigate('/experiences')}
+        >
           <img src={vectorRB} alt="アイコン" className={styles.playIcon} />
           <span>体験談をもっと見る</span>
         </button>
@@ -115,7 +120,10 @@ const Section01Content = () => {
           <TweetCard cardId={3} />
           <TweetCard cardId={4} />
         </div>
-        <button className={styles.moreButton}>
+        <button 
+          className={styles.moreButton}
+          onClick={() => navigate('/experiences')}
+        >
           <img src={vectorRB} alt="アイコン" className={styles.playIcon} />
           <span>体験談をもっと見る</span>
         </button>

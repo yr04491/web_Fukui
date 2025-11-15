@@ -1,6 +1,7 @@
 // src/components/MainContent/00/Section00Content.js
 
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import layoutStyles from '../commonPageLayout.module.css'; // 共通CSS（外枠）
 import styles from './Section00Content.module.css'; // 00ページ固有CSS
 import commonStyles from '../SectionCommon.module.css'; // 共通CSS（コンポーネント）
@@ -12,6 +13,7 @@ import dotlineImage from '../../../assets/images/dotline.png';
 import vectorRB from '../../../assets/images/vectorRB.png';
 
 const Section00Content = () => {
+  const navigate = useNavigate();
   return (
     // ページレイアウト (styles)
     <div className={`${layoutStyles.pageContainer} ${styles.section00Content}`}>
@@ -71,7 +73,10 @@ const Section00Content = () => {
         </div>
         
         {/* ボタン */}
-        <button className={styles.experienceButton}>
+        <button 
+          className={styles.experienceButton}
+          onClick={() => navigate('/experiences')}
+        >
           <img src={vectorRB} alt="" className={styles.buttonIcon} />
           <span>不登校になったきっかけの体験談を見る</span>
         </button>

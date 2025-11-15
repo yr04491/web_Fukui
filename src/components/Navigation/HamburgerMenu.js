@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from './HamburgerMenu.module.css';
 import commonStyles from './NavigationCommon.module.css';
 import NavigationItem from './NavigationItem';
@@ -8,6 +9,7 @@ import { navigationItems, searchItems } from '../../data/navigationItems';
 // --- Main HamburgerMenu Component ---
 
 const HamburgerMenu = ({ isOpen: externalIsOpen, onToggle }) => {
+  const navigate = useNavigate();
   const [internalIsOpen, setInternalIsOpen] = useState(false);
   const [lineHeight, setLineHeight] = useState(0);
   const navRef = useRef(null);
@@ -135,7 +137,19 @@ const HamburgerMenu = ({ isOpen: externalIsOpen, onToggle }) => {
               <div 
                 key={index}
                 className={commonStyles.searchItem}
-                onClick={() => console.log(`「${item}」がクリックされました`)}
+                onClick={() => {
+                  console.log(`「${item}」がクリックされました`);
+                  if (item === '◯体験談を探す') {
+                    navigate('/experiences');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    // メニューを閉じる
+                    if (onToggle) {
+                      onToggle(false);
+                    } else {
+                      setInternalIsOpen(false);
+                    }
+                  }
+                }}
               >
                 {item}
               </div>

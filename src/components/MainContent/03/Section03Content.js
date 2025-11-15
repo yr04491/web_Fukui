@@ -1,6 +1,7 @@
 // src/components/MainContent/03/Section03Content.js
 
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import layoutStyles from '../commonPageLayout.module.css';
 import styles from './Section03Content.module.css';
 import Footer from '../../common/Footer';
@@ -11,6 +12,7 @@ import dotlineImage from '../../../assets/images/dotline.png';
 import vectorRB from '../../../assets/images/vectorRB.png';
 
 const Section03Content = () => {
+  const navigate = useNavigate();
   return (
     <div className={`${layoutStyles.pageContainer} ${styles.section03Content}`}>
 
@@ -48,7 +50,10 @@ const Section03Content = () => {
       </div>
 
       {/* みんなの居場所検索ページボタン */}
-      <button className={styles.searchButton}>
+      <button 
+        className={styles.searchButton}
+        onClick={() => navigate('/places')}
+      >
         <img src={vectorRB} alt="アイコン" className={styles.playIcon} />
         <span>みんなの居場所の検索ページ</span>
       </button>

@@ -17,6 +17,10 @@ const Navigation = () => {
       navigate('/experiences');
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
+    if (item === '◯居場所を探す') {
+      navigate('/places');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
     // 実際のページ遷移処理
   };
 

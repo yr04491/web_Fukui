@@ -1,6 +1,6 @@
 /* 検索セクション */
 .searchSection {
-  background-color: #FFE6D5;
+  background-color: rgba(136, 211, 188, 0.25);
   padding: 40px 20px;
   margin: 20px 0;
   border-radius: 0;
@@ -63,10 +63,10 @@
   align-items: center;
   gap: 5px;
   padding: 8px 15px;
-  border: 1px solid #EF9F94;
+  border: 1px solid #88D3BC;
   border-radius: 20px;
   background-color: #fff;
-  color: #EF9F94;
+  color: #88D3BC;
   font-size: 14px;
   cursor: pointer;
   white-space: nowrap;
@@ -78,7 +78,7 @@
 }
 
 .filterButton:hover {
-  background-color: #FFF5F2;
+  background-color: #F0F9F6;
 }
 
 .searchButton {
@@ -88,7 +88,7 @@
   justify-content: center;
   gap: 8px;
   padding: 12px 30px;
-  background-color: #EF9F94;
+  background-color: #88D3BC;
   color: #fff;
   border: none;
   border-radius: 25px;
@@ -98,10 +98,10 @@
 }
 
 .searchButton:hover {
-  background-color: #E88E83;
+  background-color: #76BFAA;
 }
 
-/* 体験談ピックアップセクション */
+/* 居場所ピックアップセクション */
 .pickupSection {
   padding: 40px 20px;
   max-width: 1200px;
@@ -171,12 +171,12 @@
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
     padding-bottom: 10px;
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
   }
 
   .cardsGrid::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Opera */
+    display: none;
   }
 
   .cardsGrid > * {

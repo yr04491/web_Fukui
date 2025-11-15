@@ -28,6 +28,11 @@ const Footer = () => {
       navigate('/experiences');
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
+    // 居場所を探すページに遷移
+    if (item === 'みんなの居場所を探す') {
+      navigate('/places');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
     // 今後、各検索ページへの遷移などを実装
   };
 

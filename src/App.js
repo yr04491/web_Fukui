@@ -5,6 +5,7 @@ import Layout from './components/Layout/Layout'; //
 import { navigationItems } from './data/navigationItems'; // 
 import ScrollToTop from './components/ScrollToTop';
 import ExperiencesContent from './components/MainContent/experiences';
+import PlacesContent from './components/MainContent/places';
 // SectionXXPage のインポートは不要になります
 
 function App() {
@@ -19,6 +20,13 @@ function App() {
         <Route path="/experiences" element={
           <Layout>
             <ExperiencesContent />
+          </Layout>
+        } />
+
+        {/* 居場所を探すページ */}
+        <Route path="/places" element={
+          <Layout>
+            <PlacesContent />
           </Layout>
         } />
 

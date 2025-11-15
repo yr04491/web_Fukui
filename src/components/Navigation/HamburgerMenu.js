@@ -149,6 +149,16 @@ const HamburgerMenu = ({ isOpen: externalIsOpen, onToggle }) => {
                       setInternalIsOpen(false);
                     }
                   }
+                  if (item === '◯居場所を探す') {
+                    navigate('/places');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    // メニューを閉じる
+                    if (onToggle) {
+                      onToggle(false);
+                    } else {
+                      setInternalIsOpen(false);
+                    }
+                  }
                 }}
               >
                 {item}

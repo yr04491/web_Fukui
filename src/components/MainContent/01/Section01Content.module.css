@@ -6,46 +6,231 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.section01Top {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 60px 30px 0px;
+  padding: 0px 20px 40px;
   gap: 30px;
   width: 100%;
   max-width: 540px;
+  margin: 0 auto;
+}
+
+/* タイトルセクション（00ページと同様） */
+.titleSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  width: 100%;
+  max-width: 540px;
+  padding: 0px 30px 0px;
   position: relative;
   isolation: isolate;
   min-height: 150px;
 }
 
-.section01Middle {
+.roadImage {
+  height: auto;
+  max-width: 200px;
+  margin-bottom: -10px;
+}
+
+.mainTitle {
+  font-family: var(--font-primary);
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 1.3;
+  text-align: center;
+  color: #333;
+  margin: -5px 0;
+}
+
+.dotline {
+  width: 90%;
+  max-width: 400px;
+  height: auto;
+  margin: 10px 0;
+}
+
+/* 説明セクション */
+.descriptionSection {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 60px 30px 0px;
-  gap: 30px;
-  position: relative;
-  width: 540px;
-  min-height: 700px;
+  gap: 15px;
+  width: 100%;
+  padding: 20px 10px;
 }
 
+.descriptionTitle {
+  font-family: var(--font-primary);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.6;
+  text-align: left;
+  color: var(--color-black);
+  margin: 0;
+  width: 100%;
+}
 
-/* ▼ 01ページ固有の「玉のずれ」 ▼ */
-.colorNavi {
-  position: absolute;
-  width: 22.71px;
-  height: 92.11px;
-  left: -20px;
-  top: -32px;
-  flex: none;
-  order: 1;
-  flex-grow: 0;
-  z-index: 1;
+.dividerLine {
+  width: 100%;
+  max-width: 480px;
+  height: 1px;
+  background-color: #CCCCCC;
+  margin: 10px 0;
+}
+
+.descriptionText {
+  font-family: var(--font-primary);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.8;
+  text-align: left;
+  color: var(--color-black);
+  margin: 0;
+  width: 100%;
+}
+
+/* 経験談セクション */
+.interviewSection {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  padding: 30px 0;
+}
+
+.dottedBorder {
+  width: 100%;
+  max-width: 480px;
+  height: 2px;
+  background-image: repeating-linear-gradient(
+    to right,
+    var(--color-black) 0,
+    var(--color-black) 4px,
+    transparent 4px,
+    transparent 8px
+  );
+  border-radius: 1px;
+}
+
+.sectionHeader {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+}
+
+.sectionTitle {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin: 0;
+  width: 100%;
+}
+
+.titleLine1 {
+  font-family: var(--font-primary);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--color-black);
+}
+
+.titleLine2 {
+  font-family: var(--font-primary);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 1.4;
+  color: var(--color-black);
+}
+
+/* 学校の支援セクション */
+.supportSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  padding: 20px 0;
+}
+
+.titleLine2Support {
+  font-family: var(--font-primary);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--color-black);
+}
+
+.titleLine1Support {
+  font-family: var(--font-primary);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 1.4;
+  color: var(--color-black);
+}
+
+.tweetCardArea {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 10px 0;
+  gap: 15px;
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.tweetCardArea::-webkit-scrollbar {
+  display: none;
+}
+
+.moreButton {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 20px;
+  gap: 8px;
+  width: auto;
+  max-width: 360px;
+  height: auto;
+  background: var(--color-white);
+  border: 1px solid var(--color-black);
+  border-radius: 8px;
+  font-family: var(--font-primary);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--color-black);
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.moreButton:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.moreButton:active {
+  transform: scale(0.98);
+}
+
+.playIcon {
+  width: 19.2px;
+  height: 19.2px;
+  object-fit: contain;
 }
 
 .colorBar {

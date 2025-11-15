@@ -3,101 +3,71 @@
 import React from 'react';
 import layoutStyles from '../commonPageLayout.module.css'; // 共通CSS（外枠）
 import styles from './Section01Content.module.css'; // 01ページ固有CSS
-import commonStyles from '../SectionCommon.module.css'; // 共通CSS（コンポーネント）
-import yubiIcon from '../../../assets/images/yubi.png';
 import Footer from '../../common/Footer';
 import Breadcrumbs from '../../common/Breadcrumbs';
-import roadNumberImage from '../../../assets/icons/01.png';
+import InterviewCard from '../../common/InterviewCard/InterviewCard';
+import TweetCard from '../../common/TweetCard/TweetCard';
+import road01Image from '../../../assets/icons/ROAD01.png';
+import dotlineImage from '../../../assets/images/dotline.png';
+import vectorRB from '../../../assets/images/vectorRB.png';
 
 const Section01Content = () => {
   return (
-    // ページレイアウト (styles)
     <div className={`${layoutStyles.pageContainer} ${styles.section01Content}`}>
 
       {/* パンくずリスト */}
       <Breadcrumbs sectionNumber="01" sectionTitle="学校に相談してみよう" />
 
-      {/* セクション1: タイトル部分 (styles) */}
-      <div className={styles.section01Top}>
-        {/* titleContainer (commonStyles) */}
-        <div className={commonStyles.titleContainer}>
-          {/* roadNumberContainer (commonStyles) */}
-          <div className={commonStyles.roadNumberContainer}>
-            {/* roadNumber (commonStyles) */}
-            <div className={commonStyles.roadNumber}>
-              <img src={roadNumberImage} alt="01" className={commonStyles.roadNumberImage} />
-            </div>
-          </div>
-          {/* mainTitle (commonStyles) */}
-          <h1 className={commonStyles.mainTitle}>学校に相談</h1>
-        </div>
-        {/* subtitle (commonStyles) */}
-        <h2 className={commonStyles.subtitle}>まずは学校に相談してみよう</h2>
-        {/* description (commonStyles) */}
-        <p className={commonStyles.description}>
-          学校に電話して、「学校に行けない状態になってしまった」事を伝え、相談に行ってください。
-        </p>
-        
-        {/* quoteBox (commonStyles) */}
-        <div className={commonStyles.quoteBox}>
-          <p className={commonStyles.quoteText}>
-            体験談…不登校は先生にとっても神経を使う問題なので、親に不登校という言葉を使う事を遠慮し支援案が伝わらない場合もあります。親側から積極的に、支援を求めてください。
-          </p>
-        </div>
-
-        {/* encouragementText (commonStyles) */}
-        <h3 className={commonStyles.encouragementText}>
-          考えるのは子どもの笑顔。<br />
-          プライドは捨てて、いろんなところに相談して
-        </h3>
+      {/* タイトル部分（00ページと同様） */}
+      <div className={styles.titleSection}>
+        <img src={road01Image} alt="ROAD 01" className={styles.roadImage} />
+        <h1 className={styles.mainTitle}>学校に相談してみよう</h1>
+        <img src={dotlineImage} alt="点線" className={styles.dotline} />
       </div>
 
-      {/* セクション2: 学校支援の種類 (styles) */}
-      <div className={styles.section01Middle}>
-        {/* sectionTitle (commonStyles) */}
-        <h3 className={commonStyles.sectionTitle}>
-          学校の中にどんな支援があるの？ 支援の種類
-        </h3>
-        {/* sectionDescription (commonStyles) */}
-        <p className={commonStyles.sectionDescription}>
-          福井県や各市町が提供している不登校支援には主に以下のものがあります。 ※すべて無料
+      {/* 説明セクション */}
+      <div className={styles.descriptionSection}>
+        <h2 className={styles.descriptionTitle}>
+          学校は解決するためではなく「利用するもの」<br />
+          そう思っていろいろ相談してみてください。
+        </h2>
+        <div className={styles.dividerLine}></div>
+        <p className={styles.descriptionText}>
+          まずは、担任の先生や学年主任の先生、養護の先生に現状を相談するのが良いかもしれません。 ただ、全ての先生が不登校に詳しいというわけではありません。そして子どもも親も先生も人間です。合う・合わないは必ずあります。 なので、一番大変な時期だと思いますが、様々な人に相談してみてください。お子さんが一緒に行ければ良いですが、無理して連れて行くことはありません。
         </p>
-        
-        {/* supportBox (commonStyles) */}
-        <div className={commonStyles.supportBox}>
-          <h4 className={commonStyles.supportTitle}>スクールカウンセラーの紹介</h4>
-          <p className={commonStyles.supportDescription}>
-            悩みを聞く専門家であるカウンセラーが、児童生徒の悩みや思いを聞いたり、アドバイスしたりします。先生には言えない（言いにくい）ことも話せます。保護者も相談できます。<br />
-            ※相談依頼は、各学校へお問い合わせください。
-          </p>
-        </div>
+        <p className={styles.descriptionText}>
+          学校での様子、家での様子、情報を交換しあって、「原因探し」ではなく、お子さんを応援する「チームメンバー」になっていただくのが良いかもしれません。 学校は、「利用するもの」という意識を持つと少し楽になるかもしれません。
+        </p>
+      </div>
 
-        <div className={commonStyles.supportBox}>
-          <h4 className={commonStyles.supportTitle}>校内サポートルーム</h4>
-          <p className={commonStyles.supportDescription}>
-            県内５０校に設置　詳しくはどこにかいてあるのかな？
-          </p>
-          <button className={commonStyles.projectButton}>
-            <img src={yubiIcon} alt="アイコン" className={commonStyles.buttonIcon} />
-            <span>校内サポートルーム情報を見る</span>
-          </button>
+      {/* 経験談セクション */}
+      <div className={styles.interviewSection}>
+        <div className={styles.dottedBorder}></div>
+        <div className={styles.sectionHeader}>
+          <h3 className={styles.sectionTitle}>
+            <span className={styles.titleLine1}>専門家の先生にお聞きしました</span>
+            <span className={styles.titleLine2}>不登校の原因って</span>
+          </h3>
         </div>
+        <InterviewCard cardId={1} />
+        <div className={styles.dottedBorder}></div>
+      </div>
 
-        <div className={commonStyles.supportBox}>
-          <h4 className={commonStyles.supportTitle}>ライフパートナー制度</h4>
-          <p className={commonStyles.supportDescription}>
-            大学生が一人ひとりをサポートしてくれる　詳しくはこちら（リンクはないのか？）
-          </p>
-          <button className={commonStyles.projectButton}>
-            <img src={yubiIcon} alt="アイコン" className={commonStyles.buttonIcon} />
-            <span>ライフパートナー制度の情報を見る</span>
-          </button>
+      {/* 学校の支援セクション */}
+      <div className={styles.supportSection}>
+        <div className={styles.sectionHeader}>
+          <h3 className={styles.sectionTitle}>
+            <span className={styles.titleLine2Support}>みんなの体験談を見てみよう！</span>
+            <span className={styles.titleLine1Support}>不登校初期、学校側とどのような対応した？</span>
+          </h3>
         </div>
-
-        {/* projectButtonHighlight (commonStyles) */}
-        <button className={commonStyles.projectButtonHighlight}>
-          <img src={yubiIcon} alt="アイコン" className={commonStyles.buttonIcon} />
-          <span>体験談をみてみよう</span>
+        <div className={styles.tweetCardArea}>
+          <TweetCard cardId={1} />
+          <TweetCard cardId={2} />
+        </div>
+        <button className={styles.moreButton}>
+          <img src={vectorRB} alt="アイコン" className={styles.playIcon} />
+          <span>体験談をもっと見る</span>
         </button>
       </div>
 

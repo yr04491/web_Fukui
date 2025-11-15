@@ -16,7 +16,7 @@ const Section04 = () => {
             />
 
             <ContentFrame
-                title="大丈夫、あなただけじゃない。"
+                title="大丈夫。あなただけじゃない。"
             >
                 <div className={styles.contentText}>
                     <p>福井県内で不登校を身近に経験した方々にインタビューをしました。当時のこと、今のこと、今だから言えること…<br />なにかヒントが見つかるかもしれません。</p>

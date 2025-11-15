@@ -1,0 +1,47 @@
+/* src/components/common/Breadcrumbs/Breadcrumbs.module.css */
+
+.breadcrumbs {
+  display: flex;
+  align-items: flex-start;
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 16px;
+  padding: 8px 0 8px 30px;
+  justify-content: flex-start;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.link {
+  color: #333;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.link:hover {
+  color: #4A90E2;
+  text-decoration: underline;
+}
+
+.separator {
+  margin: 0 8px;
+  color: #999;
+}
+
+.current {
+  color: #333;
+  font-weight: 500;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+  .breadcrumbs {
+    font-size: 12px;
+    margin-bottom: 12px;
+    padding: 8px 0 8px 20px;
+  }
+  
+  .separator {
+    margin: 0 4px;
+  }
+}

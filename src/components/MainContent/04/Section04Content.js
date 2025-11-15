@@ -5,6 +5,7 @@ import layoutStyles from '../commonPageLayout.module.css'; // 共通CSS（外枠
 import styles from './Section04Content.module.css'; // 04ページ固有CSS
 import commonStyles from '../SectionCommon.module.css'; // 共通CSS（コンポーネント）
 import Footer from '../../common/Footer';
+import Breadcrumbs from '../../common/Breadcrumbs';
 import roadNumberImage from '../../../assets/icons/04_0.png'; // 04の画像に変更
 
 const Section04Content = () => {
@@ -12,22 +13,15 @@ const Section04Content = () => {
     // ページレイアウト (styles)
     <div className={`${layoutStyles.pageContainer} ${styles.section04Content}`}>
 
+      {/* パンくずリスト */}
+      <Breadcrumbs sectionNumber="04" sectionTitle="インタビュー 不登校とぼくら" />
+
       {/* セクション1: タイトル部分 (styles) */}
       <div className={styles.section04Top}>
         {/* titleContainer (commonStyles) */}
         <div className={commonStyles.titleContainer}>
           {/* roadNumberContainer (commonStyles) */}
           <div className={commonStyles.roadNumberContainer}>
-
-            {/* colorNavi (styles - 04固有の玉ずれ) (一旦01のものを流用) */}
-            <div className={styles.colorNavi}>
-              <div className={styles.colorBar} style={{background: 'linear-gradient(145deg, #FDF9D5, #F5F1C8)'}}></div>
-              <div className={styles.colorBar} style={{background: 'linear-gradient(145deg, #A3D0FA, #85C1E9)'}}></div>
-              <div className={styles.colorBar} style={{background: 'linear-gradient(145deg, #88D3BC, #76C7C0)'}}></div>
-              <div className={styles.colorBar} style={{background: 'linear-gradient(145deg, #F4BED3, #F1A7C7)'}}></div>
-              <div className={styles.colorBar} style={{background: 'linear-gradient(145deg, #EFAB94, #E99578)'}}></div>
-              <div className={styles.colorBar} style={{background: 'linear-gradient(145deg, #B695CE, #A37FB8)'}}></div>
-            </div>
             {/* roadNumber (commonStyles) */}
             <div className={commonStyles.roadNumber}>
               <img src={roadNumberImage} alt="04" className={commonStyles.roadNumberImage} />

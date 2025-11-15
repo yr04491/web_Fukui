@@ -30,7 +30,8 @@ const Section00 = () => {
       </ContentFrame>
 
       <ExperienceSection 
-        title="みんなの体験談を見てみよう"
+        title="みんなの体験談を見てみよう！
+不登校になったきっかけは？"
         tweetCardIds={[1, 2]}
         moreButtonText="不登校になったきっかけの体験談を見る"
       />

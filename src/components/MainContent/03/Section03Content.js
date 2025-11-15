@@ -6,6 +6,7 @@ import styles from './Section03Content.module.css'; // 03ページ固有CSS
 import commonStyles from '../SectionCommon.module.css'; // 共通CSS（コンポーネント）
 // import yubiIcon from '../../../assets/images/yubi.png'; // 一旦不要
 import Footer from '../../common/Footer';
+import Breadcrumbs from '../../common/Breadcrumbs';
 import roadNumberImage from '../../../assets/icons/03_0.png'; // 03の画像に変更
 
 const Section03Content = () => {
@@ -13,22 +14,15 @@ const Section03Content = () => {
     // ページレイアウト (styles)
     <div className={`${layoutStyles.pageContainer} ${styles.section03Content}`}>
 
+      {/* パンくずリスト */}
+      <Breadcrumbs sectionNumber="03" sectionTitle="まだまだある！みんなの居場所" />
+
       {/* セクション1: タイトル部分 (styles) */}
       <div className={styles.section03Top}>
         {/* titleContainer (commonStyles) */}
         <div className={commonStyles.titleContainer}>
           {/* roadNumberContainer (commonStyles) */}
           <div className={commonStyles.roadNumberContainer}>
-
-            {/* colorNavi (styles - 03固有の玉ずれ) (一旦01のものを流用) */}
-            <div className={styles.colorNavi}>
-              <div className={styles.colorBar} style={{background: 'linear-gradient(145deg, #FDF9D5, #F5F1C8)'}}></div>
-              <div className={styles.colorBar} style={{background: 'linear-gradient(145deg, #A3D0FA, #85C1E9)'}}></div>
-              <div className={styles.colorBar} style={{background: 'linear-gradient(145deg, #88D3BC, #76C7C0)'}}></div>
-              <div className={styles.colorBar} style={{background: 'linear-gradient(145deg, #F4BED3, #F1A7C7)'}}></div>
-              <div className={styles.colorBar} style={{background: 'linear-gradient(145deg, #EFAB94, #E99578)'}}></div>
-              <div className={styles.colorBar} style={{background: 'linear-gradient(145deg, #B695CE, #A37FB8)'}}></div>
-            </div>
             {/* roadNumber (commonStyles) */}
             <div className={commonStyles.roadNumber}>
               <img src={roadNumberImage} alt="03" className={commonStyles.roadNumberImage} />

@@ -31,21 +31,45 @@
   font-family: var(--font-primary);
   font-style: normal;
   font-weight: 600;
-  font-size: 20px;
-  line-height: 28px;
-  text-align: center;
+  text-align: left;
   color: var(--color-black);
   margin: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+/* 1行目: みんなの体験談を見てみよう！ */
+.titleLine1 {
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+/* 2行目: 不登校になったきっかけは？ */
+.titleLine2 {
+  font-size: 20px;
+  line-height: 1.4;
 }
 
 .tweetArea {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 0;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 10px 0;
   gap: 15px;
   width: 100%;
   max-width: 480px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  /* スクロールバーを非表示 */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+/* Chrome, Safari, Opera用のスクロールバー非表示 */
+.tweetArea::-webkit-scrollbar {
+  display: none;
 }
 
 .moreButton {

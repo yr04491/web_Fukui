@@ -4,119 +4,76 @@ import React from 'react';
 import layoutStyles from '../commonPageLayout.module.css'; // 共通CSS（外枠）
 import styles from './Section00Content.module.css'; // 00ページ固有CSS
 import commonStyles from '../SectionCommon.module.css'; // 共通CSS（コンポーネント）
-import yubiIcon from '../../../assets/images/yubi.png';
 import Footer from '../../common/Footer';
-import roadNumberImage from '../../../assets/icons/00.png';
+import Breadcrumbs from '../../common/Breadcrumbs';
+import TweetCard from '../../common/TweetCard/TweetCard';
+import road00Image from '../../../assets/icons/ROAD00.png';
+import dotlineImage from '../../../assets/images/dotline.png';
+import vectorRB from '../../../assets/images/vectorRB.png';
 
 const Section00Content = () => {
   return (
     // ページレイアウト (styles)
     <div className={`${layoutStyles.pageContainer} ${styles.section00Content}`}>
       
+      {/* パンくずリスト */}
+      <Breadcrumbs sectionNumber="00" sectionTitle="まずは、どうする？" />
+      
       {/* セクション1: タイトル部分 (styles) */}
       <div className={styles.section00Top}>
-        {/* titleContainer (commonStyles) */}
-        <div className={commonStyles.titleContainer}>
-          {/* roadNumberContainer (commonStyles) */}
-          <div className={commonStyles.roadNumberContainer}>
-            
-            {/* colorNavi (styles - 00固有の玉ずれ) */}
-            <div className={styles.colorNavi}>
-              <div className={styles.colorBar} style={{background: 'linear-gradient(145deg, #FDF9D5, #F5F1C8)'}}></div>
-              <div className={styles.colorBar} style={{background: 'linear-gradient(145deg, #A3D0FA, #85C1E9)'}}></div>
-              <div className={styles.colorBar} style={{background: 'linear-gradient(145deg, #88D3BC, #76C7C0)'}}></div>
-              <div className={styles.colorBar} style={{background: 'linear-gradient(145deg, #F4BED3, #F1A7C7)'}}></div>
-              <div className={styles.colorBar} style={{background: 'linear-gradient(145deg, #EFAB94, #E99578)'}}></div>
-              <div className={styles.colorBar} style={{background: 'linear-gradient(145deg, #B695CE, #A37FB8)'}}></div>
-            </div>
-            {/* roadNumber (commonStyles) */}
-            <div className={commonStyles.roadNumber}><img src={roadNumberImage} alt="00" className={commonStyles.roadNumberImage} /></div>
-          </div>
-          {/* mainTitle (commonStyles) */}
-          <h1 className={commonStyles.mainTitle}>まずどうする</h1>
+        {/* ROAD 00 画像 */}
+        <div className={styles.roadImageContainer}>
+          <img src={road00Image} alt="ROAD 00" className={styles.roadImage} />
         </div>
-        {/* subtitle (commonStyles) */}
-        <h2 className={commonStyles.subtitle}>
+        
+        {/* サブタイトル */}
+        <p className={styles.topSubtitle}>子どもが不登校に・・・</p>
+        
+        {/* メインタイトル */}
+        <h1 className={styles.topMainTitle}>まずは、どうする？</h1>
+        
+        {/* ドットライン装飾 */}
+        <div className={styles.dotlineContainer}>
+          <img src={dotlineImage} alt="" className={styles.dotline} />
+        </div>
+        
+        {/* 説明テキスト */}
+        <h2 className={styles.topDescription}>
           ＼　大丈夫です。なんとかなります。／<br />
-          ご家族が落ち着くことが第一です
+          まずは慌てず落ち着きましょう。
         </h2>
+        
         {/* description (commonStyles) */}
         <p className={commonStyles.description}>
-          不登校になっても人生が終わる訳ではありません。<br />
-          お子さんは今、自分の心を守るため、必死に戦っているところです。<br />
-          サボりたいが為に不登校になる子どもはほとんどいません。<br />
-          お子さんの心が回復できるように、周囲が慌てず、落ち着いて、子どもが安心できる家庭を維持する事を意識してください。
+          お子さんの急な不登校宣言。驚きますよね。<br />
+          どうしたの？何かあったの？いじめ！？聞きたくなる気持ちはわかります。<br />
+          ただ、お子さんは今、傷ついた自分の心を守るため、必死に戦っています。<br />
+          お子さんの心が回復できるように、まずはお父さん、お母さんが、慌てず落ち着いて、子どもが安心できる家庭を維持する事を意識してください。<br /><br />
+          「甘えとの境界線がわからない。」<br />
+          そうですよね。多くの保護者が悩まれるところだと思います。<br />
+          ただ、サボりたいが為に不登校になる子どもはほとんどいないそうです。<br />
+          お子さんも悩みに悩んだ末の決断なのです。<br />
+          お子さんの気持ちを尊重し、親が動じず、例え何が起きても大丈夫、という姿勢を見せることも大事かもしれません。
         </p>
       </div>
 
-      {/* セクション2: 不登校と引きこもりの違い (styles) */}
+      {/* セクション2: 体験談 */}
       <div className={styles.section00Middle}>
-        {/* sectionTitle (commonStyles) */}
-        <h3 className={commonStyles.sectionTitle}>
-          注意…不登校から引きこもりへ悪化させてはいけない
+        <h3 className={styles.experienceTitle}>
+          みんなの体験談をみてみよう！<br />
+          不登校になったきっかけは？
         </h3>
-        {/* sectionDescription (commonStyles) */}
-        <p className={commonStyles.sectionDescription}>
-          不登校と引きこもりの違いはなんでしょう？「不登校」は学校に行かない事。外出が出来る元気な子どもたちも含まれます。
-        </p>
         
-        {/* quoteBox (commonStyles) */}
-        <div className={commonStyles.quoteBox}>
-          <p className={commonStyles.quoteText}>
-            文部科学省の定義によると、<br />
-            「年間30日以上、病気や経済的な理由ではなく、何らかの心理的・情緒的、あるいは社会的な要因・背景により登校しない、あるいはできない児童生徒」を指します。
-          </p>
+        {/* TweetCardを2つ横並びで表示 */}
+        <div className={styles.tweetCardsContainer}>
+          <TweetCard cardId={1} />
+          <TweetCard cardId={2} />
         </div>
-
-        <p className={commonStyles.sectionDescription}>
-          一方「引きこもり」は自分の部屋や家から出ない状態の事
-        </p>
-
-        <div className={commonStyles.quoteBox}>
-          <p className={commonStyles.quoteText}>
-            厚生労働省の定義によると、<br />
-            「仕事や学校に行かず、家庭以外の人との交流をほとんどせず、原則6か月以上にわたって続けて自宅にとどまり続けている状態」を指します。
-          </p>
-        </div>
-
-        <p className={commonStyles.sectionDescription}>
-          こちらは深刻です。家族の関係性が破綻している事も多く、近年社会問題とされている「8050問題」にもなりかねません。
-        </p>
-
-        <div className={commonStyles.quoteBox}>
-          <p className={commonStyles.quoteText}>
-            8050問題…80代の親が、自宅にひきこもる50代の子どもの生活を支え、経済的にも精神的にも行き詰まってしまう状態のこと。
-          </p>
-        </div>
-
-        {/* longDescription (commonStyles) */}
-        <p className={commonStyles.longDescription}>
-          そうならせないためには、不登校になったお子さんへの接し方が何より大切です。<br />
-          まず覚えておいていただきたいのは、小学校・中学校は登校しなくても卒業できます。高校の受験にも登校日数は関係ありません。<br />
-          焦らなくても、大丈夫です。勉強くらい、その気になればいくらでも巻き返せます。
-        </p>
-
-        {/* projectButton (commonStyles) */}
-        <button className={commonStyles.projectButton}>
-          <img src={yubiIcon} alt="アイコン" className={commonStyles.buttonIcon} />
-          <span>小中学校の卒業について</span>
-        </button>
-      </div>
-
-      {/* セクション3: 子どもへの接し方 (styles) */}
-      <div className={styles.section00Middle}>
-        <h3 className={commonStyles.sectionTitle}>
-          まずは、子どもを責めないこと。
-        </h3>
-        <p className={commonStyles.longDescription}>
-          「なんで行かないの？」「いつまで休むの？」と問い詰められると、子どもはますます自信を失い、自分の居場所を見失ってしまいます。今は「心を回復する時間」だととらえて、そっと見守ってあげてください。<br /><br />
-          そして、リビングなど家族の集まる場所を、子どもにとって「過ごしやすい場所」にしておくことも大切です。話しかけなくてもいい、一緒にテレビを見るだけでもいい、安心していられる空間があるだけで、子どもは少しずつ外の世界に目を向ける力を取り戻していきます。<br /><br />
-          どこにも居場所がないと感じてしまうと、子どもは自分の部屋に閉じこもりがちになります。そうならないように、「ここにいていいよ」「何も話さなくていいよ」というメッセージを、日々の関わりの中で伝えていきましょう。家庭の中に、ほっとできる場所があること。それが、子どもの回復への第一歩になります。
-        </p>
-
-        <button className={commonStyles.projectButton}>
-          <img src={yubiIcon} alt="アイコン" className={commonStyles.buttonIcon} />
-          <span>体験談をみてみよう</span>
+        
+        {/* ボタン */}
+        <button className={styles.experienceButton}>
+          <img src={vectorRB} alt="" className={styles.buttonIcon} />
+          <span>不登校になったきっかけの体験談を見る</span>
         </button>
       </div>
 

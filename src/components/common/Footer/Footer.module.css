@@ -13,13 +13,13 @@
   max-width: 540px;
   /* 高さを自動に変更 */
   height: auto; 
-  /* ▼ 背景色をミントグリーンに変更 ▼ */
-  background: #E2F3E2; 
+  /* ▼ 背景色を88D3BCに変更 ▼ */
+  background: #88D3BC; 
   flex: none;
   order: 3;
   flex-grow: 0;
   margin-top: 0;
-  border-radius: 0 0 var(--radius-m) var(--radius-m); 
+  border-radius: 0; 
   box-sizing: border-box; 
 }
 

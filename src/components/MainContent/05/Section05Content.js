@@ -5,6 +5,7 @@ import layoutStyles from '../commonPageLayout.module.css'; // 共通CSS（外枠
 import styles from './Section05Content.module.css'; // 05ページ固有CSS
 import commonStyles from '../SectionCommon.module.css'; // 共通CSS（コンポーネント）
 import Footer from '../../common/Footer';
+import Breadcrumbs from '../../common/Breadcrumbs';
 import roadNumberImage from '../../../assets/icons/05_0.png'; // 05の画像に変更
 
 const Section05Content = () => {
@@ -12,22 +13,15 @@ const Section05Content = () => {
     // ページレイアウト (styles)
     <div className={`${layoutStyles.pageContainer} ${styles.section05Content}`}>
 
+      {/* パンくずリスト */}
+      <Breadcrumbs sectionNumber="05" sectionTitle="中学卒業のこと" />
+
       {/* セクション1: タイトル部分 (styles) */}
       <div className={styles.section05Top}>
         {/* titleContainer (commonStyles) */}
         <div className={commonStyles.titleContainer}>
           {/* roadNumberContainer (commonStyles) */}
           <div className={commonStyles.roadNumberContainer}>
-
-            {/* colorNavi (styles - 05固有の玉ずれ) (一旦01のものを流用) */}
-            <div className={styles.colorNavi}>
-              <div className={styles.colorBar} style={{background: 'linear-gradient(145deg, #FDF9D5, #F5F1C8)'}}></div>
-              <div className={styles.colorBar} style={{background: 'linear-gradient(145deg, #A3D0FA, #85C1E9)'}}></div>
-              <div className={styles.colorBar} style={{background: 'linear-gradient(145deg, #88D3BC, #76C7C0)'}}></div>
-              <div className={styles.colorBar} style={{background: 'linear-gradient(145deg, #F4BED3, #F1A7C7)'}}></div>
-              <div className={styles.colorBar} style={{background: 'linear-gradient(145deg, #EFAB94, #E99578)'}}></div>
-              <div className={styles.colorBar} style={{background: 'linear-gradient(145deg, #B695CE, #A37FB8)'}}></div>
-            </div>
             {/* roadNumber (commonStyles) */}
             <div className={commonStyles.roadNumber}>
               <img src={roadNumberImage} alt="05" className={commonStyles.roadNumberImage} />

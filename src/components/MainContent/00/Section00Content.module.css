@@ -13,12 +13,72 @@
   flex-direction: column;
   align-items: center;
   padding: 60px 30px 0px;
-  gap: 30px;
+  gap: 5px;
   width: 100%;
   max-width: 540px;
   position: relative;
   isolation: isolate;
   min-height: 150px;
+}
+
+/* ROAD 00 画像 */
+.roadImageContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: -10px;
+}
+
+.roadImage {
+  height: auto;
+  max-width: 200px;
+}
+
+/* サブタイトル */
+.topSubtitle {
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #333;
+  text-align: center;
+  margin: 0;
+}
+
+/* メインタイトル */
+.topMainTitle {
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #333;
+  text-align: center;
+  margin: -5px 0;
+  line-height: 1.3;
+}
+
+/* ドットライン装飾 */
+.dotlineContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 10px 0;
+}
+
+.dotline {
+  width: 90%;
+  max-width: 400px;
+  height: auto;
+}
+
+/* 説明テキスト */
+.topDescription {
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: #333;
+  text-align: center;
+  margin: 30px 0;
+  line-height: 1.6;
 }
 
 .section00Middle {
@@ -29,7 +89,67 @@
   gap: 30px;
   position: relative;
   width: 540px;
-  min-height: 700px; 
+  min-height: 400px;
+  /* 背景色を88D3BCの15%に設定 */
+  background: rgba(136, 211, 188, 0.15);
+}
+
+/* 体験談セクションタイトル */
+.experienceTitle {
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #333;
+  text-align: center;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* TweetCardコンテナ */
+.tweetCardsContainer {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 10px 0;
+  /* スクロールバーを非表示 */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+/* Chrome, Safari, Opera用のスクロールバー非表示 */
+.tweetCardsContainer::-webkit-scrollbar {
+  display: none;
+}
+
+/* 体験談ボタン */
+.experienceButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px 24px;
+  background: #fff;
+  border: 2px solid #333;
+  border-radius: 8px;
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.experienceButton:hover {
+  background: #f5f5f5;
+}
+
+.buttonIcon {
+  width: 16px;
+  height: 16px;
 }
 
 
@@ -109,7 +229,28 @@
     padding: 40px 20px 0px;
   }
   
-  /* これ以外の .titleContainer などのレスポンシブスタイルは
-    SectionCommon.module.css 側で定義されます。
-  */
+  .roadImage {
+    max-width: 150px;
+  }
+  
+  .topMainTitle {
+    font-size: 26px;
+  }
+  
+  .topSubtitle {
+    font-size: 14px;
+  }
+  
+  .topDescription {
+    font-size: 16px;
+  }
+  
+  .experienceTitle {
+    font-size: 18px;
+  }
+  
+  .experienceButton {
+    font-size: 14px;
+    padding: 14px 20px;
+  }
 }

@@ -13,15 +13,32 @@ import TweetCard from '../TweetCard/TweetCard';
  * @param {string} moreButtonText - 「もっと見る」ボタンのテキスト
  */
 const ExperienceSection = ({ tag, title, tweetCardIds, moreButtonText }) => {
+  // titleを改行で分割
+  const titleLines = title.split('\n');
+  
   return (
     <div className={styles.experienceSection}>
       {tag && (
         <div className={styles.experienceHeader}>
           <span className={styles.experienceTag}>{tag}</span>
-          <h3 className={styles.experienceTitle}>{title}</h3>
+          <div className={styles.experienceTitle}>
+            {titleLines.map((line, index) => (
+              <div key={index} className={index === 0 ? styles.titleLine1 : styles.titleLine2}>
+                {line}
+              </div>
+            ))}
+          </div>
         </div>
       )}
-      {!tag && <h3 className={styles.experienceTitle}>{title}</h3>}
+      {!tag && (
+        <div className={styles.experienceTitle}>
+          {titleLines.map((line, index) => (
+            <div key={index} className={index === 0 ? styles.titleLine1 : styles.titleLine2}>
+              {line}
+            </div>
+          ))}
+        </div>
+      )}
       
       <div className={styles.tweetArea}>
         {tweetCardIds.map(id => (

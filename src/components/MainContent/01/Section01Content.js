@@ -71,6 +71,67 @@ const Section01Content = () => {
         </button>
       </div>
 
+      {/* 支援の種類セクション */}
+      <div className={styles.supportTypeSection}>
+        <h3 className={styles.supportTypeTitle}>
+          学校の中にはどんな支援があるの？<br />
+          支援の種類をご紹介します！
+        </h3>
+        <div className={styles.dividerLine}></div>
+        <p className={styles.supportTypeDescription}>
+          学校や行政にも様々な不登校サポートがあります。お子さん、保護者の方に合うサポートもあるかもしれません。学校側も知らないことがあるので、積極的に聞いてみてください。
+        </p>
+
+        {/* 仮置きカード - TODO: 後で正式なコンポーネントに置き換える */}
+        <div className={styles.tempCardArea}>
+          <div className={styles.tempCard}>
+            <h4 className={styles.tempCardTitle}>スクールカウンセラー</h4>
+            <p className={styles.tempCardDescription}>
+              ついつい頼りたくなりつらさを軽く理解できる話の専門家です。
+            </p>
+            <button className={styles.tempCardButton}>詳しく見る</button>
+          </div>
+          <div className={styles.tempCard}>
+            <h4 className={styles.tempCardTitle}>校内サポートルーム</h4>
+            <p className={styles.tempCardDescription}>
+              県内の小学校、１時間がありません。校内の先生とは別の相談窓口です。
+            </p>
+            <button className={styles.tempCardButton}>詳しく見る</button>
+          </div>
+          <div className={styles.tempCard}>
+            <h4 className={styles.tempCardTitle}>ライフパートナー制度</h4>
+            <p className={styles.tempCardDescription}>
+              専攻大学の学生さん。おしゃべりや遊び、自分との関わり、宿題など付き合ってくれます。
+            </p>
+            <button className={styles.tempCardButton}>詳しく見る</button>
+          </div>
+        </div>
+      </div>
+
+      {/* 体験談セクション2 */}
+      <div className={styles.supportSection2}>
+        <div className={styles.sectionHeader}>
+          <h3 className={styles.sectionTitle}>
+            <span className={styles.titleLine2Support}>みんなの体験談を見てみよう</span>
+            <span className={styles.titleLine1Support}>学校の支援制度はどうだった？</span>
+          </h3>
+        </div>
+        <div className={styles.tweetCardArea}>
+          <TweetCard cardId={3} />
+          <TweetCard cardId={4} />
+        </div>
+        <button className={styles.moreButton}>
+          <img src={vectorRB} alt="アイコン" className={styles.playIcon} />
+          <span>体験談をもっと見る</span>
+        </button>
+      </div>
+
+      {/* 行政・医療機関一覧ボタン */}
+      <button className={styles.listButton}>
+        <img src={vectorRB} alt="アイコン" className={styles.playIcon} />
+        <span>行政・医療機関一覧を見る</span>
+      </button>
+
       {/* フッター */}
       <Footer />
     </div>

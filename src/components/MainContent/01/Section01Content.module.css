@@ -107,14 +107,10 @@
   width: 100%;
   max-width: 480px;
   height: 2px;
-  background-image: repeating-linear-gradient(
-    to right,
-    var(--color-black) 0,
-    var(--color-black) 4px,
-    transparent 4px,
-    transparent 8px
-  );
-  border-radius: 1px;
+  background-image: radial-gradient(circle, var(--color-black) 1px, transparent 1px);
+  background-size: 8px 2px;
+  background-repeat: repeat-x;
+  background-position: center;
 }
 
 .sectionHeader {
@@ -159,6 +155,8 @@
   gap: 20px;
   width: 100%;
   padding: 20px 0;
+  background: rgba(136, 211, 188, 0.15);
+  border-radius: 0;
 }
 
 .titleLine2Support {
@@ -231,6 +229,152 @@
   width: 19.2px;
   height: 19.2px;
   object-fit: contain;
+}
+
+/* 行政・医療機関一覧ボタン */
+.listButton {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 20px;
+  gap: 8px;
+  width: auto;
+  max-width: 360px;
+  height: auto;
+  background: var(--color-white);
+  border: 1px solid var(--color-black);
+  border-radius: 8px;
+  font-family: var(--font-primary);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--color-black);
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+  margin: 20px 0;
+}
+
+.listButton:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.listButton:active {
+  transform: scale(0.98);
+}
+
+/* 支援の種類セクション */
+.supportTypeSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  padding: 30px 0;
+}
+
+.supportTypeTitle {
+  font-family: var(--font-primary);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 1.5;
+  text-align: center;
+  color: var(--color-black);
+  margin: 0;
+  width: 100%;
+}
+
+.supportTypeDescription {
+  font-family: var(--font-primary);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.8;
+  text-align: left;
+  color: var(--color-black);
+  margin: 0;
+  width: 100%;
+}
+
+/* 仮置きカードエリア */
+.tempCardArea {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 10px 0;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.tempCardArea::-webkit-scrollbar {
+  display: none;
+}
+
+.tempCard {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  gap: 15px;
+  background: var(--color-white);
+  border: 1px solid var(--color-black);
+  border-radius: 10px;
+  min-width: 280px;
+  flex-shrink: 0;
+}
+
+.tempCardTitle {
+  font-family: var(--font-primary);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.4;
+  color: var(--color-black);
+  margin: 0;
+}
+
+.tempCardDescription {
+  font-family: var(--font-primary);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--color-black);
+  margin: 0;
+}
+
+.tempCardButton {
+  padding: 8px 16px;
+  background: var(--color-black);
+  color: var(--color-white);
+  border: none;
+  border-radius: 5px;
+  font-family: var(--font-primary);
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  align-self: flex-start;
+  transition: opacity 0.2s;
+}
+
+.tempCardButton:hover {
+  opacity: 0.8;
+}
+
+/* 体験談セクション2 */
+.supportSection2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  padding: 30px 0;
+  background: rgba(136, 211, 188, 0.15);
+  border-radius: 0;
 }
 
 .colorBar {

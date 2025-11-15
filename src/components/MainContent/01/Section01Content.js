@@ -7,6 +7,7 @@ import Footer from '../../common/Footer';
 import Breadcrumbs from '../../common/Breadcrumbs';
 import InterviewCard from '../../common/InterviewCard/InterviewCard';
 import TweetCard from '../../common/TweetCard/TweetCard';
+import FlexiCard from '../../common/FlexiCard/FlexiCard';
 import road01Image from '../../../assets/icons/ROAD01.png';
 import dotlineImage from '../../../assets/images/dotline.png';
 import vectorRB from '../../../assets/images/vectorRB.png';
@@ -82,29 +83,23 @@ const Section01Content = () => {
           学校や行政にも様々な不登校サポートがあります。お子さん、保護者の方に合うサポートもあるかもしれません。学校側も知らないことがあるので、積極的に聞いてみてください。
         </p>
 
-        {/* 仮置きカード - TODO: 後で正式なコンポーネントに置き換える */}
-        <div className={styles.tempCardArea}>
-          <div className={styles.tempCard}>
-            <h4 className={styles.tempCardTitle}>スクールカウンセラー</h4>
-            <p className={styles.tempCardDescription}>
-              ついつい頼りたくなりつらさを軽く理解できる話の専門家です。
-            </p>
-            <button className={styles.tempCardButton}>詳しく見る</button>
-          </div>
-          <div className={styles.tempCard}>
-            <h4 className={styles.tempCardTitle}>校内サポートルーム</h4>
-            <p className={styles.tempCardDescription}>
-              県内の小学校、１時間がありません。校内の先生とは別の相談窓口です。
-            </p>
-            <button className={styles.tempCardButton}>詳しく見る</button>
-          </div>
-          <div className={styles.tempCard}>
-            <h4 className={styles.tempCardTitle}>ライフパートナー制度</h4>
-            <p className={styles.tempCardDescription}>
-              専攻大学の学生さん。おしゃべりや遊び、自分との関わり、宿題など付き合ってくれます。
-            </p>
-            <button className={styles.tempCardButton}>詳しく見る</button>
-          </div>
+        {/* FlexiCardエリア - 柔軟に使える汎用カード */}
+        <div className={styles.flexiCardArea}>
+          <FlexiCard
+            title="スクールカウンセラー"
+            description="ついつい頼りたくなりつらさを軽く理解できる話の専門家です。"
+            buttonText="詳しく見る"
+          />
+          <FlexiCard
+            title="校内サポートルーム"
+            description="県内の小学校、１時間がありません。校内の先生とは別の相談窓口です。"
+            buttonText="詳しく見る"
+          />
+          <FlexiCard
+            title="ライフパートナー制度"
+            description="専攻大学の学生さん。おしゃべりや遊び、自分との関わり、宿題など付き合ってくれます。"
+            buttonText="詳しく見る"
+          />
         </div>
       </div>
 

@@ -298,8 +298,8 @@
   width: 100%;
 }
 
-/* 仮置きカードエリア */
-.tempCardArea {
+/* FlexiCardエリア */
+.flexiCardArea {
   display: flex;
   flex-direction: row;
   gap: 15px;
@@ -311,58 +311,8 @@
   -ms-overflow-style: none;
 }
 
-.tempCardArea::-webkit-scrollbar {
+.flexiCardArea::-webkit-scrollbar {
   display: none;
-}
-
-.tempCard {
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-  gap: 15px;
-  background: var(--color-white);
-  border: 1px solid var(--color-black);
-  border-radius: 10px;
-  min-width: 280px;
-  flex-shrink: 0;
-}
-
-.tempCardTitle {
-  font-family: var(--font-primary);
-  font-style: normal;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 1.4;
-  color: var(--color-black);
-  margin: 0;
-}
-
-.tempCardDescription {
-  font-family: var(--font-primary);
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 1.6;
-  color: var(--color-black);
-  margin: 0;
-}
-
-.tempCardButton {
-  padding: 8px 16px;
-  background: var(--color-black);
-  color: var(--color-white);
-  border: none;
-  border-radius: 5px;
-  font-family: var(--font-primary);
-  font-weight: 600;
-  font-size: 14px;
-  cursor: pointer;
-  align-self: flex-start;
-  transition: opacity 0.2s;
-}
-
-.tempCardButton:hover {
-  opacity: 0.8;
 }
 
 /* 体験談セクション2 */

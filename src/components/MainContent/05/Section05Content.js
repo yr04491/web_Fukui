@@ -1,6 +1,7 @@
 // src/components/MainContent/05/Section05Content.js
 
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import layoutStyles from '../commonPageLayout.module.css';
 import styles from './Section05Content.module.css';
 import Footer from '../../common/Footer';
@@ -11,6 +12,7 @@ import dotlineImage from '../../../assets/images/dotline.png';
 import vectorRB from '../../../assets/images/vectorRB.png';
 
 const Section05Content = () => {
+  const navigate = useNavigate();
   return (
     <div className={`${layoutStyles.pageContainer} ${styles.section05Content}`}>
 
@@ -49,7 +51,10 @@ const Section05Content = () => {
       </div>
 
       {/* 中学卒業後の進路ボタン */}
-      <button className={styles.pathButton}>
+      <button 
+        className={styles.pathButton}
+        onClick={() => navigate('/paths')}
+      >
         <img src={vectorRB} alt="アイコン" className={styles.playIcon} />
         <span>中学卒業後の進路を考える</span>
       </button>

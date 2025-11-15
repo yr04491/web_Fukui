@@ -159,6 +159,16 @@ const HamburgerMenu = ({ isOpen: externalIsOpen, onToggle }) => {
                       setInternalIsOpen(false);
                     }
                   }
+                  if (item === '◯卒業後の進路を探す') {
+                    navigate('/paths');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    // メニューを閉じる
+                    if (onToggle) {
+                      onToggle(false);
+                    } else {
+                      setInternalIsOpen(false);
+                    }
+                  }
                 }}
               >
                 {item}

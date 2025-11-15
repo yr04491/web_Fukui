@@ -1,10 +1,13 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from './Section05.module.css';
 import roadNumberImage from '../../../assets/icons/05_0.png';
 import PlaceCard from '../../common/PlaceCard/PlaceCard';
 import SectionTitle from '../../common/SectionTitle';
 
 const Section05 = () => {
+    const navigate = useNavigate();
+
     return (
         <div className={styles.section05}>
             <SectionTitle 
@@ -34,7 +37,10 @@ const Section05 = () => {
                     <PlaceCard cardId={3} />
                 </div>
 
-                <button className={styles.moreButton}>
+                <button 
+                    className={styles.moreButton}
+                    onClick={() => navigate('/paths')}
+                >
                     <div className={styles.buttonIconContainer}>
                         <svg className={styles.playArrowIcon} viewBox="0 0 24 24">
                             <path d="M8 5v14l11-7z" />

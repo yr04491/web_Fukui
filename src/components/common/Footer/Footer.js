@@ -33,6 +33,11 @@ const Footer = () => {
       navigate('/places');
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
+    // 卒業後の進路を探すページに遷移
+    if (item === '中学卒業後の進路を探す') {
+      navigate('/paths');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
     // 今後、各検索ページへの遷移などを実装
   };
 

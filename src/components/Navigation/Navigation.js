@@ -21,6 +21,10 @@ const Navigation = () => {
       navigate('/places');
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
+    if (item === '◯卒業後の進路を探す') {
+      navigate('/paths');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
     // 実際のページ遷移処理
   };
 

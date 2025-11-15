@@ -1,0 +1,190 @@
+/* 検索セクション */
+.searchSection {
+  background-color: rgba(163, 208, 250, 0.25);
+  padding: 40px 20px;
+  margin: 20px 0;
+  border-radius: 0;
+  text-align: center;
+}
+
+.searchTitle {
+  font-size: 28px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.dotline {
+  width: 300px;
+  height: auto;
+  margin: 0 auto 30px;
+  display: block;
+}
+
+.searchBox {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.searchInputWrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  border: 1px solid #ddd;
+  border-radius: 25px;
+  margin-bottom: 20px;
+}
+
+.searchInput {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  color: #333;
+}
+
+.searchInput::placeholder {
+  color: #999;
+}
+
+.buttonArea {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: flex-start;
+}
+
+.filterButton {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 8px 15px;
+  border: 1px solid #79B5EE;
+  border-radius: 20px;
+  background-color: #fff;
+  color: #79B5EE;
+  font-size: 14px;
+  cursor: pointer;
+  white-space: nowrap;
+  width: 120px;
+  max-width: 120px;
+  min-width: 120px;
+  justify-content: center;
+  align-self: flex-start;
+}
+
+.filterButton:hover {
+  background-color: #EFF7FF;
+}
+
+.searchButton {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 30px;
+  background-color: #79B5EE;
+  color: #fff;
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.searchButton:hover {
+  background-color: #68A4DD;
+}
+
+/* 進路ピックアップセクション */
+.pickupSection {
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.pickupTitle {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.dividerLine {
+  width: 100%;
+  height: 1px;
+  background-color: #ddd;
+  margin-bottom: 20px;
+}
+
+.pickupDescription {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+.cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+  .searchSection {
+    padding: 30px 15px;
+  }
+
+  .searchTitle {
+    font-size: 24px;
+  }
+
+  .dotline {
+    width: 200px;
+  }
+
+  .searchBox {
+    padding: 20px;
+  }
+
+  .buttonArea {
+    flex-direction: column;
+  }
+
+  .filterButton,
+  .searchButton {
+    width: 100%;
+  }
+
+  .cardsGrid {
+    display: flex;
+    overflow-x: auto;
+    gap: 15px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 10px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .cardsGrid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .cardsGrid > * {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+  }
+
+  .pickupSection {
+    padding: 30px 15px;
+  }
+}

@@ -81,6 +81,32 @@
   background-color: #F0F9F6;
 }
 
+.filterRow {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.clearButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 15px;
+  border: 1px solid #88D3BC;
+  border-radius: 20px;
+  background-color: #fff;
+  color: #88D3BC;
+  font-size: 14px;
+  cursor: pointer;
+  white-space: nowrap;
+  min-width: 80px;
+}
+
+.clearButton:hover {
+  background-color: #F0F9F6;
+}
+
 .searchButton {
   width: 100%;
   display: flex;

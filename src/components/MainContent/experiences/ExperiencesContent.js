@@ -63,13 +63,21 @@ const ExperiencesContent = () => {
           
           {/* ボタンエリア */}
           <div className={styles.buttonArea}>
-            <button 
-              className={styles.filterButton}
-              onClick={() => setIsModalOpen(true)}
-            >
-              <FilterIcon size={16} color="#EF9F94" />
-              <span>絞り込み{filterCount > 0 && `(${filterCount})`}</span>
-            </button>
+            <div className={styles.filterRow}>
+              <button 
+                className={styles.filterButton}
+                onClick={() => setIsModalOpen(true)}
+              >
+                <FilterIcon size={16} color="#EF9F94" />
+                <span>絞り込み{filterCount > 0 && `(${filterCount})`}</span>
+              </button>
+              <button 
+                className={styles.clearButton}
+                onClick={() => setFilterCount(0)}
+              >
+                クリア
+              </button>
+            </div>
             
             <button className={styles.searchButton}>
               <SearchIcon size={18} color="#fff" />

@@ -38,7 +38,11 @@ const Footer = () => {
       navigate('/paths');
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
-    // 今後、各検索ページへの遷移などを実装
+    // 体験談の投稿ページに遷移
+    if (item === '体験談の投稿') {
+      navigate('/experiences/post');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   };
 
   return (

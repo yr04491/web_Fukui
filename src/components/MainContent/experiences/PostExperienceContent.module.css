@@ -1,0 +1,70 @@
+/* 体験談投稿ページのスタイル */
+
+/* タイトルセクション */
+.titleSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px 30px 40px;
+  width: 100%;
+}
+
+.mainTitle {
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #333;
+  text-align: center;
+  margin: 0 0 10px 0;
+}
+
+.dotline {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  margin: 10px 0;
+}
+
+.description {
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #666;
+  text-align: center;
+  line-height: 1.8;
+  margin: 20px 0 0 0;
+}
+
+/* Googleフォーム埋め込みコンテナ */
+.formContainer {
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 0 20px 40px;
+}
+
+.googleForm {
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 560px) {
+  .titleSection {
+    padding: 40px 20px 30px;
+  }
+
+  .mainTitle {
+    font-size: 28px;
+  }
+
+  .description {
+    font-size: 14px;
+  }
+
+  .formContainer {
+    padding: 0 10px 30px;
+  }
+}

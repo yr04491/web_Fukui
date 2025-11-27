@@ -8,6 +8,7 @@ import Layout from './components/Layout/Layout'; //
 import { navigationItems } from './data/navigationItems'; // 
 import ScrollToTop from './components/ScrollToTop';
 import ExperiencesContent, { PostExperienceContent } from './components/MainContent/experiences';
+import ExperiencesSearchResultsContent from './components/MainContent/experiences/ExperiencesSearchResultsContent';
 import PlacesContent from './components/MainContent/places';
 import PathsContent from './components/MainContent/paths';
 import ProtectedRoute from './components/Auth/ProtectedRoute';
@@ -33,6 +34,13 @@ function App() {
             <Route path="/experiences" element={
               <Layout>
                 <ExperiencesContent />
+              </Layout>
+            } />
+
+            {/* 体験談検索結果ページ */}
+            <Route path="/experiences/search" element={
+              <Layout>
+                <ExperiencesSearchResultsContent />
               </Layout>
             } />
 

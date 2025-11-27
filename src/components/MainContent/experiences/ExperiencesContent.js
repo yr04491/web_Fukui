@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import layoutStyles from '../commonPageLayout.module.css'; // 共通CSS（外枠）
 import styles from './ExperiencesContent.module.css';
 import Breadcrumbs from '../../common/Breadcrumbs';
@@ -10,6 +11,8 @@ import SearchIcon from '../../../assets/icons/SearchIcon';
 import FilterIcon from '../../../assets/icons/FilterIcon';
 
 const ExperiencesContent = () => {
+  const navigate = useNavigate();
+  const [searchKeyword, setSearchKeyword] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [filterCount, setFilterCount] = useState(0);
 
@@ -41,6 +44,20 @@ const ExperiencesContent = () => {
     ]
   };
 
+  // 検索ボタンクリック
+  const handleSearchClick = () => {
+    if (searchKeyword.trim()) {
+      navigate(`/experiences/search?keyword=${encodeURIComponent(searchKeyword.trim())}`);
+    }
+  };
+
+  // Enterキーでの検索
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      handleSearchClick();
+    }
+  };
+
   return (
     <div className={layoutStyles.pageContainer}>
       <Breadcrumbs items={breadcrumbItems} />
@@ -58,6 +75,9 @@ const ExperiencesContent = () => {
               type="text" 
               placeholder="調べたい内容を、キーワードで記入してください。"
               className={styles.searchInput}
+              value={searchKeyword}
+              onChange={(e) => setSearchKeyword(e.target.value)}
+              onKeyPress={handleKeyPress}
             />
           </div>
           
@@ -71,7 +91,10 @@ const ExperiencesContent = () => {
               <span>絞り込み{filterCount > 0 && `(${filterCount})`}</span>
             </button>
             
-            <button className={styles.searchButton}>
+            <button 
+              className={styles.searchButton}
+              onClick={handleSearchClick}
+            >
               <SearchIcon size={18} color="#fff" />
               <span>検索する</span>
             </button>

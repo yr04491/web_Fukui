@@ -1,17 +1,33 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from './TweetCard.module.css';
 import tweetCards from '../../../data/tweetCards';
 
 const TweetCard = ({ 
   cardId, 
+  data, // 検索結果データ
   text, 
   tags = ['#小学生', '#学校活用術', '#学校活用術'], 
   authorName = 'ひろまま', 
   authorInitial = 'R', 
   date = '2025.07.03'
 }) => {
+  // 検索結果データが渡された場合
+  if (data) {
+    text = data.title || data.description;
+    authorName = data.authorName || '匿名';
+    authorInitial = data.authorInitial || 'A';
+    date = data.date || '';
+    
+    // タグを生成（学年、きっかけ、状況、支援体験から）
+    tags = [];
+    if (data.grade) tags.push(`#${data.grade}`);
+    if (data.trigger) tags.push(`#${data.trigger}`);
+    if (data.situation) tags.push(`#${data.situation}`);
+    if (data.support) tags.push(`#${data.support}`);
+  }
   // カードIDが指定された場合は、データからカード情報を取得
-  if (cardId) {
+  else if (cardId) {
     const cardData = tweetCards.find(card => card.id === cardId);
     if (cardData) {
       text = cardData.text;
@@ -42,6 +58,26 @@ const TweetCard = ({
       </div>
     </div>
   );
+};
+
+TweetCard.propTypes = {
+  cardId: PropTypes.number,
+  data: PropTypes.shape({
+    title: PropTypes.string,
+    description: PropTypes.string,
+    authorName: PropTypes.string,
+    authorInitial: PropTypes.string,
+    date: PropTypes.string,
+    grade: PropTypes.string,
+    trigger: PropTypes.string,
+    situation: PropTypes.string,
+    support: PropTypes.string
+  }),
+  text: PropTypes.string,
+  tags: PropTypes.arrayOf(PropTypes.string),
+  authorName: PropTypes.string,
+  authorInitial: PropTypes.string,
+  date: PropTypes.string
 };
 
 export default TweetCard;

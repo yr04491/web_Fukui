@@ -72,7 +72,11 @@ function doGet(e) {
  */
 function searchExperiences(keyword, filters = {}) {
   try {
-    const sheet = SpreadsheetApp.openById(SPREADSHEET_ID).getSheetByName(SHEET_NAME);
+    // 本番環境ではopenById、テスト環境ではgetActiveSpreadsheet
+    const spreadsheet = SPREADSHEET_ID && SPREADSHEET_ID !== 'YOUR_SPREADSHEET_ID_HERE' 
+      ? SpreadsheetApp.openById(SPREADSHEET_ID) 
+      : SpreadsheetApp.getActiveSpreadsheet();
+    const sheet = spreadsheet.getSheetByName(SHEET_NAME);
     const data = sheet.getDataRange().getValues();
     
     // ヘッダー行を取得（1行目）
@@ -177,7 +181,11 @@ function searchExperiences(keyword, filters = {}) {
  */
 function getAllExperiences(limit = null) {
   try {
-    const sheet = SpreadsheetApp.openById(SPREADSHEET_ID).getSheetByName(SHEET_NAME);
+    // 本番環境ではopenById、テスト環境ではgetActiveSpreadsheet
+    const spreadsheet = SPREADSHEET_ID && SPREADSHEET_ID !== 'YOUR_SPREADSHEET_ID_HERE' 
+      ? SpreadsheetApp.openById(SPREADSHEET_ID) 
+      : SpreadsheetApp.getActiveSpreadsheet();
+    const sheet = spreadsheet.getSheetByName(SHEET_NAME);
     const data = sheet.getDataRange().getValues();
     
     const headers = data[0];
@@ -228,7 +236,11 @@ function getAllExperiences(limit = null) {
  */
 function postExperience(experienceData) {
   try {
-    const sheet = SpreadsheetApp.openById(SPREADSHEET_ID).getSheetByName(SHEET_NAME);
+    // 本番環境ではopenById、テスト環境ではgetActiveSpreadsheet
+    const spreadsheet = SPREADSHEET_ID && SPREADSHEET_ID !== 'YOUR_SPREADSHEET_ID_HERE' 
+      ? SpreadsheetApp.openById(SPREADSHEET_ID) 
+      : SpreadsheetApp.getActiveSpreadsheet();
+    const sheet = spreadsheet.getSheetByName(SHEET_NAME);
     
     // 新しい行を追加
     const newRow = [

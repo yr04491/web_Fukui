@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import ReactDOM from 'react-dom'; // 1. ReactDOMをインポート
 import styles from './FilterModal.module.css';
 
 const FilterModal = ({ isOpen, onClose, filterConfig, onApply }) => {
@@ -51,7 +52,8 @@ const FilterModal = ({ isOpen, onClose, filterConfig, onApply }) => {
     onClose();
   };
 
-  return (
+  // 2. モーダルの内容全体を ReactDOM.createPortal でラップし、document.body に描画する
+  return ReactDOM.createPortal(
     <>
       <div className={styles.overlay} onClick={onClose} />
       <div className={styles.modal}>
@@ -110,7 +112,8 @@ const FilterModal = ({ isOpen, onClose, filterConfig, onApply }) => {
           決定
         </button>
       </div>
-    </>
+    </>,
+    document.body // ポータルの描画先を指定
   );
 };
 

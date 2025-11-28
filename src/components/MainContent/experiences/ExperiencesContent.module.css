@@ -58,6 +58,13 @@
   align-items: flex-start;
 }
 
+.filterRow {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  justify-content: space-between;
+}
+
 .filterButton {
   display: flex;
   align-items: center;
@@ -74,10 +81,28 @@
   max-width: 140px;
   min-width: 140px;
   justify-content: center;
-  align-self: flex-start;
 }
 
 .filterButton:hover {
+  background-color: #FFF5F2;
+}
+
+.clearButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 15px;
+  border: 1px solid #EF9F94;
+  border-radius: 20px;
+  background-color: #fff;
+  color: #EF9F94;
+  font-size: 14px;
+  cursor: pointer;
+  white-space: nowrap;
+  min-width: 80px;
+}
+
+.clearButton:hover {
   background-color: #FFF5F2;
 }
 

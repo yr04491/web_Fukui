@@ -4,7 +4,7 @@
   position: fixed;
   top: 33px;
   left: 419px;
-  z-index: 10001;
+  z-index: 101;
   width: 100px;
   height: 44px;
   flex-shrink: 0;
@@ -99,7 +99,7 @@
   right: -270px; /* 初期状態では画面外に */
   height: 100vh;
   transition: right 0.3s ease;
-  z-index: 10002;
+  z-index: 103;
   width: 270px; /* 常に固定幅270px */
   min-width: 270px; /* 最小幅も270px */
   overflow-y: auto;

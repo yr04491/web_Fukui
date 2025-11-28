@@ -142,6 +142,43 @@
   margin-bottom: 20px;
 }
 
+/* 絞り込み条件の表示 */
+.activeFilters {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  margin-bottom: 25px;
+  padding: 15px 20px;
+  background-color: #FFF5F2;
+  border-radius: 8px;
+  border-left: 4px solid #EF9F94;
+}
+
+.filterLabel {
+  font-size: 14px;
+  font-weight: bold;
+  color: #EF9F94;
+  white-space: nowrap;
+  padding-top: 5px;
+}
+
+.filterTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.filterTag {
+  display: inline-block;
+  padding: 6px 15px;
+  background-color: #EF9F94;
+  color: #fff;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
 /* ローディング表示 */
 .loadingContainer {
   display: flex;
@@ -275,5 +312,20 @@
   .loadingContainer,
   .errorContainer {
     padding: 40px 15px;
+  }
+
+  .activeFilters {
+    flex-direction: column;
+    gap: 10px;
+    padding: 12px 15px;
+  }
+
+  .filterTags {
+    gap: 6px;
+  }
+
+  .filterTag {
+    font-size: 12px;
+    padding: 5px 12px;
   }
 }

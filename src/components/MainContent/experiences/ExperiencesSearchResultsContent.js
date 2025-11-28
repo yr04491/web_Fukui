@@ -62,6 +62,7 @@ const ExperiencesSearchResultsContent = () => {
       setSearchKeyword(urlKeyword);
       handleSearch(urlKeyword, filters);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [urlKeyword]);
 
   // 検索処理
@@ -75,7 +76,9 @@ const ExperiencesSearchResultsContent = () => {
     setError(null);
 
     try {
+      console.log('検索実行:', { keyword, filters: currentFilters }); // デバッグログ
       const results = await searchExperiences(keyword, currentFilters);
+      console.log('検索結果:', results); // デバッグログ
       setSearchResults(results);
       
       if (results.length === 0) {
@@ -107,6 +110,7 @@ const ExperiencesSearchResultsContent = () => {
 
   // フィルター適用
   const handleApplyFilters = (count, selectedFilters) => {
+    console.log('フィルター適用:', { count, selectedFilters }); // デバッグログ
     setFilterCount(count);
     setFilters(selectedFilters);
     handleSearch(urlKeyword, selectedFilters);
@@ -168,6 +172,35 @@ const ExperiencesSearchResultsContent = () => {
           </h2>
           <div className={styles.dividerLine}></div>
         </div>
+
+        {/* 絞り込み条件の表示 */}
+        {filterCount > 0 && (
+          <div className={styles.activeFilters}>
+            <span className={styles.filterLabel}>絞り込み条件:</span>
+            <div className={styles.filterTags}>
+              {filters.grade && filters.grade.map((item, index) => (
+                <span key={`grade-${index}`} className={styles.filterTag}>
+                  {item}
+                </span>
+              ))}
+              {filters.trigger && filters.trigger.map((item, index) => (
+                <span key={`trigger-${index}`} className={styles.filterTag}>
+                  {item}
+                </span>
+              ))}
+              {filters.situation && filters.situation.map((item, index) => (
+                <span key={`situation-${index}`} className={styles.filterTag}>
+                  {item}
+                </span>
+              ))}
+              {filters.support && filters.support.map((item, index) => (
+                <span key={`support-${index}`} className={styles.filterTag}>
+                  {item}
+                </span>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* ローディング表示 */}
         {isLoading && (

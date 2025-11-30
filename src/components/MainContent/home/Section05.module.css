@@ -198,7 +198,7 @@
     width: auto;
     max-width: 360px;
     height: auto;
-    background: var(--color-white);
+    background: rgba(121, 181, 238, 0.15);
     border: 1px solid var(--color-black);
     border-radius: 8px;
     font-family: var(--font-primary);
@@ -293,6 +293,11 @@
     margin-top: 30px; /* ← introSectionとの間に空間を設ける場合はこちらで調整 */
     margin-bottom: 30px; /* ← expertSectionとの間の空間を維持 */
 
+}
+
+/* Section05専用のExperienceSection */
+.experience05 :global(.titleLine2) {
+  font-size: 18px !important;
 }
 
 /* 体験談セクションのボタン */

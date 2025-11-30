@@ -20,6 +20,8 @@ const PlaceCard = ({ cardId, image, tags, title, description }) => {
       <div className={styles.imageContainer} style={{ backgroundImage: `url(${image})` }}></div>
 
       <div className={styles.contentContainer}>
+        {/* タグ表示を一時的に無効化（コメントアウト） */}
+        {/*
         <div className={styles.tagArea}>
           {tags.map((tag, index) => (
             <div key={index} className={styles.tag}>
@@ -27,6 +29,7 @@ const PlaceCard = ({ cardId, image, tags, title, description }) => {
             </div>
           ))}
         </div>
+        */}
 
         <div className={styles.dotline} style={{ backgroundImage: `url(${dotline2Image})` }}></div>
         <div className={styles.placeTitle}>{title}</div>

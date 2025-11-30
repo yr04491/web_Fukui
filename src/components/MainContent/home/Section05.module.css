@@ -1,3 +1,13 @@
+/* 共通: playIcon */
+.playIcon {
+    width: 19.2px;
+    height: 19.2px;
+    background-image: url('../../../assets/images/vectorRB.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-right: 8px;
+}
 /* Section05 スタイル - 改善されたレイアウト */
 .section05 {
     display: flex;

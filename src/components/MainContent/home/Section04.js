@@ -36,9 +36,7 @@ const Section04 = () => {
 
                 <button className={styles.moreButton}>
                     <div className={styles.buttonIconContainer}>
-                        <svg className={styles.playArrowIcon} viewBox="0 0 24 24">
-                            <path d="M8 5v14l11-7z" />
-                        </svg>
+                        <div className={styles.playIcon}></div>
                     </div>
                     <span>インタビューをもっと見る</span>
                 </button>

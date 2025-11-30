@@ -32,19 +32,15 @@
   margin: 0 auto;
   width: 100%;
   max-width: 200px;
-  border-bottom: 2px dashed var(--color-black);
+  height: 2px;
+  background-image: radial-gradient(circle, var(--color-black) 1px, transparent 1px);
+  background-size: 8px 2px;
+  background-repeat: repeat-x;
+  background-position: center;
 }
 
 .tagArea {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
-  padding: 0;
-  gap: 5px;
-  margin: 0 auto;
-  width: 100%;
-  max-width: 200px;
+  display: none;
 }
 
 .tag {
@@ -59,8 +55,6 @@
 .tweetFooter {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
   align-items: center;
   padding: 0;
   gap: 5px;
@@ -72,8 +66,9 @@
 .authorInfo {
   display: flex;
   flex-direction: row;
-  align-items: center;
-  gap: 5px;
+  align-items: center; /* 縦方向の中央揃え */
+  gap: 6px;
+  min-height: 25px; /* アバター高さと揃える */
 }
 
 .authorAvatar {
@@ -110,6 +105,12 @@
   font-size: 12px;
   line-height: 15px;
   color: var(--color-black);
+}
+
+/* 右寄せ: フレックスコンテナ内で右端に寄せる */
+.tweetDate {
+  margin-left: auto;
+  text-align: right;
 }
 
 /* レスポンシブ対応 */

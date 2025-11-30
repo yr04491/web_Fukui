@@ -26,11 +26,12 @@ const TweetCard = ({
     <div className={styles.tweetCard}>
       <p className={styles.tweetText}>{text}</p>
       <div className={styles.tweetDivider}></div>
-      <div className={styles.tagArea}>
+{/*       <div className={styles.tagArea}>
         {tags.map((tag, index) => (
           <span key={index} className={styles.tag}>{tag}</span>
         ))}
       </div>
+  */}
       <div className={styles.tweetFooter}>
         <div className={styles.authorInfo}>
           <div className={styles.authorAvatar}>

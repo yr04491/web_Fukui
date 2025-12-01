@@ -4,9 +4,12 @@ import layoutStyles from '../../components/MainContent/commonPageLayout.module.c
 import styles from './PlaceDetailPage.module.css';
 import placeCards from '../../data/placeCards';
 import PlaceCard from '../../components/common/PlaceCard/PlaceCard';
+import TweetCard from '../../components/common/TweetCard/TweetCard';
+import tweetCards from '../../data/tweetCards';
 import Breadcrumbs from '../../components/common/Breadcrumbs';
 import Footer from '../../components/common/Footer';
 import newwindowIcon from '../../assets/images/newwindow.png';
+import vectorRB from '../../assets/images/vectorRB.png';
 
 const PlaceDetailPage = () => {
   const { id } = useParams();
@@ -94,6 +97,75 @@ const PlaceDetailPage = () => {
             <span className={styles.paginationText}>{currentImageIndex + 1} / {totalImages}</span>
             <button onClick={handleNextImage} className={styles.paginationBtn}>→</button>
           </div>
+        </section>
+
+        {/* こんなところです */}
+        <section className={styles.aboutSection}>
+          <div className={styles.aboutTitle}>＼こんなところです／</div>
+          <p className={styles.aboutText}>{card.body}</p>
+        </section>
+
+        {/* 詳細情報 */}
+        {card.detailInfo && (
+          <section className={styles.detailInfo}>
+            <div className={styles.detailRow}>
+              <span className={styles.detailLabel}>所在地</span>
+              <span className={styles.detailValue}>{card.detailInfo.location}</span>
+            </div>
+            <div className={styles.detailRow}>
+              <span className={styles.detailLabel}>電話番号</span>
+              <span className={styles.detailValue}>{card.detailInfo.phone}</span>
+            </div>
+            <div className={styles.detailRow}>
+              <span className={styles.detailLabel}>メール</span>
+              <span className={styles.detailValue}>{card.detailInfo.email}</span>
+            </div>
+            <div className={styles.detailRow}>
+              <span className={styles.detailLabel}>公式サイト</span>
+              <span className={styles.detailValue}>{card.detailInfo.website}</span>
+            </div>
+            <div className={styles.detailRow}>
+              <span className={styles.detailLabel}>対象</span>
+              <span className={styles.detailValue}>{card.detailInfo.target}</span>
+            </div>
+            <div className={styles.detailRow}>
+              <span className={styles.detailLabel}>こんな方に</span>
+              <span className={styles.detailValue}>{card.detailInfo.recommended}</span>
+            </div>
+            <div className={styles.detailRow}>
+              <span className={styles.detailLabel}>おすすめ</span>
+              <span className={styles.detailValue}>{card.detailInfo.suggestion}</span>
+            </div>
+            <div className={styles.detailRow}>
+              <span className={styles.detailLabel}>開催日時</span>
+              <span className={styles.detailValue}>{card.detailInfo.schedule}</span>
+            </div>
+            <div className={styles.detailRow}>
+              <span className={styles.detailLabel}>料金</span>
+              <span className={styles.detailValue}>{card.detailInfo.fee}</span>
+            </div>
+            <div className={styles.detailRow}>
+              <span className={styles.detailLabel}>その他</span>
+              <span className={styles.detailValue}>{card.detailInfo.other}</span>
+            </div>
+          </section>
+        )}
+
+        {/* 利用者の口コミ */}
+        <section className={styles.reviewSection}>
+          <div className={styles.reviewTitle}>
+            <div className={styles.titleLine1}>みんなの体験談を見てみよう!</div>
+            <div className={styles.titleLine2}>利用者の口コミ</div>
+          </div>
+          <div className={styles.tweetArea}>
+            {tweetCards.slice(0, 3).map(tweet => (
+              <TweetCard key={tweet.id} cardId={tweet.id} />
+            ))}
+          </div>
+          <button className={styles.moreButton} onClick={() => navigate('/places')}>
+            <img src={vectorRB} alt="" className={styles.buttonIcon} />
+            <span>みんなの居場所の検索ページ</span>
+          </button>
         </section>
       </div>
 

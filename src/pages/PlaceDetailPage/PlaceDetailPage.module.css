@@ -96,7 +96,7 @@
 /* 画像スライダー */
 .imageSlider {
   margin-top: 0;
-  margin-bottom: 40px;
+  margin-bottom: 0;
   padding: 0 30px;
   background: rgba(136, 211, 188, 0.25);
 }
@@ -158,4 +158,160 @@
 
 .backButton:hover {
   background: #6fb9a3;
+}
+
+/* こんなところです */
+.aboutSection {
+  background: rgba(136, 211, 188, 0.25);
+  padding: 30px;
+  margin-bottom: 0;
+}
+
+.aboutTitle {
+  background: #88D3BC;
+  color: var(--color-black);
+  padding: 4px 22px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 7px;
+  border-radius: 4px;
+  width: fit-content;
+  position: relative;
+}
+
+.aboutTitle::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid #88D3BC;
+}
+
+.aboutText {
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--color-black);
+  margin: 0;
+}
+
+/* 詳細情報 */
+.detailInfo {
+  background: white;
+  padding: 10px 30px 30px 30px;
+  margin-bottom: 40px;
+}
+
+.detailRow {
+  display: flex;
+  padding: 8px 0;
+  border-bottom: 3px dotted var(--color-black);
+}
+
+.detailLabel {
+  font-weight: normal;
+  min-width: 120px;
+  color: var(--color-black);
+  flex-shrink: 0;
+}
+
+.detailValue {
+  color: var(--color-black);
+  flex: 1;
+}
+
+/* 利用者の口コミ */
+.reviewSection {
+  background: white;
+  padding: 40px 30px;
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.reviewTitle {
+  text-align: left;
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.titleLine1 {
+  font-size: 12px;
+  font-weight: normal;
+  line-height: 1.5;
+  color: var(--color-black);
+}
+
+.titleLine2 {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--color-black);
+}
+
+.tweetArea {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 10px 0;
+  gap: 15px;
+  width: 100%;
+  max-width: 480px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  /* スクロールバーを非表示 */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+/* Chrome, Safari, Opera用のスクロールバー非表示 */
+.tweetArea::-webkit-scrollbar {
+  display: none;
+}
+
+.moreButton {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 20px;
+  gap: 8px;
+  width: auto;
+  max-width: 360px;
+  height: auto;
+  background: rgba(136, 211, 188, 0.25);
+  border: 1px solid var(--color-black);
+  border-radius: 8px;
+  font-family: var(--font-primary);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--color-black);
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.moreButton:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.moreButton:active {
+  transform: scale(0.98);
+}
+
+.buttonIcon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
 }

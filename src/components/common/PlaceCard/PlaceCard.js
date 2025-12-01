@@ -1,10 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styles from './PlaceCard.module.css';
 import placeCards from '../../../data/placeCards';
 import dotline2Image from '../../../assets/images/dotline2.png';
 
 const PlaceCard = ({ cardId, image, tags, title, description }) => {
   // カードIDが指定された場合は、データからカード情報を取得
+  let actualCardId = cardId;
   if (cardId) {
     const cardData = placeCards.find(card => card.id === cardId);
     if (cardData) {
@@ -16,7 +18,8 @@ const PlaceCard = ({ cardId, image, tags, title, description }) => {
   }
 
   return (
-    <div className={styles.placeCard}>
+    <Link to={`/places/${actualCardId || 1}`} className={styles.cardLink}>
+      <div className={styles.placeCard}>
       <div className={styles.imageContainer} style={{ backgroundImage: `url(${image})` }}></div>
 
       <div className={styles.contentContainer}>
@@ -34,9 +37,9 @@ const PlaceCard = ({ cardId, image, tags, title, description }) => {
         <div className={styles.dotline} style={{ backgroundImage: `url(${dotline2Image})` }}></div>
         <div className={styles.placeTitle}>{title}</div>
         <div className={styles.dotline} style={{ backgroundImage: `url(${dotline2Image})` }}></div>
-
       </div>
     </div>
+    </Link>
   );
 };
 

@@ -25,7 +25,7 @@ const TweetCard = ({
   }
 
   return (
-    <Link to={`/tweets/${actualCardId || 1}`} className={styles.cardLink}>
+    <Link to={`/experiences/${actualCardId || 1}`} className={styles.cardLink}>
       <div className={styles.tweetCard}>
         <p className={styles.tweetText}>{text}</p>
         <div className={styles.tweetDivider}></div>

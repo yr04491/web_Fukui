@@ -1,20 +1,20 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import layoutStyles from '../../components/MainContent/commonPageLayout.module.css';
-import styles from './TweetSearchResults.module.css';
+import styles from './PlaceSearchResults.module.css';
 import Breadcrumbs from '../../components/common/Breadcrumbs';
 import Footer from '../../components/common/Footer';
-import TweetCard from '../../components/common/TweetCard/TweetCard';
+import PlaceCard from '../../components/common/PlaceCard/PlaceCard';
 import FilterModal from '../../components/common/FilterModal';
 import SearchIcon from '../../assets/icons/SearchIcon';
 import FilterIcon from '../../assets/icons/FilterIcon';
 
 /**
- * TweetSearchResults
- * - 現時点ではメインコンテンツは空のプレースホルダにする
+ * PlaceSearchResults
+ * - 居場所検索結果ページ
  * - 将来的に絞り込み、ソート、ページネーション、検索クエリ反映などを実装予定
  */
-const TweetSearchResults = () => {
+const PlaceSearchResults = () => {
   const location = useLocation();
   const [activeFilters, setActiveFilters] = useState(location.state?.filters || []);
   const [searchKeyword, setSearchKeyword] = useState(location.state?.keyword || '');
@@ -23,29 +23,25 @@ const TweetSearchResults = () => {
   
   const breadcrumbItems = [
     { label: 'TOP', path: '/' },
-    { label: '体験談を探す', path: '/experiences' },
-    { label: '検索結果', path: '/experiences/search' }
+    { label: '居場所を探す', path: '/places' },
+    { label: '検索結果', path: '/places/search' }
   ];
 
   const filterConfig = {
-    selectedColor: '#EF9F94',
-    buttonColor: '#EF9F94',
+    selectedColor: '#88D3BC',
+    buttonColor: '#88D3BC',
     categories: [
       {
         title: 'お子さんの学年から探す',
-        options: ['小学生', '中学生', '高校生', '卒業生']
-      },
-      {
-        title: 'きっかけから探す',
-        options: ['不登校', '病気', 'いじめ', '発達障がい', 'その他']
+        options: ['小学生から', '中学生から', '高校生から', '卒業している場合']
       },
       {
         title: '状況から探す',
-        options: ['自宅学習', '学校復帰', '進学', '就職', 'その他']
+        options: ['進学したい', '専門的なことを学びたい', '一人で学習したい', 'オンラインで授業を受けたい', '学校行事に参加したい', '家以外の場所での居場所を見つけたい', '外部とコミュニケーションを取れる場所に行きたい', '不登校や子育てについて相談したい', '不登校や子育ての未来について見失わない', '不登校や子育てのイベントに参加したい', '友達を探したい']
       },
       {
-        title: '支援体験から探す',
-        options: ['フリースクール', '適応指導教室', 'オンライン学習', '家庭教師', 'その他']
+        title: '施設の区分から探す',
+        options: ['フリースクール', '塾', 'オンラインサポート', 'サークル', 'オルタナティブスクール', '習い事', 'イベント']
       }
     ]
   };
@@ -100,7 +96,7 @@ const TweetSearchResults = () => {
                 className={styles.filterButton}
                 onClick={() => setIsModalOpen(true)}
               >
-                <FilterIcon size={16} color="#EF9F94" />
+                <FilterIcon size={16} color="#88D3BC" />
                 <span>絞り込み{filterCount > 0 && `(${filterCount})`}</span>
               </button>
               
@@ -136,16 +132,16 @@ const TweetSearchResults = () => {
           <h2 className={styles.resultsTitle}>検索結果</h2>
           <div className={styles.dividerLine}></div>
           <p className={styles.resultsDescription}>
-            みんなの体験談から、似ているところや参考にしたい情報をみつけてみてください。
+            みんなの居場所から、お子さんや保護者の方に合う場所をみつけてみてください。
           </p>
           
-          {/* 体験談カードグリッド */}
+          {/* 居場所カードグリッド */}
           <div className={styles.cardsGrid}>
-            <TweetCard cardId={1} />
-            <TweetCard cardId={2} />
-            <TweetCard cardId={3} />
-            <TweetCard cardId={1} />
-            <TweetCard cardId={2} />
+            <PlaceCard cardId={1} />
+            <PlaceCard cardId={2} />
+            <PlaceCard cardId={3} />
+            <PlaceCard cardId={1} />
+            <PlaceCard cardId={2} />
           </div>
         </div>
       </div>
@@ -162,4 +158,4 @@ const TweetSearchResults = () => {
   );
 };
 
-export default TweetSearchResults;
+export default PlaceSearchResults;

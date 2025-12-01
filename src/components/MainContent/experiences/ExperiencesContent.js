@@ -23,7 +23,7 @@ const ExperiencesContent = () => {
   };
 
   const handleSearch = () => {
-    navigate('/tweets', { 
+    navigate('/experiences/search', { 
       state: { 
         filters: selectedFilters,
         keyword: searchKeyword 

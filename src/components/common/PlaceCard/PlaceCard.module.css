@@ -1,3 +1,16 @@
+/* Link wrapper */
+.cardLink {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.cardLink:hover .placeCard {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
 .placeCard {
   box-sizing: border-box;
   display: flex;
@@ -15,6 +28,8 @@
   overflow: hidden;
   background: #FFFFFF;
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1); /* 影を追加 */
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .contentContainer {

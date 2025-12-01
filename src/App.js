@@ -9,6 +9,9 @@ import PlacesContent from './components/MainContent/places';
 import PathsContent from './components/MainContent/paths';
 import TweetDetailPage from './pages/TweetDetailPage/TweetDetailPage';
 import TweetSearchResults from './pages/TweetSearchResults/TweetSearchResults';
+import PlaceSearchResults from './pages/PlaceSearchResults/PlaceSearchResults';
+import PlaceDetailPage from './pages/PlaceDetailPage/PlaceDetailPage';
+import PlaceReviewPage from './pages/PlaceReviewPage/PlaceReviewPage';
 // SectionXXPage のインポートは不要になります
 
 function App() {
@@ -62,9 +65,14 @@ function App() {
             />
           );
         })}
-        {/* 体験談の詳細ページ */}
-        <Route path="/tweets" element={<Layout><TweetSearchResults /></Layout>} />
-        <Route path="/tweets/:id" element={<Layout><TweetDetailPage /></Layout>} />
+        {/* 体験談の検索結果と詳細ページ */}
+        <Route path="/experiences/search" element={<Layout><TweetSearchResults /></Layout>} />
+        <Route path="/experiences/:id" element={<Layout><TweetDetailPage /></Layout>} />
+        
+        {/* 居場所の検索結果と詳細ページ */}
+        <Route path="/places/search" element={<Layout><PlaceSearchResults /></Layout>} />
+        <Route path="/places/:id" element={<Layout><PlaceDetailPage /></Layout>} />
+        <Route path="/places/:id/reviews" element={<Layout><PlaceReviewPage /></Layout>} />
       </Routes>
     </Router>
   );

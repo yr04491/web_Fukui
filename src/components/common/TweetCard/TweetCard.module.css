@@ -1,3 +1,16 @@
+/* Link wrapper */
+.cardLink {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.cardLink:hover .tweetCard {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
 .tweetCard {
   box-sizing: border-box;
   display: flex;
@@ -13,6 +26,8 @@
   background: var(--color-white);
   border: 1.5px solid var(--color-black);
   border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .tweetText {

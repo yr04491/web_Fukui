@@ -1,0 +1,123 @@
+.contentArea {
+  padding: 24px 32px;
+}
+
+.hero {
+  background: #fde8e0;
+  padding: 18px 12px;
+  text-align: center;
+  border-radius: 6px;
+  margin-bottom: 16px;
+}
+.heroLead {
+  margin: 0;
+  font-size: 12px;
+  color: #333;
+}
+.heroTitle {
+  margin: 6px 0 0 0;
+  font-size: 20px;
+}
+.heroDots {
+  height: 8px;
+  margin: 8px auto 0;
+  width: 80%;
+  background-image: radial-gradient(circle, #000 1px, transparent 1px);
+  background-size: 8px 2px;
+  background-repeat: repeat-x;
+}
+
+.main {
+  margin-top: 12px;
+}
+
+.titleSection { margin-bottom: 16px; }
+.pageTitle { font-size: 18px; margin: 0 0 12px 0; font-weight: 700; }
+.titleDivider { 
+  height: 1px; 
+  background: #E0E0E0; 
+  margin-bottom: 12px;
+}
+
+.tocAndMeta { 
+  display: flex; 
+  flex-direction: column;
+  gap: 16px; 
+  margin: 16px 0; 
+}
+.tocBox { 
+  background: #F5F5F5; 
+  padding: 16px; 
+  border-radius: 8px; 
+  width: 100%; 
+}
+.tocBox strong {
+  font-size: 14px;
+  font-weight: 700;
+}
+.tocBox ul {
+  margin: 12px 0 0 0;
+  padding-left: 0;
+  list-style: none;
+}
+.tocBox li {
+  font-size: 13px;
+  line-height: 1.8;
+  color: #333;
+}
+.metaArea { width: 100%; }
+.metaRow { 
+  display: flex; 
+  justify-content: space-between; 
+  padding: 10px 0; 
+  border-bottom: 1px dotted #CCC; 
+  font-size: 13px;
+}
+
+.bodySection { margin-top: 20px; }
+.sectionHeading { 
+  color: #000; 
+  margin: 0 0 12px 0; 
+  font-size: 16px;
+  font-weight: 700;
+}
+.sectionDivider {
+  height: 1px;
+  background: #E0E0E0;
+  margin-bottom: 16px;
+}
+.articleBody { color: #333; line-height: 1.8; }
+
+.relatedSection { margin-top: 32px; }
+.relatedTitle {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0 0 12px 0;
+  text-align: center;
+}
+.relatedDivider {
+  height: 1px;
+  background: #E0E0E0;
+  margin-bottom: 16px;
+}
+.relatedGrid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+
+.backButton { margin-bottom: 8px; }
+
+@media (max-width: 560px) {
+  .contentArea {
+    padding: 20px 16px;
+  }
+  
+  .tocAndMeta {
+    flex-direction: column;
+  }
+  
+  .tocBox, .metaArea {
+    width: 100%;
+  }
+  
+  .relatedGrid {
+    grid-template-columns: 1fr;
+  }
+}

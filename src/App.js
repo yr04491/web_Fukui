@@ -7,6 +7,8 @@ import ScrollToTop from './components/ScrollToTop';
 import ExperiencesContent from './components/MainContent/experiences';
 import PlacesContent from './components/MainContent/places';
 import PathsContent from './components/MainContent/paths';
+import TweetDetailPage from './pages/TweetDetailPage/TweetDetailPage';
+import TweetSearchResults from './pages/TweetSearchResults/TweetSearchResults';
 // SectionXXPage のインポートは不要になります
 
 function App() {
@@ -60,6 +62,9 @@ function App() {
             />
           );
         })}
+        {/* 体験談の詳細ページ */}
+        <Route path="/tweets" element={<Layout><TweetSearchResults /></Layout>} />
+        <Route path="/tweets/:id" element={<Layout><TweetDetailPage /></Layout>} />
       </Routes>
     </Router>
   );

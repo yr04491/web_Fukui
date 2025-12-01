@@ -27,7 +27,7 @@ const FilterModal = ({ isOpen, onClose, filterConfig, onApply }) => {
 
   const handleDecide = () => {
     if (onApply) {
-      onApply(selectedTags.length);
+      onApply(selectedTags.length, selectedTags);
     }
     onClose();
   };

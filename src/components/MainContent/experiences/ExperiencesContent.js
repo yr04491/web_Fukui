@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import layoutStyles from '../commonPageLayout.module.css'; // 共通CSS（外枠）
 import styles from './ExperiencesContent.module.css';
 import Breadcrumbs from '../../common/Breadcrumbs';
@@ -12,6 +13,28 @@ import FilterIcon from '../../../assets/icons/FilterIcon';
 const ExperiencesContent = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [filterCount, setFilterCount] = useState(0);
+  const [selectedFilters, setSelectedFilters] = useState([]);
+  const [searchKeyword, setSearchKeyword] = useState('');
+  const navigate = useNavigate();
+
+  const handleApplyFilters = (count, filters) => {
+    setFilterCount(count);
+    setSelectedFilters(filters);
+  };
+
+  const handleSearch = () => {
+    navigate('/tweets', { 
+      state: { 
+        filters: selectedFilters,
+        keyword: searchKeyword 
+      } 
+    });
+  };
+
+  const handleClearFilters = () => {
+    setFilterCount(0);
+    setSelectedFilters([]);
+  };
 
   const breadcrumbItems = [
     { label: 'TOP', path: '/' },
@@ -58,6 +81,8 @@ const ExperiencesContent = () => {
               type="text" 
               placeholder="調べたい内容を、キーワードで記入してください。"
               className={styles.searchInput}
+              value={searchKeyword}
+              onChange={(e) => setSearchKeyword(e.target.value)}
             />
           </div>
           
@@ -73,13 +98,13 @@ const ExperiencesContent = () => {
               </button>
               <button 
                 className={styles.clearButton}
-                onClick={() => setFilterCount(0)}
+                onClick={handleClearFilters}
               >
                 クリア
               </button>
             </div>
             
-            <button className={styles.searchButton}>
+            <button className={styles.searchButton} onClick={handleSearch}>
               <SearchIcon size={18} color="#fff" />
               <span>検索する</span>
             </button>
@@ -110,7 +135,7 @@ const ExperiencesContent = () => {
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         filterConfig={filterConfig}
-        onApply={setFilterCount}
+        onApply={handleApplyFilters}
       />
 
       <Footer />

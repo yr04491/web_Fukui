@@ -2,15 +2,41 @@
 const placeCards = [
   {
     id: 1,
-    title: "コドモノイバショ",
+    title: "オルタナティブスクール\nちいさな学校ヒトツナガリ",
     description: "福井市内にあるフリースクール。学習支援や居場所提供を行っています。",
+    body: "福井市で不登校のお子さんを持つお母さん向けに座談会をしています。私自身中学校不登校だった息子の経験から同じような立場で気軽に話せる場が欲しかったことから始めました。少しでも心が軽くなってもらえたら嬉しいです。",
+    address: "福井市中央1-1-1",
+    hours: "月・水・金10:00-16:00",
+    contact: "0776-XX-XXXX",
+    detailInfo: {
+      location: "福井市",
+      phone: "0000-00-0000",
+      email: "000@00000.00",
+      website: "00000.00",
+      target: "あああああ,aaaaa,",
+      recommended: "あああああ,aaaaa,",
+      suggestion: "",
+      schedule: "主に第三か第四日曜日 場所はインスタグラムにて",
+      fee: "学習２０円、１月1800円です。通塾は別途ご相談ください。",
+      other: "学習スペースは半日1000円、１日1800円です。通塾は別途ご相談ください。"
+    },
+    images: [
+      require('../assets/images/AdobeStock_Preview.png'),
+      require('../assets/images/AdobeStock_school.png'),
+      require('../assets/images/AdobeStock_cat.png'),
+      require('../assets/images/AdobeStock2.png')
+    ],
     image: require('../assets/images/AdobeStock_Preview.png'),
-    tags: ["#高校生", "#小学生", "#中学生", "#フリースクール"]
+    tags: ["不登校児の親のおしゃべり会", "不登校生の保護者"]
   },
   {
     id: 2,
     title: "フリースクール「まなびの森」",
     description: "自分のペースで学べる環境を提供。週3日開校しています。",
+    body: "自分のペースで学べる環境を提供。週3日開校しています。一人一人の個性を尊重し、学びの楽しさを体験できる場所です。",
+    address: "福井市大手2-2-2",
+    hours: "火・木・土10:00-15:00",
+    contact: "0776-YY-YYYY",
     image: require('../assets/images/AdobeStock_Preview.png'),
     tags: ["#小学生", "#中学生", "#不登校支援"]
   },
@@ -18,6 +44,10 @@ const placeCards = [
     id: 3,
     title: "放課後等デイサービス",
     description: "発達障害のあるお子さんの学校終了後の活動をサポート。",
+    body: "発達障害のあるお子さんの学校終了後の活動をサポート。個別のニーズに対応したプログラムを提供しています。",
+    address: "福井市花場3-3-3",
+    hours: "月〜金13:00-18:00",
+    contact: "0776-ZZ-ZZZZ",
     image: require('../assets/images/AdobeStock_Preview.png'),
     tags: ["#高校生", "#発達障害", "#小学生"]
   },

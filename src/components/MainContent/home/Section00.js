@@ -13,7 +13,7 @@ const Section00 = () => {
     <div className={styles.section00}>
       <SectionTitle 
         roadNumber="00" 
-        title="まずどうする" 
+        title="まずは、どうする？" 
         roadNumberImage={roadNumberImage} 
       />
 

@@ -193,7 +193,7 @@
   min-width: 250px;
   max-width: fit-content;
   height: 44px;
-  background: #FFFFFF;
+  background: rgba(136, 211, 188, 0.15);
   border: 1px solid #000000;
   border-radius: 6px;
   cursor: pointer;
@@ -234,8 +234,23 @@
 }
 
 .playIcon {
-  width: 16px;
-  height: 16px;
+  width: 19.2px;
+  height: 19.2px;
+  background-image: url('../../../assets/images/vectorRB.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-right: 8px;
+}
+
+.bookIcon {
+  width: 30px;
+  height: 30px;
+  background-image: url('../../../assets/images/vectorRB.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-right: 8px;
 }
 
 /* レスポンシブ対応 */

@@ -4,6 +4,7 @@ import styles from './Section05.module.css';
 import roadNumberImage from '../../../assets/icons/05_0.png';
 import PlaceCard from '../../common/PlaceCard/PlaceCard';
 import SectionTitle from '../../common/SectionTitle';
+import ExperienceSection from '../../common/ExperienceSection/ExperienceSection';
 
 const Section05 = () => {
     const navigate = useNavigate();
@@ -42,13 +43,23 @@ const Section05 = () => {
                     onClick={() => navigate('/paths')}
                 >
                     <div className={styles.buttonIconContainer}>
-                        <svg className={styles.playArrowIcon} viewBox="0 0 24 24">
-                            <path d="M8 5v14l11-7z" />
-                        </svg>
+                        <div className={styles.playIcon}></div>
                     </div>
                     <span>中学校卒業後のことをもっと見る</span>
                 </button>
             </div>
+
+            {/* 10pxの余白 */}
+            <div style={{ height: '10px' }} />
+
+            {/* 体験談セクション追加 */}
+            <ExperienceSection 
+                title={"みんなの体験談を見てみよう！\n卒業後の進路をどう選んだ？"}
+                tweetCardIds={[5, 6]}
+                moreButtonText="卒業後の進路の体験談を見る"
+                customClass={styles.experience05}
+                onMoreClick={() => navigate('/experiences')}
+            />
         </div>
     );
 };

@@ -27,6 +27,7 @@ const FilterModal = ({ isOpen, onClose, filterConfig, onApply }) => {
 
   const handleDecide = () => {
     if (onApply) {
+<<<<<<< HEAD
       // カテゴリごとにフィルターを整理
       const filters = {
         grade: [],
@@ -48,6 +49,9 @@ const FilterModal = ({ isOpen, onClose, filterConfig, onApply }) => {
       });
 
       onApply(selectedTags.length, filters);
+=======
+      onApply(selectedTags.length, selectedTags);
+>>>>>>> origin/master
     }
     onClose();
   };

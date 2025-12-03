@@ -12,6 +12,10 @@ import ExperiencesSearchResultsContent from './components/MainContent/experience
 import PlacesContent from './components/MainContent/places';
 import PathsContent from './components/MainContent/paths';
 import ProtectedRoute from './components/Auth/ProtectedRoute';
+import TweetDetailPage from './pages/TweetDetailPage/TweetDetailPage';
+import PlaceSearchResults from './pages/PlaceSearchResults/PlaceSearchResults';
+import PlaceDetailPage from './pages/PlaceDetailPage/PlaceDetailPage';
+import PlaceReviewPage from './pages/PlaceReviewPage/PlaceReviewPage';
 // SectionXXPage のインポートは不要になります
 
 // Google OAuth Client ID（環境変数から取得することを推奨）
@@ -53,10 +57,36 @@ function App() {
               </ProtectedRoute>
             } />
 
+            {/* 体験談詳細ページ */}
+            <Route path="/experiences/:id" element={
+              <Layout>
+                <TweetDetailPage />
+              </Layout>
+            } />
+
             {/* 居場所を探すページ */}
             <Route path="/places" element={
               <Layout>
                 <PlacesContent />
+              </Layout>
+            } />
+
+            {/* 居場所の検索結果と詳細ページ */}
+            <Route path="/places/search" element={
+              <Layout>
+                <PlaceSearchResults />
+              </Layout>
+            } />
+            
+            <Route path="/places/:id" element={
+              <Layout>
+                <PlaceDetailPage />
+              </Layout>
+            } />
+            
+            <Route path="/places/:id/reviews" element={
+              <Layout>
+                <PlaceReviewPage />
               </Layout>
             } />
 

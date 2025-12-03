@@ -44,11 +44,7 @@ const Section03 = () => {
           className={styles.projectButton}
           onClick={() => navigate('/places')}
         >
-          <div className={styles.buttonIconContainer}>
-            <svg className={styles.playArrowIcon} viewBox="0 0 24 24">
-              <path d="M8 5v14l11-7z" />
-            </svg>
-          </div>
+          <div className={styles.playIcon}></div>
           <span>こどもの居場所をもっと見る</span>
         </button>
       </div>
@@ -70,11 +66,7 @@ const Section03 = () => {
           className={styles.projectButton}
           onClick={() => navigate('/places')}
         >
-          <div className={styles.buttonIconContainer}>
-            <svg className={styles.playArrowIcon} viewBox="0 0 24 24">
-              <path d="M8 5v14l11-7z" />
-            </svg>
-          </div>
+          <div className={styles.playIcon}></div>
           <span>保護者の居場所をもっと見る</span>
         </button>
       </div>

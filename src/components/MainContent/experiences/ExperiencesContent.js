@@ -15,27 +15,13 @@ const ExperiencesContent = () => {
   const [searchKeyword, setSearchKeyword] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [filterCount, setFilterCount] = useState(0);
-  const [selectedFilters, setSelectedFilters] = useState([]);
-  const [searchKeyword, setSearchKeyword] = useState('');
-  const navigate = useNavigate();
 
-  const handleApplyFilters = (count, filters) => {
+  const handleApplyFilters = (count) => {
     setFilterCount(count);
-    setSelectedFilters(filters);
-  };
-
-  const handleSearch = () => {
-    navigate('/experiences/search', { 
-      state: { 
-        filters: selectedFilters,
-        keyword: searchKeyword 
-      } 
-    });
   };
 
   const handleClearFilters = () => {
     setFilterCount(0);
-    setSelectedFilters([]);
   };
 
   const breadcrumbItems = [
@@ -99,10 +85,7 @@ const ExperiencesContent = () => {
               className={styles.searchInput}
               value={searchKeyword}
               onChange={(e) => setSearchKeyword(e.target.value)}
-<<<<<<< HEAD
               onKeyPress={handleKeyPress}
-=======
->>>>>>> origin/master
             />
           </div>
           
@@ -124,14 +107,10 @@ const ExperiencesContent = () => {
               </button>
             </div>
             
-<<<<<<< HEAD
             <button 
               className={styles.searchButton}
               onClick={handleSearchClick}
             >
-=======
-            <button className={styles.searchButton} onClick={handleSearch}>
->>>>>>> origin/master
               <SearchIcon size={18} color="#fff" />
               <span>検索する</span>
             </button>

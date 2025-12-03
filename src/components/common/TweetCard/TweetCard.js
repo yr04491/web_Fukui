@@ -1,9 +1,6 @@
 import React from 'react';
-<<<<<<< HEAD
 import PropTypes from 'prop-types';
-=======
 import { Link } from 'react-router-dom';
->>>>>>> origin/master
 import styles from './TweetCard.module.css';
 import tweetCards from '../../../data/tweetCards';
 
@@ -31,15 +28,11 @@ const TweetCard = ({
     if (data.support) tags.push(`#${data.support}`);
   }
   // カードIDが指定された場合は、データからカード情報を取得
-<<<<<<< HEAD
   else if (cardId) {
-=======
-  let actualCardId = cardId;
-  if (cardId) {
->>>>>>> origin/master
     const cardData = tweetCards.find(card => card.id === cardId);
     if (cardData) {
       text = cardData.text;
+      // eslint-disable-next-line no-unused-vars
       tags = cardData.tags;
       authorName = cardData.authorName;
       authorInitial = cardData.authorInitial;
@@ -48,7 +41,7 @@ const TweetCard = ({
   }
 
   return (
-    <Link to={`/experiences/${actualCardId || 1}`} className={styles.cardLink}>
+    <Link to={`/experiences/${cardId || 1}`} className={styles.cardLink}>
       <div className={styles.tweetCard}>
         <p className={styles.tweetText}>{text}</p>
         <div className={styles.tweetDivider}></div>

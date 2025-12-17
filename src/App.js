@@ -12,6 +12,8 @@ import TweetSearchResults from './pages/TweetSearchResults/TweetSearchResults';
 import PlaceSearchResults from './pages/PlaceSearchResults/PlaceSearchResults';
 import PlaceDetailPage from './pages/PlaceDetailPage/PlaceDetailPage';
 import PlaceReviewPage from './pages/PlaceReviewPage/PlaceReviewPage';
+import ReviewsPage from './pages/ReviewsPage/ReviewsPage';
+import ReviewDetailPage from './pages/ReviewDetailPage/ReviewDetailPage';
 // SectionXXPage のインポートは不要になります
 
 function App() {
@@ -73,6 +75,10 @@ function App() {
         <Route path="/places/search" element={<Layout><PlaceSearchResults /></Layout>} />
         <Route path="/places/:id" element={<Layout><PlaceDetailPage /></Layout>} />
         <Route path="/places/:id/reviews" element={<Layout><PlaceReviewPage /></Layout>} />
+        
+        {/* 口コミ一覧ページと詳細ページ */}
+        <Route path="/reviews" element={<Layout><ReviewsPage /></Layout>} />
+        <Route path="/reviews/:id" element={<Layout><ReviewDetailPage /></Layout>} />
       </Routes>
     </Router>
   );

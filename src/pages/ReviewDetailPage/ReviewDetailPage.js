@@ -1,0 +1,91 @@
+import React from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import layoutStyles from '../../components/MainContent/commonPageLayout.module.css';
+import styles from './ReviewDetailPage.module.css';
+import reviewCards from '../../data/reviewCards';
+import ReviewCard from '../../components/common/ReviewCard/ReviewCard';
+import Breadcrumbs from '../../components/common/Breadcrumbs';
+import Footer from '../../components/common/Footer';
+
+const ReviewDetailPage = () => {
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const card = reviewCards.find(c => String(c.id) === String(id));
+
+  const breadcrumbItems = [
+    { label: 'TOP', path: '/' },
+    { label: '口コミ一覧', path: '/reviews' },
+    { label: `口コミ${id}`, path: `/reviews/${id}` }
+  ];
+
+  if (!card) {
+    return (
+      <div className={layoutStyles.pageContainer}>
+        <Breadcrumbs items={breadcrumbItems} />
+        <div className={styles.contentArea}>
+          <button className={styles.backButton} onClick={() => navigate(-1)}>戻る</button>
+          <p>該当の口コミが見つかりません。</p>
+        </div>
+        <Footer />
+      </div>
+    );
+  }
+
+  // Related: show other review cards (exclude current)
+  const related = reviewCards.filter(c => c.id !== card.id).slice(0, 4);
+
+  return (
+    <div className={layoutStyles.pageContainer}>
+      <Breadcrumbs items={breadcrumbItems} />
+      
+      <div className={styles.contentArea}>
+        <main className={styles.main}>
+          <section className={styles.titleSection}>
+            <h2 className={styles.pageTitle}>{card.title || '口コミタイトル'}</h2>
+            <div className={styles.metaInfo}>
+              <div className={styles.authorInfo}>
+                <div className={styles.authorAvatar}>
+                  <span>{card.authorInitial}</span>
+                </div>
+                <span className={styles.authorName}>{card.authorName}</span>
+              </div>
+              <span className={styles.date}>{card.date}</span>
+            </div>
+          </section>
+
+          {card.tags && card.tags.length > 0 && (
+            <section className={styles.tagSection}>
+              {card.tags.map((tag, index) => (
+                <span key={index} className={styles.tag}>{tag}</span>
+              ))}
+            </section>
+          )}
+
+          <section className={styles.bodySection}>
+            <p className={styles.bodyText}>{card.body || card.text}</p>
+          </section>
+
+          {card.rating && (
+            <section className={styles.ratingSection}>
+              <span className={styles.ratingLabel}>評価:</span>
+              <span className={styles.ratingValue}>{'★'.repeat(card.rating)}{'☆'.repeat(5 - card.rating)}</span>
+            </section>
+          )}
+
+          <section className={styles.relatedSection}>
+            <h3 className={styles.relatedTitle}>他の口コミ</h3>
+            <div className={styles.relatedCards}>
+              {related.map(review => (
+                <ReviewCard key={review.id} cardId={review.id} />
+              ))}
+            </div>
+          </section>
+        </main>
+      </div>
+
+      <Footer />
+    </div>
+  );
+};
+
+export default ReviewDetailPage;

@@ -35,6 +35,7 @@
   overflow: hidden; /* 画像の見切れを防ぐ */
 }
 
+
 .contentContainer {
   box-sizing: border-box;
   display: flex;

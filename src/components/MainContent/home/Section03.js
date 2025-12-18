@@ -45,7 +45,7 @@ const Section03 = () => {
           onClick={() => navigate('/places')}
         >
           <div className={styles.playIcon}></div>
-          <span>こどもの居場所をもっと見る</span>
+          <span>こどもの居場所をさがす</span>
         </button>
       </div>
 
@@ -67,7 +67,7 @@ const Section03 = () => {
           onClick={() => navigate('/places')}
         >
           <div className={styles.playIcon}></div>
-          <span>保護者の居場所をもっと見る</span>
+          <span>保護者の居場所をさがす</span>
         </button>
       </div>
     </div>

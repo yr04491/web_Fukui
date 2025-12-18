@@ -45,7 +45,7 @@ const Section05 = () => {
                     <div className={styles.buttonIconContainer}>
                         <div className={styles.playIcon}></div>
                     </div>
-                    <span>中学校卒業後のことをもっと見る</span>
+                    <span>中学校卒業後の進路をさがす</span>
                 </button>
             </div>
 

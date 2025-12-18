@@ -135,6 +135,29 @@
 .footerList li:hover {
   color: #000000; 
 }
+
+/* 最後の行を横並びに */
+.lastRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+/* 右側の投稿ボタン */
+.submitButton {
+  background: white;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-weight: 600;
+  transition: background-color 0.2s, color 0.2s;
+  margin-right: 20px;
+}
+
+.submitButton:hover {
+  background: #f0f0f0;
+  color: #000000;
+}
 /* ▲ スタイル変更ここまで ▲ */
 
 

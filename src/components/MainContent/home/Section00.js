@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './Section00.module.css';
 import roadNumberImage from '../../../assets/icons/00_0.png';
-import SectionTitle from '../../common/SectionTitle';
+import dotlineImage from '../../../assets/images/dotline.png';
 import ContentFrame from '../../common/ContentFrame';
 import ExperienceSection from '../../common/ExperienceSection';
 
@@ -11,11 +11,18 @@ const Section00 = () => {
 
   return (
     <div className={styles.section00}>
-      <SectionTitle 
-        roadNumber="00" 
-        title="まずは、どうする？" 
-        roadNumberImage={roadNumberImage} 
-      />
+      <div className={styles.titleWrapper}>
+        <div className={styles.logoContainer}>
+          <span className={styles.roadText}>ROAD</span>
+          <img src={roadNumberImage} alt="00" className={styles.logoChar} />
+        </div>
+        <p className={styles.subtitle}>子どもが不登校に・・・</p>
+        <h2 className={styles.mainTitle}>まずは、どうする？</h2>
+        <div 
+          className={styles.dotline} 
+          style={{ backgroundImage: `url(${dotlineImage})` }}
+        ></div>
+      </div>
 
       <ContentFrame
         title="＼　大丈夫です。なんとかなります。／まずは慌てず落ち着きましょう。"
@@ -39,7 +46,7 @@ const Section00 = () => {
         title="みんなの体験談を見てみよう！
 不登校になったきっかけは？"
         tweetCardIds={[1, 2]}
-        moreButtonText="不登校になったきっかけの体験談を見る"
+        moreButtonText="体験談をさがす"
         customClass={styles.experience00}
         onMoreClick={() => navigate('/experiences')}
       />

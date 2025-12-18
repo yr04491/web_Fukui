@@ -16,6 +16,8 @@ import TweetDetailPage from './pages/TweetDetailPage/TweetDetailPage';
 import PlaceSearchResults from './pages/PlaceSearchResults/PlaceSearchResults';
 import PlaceDetailPage from './pages/PlaceDetailPage/PlaceDetailPage';
 import PlaceReviewPage from './pages/PlaceReviewPage/PlaceReviewPage';
+import ReviewsPage from './pages/ReviewsPage/ReviewsPage';
+import ReviewDetailPage from './pages/ReviewDetailPage/ReviewDetailPage';
 // SectionXXPage のインポートは不要になります
 
 // Google OAuth Client ID（環境変数から取得することを推奨）
@@ -87,6 +89,19 @@ function App() {
             <Route path="/places/:id/reviews" element={
               <Layout>
                 <PlaceReviewPage />
+              </Layout>
+            } />
+
+            {/* 口コミ一覧ページと詳細ページ */}
+            <Route path="/reviews" element={
+              <Layout>
+                <ReviewsPage />
+              </Layout>
+            } />
+            
+            <Route path="/reviews/:id" element={
+              <Layout>
+                <ReviewDetailPage />
               </Layout>
             } />
 

@@ -1,0 +1,138 @@
+/* Link wrapper */
+.cardLink {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.cardLink:hover .reviewCard {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.reviewCard {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 15px 20px;
+  gap: 8px;
+  width: 240px; /* 固定幅に変更 */
+  min-width: 240px; /* 最小幅も設定 */
+  flex-shrink: 0; /* 横幅が縮まないように固定 */
+  height: 149px;
+  background: var(--color-white);
+  border: 1.5px solid var(--color-black);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.reviewText {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 200px;
+  font-family: var(--font-primary);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 0.1em;
+  color: var(--color-black);
+}
+
+.reviewDivider {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 200px;
+  height: 2px;
+  background-image: radial-gradient(circle, var(--color-black) 1px, transparent 1px);
+  background-size: 8px 2px;
+  background-repeat: repeat-x;
+  background-position: center;
+}
+
+.tagArea {
+  display: none;
+}
+
+.tag {
+  font-family: var(--font-primary);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+  color: var(--color-black);
+}
+
+.reviewFooter {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0;
+  gap: 5px;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 200px;
+}
+
+.authorInfo {
+  display: flex;
+  flex-direction: row;
+  align-items: center; /* 縦方向の中央揃え */
+  gap: 6px;
+  min-height: 25px; /* アバター高さと揃える */
+}
+
+.authorAvatar {
+  width: 25px;
+  height: 25px;
+  background: #F4BED3;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.authorAvatar span {
+  font-family: var(--font-primary);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--color-black);
+}
+
+.authorName {
+  font-family: var(--font-primary);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+  color: var(--color-black);
+}
+
+.reviewDate {
+  font-family: var(--font-primary);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+  color: var(--color-black);
+}
+
+/* 右寄せ: フレックスコンテナ内で右端に寄せる */
+.reviewDate {
+  margin-left: auto;
+  text-align: right;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+  .reviewCard {
+    width: 240px; /* 固定幅を維持 */
+    min-width: 240px; /* 最小幅も維持 */
+    margin-right: 5px; /* カード間の余白調整 */
+  }
+}

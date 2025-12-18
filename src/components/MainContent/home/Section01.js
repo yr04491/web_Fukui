@@ -14,7 +14,7 @@ const Section01 = () => {
     <div className={styles.section01}>
       <SectionTitle 
         roadNumber="01" 
-        title="学校に相談" 
+        title="学校に相談してみよう" 
         roadNumberImage={roadNumberImage} 
       />
 
@@ -45,7 +45,7 @@ const Section01 = () => {
         title="みんなの体験談を見てみよう！
 みんなの学校活用術"
         tweetCardIds={[3, 4, 5]}
-        moreButtonText="みんなの学校活用術をもっと見てみる"
+        moreButtonText="体験談をさがす"
         customClass={styles.experience01}
         onMoreClick={() => navigate('/experiences')}
       />

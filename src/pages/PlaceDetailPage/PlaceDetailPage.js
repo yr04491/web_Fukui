@@ -3,9 +3,8 @@ import { useParams, useNavigate, Link } from 'react-router-dom';
 import layoutStyles from '../../components/MainContent/commonPageLayout.module.css';
 import styles from './PlaceDetailPage.module.css';
 import placeCards from '../../data/placeCards';
-import PlaceCard from '../../components/common/PlaceCard/PlaceCard';
-import TweetCard from '../../components/common/TweetCard/TweetCard';
-import tweetCards from '../../data/tweetCards';
+import ReviewCard from '../../components/common/ReviewCard/ReviewCard';
+import reviewCards from '../../data/reviewCards';
 import Breadcrumbs from '../../components/common/Breadcrumbs';
 import Footer from '../../components/common/Footer';
 import newwindowIcon from '../../assets/images/newwindow.png';
@@ -35,9 +34,6 @@ const PlaceDetailPage = () => {
       </div>
     );
   }
-
-  // Related: show other place cards (exclude current)
-  const related = placeCards.filter(c => c.id !== card.id).slice(0,4);
 
   // 画像スライダー用の関数
   const images = card.images || [card.image];
@@ -158,13 +154,13 @@ const PlaceDetailPage = () => {
             <div className={styles.titleLine2}>利用者の口コミ</div>
           </div>
           <div className={styles.tweetArea}>
-            {tweetCards.slice(0, 3).map(tweet => (
-              <TweetCard key={tweet.id} cardId={tweet.id} />
+            {reviewCards.slice(0, 3).map(review => (
+              <ReviewCard key={review.id} cardId={review.id} />
             ))}
           </div>
-          <button className={styles.moreButton} onClick={() => navigate('/places')}>
+          <button className={styles.moreButton} onClick={() => navigate('/reviews')}>
             <img src={vectorRB} alt="" className={styles.buttonIcon} />
-            <span>みんなの居場所の検索ページ</span>
+            <span>口コミをもっと見る</span>
           </button>
         </section>
       </div>

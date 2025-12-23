@@ -15,13 +15,16 @@ const ExperiencesContent = () => {
   const [searchKeyword, setSearchKeyword] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [filterCount, setFilterCount] = useState(0);
+  const [filters, setFilters] = useState({});
 
-  const handleApplyFilters = (count) => {
+  const handleApplyFilters = (count, selectedFilters) => {
     setFilterCount(count);
+    setFilters(selectedFilters);
   };
 
   const handleClearFilters = () => {
     setFilterCount(0);
+    setFilters({});
   };
 
   const breadcrumbItems = [
@@ -34,28 +37,34 @@ const ExperiencesContent = () => {
     buttonColor: '#EF9F94',
     categories: [
       {
-        title: 'お子さんの学年から探す',
-        options: ['小学生', '中学生', '高校生', '卒業生']
+        title: '初めて不登校になった学年',
+        options: ['小学校1年生', '小学校2年生', '小学校3年生', '小学校4年生', '小学校5年生', '小学校6年生', '中学校1年生', '中学校2年生', '中学校3年生']
       },
       {
-        title: 'きっかけから探す',
-        options: ['不登校', '病気', 'いじめ', '発達障がい', 'その他']
+        title: '不登校になったきっかけ',
+        options: ['いじめ／友人関係', '勉強のつまずき', '発達特性・体調要因', '教師や学校との関係', 'はっきりとした原因が無い']
       },
       {
-        title: '状況から探す',
-        options: ['自宅学習', '学校復帰', '進学', '就職', 'その他']
-      },
-      {
-        title: '支援体験から探す',
-        options: ['フリースクール', '適応指導教室', 'オンライン学習', '家庭教師', 'その他']
+        title: '利用したサポートの種類',
+        options: ['フリースクール', 'スクールカウンセラー', '校内サポートルーム', 'スクールソーシャルワーカー', '当事者の親の会', 'イベントの参加', 'ライフパートナー', '行政運営のフリースクール']
       }
     ]
   };
 
   // 検索ボタンクリック
   const handleSearchClick = () => {
-    if (searchKeyword.trim()) {
-      navigate(`/experiences/search?keyword=${encodeURIComponent(searchKeyword.trim())}`);
+    // キーワードまたは絞り込み条件がある場合に検索
+    if (searchKeyword.trim() || filterCount > 0) {
+      const keyword = searchKeyword.trim() || '*'; // キーワードが空の場合は「*」（全検索）
+      const queryParams = new URLSearchParams();
+      queryParams.set('keyword', keyword);
+      
+      // フィルター情報をURLパラメータに追加
+      if (filterCount > 0) {
+        queryParams.set('filters', JSON.stringify(filters));
+      }
+      
+      navigate(`/experiences/search?${queryParams.toString()}`);
     }
   };
 

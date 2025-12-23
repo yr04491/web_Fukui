@@ -1,3 +1,16 @@
+/* 
+ * TweetCard（体験談カード）のスタイル
+ * 
+ * カードのサイズやデザイン設定を変更する場合:
+ * 1. src/config/cardConfig.js の tweetCardConfig を編集
+ * 2. このファイルの対応する値を更新
+ * 
+ * 主要な設定項目:
+ * - カードサイズ: width, height
+ * - テキストサイズ: fontSize, lineHeight
+ * - 余白: padding
+ */
+
 /* Link wrapper */
 .cardLink {
   text-decoration: none;
@@ -11,6 +24,7 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* メインカード */
 .tweetCard {
   box-sizing: border-box;
   display: flex;
@@ -19,41 +33,51 @@
   align-items: flex-end;
   padding: 15px 20px;
   gap: 8px;
-  width: 240px; /* 固定幅に変更 */
-  min-width: 240px; /* 最小幅も設定 */
-  flex-shrink: 0; /* 横幅が縮まないように固定 */
-  height: 149px;
+  width: 240px; /* cardConfig.js: tweetCardConfig.width */
+  min-width: 240px;
+  flex-shrink: 0;
+  height: 149px; /* cardConfig.js: tweetCardConfig.height */
   background: var(--color-white);
-  border: 1.5px solid var(--color-black);
-  border-radius: 10px;
+  border: 1.5px solid var(--color-black); /* cardConfig.js: tweetCardConfig.border */
+  border-radius: 10px; /* cardConfig.js: tweetCardConfig.border.radius */
   cursor: pointer;
   transition: transform 0.2s, box-shadow 0.2s;
 }
 
+/* テキストエリア */
 .tweetText {
   margin: 0 auto;
   width: 100%;
-  max-width: 200px;
+  max-width: 200px; /* cardConfig.js: tweetCardConfig.text.maxWidth */
   font-family: var(--font-primary);
   font-style: normal;
   font-weight: 600;
-  font-size: 14px;
-  line-height: 18px;
-  letter-spacing: 0.1em;
+  font-size: 14px; /* cardConfig.js: tweetCardConfig.text.fontSize */
+  line-height: 18px; /* cardConfig.js: tweetCardConfig.text.lineHeight */
+  letter-spacing: 0.1em; /* cardConfig.js: tweetCardConfig.text.letterSpacing */
   color: var(--color-black);
+  
+  /* テキストの行数制限 */
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* cardConfig.js: tweetCardConfig.text.maxLines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
+/* 区切り線 */
 .tweetDivider {
   margin: 0 auto;
   width: 100%;
-  max-width: 200px;
-  height: 2px;
+  max-width: 200px; /* cardConfig.js: tweetCardConfig.divider.maxWidth */
+  height: 2px; /* cardConfig.js: tweetCardConfig.divider.height */
   background-image: radial-gradient(circle, var(--color-black) 1px, transparent 1px);
-  background-size: 8px 2px;
+  background-size: 8px 2px; /* cardConfig.js: tweetCardConfig.divider.spacing */
   background-repeat: repeat-x;
   background-position: center;
 }
 
+/* タグエリア（現在は非表示） */
 .tagArea {
   display: none;
 }
@@ -67,29 +91,31 @@
   color: var(--color-black);
 }
 
+/* フッター（投稿者情報と日付） */
 .tweetFooter {
   display: flex;
   flex-direction: row;
   align-items: center;
   padding: 0;
-  gap: 5px;
+  gap: 5px; /* cardConfig.js: tweetCardConfig.footer.gap */
   margin: 0 auto;
   width: 100%;
-  max-width: 200px;
+  max-width: 200px; /* cardConfig.js: tweetCardConfig.footer.maxWidth */
 }
 
 .authorInfo {
   display: flex;
   flex-direction: row;
-  align-items: center; /* 縦方向の中央揃え */
+  align-items: center;
   gap: 6px;
-  min-height: 25px; /* アバター高さと揃える */
+  min-height: 25px;
 }
 
+/* アバター */
 .authorAvatar {
-  width: 25px;
-  height: 25px;
-  background: #F4BED3;
+  width: 25px; /* cardConfig.js: tweetCardConfig.footer.avatar.size */
+  height: 25px; /* cardConfig.js: tweetCardConfig.footer.avatar.size */
+  background: #F4BED3; /* cardConfig.js: tweetCardConfig.footer.avatar.backgroundColor */
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -100,31 +126,29 @@
   font-family: var(--font-primary);
   font-style: normal;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 14px; /* cardConfig.js: tweetCardConfig.footer.avatar.fontSize */
   color: var(--color-black);
 }
 
+/* 投稿者名 */
 .authorName {
   font-family: var(--font-primary);
   font-style: normal;
   font-weight: 600;
-  font-size: 12px;
-  line-height: 15px;
+  font-size: 12px; /* cardConfig.js: tweetCardConfig.footer.authorName.fontSize */
+  line-height: 15px; /* cardConfig.js: tweetCardConfig.footer.authorName.lineHeight */
   color: var(--color-black);
 }
 
+/* 日付 */
 .tweetDate {
   font-family: var(--font-primary);
   font-style: normal;
   font-weight: 600;
-  font-size: 12px;
-  line-height: 15px;
+  font-size: 12px; /* cardConfig.js: tweetCardConfig.footer.date.fontSize */
+  line-height: 15px; /* cardConfig.js: tweetCardConfig.footer.date.lineHeight */
   color: var(--color-black);
-}
-
-/* 右寄せ: フレックスコンテナ内で右端に寄せる */
-.tweetDate {
-  margin-left: auto;
+  margin-left: auto; /* 右寄せ */
   text-align: right;
 }
 

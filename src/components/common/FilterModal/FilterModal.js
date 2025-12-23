@@ -31,7 +31,6 @@ const FilterModal = ({ isOpen, onClose, filterConfig, onApply }) => {
       const filters = {
         grade: [],
         trigger: [],
-        situation: [],
         support: []
       };
 
@@ -43,8 +42,7 @@ const FilterModal = ({ isOpen, onClose, filterConfig, onApply }) => {
         // カテゴリインデックスに基づいてフィルターを分類
         if (index === 0) filters.grade.push(tag);
         else if (index === 1) filters.trigger.push(tag);
-        else if (index === 2) filters.situation.push(tag);
-        else if (index === 3) filters.support.push(tag);
+        else if (index === 2) filters.support.push(tag);
       });
 
       onApply(selectedTags.length, filters);

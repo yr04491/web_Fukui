@@ -24,8 +24,9 @@ const ExperiencesSearchResultsContent = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  // URLパラメータから検索キーワードを取得
+  // URLパラメータから検索キーワードとフィルターを取得
   const urlKeyword = searchParams.get('keyword') || '';
+  const urlFilters = searchParams.get('filters');
 
   const breadcrumbItems = [
     { label: 'TOP', path: '/' },
@@ -38,37 +39,51 @@ const ExperiencesSearchResultsContent = () => {
     buttonColor: '#EF9F94',
     categories: [
       {
-        title: 'お子さんの学年から探す',
-        options: ['小学生', '中学生', '高校生', '卒業生']
+        title: '初めて不登校になった学年',
+        options: ['小学校1年生', '小学校2年生', '小学校3年生', '小学校4年生', '小学校5年生', '小学校6年生', '中学校1年生', '中学校2年生', '中学校3年生']
       },
       {
-        title: 'きっかけから探す',
-        options: ['不登校', '病気', 'いじめ', '発達障がい', 'その他']
+        title: '不登校になったきっかけ',
+        options: ['いじめ／友人関係', '勉強のつまずき', '発達特性・体調要因', '教師や学校との関係', 'はっきりとした原因が無い']
       },
       {
-        title: '状況から探す',
-        options: ['自宅学習', '学校復帰', '進学', '就職', 'その他']
-      },
-      {
-        title: '支援体験から探す',
-        options: ['フリースクール', '適応指導教室', 'オンライン学習', '家庭教師', 'その他']
+        title: '利用したサポートの種類',
+        options: ['フリースクール', 'スクールカウンセラー', '校内サポートルーム', 'スクールソーシャルワーカー', '当事者の親の会', 'イベントの参加', 'ライフパートナー', '行政運営のフリースクール']
       }
     ]
   };
 
   // 初回レンダリング時に検索を実行
   useEffect(() => {
+    // URLからフィルター情報を取得
+    let initialFilters = {};
+    if (urlFilters) {
+      try {
+        initialFilters = JSON.parse(urlFilters);
+        setFilters(initialFilters);
+        // フィルター数をカウント
+        const count = Object.values(initialFilters).reduce((sum, arr) => sum + arr.length, 0);
+        setFilterCount(count);
+      } catch (e) {
+        console.error('フィルターのパースエラー:', e);
+      }
+    }
+    
     if (urlKeyword) {
-      setSearchKeyword(urlKeyword);
-      handleSearch(urlKeyword, filters);
+      const keyword = urlKeyword === '*' ? '' : urlKeyword; // '*'の場合は空文字に変換
+      setSearchKeyword(keyword);
+      handleSearch(urlKeyword, initialFilters);
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [urlKeyword]);
+  }, [urlKeyword, urlFilters]);
 
   // 検索処理
   const handleSearch = async (keyword, currentFilters = {}) => {
-    if (!keyword.trim()) {
-      setError('検索キーワードを入力してください。');
+    // キーワードが'*'（全検索）または空でフィルターがある場合は検索実行
+    const searchKeyword = keyword === '*' ? '' : keyword;
+    
+    if (!searchKeyword.trim() && Object.keys(currentFilters).length === 0) {
+      setError('検索キーワードまたは絞り込み条件を指定してください。');
       return;
     }
 
@@ -76,8 +91,9 @@ const ExperiencesSearchResultsContent = () => {
     setError(null);
 
     try {
-      console.log('検索実行:', { keyword, filters: currentFilters }); // デバッグログ
-      const results = await searchExperiences(keyword, currentFilters);
+      console.log('検索実行:', { keyword: searchKeyword || '全件', filters: currentFilters }); // デバッグログ
+      // キーワードが空の場合は'*'（ワイルドカード）で検索
+      const results = await searchExperiences(searchKeyword || '*', currentFilters);
       console.log('検索結果:', results); // デバッグログ
       setSearchResults(results);
       
@@ -95,9 +111,17 @@ const ExperiencesSearchResultsContent = () => {
 
   // 検索ボタンクリック
   const handleSearchClick = () => {
-    if (searchKeyword.trim()) {
-      navigate(`/experiences/search?keyword=${encodeURIComponent(searchKeyword.trim())}`);
-      handleSearch(searchKeyword, filters);
+    if (searchKeyword.trim() || filterCount > 0) {
+      const keyword = searchKeyword.trim() || '*';
+      const queryParams = new URLSearchParams();
+      queryParams.set('keyword', keyword);
+      
+      if (filterCount > 0) {
+        queryParams.set('filters', JSON.stringify(filters));
+      }
+      
+      navigate(`/experiences/search?${queryParams.toString()}`);
+      handleSearch(keyword, filters);
     }
   };
 
@@ -165,7 +189,7 @@ const ExperiencesSearchResultsContent = () => {
       <div className={styles.resultsSection}>
         <div className={styles.resultsHeader}>
           <h2 className={styles.resultsTitle}>
-            "{urlKeyword}" の検索結果
+            {urlKeyword === '*' || !urlKeyword ? '絞り込み検索' : `"${urlKeyword}"`} の検索結果
             {!isLoading && searchResults.length > 0 && (
               <span className={styles.resultCount}>（{searchResults.length}件）</span>
             )}
@@ -185,11 +209,6 @@ const ExperiencesSearchResultsContent = () => {
               ))}
               {filters.trigger && filters.trigger.map((item, index) => (
                 <span key={`trigger-${index}`} className={styles.filterTag}>
-                  {item}
-                </span>
-              ))}
-              {filters.situation && filters.situation.map((item, index) => (
-                <span key={`situation-${index}`} className={styles.filterTag}>
                   {item}
                 </span>
               ))}

@@ -8,8 +8,8 @@
 // スプレッドシートのID（ここに実際のスプレッドシートIDを設定してください）
 const SPREADSHEET_ID = 'YOUR_SPREADSHEET_ID_HERE';
 
-// シート名
-const SHEET_NAME = '体験談データ'; // スプレッドシートのシート名を設定
+// シート名 - Googleフォームの回答シート名に変更してください
+const SHEET_NAME = 'フォームの回答 1'; // Googleフォームの回答シート名を設定
 
 /**
  * Web アプリケーションとして公開するためのdoPost関数
@@ -72,71 +72,80 @@ function doGet(e) {
  */
 function searchExperiences(keyword, filters = {}) {
   try {
-    // 本番環境ではopenById、テスト環境ではgetActiveSpreadsheet
-    const spreadsheet = SPREADSHEET_ID && SPREADSHEET_ID !== 'YOUR_SPREADSHEET_ID_HERE' 
-      ? SpreadsheetApp.openById(SPREADSHEET_ID) 
-      : SpreadsheetApp.getActiveSpreadsheet();
+    // テスト環境では常にgetActiveSpreadsheetを使用
+    const spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
     const sheet = spreadsheet.getSheetByName(SHEET_NAME);
+    
+    if (!sheet) {
+      throw new Error('シート「' + SHEET_NAME + '」が見つかりません。SHEET_NAMEを確認してください。');
+    }
+    
     const data = sheet.getDataRange().getValues();
     
-    // ヘッダー行を取得（1行目）
+    // ヘッダー行を取得（1行目）- スプレッドシートの実際の列名
     const headers = data[0];
-    const titleIndex = headers.indexOf('タイトル');
-    const descriptionIndex = headers.indexOf('内容');
-    const authorNameIndex = headers.indexOf('投稿者名');
-    const dateIndex = headers.indexOf('投稿日');
-    const gradeIndex = headers.indexOf('学年');
-    const triggerIndex = headers.indexOf('きっかけ');
-    const situationIndex = headers.indexOf('状況');
-    const supportIndex = headers.indexOf('支援体験');
+    const timestampIndex = 0; // A列: タイムスタンプ
+    const authorNameIndex = 1; // B列: 1-2ペンネーム
+    const gradeIndex = 2; // C列: 1-3初めて不登校になった学年
+    const familyIndex = 3; // D列: 1-4家族構成
+    const triggerIndex = 4; // E列: 2-1不登校になったきっかけ（複数選択可）
+    const detailIndex = 5; // F列: 2-2詳しい状況
+    const support1Index = 35; // AJ列: 6-1-1サポートの種類
+    const support2Index = 41; // AP列: 6-2-1サポートの種類
+    const support3Index = 47; // AV列: 6-3-1サポートの種類
     
     // データ行（2行目以降）を検索
     const results = [];
     const keywordLower = keyword.toLowerCase();
+    const isWildcardSearch = keyword === '*'; // ワイルドカード検索（全件対象）
     
     for (let i = 1; i < data.length; i++) {
       const row = data[i];
       
       // 空行をスキップ
-      if (!row[titleIndex] && !row[descriptionIndex]) continue;
+      if (!row[authorNameIndex] && !row[detailIndex]) continue;
       
-      // キーワード検索（タイトルと内容から検索）
-      const title = String(row[titleIndex] || '');
-      const description = String(row[descriptionIndex] || '');
-      const combinedText = (title + ' ' + description).toLowerCase();
-      
-      if (!combinedText.includes(keywordLower)) {
-        continue;
+      // キーワード検索（全ての記述回答から検索）
+      // ワイルドカード検索の場合はキーワードチェックをスキップ
+      if (!isWildcardSearch) {
+        const searchableText = row.slice(1).join(' ').toLowerCase();
+        
+        if (!searchableText.includes(keywordLower)) {
+          continue;
+        }
       }
       
+
       // フィルター条件の適用
       if (filters && Object.keys(filters).length > 0) {
         let matchFilter = true;
         
         // 学年フィルター
         if (filters.grade && filters.grade.length > 0) {
-          if (!filters.grade.includes(row[gradeIndex])) {
+          const rowGrade = String(row[gradeIndex] || '');
+          if (!filters.grade.some(filterGrade => rowGrade.includes(filterGrade))) {
             matchFilter = false;
           }
         }
         
-        // きっかけフィルター
+        // きっかけフィルター（複数選択可能な項目）
         if (filters.trigger && filters.trigger.length > 0) {
-          if (!filters.trigger.includes(row[triggerIndex])) {
+          const rowTrigger = String(row[triggerIndex] || '');
+          // 選択されたフィルターのいずれかが含まれているかチェック
+          if (!filters.trigger.some(filterTrigger => rowTrigger.includes(filterTrigger))) {
             matchFilter = false;
           }
         }
         
-        // 状況フィルター
-        if (filters.situation && filters.situation.length > 0) {
-          if (!filters.situation.includes(row[situationIndex])) {
-            matchFilter = false;
-          }
-        }
-        
-        // 支援体験フィルター
+        // サポートの種類フィルター（3つの列のいずれかに含まれているか）
         if (filters.support && filters.support.length > 0) {
-          if (!filters.support.includes(row[supportIndex])) {
+          const support1 = String(row[support1Index] || '');
+          const support2 = String(row[support2Index] || '');
+          const support3 = String(row[support3Index] || '');
+          const allSupports = support1 + ', ' + support2 + ', ' + support3;
+          
+          // 選択されたフィルターのいずれかが含まれているかチェック
+          if (!filters.support.some(filterSupport => allSupports.includes(filterSupport))) {
             matchFilter = false;
           }
         }
@@ -144,18 +153,20 @@ function searchExperiences(keyword, filters = {}) {
         if (!matchFilter) continue;
       }
       
+      // タイトルを生成（詳しい状況の最初の50文字）
+      const title = String(row[detailIndex] || '').substring(0, 50) + '...';
+      
       // 結果に追加
       results.push({
         id: i,
         title: title,
-        description: description,
+        description: String(row[detailIndex] || ''),
         authorName: row[authorNameIndex] || '匿名',
         authorInitial: getInitial(row[authorNameIndex]),
-        date: formatDate(row[dateIndex]),
+        date: formatDate(row[timestampIndex]),
         grade: row[gradeIndex],
         trigger: row[triggerIndex],
-        situation: row[situationIndex],
-        support: row[supportIndex]
+        support: [row[support1Index], row[support2Index], row[support3Index]].filter(s => s).join(', ')
       });
     }
     
@@ -181,18 +192,20 @@ function searchExperiences(keyword, filters = {}) {
  */
 function getAllExperiences(limit = null) {
   try {
-    // 本番環境ではopenById、テスト環境ではgetActiveSpreadsheet
-    const spreadsheet = SPREADSHEET_ID && SPREADSHEET_ID !== 'YOUR_SPREADSHEET_ID_HERE' 
-      ? SpreadsheetApp.openById(SPREADSHEET_ID) 
-      : SpreadsheetApp.getActiveSpreadsheet();
+    // テスト環境では常にgetActiveSpreadsheetを使用
+    const spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
     const sheet = spreadsheet.getSheetByName(SHEET_NAME);
+    
+    if (!sheet) {
+      throw new Error('シート「' + SHEET_NAME + '」が見つかりません。SHEET_NAMEを確認してください。');
+    }
+    
     const data = sheet.getDataRange().getValues();
     
-    const headers = data[0];
-    const titleIndex = headers.indexOf('タイトル');
-    const descriptionIndex = headers.indexOf('内容');
-    const authorNameIndex = headers.indexOf('投稿者名');
-    const dateIndex = headers.indexOf('投稿日');
+    const timestampIndex = 0; // A列: タイムスタンプ
+    const authorNameIndex = 1; // B列: 1-2ペンネーム
+    const gradeIndex = 2; // C列: 1-3初めて不登校になった学年
+    const detailIndex = 5; // F列: 2-2詳しい状況
     
     const results = [];
     const maxRows = limit ? Math.min(limit + 1, data.length) : data.length;
@@ -200,15 +213,19 @@ function getAllExperiences(limit = null) {
     for (let i = 1; i < maxRows; i++) {
       const row = data[i];
       
-      if (!row[titleIndex] && !row[descriptionIndex]) continue;
+      if (!row[authorNameIndex] && !row[detailIndex]) continue;
+      
+      // タイトルを生成（詳しい状況の最初の50文字）
+      const title = String(row[detailIndex] || '').substring(0, 50) + '...';
       
       results.push({
         id: i,
-        title: row[titleIndex] || '',
-        description: row[descriptionIndex] || '',
+        title: title,
+        description: String(row[detailIndex] || ''),
         authorName: row[authorNameIndex] || '匿名',
         authorInitial: getInitial(row[authorNameIndex]),
-        date: formatDate(row[dateIndex])
+        date: formatDate(row[timestampIndex]),
+        grade: row[gradeIndex]
       });
       
       if (limit && results.length >= limit) break;
@@ -230,44 +247,16 @@ function getAllExperiences(limit = null) {
 }
 
 /**
- * 体験談を投稿
+ * 体験談を投稿（Googleフォーム経由で投稿されるため、このエンドポイントは使用しない）
  * @param {object} experienceData - 投稿データ
  * @return {object} - 投稿結果
  */
 function postExperience(experienceData) {
-  try {
-    // 本番環境ではopenById、テスト環境ではgetActiveSpreadsheet
-    const spreadsheet = SPREADSHEET_ID && SPREADSHEET_ID !== 'YOUR_SPREADSHEET_ID_HERE' 
-      ? SpreadsheetApp.openById(SPREADSHEET_ID) 
-      : SpreadsheetApp.getActiveSpreadsheet();
-    const sheet = spreadsheet.getSheetByName(SHEET_NAME);
-    
-    // 新しい行を追加
-    const newRow = [
-      experienceData.title || '',
-      experienceData.description || '',
-      experienceData.authorName || '匿名',
-      new Date(),
-      experienceData.grade || '',
-      experienceData.trigger || '',
-      experienceData.situation || '',
-      experienceData.support || ''
-    ];
-    
-    sheet.appendRow(newRow);
-    
-    return {
-      success: true,
-      message: '体験談を投稿しました'
-    };
-    
-  } catch (error) {
-    Logger.log('Post Error: ' + error.toString());
-    return {
-      success: false,
-      error: error.toString()
-    };
-  }
+  // Googleフォーム経由で投稿するため、この関数は使用しません
+  return {
+    success: false,
+    message: '体験談の投稿はGoogleフォームをご利用ください'
+  };
 }
 
 /**

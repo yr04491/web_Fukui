@@ -15,16 +15,16 @@ const TweetCard = ({
 }) => {
   // 検索結果データが渡された場合
   if (data) {
-    text = data.title || data.description;
+    // タイトルを優先、なければdescriptionの最初の100文字を使用
+    text = data.title || (data.description ? data.description.substring(0, 100) + '...' : '');
     authorName = data.authorName || '匿名';
     authorInitial = data.authorInitial || 'A';
     date = data.date || '';
     
-    // タグを生成（学年、きっかけ、状況、支援体験から）
+    // タグを生成（学年、きっかけ、サポートから）
     tags = [];
     if (data.grade) tags.push(`#${data.grade}`);
     if (data.trigger) tags.push(`#${data.trigger}`);
-    if (data.situation) tags.push(`#${data.situation}`);
     if (data.support) tags.push(`#${data.support}`);
   }
   // カードIDが指定された場合は、データからカード情報を取得

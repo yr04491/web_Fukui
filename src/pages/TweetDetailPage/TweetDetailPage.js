@@ -21,19 +21,17 @@ const TweetDetailPage = () => {
 
   useEffect(() => {
     const loadExperienceData = async () => {
-      // 渡されたデータがあればそれを使用
-      if (passedData) {
-        setExperienceData(passedData);
-        loadRelatedExperiences(passedData);
-      } else {
-        // 渡されたデータがない場合は、GASから取得（URLで直接アクセスした場合）
-        try {
-          const data = await getExperienceById(id);
-          setExperienceData(data);
-          loadRelatedExperiences(data);
-        } catch (error) {
-          console.error('体験談の取得エラー:', error);
-          // エラー時はtweetCardsから取得（フォールバック）
+      // 常にGASから完全なデータを取得
+      try {
+        const data = await getExperienceById(id);
+        setExperienceData(data);
+        loadRelatedExperiences(data);
+      } catch (error) {
+        console.error('体験談の取得エラー:', error);
+        // エラー時は渡されたデータまたはtweetCardsから取得（フォールバック）
+        if (passedData) {
+          setExperienceData(passedData);
+        } else {
           const card = tweetCards.find(c => String(c.id) === String(id));
           if (card) {
             setExperienceData(card);
@@ -103,29 +101,34 @@ const TweetDetailPage = () => {
     trigger: experienceData.trigger || '',
     detail: experienceData.detail || experienceData.description || experienceData.text || '',
     
-    // セクション3: 学校に行っていた時の様子
-    schoolBehavior: experienceData.schoolBehavior || '',
-    friendRelation: experienceData.friendRelation || '',
-    studyStatus: experienceData.studyStatus || '',
-    homeStatus: experienceData.homeStatus || '',
-    
-    // セクション4: 不登校になってからの様子
-    initialStatus: experienceData.initialStatus || '',
-    dailyLife: experienceData.dailyLife || '',
-    mentalPhysical: experienceData.mentalPhysical || '',
-    familyRelation: experienceData.familyRelation || '',
-    
-    // セクション5: 周囲の反応・サポート
+    // セクション2の続き: 初動と経過
+    parentInitialAction: experienceData.parentInitialAction || '',
+    childReaction: experienceData.childReaction || '',
     schoolResponse: experienceData.schoolResponse || '',
-    parentResponse: experienceData.parentResponse || '',
-    otherSupport: experienceData.otherSupport || '',
+    initialReflection: experienceData.initialReflection || '',
+    firstMonthLife: experienceData.firstMonthLife || '',
+    hardestTime: experienceData.hardestTime || '',
+    improvementTrigger: experienceData.improvementTrigger || '',
+    
+    // セクション3: 子どもの成長過程
+    elementarySchool: experienceData.elementarySchool || '',
+    juniorHighSchool: experienceData.juniorHighSchool || '',
+    highSchool: experienceData.highSchool || '',
+    alternativeSchool: experienceData.alternativeSchool || '',
+    
+    // セクション4: 通信制・定時制の学校情報
+    schools: experienceData.schools || [],
+    
+    // セクション5: 行政・民間サポートの有無
+    supportUsed: experienceData.supportUsed || '',
     
     // セクション6: 利用したサポート
     supports: experienceData.supports || [],
     support: experienceData.support || '',
     
-    // セクション7: 現在と今後
-    currentStatus: experienceData.currentStatus || '',
+    // セクション7: その他のサポートと今の想い
+    otherSupport: experienceData.otherSupport || '',
+    currentThoughts: experienceData.currentThoughts || '',
     message: experienceData.message || ''
   };
 
@@ -151,15 +154,12 @@ const TweetDetailPage = () => {
               <strong>体験談の目次</strong>
               <ul>
                 {displayData.grade && <li>▼ 1. 基本情報</li>}
-                {displayData.detail && <li>▼ 2. 不登校のきっかけ</li>}
-                {(displayData.schoolBehavior || displayData.friendRelation || displayData.studyStatus || displayData.homeStatus) && 
-                  <li>▼ 3. 学校に行っていた時の様子</li>}
-                {(displayData.initialStatus || displayData.dailyLife || displayData.mentalPhysical || displayData.familyRelation) && 
-                  <li>▼ 4. 不登校になってからの様子</li>}
-                {(displayData.schoolResponse || displayData.parentResponse || displayData.otherSupport) && 
-                  <li>▼ 5. 周囲の反応・サポート</li>}
+                {displayData.detail && <li>▼ 2. 不登校のきっかけと経過</li>}
+                {(displayData.elementarySchool || displayData.juniorHighSchool || displayData.highSchool) && 
+                  <li>▼ 3. 子どもの成長過程</li>}
+                {displayData.supportUsed && <li>▼ 5. 行政・民間サポート</li>}
                 {displayData.supports.length > 0 && <li>▼ 6. 利用したサポート</li>}
-                {(displayData.currentStatus || displayData.message) && <li>▼ 7. 現在と今後</li>}
+                {(displayData.otherSupport || displayData.currentThoughts) && <li>▼ 7. その他のサポートと今の想い</li>}
               </ul>
             </aside>
 
@@ -191,11 +191,12 @@ const TweetDetailPage = () => {
             </div>
           </section>
 
-          {/* セクション2: 不登校のきっかけ */}
+          {/* セクション2: 不登校のきっかけと経過 */}
           {displayData.detail && (
             <section className={styles.bodySection}>
-              <h3 className={styles.sectionHeading}>2. 不登校のきっかけ・詳しい状況</h3>
+              <h3 className={styles.sectionHeading}>2. 不登校のきっかけと経過</h3>
               <div className={styles.sectionDivider}></div>
+              
               {displayData.trigger && (
                 <div className={styles.subsection}>
                   <h4 className={styles.subsectionTitle}>2-1. 不登校になったきっかけ</h4>
@@ -204,6 +205,7 @@ const TweetDetailPage = () => {
                   </div>
                 </div>
               )}
+              
               <div className={styles.subsection}>
                 <h4 className={styles.subsectionTitle}>2-2. 詳しい状況</h4>
                 <div className={styles.articleBody}>
@@ -212,122 +214,32 @@ const TweetDetailPage = () => {
                   ))}
                 </div>
               </div>
-            </section>
-          )}
-
-          {/* セクション3: 学校に行っていた時の様子 */}
-          {(displayData.schoolBehavior || displayData.friendRelation || displayData.studyStatus || displayData.homeStatus) && (
-            <section className={styles.bodySection}>
-              <h3 className={styles.sectionHeading}>3. 学校に行っていた時の様子</h3>
-              <div className={styles.sectionDivider}></div>
               
-              {displayData.schoolBehavior && (
+              {displayData.parentInitialAction && (
                 <div className={styles.subsection}>
-                  <h4 className={styles.subsectionTitle}>3-1. 学校での様子</h4>
+                  <h4 className={styles.subsectionTitle}>2-3. 保護者の初動</h4>
                   <div className={styles.articleBody}>
-                    {displayData.schoolBehavior.split('\n').map((paragraph, index) => (
+                    {displayData.parentInitialAction.split('\n').map((paragraph, index) => (
                       <p key={index}>{paragraph}</p>
                     ))}
                   </div>
                 </div>
               )}
               
-              {displayData.friendRelation && (
+              {displayData.childReaction && (
                 <div className={styles.subsection}>
-                  <h4 className={styles.subsectionTitle}>3-2. 友人関係</h4>
+                  <h4 className={styles.subsectionTitle}>2-4. 子どもの反応</h4>
                   <div className={styles.articleBody}>
-                    {displayData.friendRelation.split('\n').map((paragraph, index) => (
+                    {displayData.childReaction.split('\n').map((paragraph, index) => (
                       <p key={index}>{paragraph}</p>
                     ))}
                   </div>
                 </div>
               )}
-              
-              {displayData.studyStatus && (
-                <div className={styles.subsection}>
-                  <h4 className={styles.subsectionTitle}>3-3. 勉強面</h4>
-                  <div className={styles.articleBody}>
-                    {displayData.studyStatus.split('\n').map((paragraph, index) => (
-                      <p key={index}>{paragraph}</p>
-                    ))}
-                  </div>
-                </div>
-              )}
-              
-              {displayData.homeStatus && (
-                <div className={styles.subsection}>
-                  <h4 className={styles.subsectionTitle}>3-4. 家での様子</h4>
-                  <div className={styles.articleBody}>
-                    {displayData.homeStatus.split('\n').map((paragraph, index) => (
-                      <p key={index}>{paragraph}</p>
-                    ))}
-                  </div>
-                </div>
-              )}
-            </section>
-          )}
-
-          {/* セクション4: 不登校になってからの様子 */}
-          {(displayData.initialStatus || displayData.dailyLife || displayData.mentalPhysical || displayData.familyRelation) && (
-            <section className={styles.bodySection}>
-              <h3 className={styles.sectionHeading}>4. 不登校になってからの様子</h3>
-              <div className={styles.sectionDivider}></div>
-              
-              {displayData.initialStatus && (
-                <div className={styles.subsection}>
-                  <h4 className={styles.subsectionTitle}>4-1. 初期の様子</h4>
-                  <div className={styles.articleBody}>
-                    {displayData.initialStatus.split('\n').map((paragraph, index) => (
-                      <p key={index}>{paragraph}</p>
-                    ))}
-                  </div>
-                </div>
-              )}
-              
-              {displayData.dailyLife && (
-                <div className={styles.subsection}>
-                  <h4 className={styles.subsectionTitle}>4-2. 日常の過ごし方</h4>
-                  <div className={styles.articleBody}>
-                    {displayData.dailyLife.split('\n').map((paragraph, index) => (
-                      <p key={index}>{paragraph}</p>
-                    ))}
-                  </div>
-                </div>
-              )}
-              
-              {displayData.mentalPhysical && (
-                <div className={styles.subsection}>
-                  <h4 className={styles.subsectionTitle}>4-3. 心身の状態</h4>
-                  <div className={styles.articleBody}>
-                    {displayData.mentalPhysical.split('\n').map((paragraph, index) => (
-                      <p key={index}>{paragraph}</p>
-                    ))}
-                  </div>
-                </div>
-              )}
-              
-              {displayData.familyRelation && (
-                <div className={styles.subsection}>
-                  <h4 className={styles.subsectionTitle}>4-4. 家族との関係</h4>
-                  <div className={styles.articleBody}>
-                    {displayData.familyRelation.split('\n').map((paragraph, index) => (
-                      <p key={index}>{paragraph}</p>
-                    ))}
-                  </div>
-                </div>
-              )}
-            </section>
-          )}
-
-          {/* セクション5: 周囲の反応・サポート */}
-          {(displayData.schoolResponse || displayData.parentResponse || displayData.otherSupport) && (
-            <section className={styles.bodySection}>
-              <h3 className={styles.sectionHeading}>5. 周囲の反応・サポート</h3>
-              <div className={styles.sectionDivider}></div>
               
               {displayData.schoolResponse && (
                 <div className={styles.subsection}>
-                  <h4 className={styles.subsectionTitle}>5-1. 学校の対応</h4>
+                  <h4 className={styles.subsectionTitle}>2-5. 学校の反応・対応</h4>
                   <div className={styles.articleBody}>
                     {displayData.schoolResponse.split('\n').map((paragraph, index) => (
                       <p key={index}>{paragraph}</p>
@@ -336,27 +248,176 @@ const TweetDetailPage = () => {
                 </div>
               )}
               
-              {displayData.parentResponse && (
+              {displayData.initialReflection && (
                 <div className={styles.subsection}>
-                  <h4 className={styles.subsectionTitle}>5-2. 親の対応</h4>
+                  <h4 className={styles.subsectionTitle}>2-6. 初動の振り返り</h4>
                   <div className={styles.articleBody}>
-                    {displayData.parentResponse.split('\n').map((paragraph, index) => (
+                    {displayData.initialReflection.split('\n').map((paragraph, index) => (
                       <p key={index}>{paragraph}</p>
                     ))}
                   </div>
                 </div>
               )}
               
-              {displayData.otherSupport && (
+              {displayData.firstMonthLife && (
                 <div className={styles.subsection}>
-                  <h4 className={styles.subsectionTitle}>5-3. その他の支援</h4>
+                  <h4 className={styles.subsectionTitle}>2-7. 不登校になって1か月の生活</h4>
                   <div className={styles.articleBody}>
-                    {displayData.otherSupport.split('\n').map((paragraph, index) => (
+                    {displayData.firstMonthLife.split('\n').map((paragraph, index) => (
                       <p key={index}>{paragraph}</p>
                     ))}
                   </div>
                 </div>
               )}
+              
+              {displayData.hardestTime && (
+                <div className={styles.subsection}>
+                  <h4 className={styles.subsectionTitle}>2-8. 一番つらかった時期</h4>
+                  <div className={styles.articleBody}>
+                    {displayData.hardestTime.split('\n').map((paragraph, index) => (
+                      <p key={index}>{paragraph}</p>
+                    ))}
+                  </div>
+                </div>
+              )}
+              
+              {displayData.improvementTrigger && (
+                <div className={styles.subsection}>
+                  <h4 className={styles.subsectionTitle}>2-9. 改善のきっかけ</h4>
+                  <div className={styles.articleBody}>
+                    {displayData.improvementTrigger.split('\n').map((paragraph, index) => (
+                      <p key={index}>{paragraph}</p>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </section>
+          )}
+
+          {/* セクション3: 子どもの成長過程 */}
+          {(displayData.elementarySchool || displayData.juniorHighSchool || displayData.highSchool || displayData.alternativeSchool) && (
+            <section className={styles.bodySection}>
+              <h3 className={styles.sectionHeading}>3. 子どもの成長過程</h3>
+              <div className={styles.sectionDivider}></div>
+              
+              {displayData.elementarySchool && (
+                <div className={styles.subsection}>
+                  <h4 className={styles.subsectionTitle}>3-1. 小学生のころ</h4>
+                  <div className={styles.articleBody}>
+                    {displayData.elementarySchool.split('\n').map((paragraph, index) => (
+                      <p key={index}>{paragraph}</p>
+                    ))}
+                  </div>
+                </div>
+              )}
+              
+              {displayData.juniorHighSchool && (
+                <div className={styles.subsection}>
+                  <h4 className={styles.subsectionTitle}>3-2. 中学生のころ</h4>
+                  <div className={styles.articleBody}>
+                    {displayData.juniorHighSchool.split('\n').map((paragraph, index) => (
+                      <p key={index}>{paragraph}</p>
+                    ))}
+                  </div>
+                </div>
+              )}
+              
+              {displayData.highSchool && (
+                <div className={styles.subsection}>
+                  <h4 className={styles.subsectionTitle}>3-3. 高校生のころ</h4>
+                  <div className={styles.articleBody}>
+                    {displayData.highSchool.split('\n').map((paragraph, index) => (
+                      <p key={index}>{paragraph}</p>
+                    ))}
+                  </div>
+                </div>
+              )}
+              
+              {displayData.alternativeSchool && (
+                <div className={styles.subsection}>
+                  <h4 className={styles.subsectionTitle}>3-4. 中学卒業後の通信制・定時制</h4>
+                  <div className={styles.articleBody}>
+                    {displayData.alternativeSchool.split('\n').map((paragraph, index) => (
+                      <p key={index}>{paragraph}</p>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </section>
+          )}
+
+          {/* セクション4: 通信制・定時制の学校情報 */}
+          {displayData.schools.length > 0 && (
+            <section className={styles.bodySection}>
+              <h3 className={styles.sectionHeading}>4. 通信制・定時制の学校情報</h3>
+              <div className={styles.sectionDivider}></div>
+              
+              {displayData.schools.map((school, index) => (
+                <div key={index} className={styles.subsection} style={{ marginBottom: '40px' }}>
+                  <h4 className={styles.subsectionTitle}>4-{index + 1}. {school.name}</h4>
+                  
+                  {school.period && (
+                    <div style={{ marginBottom: '20px' }}>
+                      <h5 className={styles.subsectionTitle} style={{ fontSize: '14px', marginBottom: '8px' }}>通学期間</h5>
+                      <div className={styles.articleBody}>
+                        {school.period.split('\n').map((paragraph, pIndex) => (
+                          <p key={pIndex}>{paragraph}</p>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                  
+                  {school.reason && (
+                    <div style={{ marginBottom: '20px' }}>
+                      <h5 className={styles.subsectionTitle} style={{ fontSize: '14px', marginBottom: '8px' }}>選んだ理由</h5>
+                      <div className={styles.articleBody}>
+                        {school.reason.split('\n').map((paragraph, pIndex) => (
+                          <p key={pIndex}>{paragraph}</p>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                  
+                  {school.review && (
+                    <div style={{ marginBottom: '20px' }}>
+                      <h5 className={styles.subsectionTitle} style={{ fontSize: '14px', marginBottom: '8px' }}>感想（良かった点・もう少しこうだったら良かった点）</h5>
+                      <div className={styles.articleBody}>
+                        {school.review.split('\n').map((paragraph, pIndex) => (
+                          <p key={pIndex}>{paragraph}</p>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                  
+                  {school.cost && (
+                    <div style={{ marginBottom: '20px' }}>
+                      <h5 className={styles.subsectionTitle} style={{ fontSize: '14px', marginBottom: '8px' }}>費用</h5>
+                      <div className={styles.articleBody}>
+                        {school.cost.split('\n').map((paragraph, pIndex) => (
+                          <p key={pIndex}>{paragraph}</p>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </section>
+          )}
+
+          {/* セクション5: 行政・民間サポートの有無 */}
+          {displayData.supportUsed && (
+            <section className={styles.bodySection}>
+              <h3 className={styles.sectionHeading}>5. 行政・民間サポート</h3>
+              <div className={styles.sectionDivider}></div>
+              
+              <div className={styles.subsection}>
+                <h4 className={styles.subsectionTitle}>5-1. 利用した行政サポート・民間サポート</h4>
+                <div className={styles.articleBody}>
+                  {displayData.supportUsed.split('\n').map((paragraph, index) => (
+                    <p key={index}>{paragraph}</p>
+                  ))}
+                </div>
+              </div>
             </section>
           )}
 
@@ -370,18 +431,27 @@ const TweetDetailPage = () => {
                 <div key={idx} className={styles.subsection}>
                   <h4 className={styles.subsectionTitle}>6-{idx + 1}. {support.type}</h4>
                   
-                  {support.detail && (
+                  {support.name && (
                     <div className={styles.articleBody}>
-                      <p><strong>詳細:</strong></p>
-                      {support.detail.split('\n').map((paragraph, index) => (
-                        <p key={index}>{paragraph}</p>
-                      ))}
+                      <p><strong>具体的な名称:</strong> {support.name}</p>
                     </div>
                   )}
                   
                   {support.frequency && (
                     <div className={styles.articleBody}>
-                      <p><strong>利用頻度:</strong> {support.frequency}</p>
+                      <p><strong>利用期間・回数:</strong></p>
+                      {support.frequency.split('\n').map((paragraph, index) => (
+                        <p key={index}>{paragraph}</p>
+                      ))}
+                    </div>
+                  )}
+                  
+                  {support.reason && (
+                    <div className={styles.articleBody}>
+                      <p><strong>利用したきっかけ:</strong></p>
+                      {support.reason.split('\n').map((paragraph, index) => (
+                        <p key={index}>{paragraph}</p>
+                      ))}
                     </div>
                   )}
                   
@@ -393,51 +463,33 @@ const TweetDetailPage = () => {
                       ))}
                     </div>
                   )}
-                  
-                  {support.helpful && (
-                    <div className={styles.articleBody}>
-                      <p><strong>役に立ったこと:</strong></p>
-                      {support.helpful.split('\n').map((paragraph, index) => (
-                        <p key={index}>{paragraph}</p>
-                      ))}
-                    </div>
-                  )}
-                  
-                  {support.advice && (
-                    <div className={styles.articleBody}>
-                      <p><strong>これから利用する人へのアドバイス:</strong></p>
-                      {support.advice.split('\n').map((paragraph, index) => (
-                        <p key={index}>{paragraph}</p>
-                      ))}
-                    </div>
-                  )}
                 </div>
               ))}
             </section>
           )}
 
-          {/* セクション7: 現在と今後 */}
-          {(displayData.currentStatus || displayData.message) && (
+          {/* セクション7: その他のサポートと今の想い */}
+          {(displayData.otherSupport || displayData.currentThoughts) && (
             <section className={styles.bodySection}>
-              <h3 className={styles.sectionHeading}>7. 現在と今後</h3>
+              <h3 className={styles.sectionHeading}>7. その他のサポートと今の想い</h3>
               <div className={styles.sectionDivider}></div>
               
-              {displayData.currentStatus && (
+              {displayData.otherSupport && (
                 <div className={styles.subsection}>
-                  <h4 className={styles.subsectionTitle}>7-1. 現在の状況</h4>
+                  <h4 className={styles.subsectionTitle}>7-1. その他のサポート・活動</h4>
                   <div className={styles.articleBody}>
-                    {displayData.currentStatus.split('\n').map((paragraph, index) => (
+                    {displayData.otherSupport.split('\n').map((paragraph, index) => (
                       <p key={index}>{paragraph}</p>
                     ))}
                   </div>
                 </div>
               )}
               
-              {displayData.message && (
+              {displayData.currentThoughts && (
                 <div className={styles.subsection}>
-                  <h4 className={styles.subsectionTitle}>7-2. 同じ境遇の人へのメッセージ</h4>
+                  <h4 className={styles.subsectionTitle}>7-2. 不登校に対する考え・想い</h4>
                   <div className={styles.articleBody}>
-                    {displayData.message.split('\n').map((paragraph, index) => (
+                    {displayData.currentThoughts.split('\n').map((paragraph, index) => (
                       <p key={index}>{paragraph}</p>
                     ))}
                   </div>

@@ -287,48 +287,69 @@ function getExperienceById(id) {
     const triggerIndex = 4;      // E列: 2-1 不登校になったきっかけ
     const detailIndex = 5;       // F列: 2-2 詳しい状況
     
-    // 3. 学校に行っていた時の様子
-    const q3_1Index = 6;         // G列: 3-1 学校での様子
-    const q3_2Index = 7;         // H列: 3-2 友人関係
-    const q3_3Index = 8;         // I列: 3-3 勉強面
-    const q3_4Index = 9;         // J列: 3-4 家での様子
+    // セクション2の続き: 初動と経過
+    const q2_3Index = 6;         // G列: 2-3 保護者の初動
+    const q2_4Index = 7;         // H列: 2-4 子どもの反応
+    const q2_5Index = 8;         // I列: 2-5 学校の反応・対応
+    const q2_6Index = 9;         // J列: 2-6 初動の振り返り
+    const q2_7Index = 10;        // K列: 2-7 不登校1か月の生活
+    const q2_8Index = 11;        // L列: 2-8 一番つらかった時期
+    const q2_9Index = 12;        // M列: 2-9 改善のきっかけ
     
-    // 4. 不登校になってからの様子
-    const q4_1Index = 10;        // K列: 4-1 初期の様子
-    const q4_2Index = 11;        // L列: 4-2 過ごし方
-    const q4_3Index = 12;        // M列: 4-3 心身の状態
-    const q4_4Index = 13;        // N列: 4-4 家族との関係
+    // セクション3: 子どもの成長過程
+    const q3_1Index = 13;        // N列: 3-1 小学生のころ
+    const q3_2Index = 14;        // O列: 3-2 中学生のころ
+    const q3_3Index = 15;        // P列: 3-3 高校生のころ
+    const q3_4Index = 16;        // Q列: 3-4 中学卒業後の通信制・定時制
     
-    // 5. 周囲の反応・サポート
-    const q5_1Index = 14;        // O列: 5-1 学校の対応
-    const q5_2Index = 15;        // P列: 5-2 親の対応
-    const q5_3Index = 16;        // Q列: 5-3 その他の支援
+    // セクション4: 通信制・定時制の学校情報（最大3校）
+    const school1NameIndex = 17;      // R列: 4-1-1 学校名
+    const school1PeriodIndex = 18;    // S列: 4-1-2 通学期間
+    const school1ReasonIndex = 19;    // T列: 4-1-3 選んだ理由
+    const school1ReviewIndex = 20;    // U列: 4-1-4 感想
+    const school1CostIndex = 21;      // V列: 4-1-5 費用
+    const school1MoreIndex = 22;      // W列: 4-1-6 他にもあるか
     
-    // 6. 利用したサポート（最大3つ）
+    const school2NameIndex = 23;      // X列: 4-2-1 学校名
+    const school2PeriodIndex = 24;    // Y列: 4-2-2 通学期間
+    const school2ReasonIndex = 25;    // Z列: 4-2-3 選んだ理由
+    const school2ReviewIndex = 26;    // AA列: 4-2-4 感想
+    const school2CostIndex = 27;      // AB列: 4-2-5 費用
+    const school2MoreIndex = 28;      // AC列: 4-2-6 他にもあるか
+    
+    const school3NameIndex = 29;      // AD列: 4-3-1 学校名
+    const school3PeriodIndex = 30;    // AE列: 4-3-2 通学期間
+    const school3ReasonIndex = 31;    // AF列: 4-3-3 選んだ理由
+    const school3ReviewIndex = 32;    // AG列: 4-3-4 感想
+    const school3CostIndex = 33;      // AH列: 4-3-5 費用
+    
+    // セクション5: 行政・民間サポートの有無
+    const q5_1Index = 34;        // AI列: 5-1 利用した行政サポート民間サポート
+    
+    // セクション6: 利用したサポート（最大3つ）
     const support1TypeIndex = 35;      // AJ列: 6-1-1 サポート1の種類
-    const support1DetailIndex = 36;    // AK列: 6-1-2 サポート1の詳細
-    const support1FreqIndex = 37;      // AL列: 6-1-3 サポート1の頻度
-    const support1FeelingIndex = 38;   // AM列: 6-1-4 サポート1の感想
-    const support1HelpIndex = 39;      // AN列: 6-1-5 サポート1の役立ち
-    const support1AdviceIndex = 40;    // AO列: 6-1-6 サポート1のアドバイス
+    const support1DetailIndex = 36;    // AK列: 6-1-2 サポート1の名称
+    const support1FreqIndex = 37;      // AL列: 6-1-3 サポート1の利用期間・回数
+    const support1ReasonIndex = 38;    // AM列: 6-1-4 サポート1の利用きっかけ
+    const support1FeelingIndex = 39;   // AN列: 6-1-5 サポート1の感想
+    const support1MoreIndex = 40;      // AO列: 6-1-6 他にも利用したサポートがあるか
     
     const support2TypeIndex = 41;      // AP列: 6-2-1 サポート2の種類
-    const support2DetailIndex = 42;    // AQ列: 6-2-2 サポート2の詳細
-    const support2FreqIndex = 43;      // AR列: 6-2-3 サポート2の頻度
-    const support2FeelingIndex = 44;   // AS列: 6-2-4 サポート2の感想
-    const support2HelpIndex = 45;      // AT列: 6-2-5 サポート2の役立ち
-    const support2AdviceIndex = 46;    // AU列: 6-2-6 サポート2のアドバイス
+    const support2DetailIndex = 42;    // AQ列: 6-2-2 サポート2の名称
+    const support2FreqIndex = 43;      // AR列: 6-2-3 サポート2の利用期間・回数
+    const support2ReasonIndex = 44;    // AS列: 6-2-4 サポート2の利用きっかけ
+    const support2FeelingIndex = 45;   // AT列: 6-2-5 サポート2の感想
+    const support2MoreIndex = 46;      // AU列: 6-2-6 他にも利用したサポートがあるか
     
     const support3TypeIndex = 47;      // AV列: 6-3-1 サポート3の種類
-    const support3DetailIndex = 48;    // AW列: 6-3-2 サポート3の詳細
-    const support3FreqIndex = 49;      // AX列: 6-3-3 サポート3の頻度
-    const support3FeelingIndex = 50;   // AY列: 6-3-4 サポート3の感想
-    const support3HelpIndex = 51;      // AZ列: 6-3-5 サポート3の役立ち
-    const support3AdviceIndex = 52;    // BA列: 6-3-6 サポート3のアドバイス
+    const support3DetailIndex = 48;    // AW列: 6-3-2 サポート3の名称
+    const support3FreqIndex = 49;      // AX列: 6-3-3 サポート3の利用期間・回数
+    const support3ReasonIndex = 50;    // AY列: 6-3-4 サポート3の利用きっかけ
+    const support3FeelingIndex = 51;   // AZ列: 6-3-5 サポート3の感想
     
-    // 7. 現在と今後
-    const q7_1Index = 53;        // BB列: 7-1 現在の状況
-    const q7_2Index = 54;        // BC列: 7-2 同じ境遇の人へのメッセージ
+    // セクション7: その他のサポートと今の想い
+    const q7_1Index = 52;        // BA列: 7-1 その他のサポート・活動
+    const q7_2Index = 53;        // BB列: 7-2 不登校に対する考え・想い
     
     // タイトルを生成（2-2の詳しい状況から）
     const title = String(row[detailIndex] || '').substring(0, 50) + '...';
@@ -352,48 +373,71 @@ function getExperienceById(id) {
         detail: String(row[detailIndex] || ''),
         description: String(row[detailIndex] || ''), // 互換性のため
         
-        // セクション3: 学校に行っていた時の様子
-        schoolBehavior: String(row[q3_1Index] || ''),
-        friendRelation: String(row[q3_2Index] || ''),
-        studyStatus: String(row[q3_3Index] || ''),
-        homeStatus: String(row[q3_4Index] || ''),
+        // セクション2の続き: 初動と経過
+        parentInitialAction: String(row[q2_3Index] || ''),      // 2-3 保護者の初動
+        childReaction: String(row[q2_4Index] || ''),            // 2-4 子どもの反応
+        schoolResponse: String(row[q2_5Index] || ''),           // 2-5 学校の反応・対応
+        initialReflection: String(row[q2_6Index] || ''),        // 2-6 初動の振り返り
+        firstMonthLife: String(row[q2_7Index] || ''),           // 2-7 不登校1か月の生活
+        hardestTime: String(row[q2_8Index] || ''),              // 2-8 一番つらかった時期
+        improvementTrigger: String(row[q2_9Index] || ''),       // 2-9 改善のきっかけ
         
-        // セクション4: 不登校になってからの様子
-        initialStatus: String(row[q4_1Index] || ''),
-        dailyLife: String(row[q4_2Index] || ''),
-        mentalPhysical: String(row[q4_3Index] || ''),
-        familyRelation: String(row[q4_4Index] || ''),
+        // セクション3: 子どもの成長過程
+        elementarySchool: String(row[q3_1Index] || ''),         // 3-1 小学生のころ
+        juniorHighSchool: String(row[q3_2Index] || ''),         // 3-2 中学生のころ
+        highSchool: String(row[q3_3Index] || ''),               // 3-3 高校生のころ
+        alternativeSchool: String(row[q3_4Index] || ''),        // 3-4 中学卒業後の通信制・定時制
         
-        // セクション5: 周囲の反応・サポート
-        schoolResponse: String(row[q5_1Index] || ''),
-        parentResponse: String(row[q5_2Index] || ''),
-        otherSupport: String(row[q5_3Index] || ''),
+        // セクション4: 通信制・定時制の学校情報
+        schools: [
+          {
+            name: row[school1NameIndex] || '',
+            period: String(row[school1PeriodIndex] || ''),
+            reason: String(row[school1ReasonIndex] || ''),
+            review: String(row[school1ReviewIndex] || ''),
+            cost: String(row[school1CostIndex] || '')
+          },
+          {
+            name: row[school2NameIndex] || '',
+            period: String(row[school2PeriodIndex] || ''),
+            reason: String(row[school2ReasonIndex] || ''),
+            review: String(row[school2ReviewIndex] || ''),
+            cost: String(row[school2CostIndex] || '')
+          },
+          {
+            name: row[school3NameIndex] || '',
+            period: String(row[school3PeriodIndex] || ''),
+            reason: String(row[school3ReasonIndex] || ''),
+            review: String(row[school3ReviewIndex] || ''),
+            cost: String(row[school3CostIndex] || '')
+          }
+        ].filter(s => s.name), // 学校名が入力されているもののみ
+        
+        // セクション5: 行政・民間サポートの有無
+        supportUsed: String(row[q5_1Index] || ''),              // 5-1 利用したサポート
         
         // セクション6: 利用したサポート
         supports: [
           {
             type: row[support1TypeIndex] || '',
-            detail: String(row[support1DetailIndex] || ''),
-            frequency: row[support1FreqIndex] || '',
-            feeling: String(row[support1FeelingIndex] || ''),
-            helpful: String(row[support1HelpIndex] || ''),
-            advice: String(row[support1AdviceIndex] || '')
+            name: String(row[support1DetailIndex] || ''),           // サポート名称
+            frequency: String(row[support1FreqIndex] || ''),        // 利用期間・回数
+            reason: String(row[support1ReasonIndex] || ''),         // 利用きっかけ
+            feeling: String(row[support1FeelingIndex] || '')        // 感想
           },
           {
             type: row[support2TypeIndex] || '',
-            detail: String(row[support2DetailIndex] || ''),
-            frequency: row[support2FreqIndex] || '',
-            feeling: String(row[support2FeelingIndex] || ''),
-            helpful: String(row[support2HelpIndex] || ''),
-            advice: String(row[support2AdviceIndex] || '')
+            name: String(row[support2DetailIndex] || ''),
+            frequency: String(row[support2FreqIndex] || ''),
+            reason: String(row[support2ReasonIndex] || ''),
+            feeling: String(row[support2FeelingIndex] || '')
           },
           {
             type: row[support3TypeIndex] || '',
-            detail: String(row[support3DetailIndex] || ''),
-            frequency: row[support3FreqIndex] || '',
-            feeling: String(row[support3FeelingIndex] || ''),
-            helpful: String(row[support3HelpIndex] || ''),
-            advice: String(row[support3AdviceIndex] || '')
+            name: String(row[support3DetailIndex] || ''),
+            frequency: String(row[support3FreqIndex] || ''),
+            reason: String(row[support3ReasonIndex] || ''),
+            feeling: String(row[support3FeelingIndex] || '')
           }
         ].filter(s => s.type), // 種類が入力されているもののみ
         
@@ -401,9 +445,10 @@ function getExperienceById(id) {
         support: [row[support1TypeIndex], row[support2TypeIndex], row[support3TypeIndex]]
           .filter(s => s).join(', '),
         
-        // セクション7: 現在と今後
-        currentStatus: String(row[q7_1Index] || ''),
-        message: String(row[q7_2Index] || '')
+        // セクション7: その他のサポートと今の想い
+        otherSupport: String(row[q7_1Index] || ''),             // 7-1 その他のサポート・活動
+        currentThoughts: String(row[q7_2Index] || ''),          // 7-2 不登校に対する考え・想い
+        message: String(row[q7_2Index] || '')                   // 互換性のため（7-2と同じ）
       }
     };
     

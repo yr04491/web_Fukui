@@ -9,6 +9,7 @@ const GAS_CONFIG = {
   ENDPOINTS: {
     SEARCH_EXPERIENCES: 'searchExperiences',
     GET_ALL_EXPERIENCES: 'getAllExperiences',
+    GET_EXPERIENCE_BY_ID: 'getExperienceById',
     POST_EXPERIENCE: 'postExperience'
   },
   

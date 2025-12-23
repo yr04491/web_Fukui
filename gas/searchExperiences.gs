@@ -30,6 +30,9 @@ function doPost(e) {
       case 'getAllExperiences':
         result = getAllExperiences(params.limit);
         break;
+      case 'getExperienceById':
+        result = getExperienceById(params.id);
+        break;
       case 'postExperience':
         result = postExperience(params);
         break;
@@ -239,6 +242,173 @@ function getAllExperiences(limit = null) {
     
   } catch (error) {
     Logger.log('Get All Error: ' + error.toString());
+    return {
+      success: false,
+      error: error.toString()
+    };
+  }
+}
+
+/**
+ * IDで特定の体験談を取得（全データを返す）
+ * @param {number} id - 体験談のID（行番号）
+ * @return {object} - 体験談データ
+ */
+function getExperienceById(id) {
+  try {
+    // テスト環境では常にgetActiveSpreadsheetを使用
+    const spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
+    const sheet = spreadsheet.getSheetByName(SHEET_NAME);
+    
+    if (!sheet) {
+      throw new Error('シート「' + SHEET_NAME + '」が見つかりません。SHEET_NAMEを確認してください。');
+    }
+    
+    const data = sheet.getDataRange().getValues();
+    const headers = data[0];
+    
+    // IDは行番号に対応（1-indexed）
+    const rowIndex = parseInt(id);
+    
+    if (rowIndex < 1 || rowIndex >= data.length) {
+      return {
+        success: false,
+        error: '指定されたIDの体験談が見つかりません'
+      };
+    }
+    
+    const row = data[rowIndex];
+    
+    // 列インデックスの定義
+    const timestampIndex = 0;    // A列: タイムスタンプ
+    const authorNameIndex = 1;   // B列: 1-2 ペンネーム
+    const gradeIndex = 2;        // C列: 1-3 初めて不登校になった学年
+    const familyIndex = 3;       // D列: 1-4 家族構成
+    const triggerIndex = 4;      // E列: 2-1 不登校になったきっかけ
+    const detailIndex = 5;       // F列: 2-2 詳しい状況
+    
+    // 3. 学校に行っていた時の様子
+    const q3_1Index = 6;         // G列: 3-1 学校での様子
+    const q3_2Index = 7;         // H列: 3-2 友人関係
+    const q3_3Index = 8;         // I列: 3-3 勉強面
+    const q3_4Index = 9;         // J列: 3-4 家での様子
+    
+    // 4. 不登校になってからの様子
+    const q4_1Index = 10;        // K列: 4-1 初期の様子
+    const q4_2Index = 11;        // L列: 4-2 過ごし方
+    const q4_3Index = 12;        // M列: 4-3 心身の状態
+    const q4_4Index = 13;        // N列: 4-4 家族との関係
+    
+    // 5. 周囲の反応・サポート
+    const q5_1Index = 14;        // O列: 5-1 学校の対応
+    const q5_2Index = 15;        // P列: 5-2 親の対応
+    const q5_3Index = 16;        // Q列: 5-3 その他の支援
+    
+    // 6. 利用したサポート（最大3つ）
+    const support1TypeIndex = 35;      // AJ列: 6-1-1 サポート1の種類
+    const support1DetailIndex = 36;    // AK列: 6-1-2 サポート1の詳細
+    const support1FreqIndex = 37;      // AL列: 6-1-3 サポート1の頻度
+    const support1FeelingIndex = 38;   // AM列: 6-1-4 サポート1の感想
+    const support1HelpIndex = 39;      // AN列: 6-1-5 サポート1の役立ち
+    const support1AdviceIndex = 40;    // AO列: 6-1-6 サポート1のアドバイス
+    
+    const support2TypeIndex = 41;      // AP列: 6-2-1 サポート2の種類
+    const support2DetailIndex = 42;    // AQ列: 6-2-2 サポート2の詳細
+    const support2FreqIndex = 43;      // AR列: 6-2-3 サポート2の頻度
+    const support2FeelingIndex = 44;   // AS列: 6-2-4 サポート2の感想
+    const support2HelpIndex = 45;      // AT列: 6-2-5 サポート2の役立ち
+    const support2AdviceIndex = 46;    // AU列: 6-2-6 サポート2のアドバイス
+    
+    const support3TypeIndex = 47;      // AV列: 6-3-1 サポート3の種類
+    const support3DetailIndex = 48;    // AW列: 6-3-2 サポート3の詳細
+    const support3FreqIndex = 49;      // AX列: 6-3-3 サポート3の頻度
+    const support3FeelingIndex = 50;   // AY列: 6-3-4 サポート3の感想
+    const support3HelpIndex = 51;      // AZ列: 6-3-5 サポート3の役立ち
+    const support3AdviceIndex = 52;    // BA列: 6-3-6 サポート3のアドバイス
+    
+    // 7. 現在と今後
+    const q7_1Index = 53;        // BB列: 7-1 現在の状況
+    const q7_2Index = 54;        // BC列: 7-2 同じ境遇の人へのメッセージ
+    
+    // タイトルを生成（2-2の詳しい状況から）
+    const title = String(row[detailIndex] || '').substring(0, 50) + '...';
+    
+    return {
+      success: true,
+      data: {
+        id: rowIndex,
+        title: title,
+        
+        // 基本情報（セクション1）
+        timestamp: row[timestampIndex],
+        authorName: row[authorNameIndex] || '匿名',
+        authorInitial: getInitial(row[authorNameIndex]),
+        date: formatDate(row[timestampIndex]),
+        grade: row[gradeIndex] || '',
+        family: row[familyIndex] || '',
+        
+        // セクション2: 不登校のきっかけ
+        trigger: row[triggerIndex] || '',
+        detail: String(row[detailIndex] || ''),
+        description: String(row[detailIndex] || ''), // 互換性のため
+        
+        // セクション3: 学校に行っていた時の様子
+        schoolBehavior: String(row[q3_1Index] || ''),
+        friendRelation: String(row[q3_2Index] || ''),
+        studyStatus: String(row[q3_3Index] || ''),
+        homeStatus: String(row[q3_4Index] || ''),
+        
+        // セクション4: 不登校になってからの様子
+        initialStatus: String(row[q4_1Index] || ''),
+        dailyLife: String(row[q4_2Index] || ''),
+        mentalPhysical: String(row[q4_3Index] || ''),
+        familyRelation: String(row[q4_4Index] || ''),
+        
+        // セクション5: 周囲の反応・サポート
+        schoolResponse: String(row[q5_1Index] || ''),
+        parentResponse: String(row[q5_2Index] || ''),
+        otherSupport: String(row[q5_3Index] || ''),
+        
+        // セクション6: 利用したサポート
+        supports: [
+          {
+            type: row[support1TypeIndex] || '',
+            detail: String(row[support1DetailIndex] || ''),
+            frequency: row[support1FreqIndex] || '',
+            feeling: String(row[support1FeelingIndex] || ''),
+            helpful: String(row[support1HelpIndex] || ''),
+            advice: String(row[support1AdviceIndex] || '')
+          },
+          {
+            type: row[support2TypeIndex] || '',
+            detail: String(row[support2DetailIndex] || ''),
+            frequency: row[support2FreqIndex] || '',
+            feeling: String(row[support2FeelingIndex] || ''),
+            helpful: String(row[support2HelpIndex] || ''),
+            advice: String(row[support2AdviceIndex] || '')
+          },
+          {
+            type: row[support3TypeIndex] || '',
+            detail: String(row[support3DetailIndex] || ''),
+            frequency: row[support3FreqIndex] || '',
+            feeling: String(row[support3FeelingIndex] || ''),
+            helpful: String(row[support3HelpIndex] || ''),
+            advice: String(row[support3AdviceIndex] || '')
+          }
+        ].filter(s => s.type), // 種類が入力されているもののみ
+        
+        // サポートの種類（簡易版・互換性のため）
+        support: [row[support1TypeIndex], row[support2TypeIndex], row[support3TypeIndex]]
+          .filter(s => s).join(', '),
+        
+        // セクション7: 現在と今後
+        currentStatus: String(row[q7_1Index] || ''),
+        message: String(row[q7_2Index] || '')
+      }
+    };
+    
+  } catch (error) {
+    Logger.log('Get By ID Error: ' + error.toString());
     return {
       success: false,
       error: error.toString()

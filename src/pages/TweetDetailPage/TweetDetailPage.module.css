@@ -86,7 +86,29 @@
   background: #E0E0E0;
   margin-bottom: 16px;
 }
-.articleBody { color: #333; line-height: 1.8; }
+.articleBody { 
+  color: #333; 
+  line-height: 1.8; 
+  margin-bottom: 12px;
+}
+.articleBody p {
+  margin: 0 0 8px 0;
+}
+
+.subsection {
+  margin-bottom: 24px;
+}
+.subsectionTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: #444;
+  margin: 0 0 8px 0;
+  padding-left: 8px;
+  border-left: 3px solid #F4BED3;
+}
+.subsection .articleBody {
+  padding-left: 8px;
+}
 
 .relatedSection { margin-top: 32px; }
 .relatedTitle {

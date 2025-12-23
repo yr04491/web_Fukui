@@ -108,6 +108,28 @@ export const getAllExperiences = async (limit = null) => {
 };
 
 /**
+ * IDで特定の体験談を取得
+ * @param {number|string} id - 体験談のID
+ * @returns {Promise<object>} - 体験談データ
+ */
+export const getExperienceById = async (id) => {
+  try {
+    const params = { id: parseInt(id) };
+    
+    const response = await fetchGasApi(GAS_CONFIG.ENDPOINTS.GET_EXPERIENCE_BY_ID, params);
+    
+    if (response.success) {
+      return response.data;
+    } else {
+      throw new Error(response.error || '体験談の取得に失敗しました');
+    }
+  } catch (error) {
+    console.error('Get experience by ID error:', error);
+    throw error;
+  }
+};
+
+/**
  * 体験談を投稿
  * @param {object} experienceData - 投稿する体験談データ
  * @returns {Promise<object>} - 投稿結果

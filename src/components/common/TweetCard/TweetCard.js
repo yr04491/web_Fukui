@@ -41,7 +41,11 @@ const TweetCard = ({
   }
 
   return (
-    <Link to={`/experiences/${cardId || 1}`} className={styles.cardLink}>
+    <Link 
+      to={`/experiences/${data?.id || cardId || 1}`} 
+      state={{ experienceData: data }} 
+      className={styles.cardLink}
+    >
       <div className={styles.tweetCard}>
         <p className={styles.tweetText}>{text}</p>
         <div className={styles.tweetDivider}></div>

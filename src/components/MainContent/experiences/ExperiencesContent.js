@@ -16,6 +16,7 @@ const ExperiencesContent = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [filterCount, setFilterCount] = useState(0);
   const [filters, setFilters] = useState({});
+  const [error, setError] = useState(null);
 
   const handleApplyFilters = (count, selectedFilters) => {
     setFilterCount(count);
@@ -53,19 +54,29 @@ const ExperiencesContent = () => {
 
   // 検索ボタンクリック
   const handleSearchClick = () => {
-    // キーワードまたは絞り込み条件がある場合に検索
-    if (searchKeyword.trim() || filterCount > 0) {
-      const keyword = searchKeyword.trim() || '*'; // キーワードが空の場合は「*」（全検索）
-      const queryParams = new URLSearchParams();
-      queryParams.set('keyword', keyword);
-      
-      // フィルター情報をURLパラメータに追加
-      if (filterCount > 0) {
-        queryParams.set('filters', JSON.stringify(filters));
-      }
-      
-      navigate(`/experiences/search?${queryParams.toString()}`);
+    console.log('=== ExperiencesContent handleSearchClick ===');
+    console.log('searchKeyword:', searchKeyword);
+    console.log('filterCount:', filterCount);
+    
+    // バリデーション: キーワードもフィルターも指定されていない場合
+    if (!searchKeyword.trim() && filterCount === 0) {
+      console.log('バリデーションエラー');
+      setError('検索キーワードまたは絞り込み条件を指定してください。');
+      return;
     }
+    
+    setError(null); // エラーをクリア
+    const keyword = searchKeyword.trim() || '*'; // キーワードが空の場合は「*」（全検索）
+    const queryParams = new URLSearchParams();
+    queryParams.set('keyword', keyword);
+    
+    // フィルター情報をURLパラメータに追加
+    if (filterCount > 0) {
+      queryParams.set('filters', JSON.stringify(filters));
+    }
+    
+    console.log('検索実行、navigate to:', `/experiences/search?${queryParams.toString()}`);
+    navigate(`/experiences/search?${queryParams.toString()}`);
   };
 
   // Enterキーでの検索
@@ -126,6 +137,13 @@ const ExperiencesContent = () => {
           </div>
         </div>
       </div>
+
+      {/* エラー表示 */}
+      {error && (
+        <div className={styles.errorContainer}>
+          <p className={styles.errorText}>{error}</p>
+        </div>
+      )}
 
       {/* 体験談ピックアップセクション */}
       <div className={styles.pickupSection}>

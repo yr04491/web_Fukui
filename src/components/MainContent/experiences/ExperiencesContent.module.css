@@ -154,6 +154,24 @@
   margin-bottom: 30px;
 }
 
+/* エラー表示 */
+.errorContainer {
+  background-color: #ffebee;
+  border: 1px solid #ef5350;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 800px;
+  text-align: center;
+}
+
+.errorText {
+  font-size: 14px;
+  color: #d32f2f;
+  margin: 0;
+  line-height: 1.6;
+}
+
 .cardsGrid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);

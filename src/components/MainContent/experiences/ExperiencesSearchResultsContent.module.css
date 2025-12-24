@@ -58,6 +58,13 @@
   align-items: flex-start;
 }
 
+.filterRow {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  justify-content: space-between;
+}
+
 .filterButton {
   display: flex;
   align-items: center;
@@ -81,6 +88,25 @@
   background-color: #FFF5F2;
 }
 
+.clearButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 15px;
+  border: 1px solid #EF9F94;
+  border-radius: 20px;
+  background-color: #fff;
+  color: #EF9F94;
+  font-size: 14px;
+  cursor: pointer;
+  white-space: nowrap;
+  min-width: 80px;
+}
+
+.clearButton:hover {
+  background-color: #FFF5F2;
+}
+
 .searchButton {
   width: 100%;
   display: flex;
@@ -95,11 +121,16 @@
   font-size: 16px;
   font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: all 0.2s;
 }
 
 .searchButton:hover:not(:disabled) {
   background-color: #E88E83;
+}
+
+.searchButton:active:not(:disabled) {
+  transform: scale(0.98);
+  background-color: #D87D72;
 }
 
 .searchButton:disabled {
@@ -241,6 +272,60 @@
   background-color: #E88E83;
 }
 
+/* TOPへ戻るボタン */
+.backToTopContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  padding: 32px 0;
+}
+
+.backToTopButton {
+  background-color: #EF9F94;
+  color: #fff;
+  border: none;
+  border-radius: 25px;
+  padding: 12px 48px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.backToTopButton:hover {
+  background-color: #E88E83;
+}
+
+.backToTopButton:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* 検索結果0件の表示 */
+.noResultsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  gap: 15px;
+}
+
+.noResultsText {
+  font-size: 18px;
+  color: #666;
+  font-weight: bold;
+  text-align: center;
+}
+
+.noResultsSubText {
+  font-size: 14px;
+  color: #999;
+  text-align: center;
+  line-height: 1.6;
+}
+
 /* 検索結果カードグリッド */
 .cardsGrid {
   display: grid;
@@ -327,5 +412,10 @@
   .filterTag {
     font-size: 12px;
     padding: 5px 12px;
+  }
+
+  .backToTopButton {
+    padding: 12px 32px;
+    font-size: 14px;
   }
 }

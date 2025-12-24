@@ -111,18 +111,31 @@ const ExperiencesSearchResultsContent = () => {
 
   // 検索ボタンクリック
   const handleSearchClick = () => {
-    if (searchKeyword.trim() || filterCount > 0) {
-      const keyword = searchKeyword.trim() || '*';
-      const queryParams = new URLSearchParams();
-      queryParams.set('keyword', keyword);
-      
-      if (filterCount > 0) {
-        queryParams.set('filters', JSON.stringify(filters));
-      }
-      
-      navigate(`/experiences/search?${queryParams.toString()}`);
-      handleSearch(keyword, filters);
+    console.log('=== handleSearchClick called ===');
+    console.log('searchKeyword:', searchKeyword);
+    console.log('searchKeyword.trim():', searchKeyword.trim());
+    console.log('filterCount:', filterCount);
+    console.log('filters:', filters);
+    
+    // バリデーション: キーワードもフィルターも指定されていない場合
+    if (!searchKeyword.trim() && filterCount === 0) {
+      console.log('バリデーションエラー: キーワードとフィルターが両方未指定');
+      setError('検索キーワードまたは絞り込み条件を指定してください。');
+      return;
     }
+
+    console.log('バリデーション通過、検索を実行');
+    const keyword = searchKeyword.trim() || '*';
+    const queryParams = new URLSearchParams();
+    queryParams.set('keyword', keyword);
+    
+    if (filterCount > 0) {
+      queryParams.set('filters', JSON.stringify(filters));
+    }
+    
+    console.log('navigate to:', `/experiences/search?${queryParams.toString()}`);
+    navigate(`/experiences/search?${queryParams.toString()}`);
+    handleSearch(keyword, filters);
   };
 
   // Enterキーでの検索
@@ -137,7 +150,15 @@ const ExperiencesSearchResultsContent = () => {
     console.log('フィルター適用:', { count, selectedFilters }); // デバッグログ
     setFilterCount(count);
     setFilters(selectedFilters);
-    handleSearch(urlKeyword, selectedFilters);
+    // 決定ボタンを押しただけでは検索を実行しない（検索ボタンを押した時のみ検索）
+  };
+
+  // クリアボタン
+  const handleClearFilters = () => {
+    console.log('=== handleClearFilters called ===');
+    setFilterCount(0);
+    setFilters({});
+    setSearchKeyword('');
   };
 
   return (
@@ -165,13 +186,21 @@ const ExperiencesSearchResultsContent = () => {
           
           {/* ボタンエリア */}
           <div className={styles.buttonArea}>
-            <button 
-              className={styles.filterButton}
-              onClick={() => setIsModalOpen(true)}
-            >
-              <FilterIcon size={16} color="#EF9F94" />
-              <span>絞り込み{filterCount > 0 && `(${filterCount})`}</span>
-            </button>
+            <div className={styles.filterRow}>
+              <button 
+                className={styles.filterButton}
+                onClick={() => setIsModalOpen(true)}
+              >
+                <FilterIcon size={16} color="#EF9F94" />
+                <span>絞り込み{filterCount > 0 && `(${filterCount})`}</span>
+              </button>
+              <button 
+                className={styles.clearButton}
+                onClick={handleClearFilters}
+              >
+                クリア
+              </button>
+            </div>
             
             <button 
               className={styles.searchButton}
@@ -244,15 +273,27 @@ const ExperiencesSearchResultsContent = () => {
 
         {/* 検索結果表示 */}
         {!isLoading && !error && searchResults.length > 0 && (
-          <div className={styles.cardsGrid}>
-            {searchResults.map((result, index) => (
-              <TweetCard 
-                key={result.id || index} 
-                cardId={result.id || index}
-                data={result}
-              />
-            ))}
-          </div>
+          <>
+            <div className={styles.cardsGrid}>
+              {searchResults.map((result, index) => (
+                <TweetCard 
+                  key={result.id || index} 
+                  cardId={result.id || index}
+                  data={result}
+                />
+              ))}
+            </div>
+            
+            {/* TOPへ戻るボタン */}
+            <div className={styles.backToTopContainer}>
+              <button 
+                className={styles.backToTopButton}
+                onClick={() => navigate('/experiences')}
+              >
+                体験談を探すTOPへ戻る
+              </button>
+            </div>
+          </>
         )}
       </div>
 

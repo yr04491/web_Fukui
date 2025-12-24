@@ -156,6 +156,36 @@
   color: #666;
 }
 
+/* TOPへ戻るボタン */
+.backToTopContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  padding: 32px 0;
+}
+
+.backToTopButton {
+  background-color: #EF9F94;
+  color: #fff;
+  border: none;
+  border-radius: 25px;
+  padding: 12px 48px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.backToTopButton:hover {
+  background-color: #E88E83;
+}
+
+.backToTopButton:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
 @media (max-width: 560px) {
   .contentArea {
     padding: 20px 16px;
@@ -171,5 +201,10 @@
   
   .relatedGrid {
     grid-template-columns: 1fr;
+  }
+  
+  .backToTopButton {
+    padding: 12px 32px;
+    font-size: 14px;
   }
 }

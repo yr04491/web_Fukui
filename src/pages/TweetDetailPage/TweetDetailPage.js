@@ -15,6 +15,7 @@ const TweetDetailPage = () => {
   const [experienceData, setExperienceData] = useState(null);
   const [relatedExperiences, setRelatedExperiences] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [isLoadingRelated, setIsLoadingRelated] = useState(false);
   const [error, setError] = useState(false);
 
   // locationのstateから渡されたデータを取得
@@ -52,7 +53,7 @@ const TweetDetailPage = () => {
 
   // 関連する体験談を取得
   const loadRelatedExperiences = async (currentData) => {
-    setIsLoading(true);
+    setIsLoadingRelated(true);
     try {
       // 同じ学年またはきっかけの体験談を検索
       const filters = {};
@@ -70,7 +71,7 @@ const TweetDetailPage = () => {
       const fallbackRelated = tweetCards.filter(c => c.id !== parseInt(id)).slice(0, 4);
       setRelatedExperiences(fallbackRelated);
     } finally {
-      setIsLoading(false);
+      setIsLoadingRelated(false);
     }
   };
 
@@ -177,12 +178,18 @@ const TweetDetailPage = () => {
               <strong>体験談の目次</strong>
               <ul>
                 {displayData.grade && <li>▼ 1. 基本情報</li>}
-                {displayData.detail && <li>▼ 2. 不登校のきっかけと経過</li>}
-                {(displayData.elementarySchool || displayData.juniorHighSchool || displayData.highSchool) && 
+                {(displayData.detail || displayData.parentInitialAction || displayData.childReaction || 
+                  displayData.schoolResponse || displayData.initialReflection || displayData.firstMonthLife || 
+                  displayData.hardestTime || displayData.improvementTrigger) && 
+                  <li>▼ 2. 不登校のきっかけと経過</li>}
+                {(displayData.elementarySchool || displayData.juniorHighSchool || 
+                  displayData.highSchool || displayData.alternativeSchool) && 
                   <li>▼ 3. 子どもの成長過程</li>}
+                {displayData.schools.length > 0 && <li>▼ 4. 通信制・定時制の学校情報</li>}
                 {displayData.supportUsed && <li>▼ 5. 行政・民間サポート</li>}
                 {displayData.supports.length > 0 && <li>▼ 6. 利用したサポート</li>}
-                {(displayData.otherSupport || displayData.currentThoughts) && <li>▼ 7. その他のサポートと今の想い</li>}
+                {(displayData.otherSupport || displayData.currentThoughts) && 
+                  <li>▼ 7. その他のサポートと今の想い</li>}
               </ul>
             </aside>
 
@@ -524,8 +531,11 @@ const TweetDetailPage = () => {
           <section className={styles.relatedSection}>
             <h4 className={styles.relatedTitle}>関連記事</h4>
             <div className={styles.relatedDivider}></div>
-            {isLoading ? (
-              <p>読み込み中...</p>
+            {isLoadingRelated ? (
+              <div className={styles.loadingContainer}>
+                <div className={styles.loadingSpinner}></div>
+                <p className={styles.loadingText}>関連記事を読み込み中...</p>
+              </div>
             ) : (
               <div className={styles.relatedGrid}>
                 {relatedExperiences.map((item, index) => (
@@ -538,6 +548,15 @@ const TweetDetailPage = () => {
               </div>
             )}
           </section>
+
+          <div className={styles.backToTopContainer}>
+            <button 
+              className={styles.backToTopButton}
+              onClick={() => navigate('/experiences')}
+            >
+              体験談を探すTOPへ戻る
+            </button>
+          </div>
         </main>
       </div>
 

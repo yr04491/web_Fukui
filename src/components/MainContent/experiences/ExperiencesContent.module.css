@@ -180,6 +180,51 @@
   margin: 0 auto;
 }
 
+/* ローディング表示 */
+.loadingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  min-height: 300px;
+}
+
+.loadingSpinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #EF9F94;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loadingText {
+  margin-top: 16px;
+  font-size: 14px;
+  color: #666;
+}
+
+/* データなし表示 */
+.noDataContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 20px;
+  min-height: 300px;
+}
+
+.noDataText {
+  font-size: 16px;
+  color: #999;
+  text-align: center;
+}
+
 /* レスポンシブ対応 */
 @media (max-width: 768px) {
   .searchSection {

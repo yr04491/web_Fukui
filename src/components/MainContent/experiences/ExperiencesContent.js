@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import layoutStyles from '../commonPageLayout.module.css'; // 共通CSS（外枠）
 import styles from './ExperiencesContent.module.css';
@@ -9,6 +9,7 @@ import FilterModal from '../../common/FilterModal';
 import dotlineImage from '../../../assets/images/dotline.png';
 import SearchIcon from '../../../assets/icons/SearchIcon';
 import FilterIcon from '../../../assets/icons/FilterIcon';
+import { getAllExperiences } from '../../../utils/gasApi';
 
 const ExperiencesContent = () => {
   const navigate = useNavigate();
@@ -17,6 +18,29 @@ const ExperiencesContent = () => {
   const [filterCount, setFilterCount] = useState(0);
   const [filters, setFilters] = useState({});
   const [error, setError] = useState(null);
+  const [pickupExperiences, setPickupExperiences] = useState([]);
+  const [isLoadingPickup, setIsLoadingPickup] = useState(true);
+
+  // ピックアップ体験談を取得（ランダムに6件）
+  useEffect(() => {
+    const loadPickupExperiences = async () => {
+      setIsLoadingPickup(true);
+      try {
+        const allExperiences = await getAllExperiences();
+        // ランダムにシャッフルして6件取得
+        const shuffled = [...allExperiences].sort(() => Math.random() - 0.5);
+        const pickup = shuffled.slice(0, 6);
+        setPickupExperiences(pickup);
+      } catch (error) {
+        console.error('ピックアップ体験談の取得エラー:', error);
+        setPickupExperiences([]);
+      } finally {
+        setIsLoadingPickup(false);
+      }
+    };
+
+    loadPickupExperiences();
+  }, []);
 
   const handleApplyFilters = (count, selectedFilters) => {
     setFilterCount(count);
@@ -154,14 +178,26 @@ const ExperiencesContent = () => {
         </p>
         
         {/* 体験談カードグリッド */}
-        <div className={styles.cardsGrid}>
-          <TweetCard cardId={1} />
-          <TweetCard cardId={1} />
-          <TweetCard cardId={2} />
-          <TweetCard cardId={2} />
-          <TweetCard cardId={3} />
-          <TweetCard cardId={3} />
-        </div>
+        {isLoadingPickup ? (
+          <div className={styles.loadingContainer}>
+            <div className={styles.loadingSpinner}></div>
+            <p className={styles.loadingText}>体験談を読み込み中...</p>
+          </div>
+        ) : pickupExperiences.length > 0 ? (
+          <div className={styles.cardsGrid}>
+            {pickupExperiences.map((experience, index) => (
+              <TweetCard 
+                key={experience.id || index} 
+                cardId={experience.id}
+                data={experience}
+              />
+            ))}
+          </div>
+        ) : (
+          <div className={styles.noDataContainer}>
+            <p className={styles.noDataText}>表示できる体験談がありません。</p>
+          </div>
+        )}
       </div>
 
       <FilterModal 

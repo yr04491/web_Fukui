@@ -14,13 +14,16 @@ const TweetDetailPage = () => {
   const location = useLocation();
   const [experienceData, setExperienceData] = useState(null);
   const [relatedExperiences, setRelatedExperiences] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   // locationのstateから渡されたデータを取得
   const passedData = location.state?.experienceData;
 
   useEffect(() => {
     const loadExperienceData = async () => {
+      setIsLoading(true);
+      setError(false);
       // 常にGASから完全なデータを取得
       try {
         const data = await getExperienceById(id);
@@ -35,8 +38,12 @@ const TweetDetailPage = () => {
           const card = tweetCards.find(c => String(c.id) === String(id));
           if (card) {
             setExperienceData(card);
+          } else {
+            setError(true);
           }
         }
+      } finally {
+        setIsLoading(false);
       }
     };
 
@@ -73,8 +80,24 @@ const TweetDetailPage = () => {
     { label: `体験談${id}`, path: `/experiences/${id}` }
   ];
 
-  // データが読み込まれていない場合
-  if (!experienceData) {
+  // 読み込み中の表示
+  if (isLoading) {
+    return (
+      <div className={layoutStyles.pageContainer}>
+        <Breadcrumbs items={breadcrumbItems} />
+        <div className={styles.contentArea}>
+          <div className={styles.loadingContainer}>
+            <div className={styles.loadingSpinner}></div>
+            <p className={styles.loadingText}>読み込み中...</p>
+          </div>
+        </div>
+        <Footer />
+      </div>
+    );
+  }
+
+  // データが読み込まれていない場合（エラー時）
+  if (error || !experienceData) {
     return (
       <div className={layoutStyles.pageContainer}>
         <Breadcrumbs items={breadcrumbItems} />

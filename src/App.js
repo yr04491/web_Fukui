@@ -4,6 +4,7 @@ import { GoogleOAuthProvider } from '@react-oauth/google';
 import { AuthProvider } from './contexts/AuthContext';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
+import AdminPage from './pages/AdminPage/AdminPage';
 import Layout from './components/Layout/Layout'; // 
 import { navigationItems } from './data/navigationItems'; // 
 import ScrollToTop from './components/ScrollToTop';
@@ -35,6 +36,13 @@ function App() {
 
             {/* ログインページ */}
             <Route path="/login" element={<LoginPage />} />
+
+            {/* 管理者画面ページ */}
+            <Route path="/admin" element={
+              <Layout>
+                <AdminPage />
+              </Layout>
+            } />
 
             {/* 体験談を探すページ */}
             <Route path="/experiences" element={

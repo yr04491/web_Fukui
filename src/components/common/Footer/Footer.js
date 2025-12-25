@@ -69,6 +69,15 @@ const Footer = () => {
           </li>
         </ul>
       </div>
+      
+      {/* 管理者画面へのリンク */}
+      <button 
+        className={styles.adminLink}
+        onClick={() => navigate('/admin')}
+        aria-label="管理者画面"
+      >
+        管理者画面
+      </button>
     </footer>
   );
 };

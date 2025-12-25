@@ -150,6 +150,86 @@ export const postExperience = async (experienceData) => {
 };
 
 /**
+ * 未承認の体験談を取得
+ * @returns {Promise<Array>} - 未承認体験談の配列
+ */
+export const getPendingExperiences = async () => {
+  try {
+    const response = await fetchGasApi(GAS_CONFIG.ENDPOINTS.GET_PENDING_EXPERIENCES);
+    
+    if (response.success) {
+      return response.data || [];
+    } else {
+      throw new Error(response.error || '未承認体験談の取得に失敗しました');
+    }
+  } catch (error) {
+    console.error('Get pending experiences error:', error);
+    throw error;
+  }
+};
+
+/**
+ * 承認済みの体験談を取得
+ * @returns {Promise<Array>} - 承認済み体験談の配列
+ */
+export const getApprovedExperiences = async () => {
+  try {
+    const response = await fetchGasApi(GAS_CONFIG.ENDPOINTS.GET_APPROVED_EXPERIENCES);
+    
+    if (response.success) {
+      return response.data || [];
+    } else {
+      throw new Error(response.error || '承認済み体験談の取得に失敗しました');
+    }
+  } catch (error) {
+    console.error('Get approved experiences error:', error);
+    throw error;
+  }
+};
+
+/**
+ * 体験談を承認
+ * @param {number|string} id - 体験談のID
+ * @returns {Promise<object>} - 承認結果
+ */
+export const approveExperience = async (id) => {
+  try {
+    const params = { id: parseInt(id) };
+    const response = await fetchGasApi(GAS_CONFIG.ENDPOINTS.APPROVE_EXPERIENCE, params);
+    
+    if (response.success) {
+      return response;
+    } else {
+      throw new Error(response.error || '承認に失敗しました');
+    }
+  } catch (error) {
+    console.error('Approve experience error:', error);
+    throw error;
+  }
+};
+
+/**
+ * 体験談を却下
+ * @param {number|string} id - 体験談のID
+ * @returns {Promise<object>} - 却下結果
+ */
+export const rejectExperience = async (id) => {
+  try {
+    const params = { id: parseInt(id) };
+    const response = await fetchGasApi(GAS_CONFIG.ENDPOINTS.REJECT_EXPERIENCE, params);
+    
+    if (response.success) {
+      return response;
+    } else {
+      throw new Error(response.error || '却下に失敗しました');
+    }
+  } catch (error) {
+    console.error('Reject experience error:', error);
+    throw error;
+  }
+};
+
+/**
  * GAS API接続テスト
  * @returns {Promise<boolean>} - 接続成功時true
  */

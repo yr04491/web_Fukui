@@ -36,6 +36,18 @@ function doPost(e) {
       case 'postExperience':
         result = postExperience(params);
         break;
+      case 'getPendingExperiences':
+        result = getPendingExperiences();
+        break;
+      case 'getApprovedExperiences':
+        result = getApprovedExperiences();
+        break;
+      case 'approveExperience':
+        result = approveExperience(params.id);
+        break;
+      case 'rejectExperience':
+        result = rejectExperience(params.id);
+        break;
       default:
         result = {
           success: false,
@@ -69,6 +81,7 @@ function doGet(e) {
 
 /**
  * フリーワード検索で体験談を取得
+ * 承認済みの体験談のみを返します
  * @param {string} keyword - 検索キーワード
  * @param {object} filters - フィルター条件
  * @return {object} - 検索結果
@@ -96,6 +109,7 @@ function searchExperiences(keyword, filters = {}) {
     const support1Index = 35; // AJ列: 6-1-1サポートの種類
     const support2Index = 41; // AP列: 6-2-1サポートの種類
     const support3Index = 47; // AV列: 6-3-1サポートの種類
+    const approvalStatusIndex = 55; // BD列: 承認ステータス
     
     // データ行（2行目以降）を検索
     const results = [];
@@ -107,6 +121,10 @@ function searchExperiences(keyword, filters = {}) {
       
       // 空行をスキップ
       if (!row[authorNameIndex] && !row[detailIndex]) continue;
+      
+      // 承認済みの体験談のみを対象
+      const status = row[approvalStatusIndex] || '';
+      if (status !== '承認済み') continue;
       
       // キーワード検索（全ての記述回答から検索）
       // ワイルドカード検索の場合はキーワードチェックをスキップ
@@ -190,6 +208,7 @@ function searchExperiences(keyword, filters = {}) {
 
 /**
  * すべての体験談を取得（ピックアップ用）
+ * 承認済みの体験談のみを返します
  * @param {number} limit - 取得件数の上限
  * @return {object} - 体験談データ
  */
@@ -209,14 +228,18 @@ function getAllExperiences(limit = null) {
     const authorNameIndex = 1; // B列: 1-2ペンネーム
     const gradeIndex = 2; // C列: 1-3初めて不登校になった学年
     const detailIndex = 5; // F列: 2-2詳しい状況
+    const approvalStatusIndex = 55; // BD列: 承認ステータス
     
     const results = [];
-    const maxRows = limit ? Math.min(limit + 1, data.length) : data.length;
     
-    for (let i = 1; i < maxRows; i++) {
+    for (let i = 1; i < data.length; i++) {
       const row = data[i];
       
       if (!row[authorNameIndex] && !row[detailIndex]) continue;
+      
+      // 承認済みの体験談のみを取得
+      const status = row[approvalStatusIndex] || '';
+      if (status !== '承認済み') continue;
       
       // タイトルを生成（詳しい状況の最初の50文字）
       const title = String(row[detailIndex] || '').substring(0, 50) + '...';

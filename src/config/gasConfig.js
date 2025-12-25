@@ -10,7 +10,11 @@ const GAS_CONFIG = {
     SEARCH_EXPERIENCES: 'searchExperiences',
     GET_ALL_EXPERIENCES: 'getAllExperiences',
     GET_EXPERIENCE_BY_ID: 'getExperienceById',
-    POST_EXPERIENCE: 'postExperience'
+    POST_EXPERIENCE: 'postExperience',
+    GET_PENDING_EXPERIENCES: 'getPendingExperiences',
+    GET_APPROVED_EXPERIENCES: 'getApprovedExperiences',
+    APPROVE_EXPERIENCE: 'approveExperience',
+    REJECT_EXPERIENCE: 'rejectExperience'
   },
   
   // タイムアウト設定（ミリ秒）

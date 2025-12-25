@@ -114,13 +114,8 @@ const AdminPage = () => {
               {currentExperiences.map((experience) => (
                 <div key={experience.id} className={styles.experienceItem}>
                   <TweetCard
-                    id={experience.id}
-                    title={experience.title}
-                    description={experience.summary}
-                    grade={experience.startGrade}
-                    trigger={experience.trigger}
-                    support={experience.supportTypes}
-                    onClick={() => navigate(`/experiences/${experience.id}`)}
+                    cardId={experience.id}
+                    data={experience}
                   />
                   
                   {/* 承認・却下ボタン（未承認時のみ表示） */}

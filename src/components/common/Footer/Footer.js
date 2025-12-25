@@ -63,10 +63,7 @@ const Footer = () => {
           <li onClick={() => handleListClick('体験談の投稿')}>体験談を投稿する</li>
           <li onClick={() => handleListClick('みんなの居場所を探す')}>居場所を探す</li>
           <li onClick={() => handleListClick('中学卒業後の進路を探す')}>卒業後の進路を探す</li>
-          <li className={styles.lastRow}>
-            <span onClick={() => handleListClick('学校・行政・医療情報の一覧')}>学校・行政・医療情報の一覧</span>
-            <span className={styles.submitButton} onClick={() => handleListClick('体験談の投稿')}>体験談を投稿する</span>
-          </li>
+          <li onClick={() => handleListClick('学校・行政・医療情報の一覧')}>学校・行政・医療情報の一覧</li>
         </ul>
       </div>
       

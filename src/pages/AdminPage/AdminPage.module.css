@@ -60,6 +60,9 @@
 /* コンテンツエリア */
 .contentArea {
   min-height: 400px;
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .loadingMessage,
@@ -78,22 +81,15 @@
 
 /* 体験談リスト */
 .experiencesList {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 .experienceItem {
   position: relative;
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
-  padding: 16px;
-  background: #ffffff;
-  transition: box-shadow 0.3s ease;
-}
-
-.experienceItem:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 /* アクションボタン */
@@ -169,8 +165,28 @@
     padding: 10px 16px;
   }
 
-  .experienceItem {
-    padding: 12px;
+  .contentArea {
+    padding: 30px 15px;
+  }
+
+  .experiencesList {
+    display: flex;
+    overflow-x: auto;
+    gap: 15px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 10px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .experiencesList::-webkit-scrollbar {
+    display: none;
+  }
+
+  .experiencesList > * {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
   }
 
   .actionButtons {
@@ -204,3 +220,5 @@
     padding: 8px 12px;
   }
 }
+  
+

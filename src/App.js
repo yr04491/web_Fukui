@@ -24,21 +24,21 @@ function App() {
         {/* ホーム画面用のルート */}
         <Route path="/" element={<HomePage />} />
 
-        {/* 体験談を探すページ */}
+        {/* 体験談をさがすページ */}
         <Route path="/experiences" element={
           <Layout>
             <ExperiencesContent />
           </Layout>
         } />
 
-        {/* 居場所を探すページ */}
+        {/* 居場所をさがすページ */}
         <Route path="/places" element={
           <Layout>
             <PlacesContent />
           </Layout>
         } />
 
-        {/* 卒業後の進路を探すページ */}
+        {/* 卒業後の進路をさがすページ */}
         <Route path="/paths" element={
           <Layout>
             <PathsContent />

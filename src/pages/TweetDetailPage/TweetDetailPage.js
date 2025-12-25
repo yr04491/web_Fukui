@@ -14,7 +14,7 @@ const TweetDetailPage = () => {
 
   const breadcrumbItems = [
     { label: 'TOP', path: '/' },
-    { label: '体験談を探す', path: '/experiences' },
+    { label: '体験談をさがす', path: '/experiences' },
     { label: `体験談${id}`, path: `/experiences/${id}` }
   ];
 

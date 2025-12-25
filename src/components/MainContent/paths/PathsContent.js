@@ -15,7 +15,7 @@ const PathsContent = () => {
 
   const breadcrumbItems = [
     { label: 'TOP', path: '/' },
-    { label: '卒業後の進路を探す', path: '/paths' }
+    { label: '卒業後の進路をさがす', path: '/paths' }
   ];
 
   const filterConfig = {
@@ -23,16 +23,16 @@ const PathsContent = () => {
     buttonColor: '#79B5EE',
     categories: [
       {
-        title: 'お子さんの学年から探す',
+        title: 'お子さんの学年からさがす',
         options: ['小学生', '中学生', '高校生', '卒業生']
       },
       {
-        title: '施設の区分から探す',
+        title: '施設の区分からさがす',
         options: ['フリースクール', '塾', 'オンラインサポート', 'サークル', 'オルタナティブスクール', '習い事', 'イベント']
       },
       {
-        title: '状況から探す',
-        options: ['#進学したい', '#専門的なことを学びたい', '#一人で学習したい', '#オンラインで授業を受けたい', '#学校行事に参加したい', '#家以外の場所での居場所を見つけたい', '#外部とコミュニケーションを取れる場所に行きたい', '#不登校や子育てについて相談したい', '#不登校や子育ての未来について見失わない', '#不登校や子育てのイベントに参加したい', '#友達を探したい']
+        title: '状況からさがす',
+        options: ['#進学したい', '#専門的なことを学びたい', '#一人で学習したい', '#オンラインで授業を受けたい', '#学校行事に参加したい', '#家以外の場所での居場所を見つけたい', '#外部とコミュニケーションを取れる場所に行きたい', '#不登校や子育てについて相談したい', '#不登校や子育ての未来について見失わない', '#不登校や子育てのイベントに参加したい', '#友達をさがしたい']
       }
     ]
   };
@@ -43,7 +43,7 @@ const PathsContent = () => {
       
       {/* 検索セクション */}
       <div className={styles.searchSection}>
-        <h1 className={styles.searchTitle}>卒業後の進路を探す</h1>
+        <h1 className={styles.searchTitle}>卒業後の進路をさがす</h1>
         <img src={dotlineImage} alt="" className={styles.dotline} />
         
         <div className={styles.searchBox}>

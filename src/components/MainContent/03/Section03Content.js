@@ -55,7 +55,7 @@ const Section03Content = () => {
         onClick={() => navigate('/places')}
       >
         <img src={vectorRB} alt="アイコン" className={styles.playIcon} />
-        <span>みんなの居場所の検索ページ</span>
+        <span>みんなの居場所をさがす</span>
       </button>
 
       {/* フッター */}

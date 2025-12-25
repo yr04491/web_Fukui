@@ -96,31 +96,14 @@
 
 /* 体験談セクションタイトル */
 .experienceTitle {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  width: 100%;
-  margin: 0;
-}
-
-/* 1行目: みんなの体験談をみてみよう！ */
-.titleLine1 {
-  font-family: 'Zen Kaku Gothic New', sans-serif;
-  font-size: 12px;
-  font-weight: 700;
-  color: #333;
-  text-align: left;
-  line-height: 1.5;
-}
-
-/* 2行目: 不登校になったきっかけは？ */
-.titleLine2 {
   font-family: 'Zen Kaku Gothic New', sans-serif;
   font-size: 20px;
   font-weight: 700;
   color: #333;
   text-align: left;
-  line-height: 1.4;
+  line-height: 1.6;
+  margin: 0;
+  width: 100%;
 }
 
 /* TweetCardコンテナ */

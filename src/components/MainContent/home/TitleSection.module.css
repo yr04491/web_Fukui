@@ -20,7 +20,7 @@
   
   margin: 0 auto;
   border-radius: 10px 10px 0px 0px;
-  background-color: #f5f5f5; /* 背景色はFigmaのデザインの一部として維持 */
+  background-color: transparent; /* 背景色を透明に変更 */
   overflow: hidden; /* はみ出し部分を非表示 */
 }
 
@@ -110,7 +110,7 @@
   object-fit: contain;
 }
 
-/* AdobeStock2画像 (main_img.png) */
+/* AdobeStock2画像 (main_img2.png) */
 .adobeStockImage {
   position: absolute;
 
@@ -120,8 +120,8 @@
   /* ▼▼▼ %指定に修正 ▼▼▼ */
   width: 75.3%; /* (406.62 / 540) */
   height: 75.43%; /* (387 / 513) */
-  left: 28.7%; /* (155 / 540) */
-  top: 27.29%; /* (140 / 513) */
+  right: 0; /* 右寄せ */
+  top: 15%; /* 上方向に移動 */
 }
 
 .adobeStockImage img {

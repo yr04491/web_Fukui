@@ -9,6 +9,7 @@
   width: 100%;
   max-width: var(--content-width);
   height: auto;
+  margin-top: -60px; /* タイトル画像の位置変更に合わせて上に引き上げ */
 }
 
 .openingText {

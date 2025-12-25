@@ -31,7 +31,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 40px; /* ヘッダー要素間の間隔 */
+  gap: 0px; /* タイトル画像の位置変更に合わせて調整 */
 }
 
 /* ROADセクション群：連続的に配置 (変更なし) */
@@ -41,7 +41,7 @@
   flex-direction: column;
   align-items: center;
   gap: 0; /* ROADセクション間は隙間なし */
-  margin-top: 40px; /* ヘッダーセクションとの間隔 */
+  margin-top: 0px; /* タイトル画像の位置変更に合わせて調整 */
 }
 
 /* レスポンシブ対応 (変更なし) */

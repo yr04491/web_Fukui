@@ -5,7 +5,7 @@ import styles from './AdminPage.module.css';
 import Breadcrumbs from '../../components/common/Breadcrumbs';
 import Footer from '../../components/common/Footer';
 import TweetCard from '../../components/common/TweetCard/TweetCard';
-import { getPendingExperiences, getApprovedExperiences, approveExperience, rejectExperience } from '../../utils/gasApi';
+import { getPendingExperiences, getApprovedExperiences } from '../../utils/gasApi';
 
 const AdminPage = () => {
   const navigate = useNavigate();
@@ -40,36 +40,6 @@ const AdminPage = () => {
       setError('データの取得に失敗しました');
     } finally {
       setIsLoading(false);
-    }
-  };
-
-  // 承認処理
-  const handleApprove = async (id) => {
-    // eslint-disable-next-line no-restricted-globals
-    if (!window.confirm('この体験談を承認しますか？')) return;
-    
-    try {
-      await approveExperience(id);
-      alert('承認しました');
-      loadData(); // データを再読み込み
-    } catch (error) {
-      console.error('承認エラー:', error);
-      alert('承認に失敗しました');
-    }
-  };
-
-  // 却下処理
-  const handleReject = async (id) => {
-    // eslint-disable-next-line no-restricted-globals
-    if (!window.confirm('この体験談を却下しますか？')) return;
-    
-    try {
-      await rejectExperience(id);
-      alert('却下しました');
-      loadData(); // データを再読み込み
-    } catch (error) {
-      console.error('却下エラー:', error);
-      alert('却下に失敗しました');
     }
   };
 
@@ -140,30 +110,6 @@ const AdminPage = () => {
                       data={experience}
                     />
                   </button>
-                  
-                  {/* 承認・却下ボタン（未承認時のみ表示） */}
-                  {activeTab === 'pending' && (
-                    <div className={styles.actionButtons}>
-                      <button
-                        className={styles.approveButton}
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          handleApprove(experience.id);
-                        }}
-                      >
-                        承認
-                      </button>
-                      <button
-                        className={styles.rejectButton}
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          handleReject(experience.id);
-                        }}
-                      >
-                        却下
-                      </button>
-                    </div>
-                  )}
                 </div>
               ))}
             </div>

@@ -13,6 +13,8 @@ const AdminExperienceDetail = () => {
   const [experienceData, setExperienceData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(false);
+  const [showRejectForm, setShowRejectForm] = useState(false);
+  const [rejectReason, setRejectReason] = useState('');
 
   // locationのstateからisPendingを取得
   const isPending = location.state?.isPending || false;
@@ -138,6 +140,37 @@ const AdminExperienceDetail = () => {
     
     try {
       await rejectExperience(experienceData.id);
+      alert('却下しました');
+      navigate('/admin'); // 管理者画面に戻る
+    } catch (error) {
+      console.error('却下エラー:', error);
+      alert('却下に失敗しました');
+    }
+  };
+
+  // 却下フォームを表示
+  const handleShowRejectForm = () => {
+    setShowRejectForm(true);
+  };
+
+  // 却下フォームをキャンセル
+  const handleCancelReject = () => {
+    setShowRejectForm(false);
+    setRejectReason('');
+  };
+
+  // 却下確定処理
+  const handleConfirmReject = async () => {
+    if (!rejectReason.trim()) {
+      alert('却下理由を入力してください');
+      return;
+    }
+
+    // eslint-disable-next-line no-restricted-globals
+    if (!confirm('この内容で却下しますか？')) return;
+    
+    try {
+      await rejectExperience(experienceData.id, rejectReason);
       alert('却下しました');
       navigate('/admin'); // 管理者画面に戻る
     } catch (error) {
@@ -522,18 +555,47 @@ const AdminExperienceDetail = () => {
           <div className={styles.adminActions}>
             {isPending && (
               <>
-                <button
-                  className={styles.approveButton}
-                  onClick={handleApprove}
-                >
-                  承認する
-                </button>
-                <button
-                  className={styles.rejectButton}
-                  onClick={handleReject}
-                >
-                  却下する
-                </button>
+                {!showRejectForm ? (
+                  <>
+                    <button
+                      className={styles.approveButton}
+                      onClick={handleApprove}
+                    >
+                      承認する
+                    </button>
+                    <button
+                      className={styles.rejectButton}
+                      onClick={handleShowRejectForm}
+                    >
+                      却下する
+                    </button>
+                  </>
+                ) : (
+                  <div className={styles.rejectFormContainer}>
+                    <h4 className={styles.rejectFormTitle}>却下理由を入力してください</h4>
+                    <textarea
+                      className={styles.rejectReasonTextarea}
+                      value={rejectReason}
+                      onChange={(e) => setRejectReason(e.target.value)}
+                      placeholder="却下理由を詳しく記入してください..."
+                      rows="6"
+                    />
+                    <div className={styles.rejectFormButtons}>
+                      <button
+                        className={styles.confirmRejectButton}
+                        onClick={handleConfirmReject}
+                      >
+                        却下を確定する
+                      </button>
+                      <button
+                        className={styles.cancelRejectButton}
+                        onClick={handleCancelReject}
+                      >
+                        キャンセル
+                      </button>
+                    </div>
+                  </div>
+                )}
               </>
             )}
             <button

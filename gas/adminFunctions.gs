@@ -9,6 +9,7 @@ const APPROVAL_STATUS_INDEX = 55; // BD列（56列目）: 承認ステータス
 const APPROVAL_DATE_INDEX = 56;   // BE列（57列目）: 承認日時
 const LAST_EDIT_DATE_INDEX = 57;  // BF列（58列目）: 最終編集日時
 const APPROVAL_COUNT_INDEX = 58;  // BG列（59列目）: 承認回数
+const REJECT_REASON_INDEX = 59;   // BH列（60列目）: 却下理由
 
 // ステータス定数
 const STATUS = {
@@ -217,9 +218,10 @@ function approveExperience(id) {
 /**
  * 体験談を却下
  * @param {number} id - 体験談のID（行番号）
+ * @param {string} reason - 却下理由
  * @return {object} - 処理結果
  */
-function rejectExperience(id) {
+function rejectExperience(id, reason) {
   try {
     const spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
     const sheet = spreadsheet.getSheetByName(SHEET_NAME);
@@ -239,10 +241,19 @@ function rejectExperience(id) {
     // 承認ステータスを「却下」に更新
     sheet.getRange(sheetRow, APPROVAL_STATUS_INDEX + 1).setValue(STATUS.REJECTED);
     
+    // 却下理由を保存
+    if (reason) {
+      sheet.getRange(sheetRow, REJECT_REASON_INDEX + 1).setValue(reason);
+    }
+    
+    // 却下日時を保存（承認日時の列を使用）
+    sheet.getRange(sheetRow, APPROVAL_DATE_INDEX + 1).setValue(new Date());
+    
     return {
       success: true,
       message: '体験談を却下しました',
-      id: id
+      id: id,
+      reason: reason
     };
     
   } catch (error) {

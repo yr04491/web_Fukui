@@ -211,11 +211,15 @@ export const approveExperience = async (id) => {
 /**
  * 体験談を却下
  * @param {number|string} id - 体験談のID
+ * @param {string} reason - 却下理由
  * @returns {Promise<object>} - 却下結果
  */
-export const rejectExperience = async (id) => {
+export const rejectExperience = async (id, reason = '') => {
   try {
-    const params = { id: parseInt(id) };
+    const params = { 
+      id: parseInt(id),
+      reason: reason
+    };
     const response = await fetchGasApi(GAS_CONFIG.ENDPOINTS.REJECT_EXPERIENCE, params);
     
     if (response.success) {

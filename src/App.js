@@ -5,6 +5,7 @@ import { AuthProvider } from './contexts/AuthContext';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import AdminPage from './pages/AdminPage/AdminPage';
+import AdminExperienceDetail from './pages/AdminPage/AdminExperienceDetail';
 import Layout from './components/Layout/Layout'; // 
 import { navigationItems } from './data/navigationItems'; // 
 import ScrollToTop from './components/ScrollToTop';
@@ -41,6 +42,13 @@ function App() {
             <Route path="/admin" element={
               <Layout>
                 <AdminPage />
+              </Layout>
+            } />
+
+            {/* 管理者用体験談詳細ページ */}
+            <Route path="/admin/experience/:id" element={
+              <Layout>
+                <AdminExperienceDetail />
               </Layout>
             } />
 

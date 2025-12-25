@@ -14,6 +14,9 @@ const AdminPage = () => {
   const [approvedExperiences, setApprovedExperiences] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [pendingPage, setPendingPage] = useState(1);
+  const [approvedPage, setApprovedPage] = useState(1);
+  const ITEMS_PER_PAGE = 10;
 
   const breadcrumbItems = [
     { label: 'TOP', path: '/' },
@@ -45,7 +48,6 @@ const AdminPage = () => {
 
   // 承認処理
   const handleApprove = async (id) => {
-    // eslint-disable-next-line no-restricted-globals
     if (!window.confirm('この体験談を承認しますか？')) return;
     
     try {
@@ -60,7 +62,6 @@ const AdminPage = () => {
 
   // 却下処理
   const handleReject = async (id) => {
-    // eslint-disable-next-line no-restricted-globals
     if (!window.confirm('この体験談を却下しますか？')) return;
     
     try {
@@ -70,14 +71,32 @@ const AdminPage = () => {
     } catch (error) {
       console.error('却下エラー:', error);
       alert('却下に失敗しました');
+  // タブ切り替え時にページをリセット
+  const handleTabChange = (tab) => {
+    setActiveTab(tab);
+    if (tab === 'pending') {
+      setPendingPage(1);
+    } else {
+      setApprovedPage(1);
     }
   };
 
-  // 体験談詳細ページへ遷移
-  const handleOpenDetail = (experienceId) => {
-    navigate(`/admin/experience/${experienceId}`, {
-      state: { isPending: activeTab === 'pending' }
-    });
+  // 現在のタブのデータとページネーション情報を取得
+  const currentExperiences = activeTab === 'pending' ? pendingExperiences : approvedExperiences;
+  const currentPage = activeTab === 'pending' ? pendingPage : approvedPage;
+  const setCurrentPage = activeTab === 'pending' ? setPendingPage : setApprovedPage;
+  
+  // ページネーション計算
+  const totalPages = Math.ceil(currentExperiences.length / ITEMS_PER_PAGE);
+  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+  const endIndex = startIndex + ITEMS_PER_PAGE;
+  const displayedExperiencehandleTabChange('pending')}
+          <button>
+            未承認体験談 ({pendingExperiences.length})
+          </button>
+          <button
+            className={`${styles.tab} ${activeTab === 'approved' ? styles.activeTab : ''}`}
+            onClick={() => handleTabChange
   };
 
   const currentExperiences = activeTab === 'pending' ? pendingExperiences : approvedExperiences;
@@ -94,54 +113,78 @@ const AdminPage = () => {
 
         {/* タブ切り替え */}
         <div className={styles.tabContainer}>
-          <button
-            className={`${styles.tab} ${activeTab === 'pending' ? styles.activeTab : ''}`}
-            onClick={() => setActiveTab('pending')}
-          >
-            未承認体験談 ({pendingExperiences.length})
-          </button>
-          <button
-            className={`${styles.tab} ${activeTab === 'approved' ? styles.activeTab : ''}`}
-            onClick={() => setActiveTab('approved')}
-          >
-            承認済み体験談 ({approvedExperiences.length})
-          </button>
-        </div>
-
-        {/* コンテンツエリア */}
-        <div className={styles.contentArea}>
-          {isLoading && (
-            <div className={styles.loadingMessage}>読み込み中...</div>
-          )}
-          {!isLoading && error && (
-            <div className={styles.errorMessage}>{error}</div>
-          )}
-          {!isLoading && !error && currentExperiences.length === 0 && (
-            <div className={styles.emptyMessage}>
-              {activeTab === 'pending' ? '未承認の体験談はありません' : '承認済みの体験談はありません'}
-            </div>
-          )}
-          {!isLoading && !error && currentExperiences.length > 0 && (
-            <div className={styles.experiencesList}>
-              {currentExperiences.map((experience) => (
-                <div key={experience.id} className={styles.experienceItem}>
-                  <button 
-                    className={styles.cardButton}
-                    onClick={() => handleOpenDetail(experience.id)}
-                    onKeyDown={(e) => {
-                      if (e.key === 'Enter' || e.key === ' ') {
-                        e.preventDefault();
-                        handleOpenDetail(experience.id);
-                      }
-                    }}
-                  >
+          <bu>
+              <div className={styles.experiencesList}>
+                {displayedExperiences.map((experience) => (
+                  <div key={experience.id} className={styles.experienceItem}>
                     <TweetCard
                       cardId={experience.id}
                       data={experience}
                     />
+                    
+                    {/* 承認・却下ボタン（未承認時のみ表示） */}
+                    {activeTab === 'pending' && (
+                      <div className={styles.actionButtons}>
+                        <button
+                          className={styles.approveButton}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleApprove(experience.id);
+                          }}
+                        >
+                          承認
+                        </button>
+                        <button
+                          className={styles.rejectButton}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleReject(experience.id);
+                          }}
+                        >
+                          却下
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+
+              {/* ページネーション */}
+              {totalPages > 1 && (
+                <div className={styles.pagination}>
+                  <button
+                    className={styles.pageButton}
+                    onClick={() => handlePageChange(currentPage - 1)}
+                    disabled={currentPage === 1}
+                  >
+                    前へ
                   </button>
                   
-                  {/* 承認・却下ボタン（未承認時のみ表示） */}
+                  <div className={styles.pageNumbers}>
+                    {[...Array(totalPages)].map((_, index) => {
+                      const pageNumber = index + 1;
+                      return (
+                        <button
+                          key={pageNumber}
+                          className={`${styles.pageNumber} ${currentPage === pageNumber ? styles.activePage : ''}`}
+                          onClick={() => handlePageChange(pageNumber)}
+                        >
+                          {pageNumber}
+                        </button>
+                      );
+                    })}
+                  </div>
+
+                  <button
+                    className={styles.pageButton}
+                    onClick={() => handlePageChange(currentPage + 1)}
+                    disabled={currentPage === totalPages}
+                  >
+                    次へ
+                  </button>
+                </div>
+              )}
+            </ {/* 承認・却下ボタン（未承認時のみ表示） */}
                   {activeTab === 'pending' && (
                     <div className={styles.actionButtons}>
                       <button

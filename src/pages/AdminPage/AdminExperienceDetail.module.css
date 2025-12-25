@@ -1,0 +1,230 @@
+/* 管理者用体験談詳細ページのスタイル（TweetDetailPageと同じレイアウト） */
+
+.contentArea {
+  padding: 24px 32px;
+}
+
+.hero {
+  background: #fde8e0;
+  padding: 18px 12px;
+  text-align: center;
+  border-radius: 6px;
+  margin-bottom: 16px;
+}
+.heroLead {
+  margin: 0;
+  font-size: 12px;
+  color: #333;
+}
+.heroTitle {
+  margin: 6px 0 0 0;
+  font-size: 20px;
+}
+.heroDots {
+  height: 8px;
+  margin: 8px auto 0;
+  width: 80%;
+  background-image: radial-gradient(circle, #000 1px, transparent 1px);
+  background-size: 8px 2px;
+  background-repeat: repeat-x;
+}
+
+.main {
+  margin-top: 12px;
+}
+
+.titleSection { margin-bottom: 16px; }
+.pageTitle { font-size: 18px; margin: 0 0 12px 0; font-weight: 700; }
+.titleDivider { 
+  height: 1px; 
+  background: #E0E0E0; 
+  margin-bottom: 12px;
+}
+
+.tocAndMeta { 
+  display: flex; 
+  flex-direction: column;
+  gap: 16px; 
+  margin: 16px 0; 
+}
+.tocBox { 
+  background: #F5F5F5; 
+  padding: 16px; 
+  border-radius: 8px; 
+  width: 100%; 
+}
+.tocBox strong {
+  font-size: 14px;
+  font-weight: 700;
+}
+.tocBox ul {
+  margin: 12px 0 0 0;
+  padding-left: 0;
+  list-style: none;
+}
+.tocBox li {
+  font-size: 13px;
+  line-height: 1.8;
+  color: #333;
+}
+.metaArea { width: 100%; }
+.metaRow { 
+  display: flex; 
+  justify-content: space-between; 
+  padding: 10px 0; 
+  border-bottom: 1px dotted #CCC; 
+  font-size: 13px;
+}
+
+.bodySection { margin-top: 20px; }
+.sectionHeading { 
+  color: #000; 
+  margin: 0 0 12px 0; 
+  font-size: 16px;
+  font-weight: 700;
+}
+.sectionDivider {
+  height: 1px;
+  background: #E0E0E0;
+  margin-bottom: 16px;
+}
+.articleBody { 
+  color: #333; 
+  line-height: 1.8; 
+  margin-bottom: 12px;
+}
+.articleBody p {
+  margin: 0 0 8px 0;
+}
+
+.subsection {
+  margin-bottom: 24px;
+}
+
+.subsectionTitle {
+  font-size: 15px;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 12px 0;
+}
+
+/* 読み込み・エラー表示 */
+.loadingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+}
+
+.loadingSpinner {
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #EF9F94;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loadingText {
+  margin-top: 16px;
+  color: #666;
+  font-size: 14px;
+}
+
+.backButton {
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 6px;
+  border: 1px solid #EF9F94;
+  background: #ffffff;
+  color: #EF9F94;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 20px;
+}
+
+.backButton:hover {
+  background: #EF9F94;
+  color: #ffffff;
+}
+
+/* 管理者用アクションボタン */
+.adminActions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 40px;
+  padding-top: 24px;
+  border-top: 2px solid #E0E0E0;
+}
+
+.approveButton,
+.rejectButton,
+.backButton {
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 12px 32px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.approveButton {
+  background: #4CAF50;
+  color: #ffffff;
+}
+
+.approveButton:hover {
+  background: #45a049;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(76, 175, 80, 0.3);
+}
+
+.rejectButton {
+  background: #f44336;
+  color: #ffffff;
+}
+
+.rejectButton:hover {
+  background: #da190b;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(244, 67, 54, 0.3);
+}
+
+.adminActions .backButton {
+  background: #757575;
+  color: #ffffff;
+  border: none;
+  padding: 12px 32px;
+  font-size: 16px;
+}
+
+.adminActions .backButton:hover {
+  background: #616161;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(117, 117, 117, 0.3);
+}
+
+/* タブレット以上 */
+@media (min-width: 768px) {
+  .tocAndMeta {
+    flex-direction: row;
+  }
+  .tocBox {
+    width: 40%;
+    flex-shrink: 0;
+  }
+  .metaArea {
+    flex: 1;
+  }
+}

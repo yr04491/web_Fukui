@@ -21,15 +21,14 @@ const ExperiencesContent = () => {
   const [pickupExperiences, setPickupExperiences] = useState([]);
   const [isLoadingPickup, setIsLoadingPickup] = useState(true);
 
-  // ピックアップ体験談を取得（ランダムに6件）
+  // ピックアップ体験談を取得（上から6件）
   useEffect(() => {
     const loadPickupExperiences = async () => {
       setIsLoadingPickup(true);
       try {
         const allExperiences = await getAllExperiences();
-        // ランダムにシャッフルして6件取得
-        const shuffled = [...allExperiences].sort(() => Math.random() - 0.5);
-        const pickup = shuffled.slice(0, 6);
+        // 上から6件取得
+        const pickup = allExperiences.slice(0, 6);
         setPickupExperiences(pickup);
       } catch (error) {
         console.error('ピックアップ体験談の取得エラー:', error);

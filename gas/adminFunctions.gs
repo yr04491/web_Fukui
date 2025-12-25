@@ -5,11 +5,12 @@
  */
 
 // 承認ステータス関連の列インデックス（0始まり）
-const APPROVAL_STATUS_INDEX = 55; // BD列（56列目）: 承認ステータス
-const APPROVAL_DATE_INDEX = 56;   // BE列（57列目）: 承認日時
-const LAST_EDIT_DATE_INDEX = 57;  // BF列（58列目）: 最終編集日時
-const APPROVAL_COUNT_INDEX = 58;  // BG列（59列目）: 承認回数
-const REJECT_REASON_INDEX = 59;   // BH列（60列目）: 却下理由
+const EMAIL_ADDRESS_INDEX = 55;   // BD列（56列目）: メールアドレス
+const APPROVAL_STATUS_INDEX = 56; // BE列（57列目）: 承認ステータス
+const APPROVAL_DATE_INDEX = 57;   // BF列（58列目）: 承認日時
+const LAST_EDIT_DATE_INDEX = 58;  // BG列（59列目）: 最終編集日時
+const APPROVAL_COUNT_INDEX = 59;  // BH列（60列目）: 承認回数
+const REJECT_REASON_INDEX = 60;   // BI列（61列目）: 却下理由
 
 // ステータス定数
 const STATUS = {
@@ -17,6 +18,9 @@ const STATUS = {
   APPROVED: '承認済み',
   REJECTED: '却下'
 };
+
+// メール送信設定
+const FORM_URL = 'https://docs.google.com/forms/d/YOUR_FORM_ID/edit'; // フォームの編集URLに置き換えてください
 
 /**
  * 未承認の体験談を取得
@@ -200,6 +204,22 @@ function approveExperience(id) {
     // 承認回数をインクリメント
     sheet.getRange(sheetRow, APPROVAL_COUNT_INDEX + 1).setValue(parseInt(currentCount) + 1);
     
+    // 承認メールを送信
+    try {
+      const email = sheet.getRange(sheetRow, EMAIL_ADDRESS_INDEX + 1).getValue();
+      const authorName = sheet.getRange(sheetRow, 2).getValue(); // C列（投稿者名）
+      const detailIndex = 5; // F列（詳しい状況）
+      const detail = sheet.getRange(sheetRow, detailIndex + 1).getValue();
+      const title = String(detail || '').substring(0, 50) + '...';
+      
+      if (email) {
+        sendApprovalEmail(email, authorName, title);
+      }
+    } catch (emailError) {
+      Logger.log('メール送信エラー（承認は完了しました）: ' + emailError.toString());
+      // メール送信に失敗しても承認処理は成功とする
+    }
+    
     return {
       success: true,
       message: '体験談を承認しました',
@@ -249,6 +269,22 @@ function rejectExperience(id, reason) {
     // 却下日時を保存（承認日時の列を使用）
     sheet.getRange(sheetRow, APPROVAL_DATE_INDEX + 1).setValue(new Date());
     
+    // 却下メールを送信
+    try {
+      const email = sheet.getRange(sheetRow, EMAIL_ADDRESS_INDEX + 1).getValue();
+      const authorName = sheet.getRange(sheetRow, 2).getValue(); // C列（投稿者名）
+      const detailIndex = 5; // F列（詳しい状況）
+      const detail = sheet.getRange(sheetRow, detailIndex + 1).getValue();
+      const title = String(detail || '').substring(0, 50) + '...';
+      
+      if (email) {
+        sendRejectionEmail(email, authorName, title, reason);
+      }
+    } catch (emailError) {
+      Logger.log('メール送信エラー（却下は完了しました）: ' + emailError.toString());
+      // メール送信に失敗しても却下処理は成功とする
+    }
+    
     return {
       success: true,
       message: '体験談を却下しました',
@@ -275,6 +311,93 @@ function formatDate(timestamp) {
     return Utilities.formatDate(date, 'Asia/Tokyo', 'yyyy/MM/dd');
   } catch (error) {
     return '';
+  }
+}
+
+/**
+ * 承認メール送信
+ * @param {string} email - 送信先メールアドレス
+ * @param {string} authorName - 投稿者名
+ * @param {string} title - 体験談のタイトル
+ */
+function sendApprovalEmail(email, authorName, title) {
+  try {
+    const subject = '【承認通知】あなたの体験談が承認されました';
+    const body = `${authorName}様
+
+この度は体験談をご投稿いただき、ありがとうございました。
+管理者による審査の結果、あなたの体験談が承認されました。
+
+タイトル: ${title}
+承認日時: ${Utilities.formatDate(new Date(), 'Asia/Tokyo', 'yyyy年MM月dd日 HH:mm')}
+
+体験談はウェブサイトに公開されます。
+あなたの経験が、同じような状況にある方々の助けになることを願っています。
+
+今後とも当サイトをよろしくお願いいたします。
+
+------
+このメールは自動送信されています。
+ご不明な点がございましたら、お気軽にお問い合わせください。
+`;
+    
+    MailApp.sendEmail({
+      to: email,
+      subject: subject,
+      body: body
+    });
+    
+    Logger.log('承認メール送信成功: ' + email);
+  } catch (error) {
+    Logger.log('承認メール送信エラー: ' + error.toString());
+    throw error;
+  }
+}
+
+/**
+ * 却下メール送信
+ * @param {string} email - 送信先メールアドレス
+ * @param {string} authorName - 投稿者名
+ * @param {string} title - 体験談のタイトル
+ * @param {string} reason - 却下理由
+ */
+function sendRejectionEmail(email, authorName, title, reason) {
+  try {
+    const subject = '【再投稿のお願い】体験談について';
+    const body = `${authorName}様
+
+この度は体験談をご投稿いただき、ありがとうございました。
+
+管理者による審査の結果、以下の理由により再投稿をお願いしたく、ご連絡いたします。
+
+タイトル: ${title}
+
+【却下理由】
+${reason}
+
+お手数ですが、上記の点を修正の上、再度ご投稿いただけますと幸いです。
+※再投稿の際は、新規投稿として送信してください。
+
+【再投稿用フォーム】
+${FORM_URL}
+
+皆様の貴重な体験談をお待ちしております。
+ご不明な点がございましたら、お気軽にお問い合わせください。
+
+------
+このメールは自動送信されています。
+`;
+    
+    MailApp.sendEmail({
+      to: email,
+      subject: subject,
+      body: body
+    });
+    
+    Logger.log('却下メール送信成功: ' + email);
+  } catch (error) {
+    Logger.log('却下メール送信エラー: ' + error.toString());
+    throw error;
   }
 }
 
@@ -327,5 +450,30 @@ function onEditTrigger(e) {
     
   } catch (error) {
     Logger.log('onEditTrigger Error: ' + error.toString());
+  }
+}
+
+/**
+ * フォーム送信時トリガー
+ * 新しい投稿のデフォルトステータスを「未承認」に設定
+ */
+function onFormSubmit(e) {
+  try {
+    const sheet = e.range.getSheet();
+    
+    // 対象シートかチェック
+    if (sheet.getName() !== 'フォームの回答 1') {
+      return;
+    }
+    
+    const row = e.range.getRow();
+    
+    // BE列（57列目）に「未承認」を設定
+    sheet.getRange(row, APPROVAL_STATUS_INDEX + 1).setValue(STATUS.PENDING);
+    
+    Logger.log('新しい投稿（行' + row + '）を未承認に設定しました。');
+    
+  } catch (error) {
+    Logger.log('onFormSubmit Error: ' + error.toString());
   }
 }

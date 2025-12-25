@@ -46,7 +46,7 @@ function doPost(e) {
         result = approveExperience(params.id);
         break;
       case 'rejectExperience':
-        result = rejectExperience(params.id);
+        result = rejectExperience(params.id, params.reason);
         break;
       default:
         result = {
@@ -109,7 +109,7 @@ function searchExperiences(keyword, filters = {}) {
     const support1Index = 35; // AJ列: 6-1-1サポートの種類
     const support2Index = 41; // AP列: 6-2-1サポートの種類
     const support3Index = 47; // AV列: 6-3-1サポートの種類
-    const approvalStatusIndex = 55; // BD列: 承認ステータス
+    const approvalStatusIndex = 56; // BE列: 承認ステータス
     
     // データ行（2行目以降）を検索
     const results = [];
@@ -228,7 +228,7 @@ function getAllExperiences(limit = null) {
     const authorNameIndex = 1; // B列: 1-2ペンネーム
     const gradeIndex = 2; // C列: 1-3初めて不登校になった学年
     const detailIndex = 5; // F列: 2-2詳しい状況
-    const approvalStatusIndex = 55; // BD列: 承認ステータス
+    const approvalStatusIndex = 56; // BE列: 承認ステータス
     
     const results = [];
     

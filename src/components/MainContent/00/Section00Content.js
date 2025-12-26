@@ -61,10 +61,10 @@ const Section00Content = () => {
 
       {/* セクション2: 体験談 */}
       <div className={styles.section00Middle}>
-        <div className={styles.experienceTitle}>
-          <div className={styles.titleLine1}>みんなの体験談をみてみよう！</div>
-          <div className={styles.titleLine2}>不登校になったきっかけは？</div>
-        </div>
+        <h3 className={styles.experienceTitle}>
+          みんなの体験談をみてみよう！<br />
+          不登校になったきっかけは？
+        </h3>
         
         {/* TweetCardを2つ横並びで表示 */}
         <div className={styles.tweetCardsContainer}>

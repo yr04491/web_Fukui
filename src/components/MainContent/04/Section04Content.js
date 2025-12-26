@@ -29,6 +29,7 @@ const Section04Content = () => {
         <h2 className={styles.descriptionTitle}>
           大丈夫。あなただけじゃない。
         </h2>
+        <div className={styles.dividerLine}></div>
         <p className={styles.descriptionText}>
           福井県内で不登校を身近に経験した方々にインタビューをしました。当時のこと、今のこと、今から考えること・・・<br />
           なにかヒントが見つかるかもしれません。

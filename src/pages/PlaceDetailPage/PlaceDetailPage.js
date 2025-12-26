@@ -18,7 +18,7 @@ const PlaceDetailPage = () => {
 
   const breadcrumbItems = [
     { label: 'TOP', path: '/' },
-    { label: '居場所を探す', path: '/places' },
+    { label: '居場所をさがす', path: '/places' },
     { label: `みんなの居場所${id}`, path: `/places/${id}` }
   ];
 

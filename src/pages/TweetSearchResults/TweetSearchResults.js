@@ -23,7 +23,7 @@ const TweetSearchResults = () => {
   
   const breadcrumbItems = [
     { label: 'TOP', path: '/' },
-    { label: '体験談を探す', path: '/experiences' },
+    { label: '体験談をさがす', path: '/experiences' },
     { label: '検索結果', path: '/experiences/search' }
   ];
 
@@ -32,19 +32,19 @@ const TweetSearchResults = () => {
     buttonColor: '#EF9F94',
     categories: [
       {
-        title: 'お子さんの学年から探す',
+        title: 'お子さんの学年からさがす',
         options: ['小学生', '中学生', '高校生', '卒業生']
       },
       {
-        title: 'きっかけから探す',
+        title: 'きっかけからさがす',
         options: ['不登校', '病気', 'いじめ', '発達障がい', 'その他']
       },
       {
-        title: '状況から探す',
+        title: '状況からさがす',
         options: ['自宅学習', '学校復帰', '進学', '就職', 'その他']
       },
       {
-        title: '支援体験から探す',
+        title: '支援体験からさがす',
         options: ['フリースクール', '適応指導教室', 'オンライン学習', '家庭教師', 'その他']
       }
     ]

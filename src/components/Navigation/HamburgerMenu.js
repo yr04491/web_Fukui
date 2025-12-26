@@ -86,7 +86,7 @@ const HamburgerMenu = ({ isOpen: externalIsOpen, onToggle }) => {
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, [isOpen]);
+  }, [isOpen, onToggle]);
 
   return (
     <>
@@ -139,7 +139,7 @@ const HamburgerMenu = ({ isOpen: externalIsOpen, onToggle }) => {
                 className={commonStyles.searchItem}
                 onClick={() => {
                   console.log(`「${item}」がクリックされました`);
-                  if (item === '◯体験談を探す') {
+                  if (item === '◯体験談をさがす') {
                     navigate('/experiences');
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                     // メニューを閉じる
@@ -149,7 +149,7 @@ const HamburgerMenu = ({ isOpen: externalIsOpen, onToggle }) => {
                       setInternalIsOpen(false);
                     }
                   }
-                  if (item === '◯居場所を探す') {
+                  if (item === '◯居場所をさがす') {
                     navigate('/places');
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                     // メニューを閉じる
@@ -159,7 +159,7 @@ const HamburgerMenu = ({ isOpen: externalIsOpen, onToggle }) => {
                       setInternalIsOpen(false);
                     }
                   }
-                  if (item === '◯卒業後の進路を探す') {
+                  if (item === '◯卒業後の進路をさがす') {
                     navigate('/paths');
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                     // メニューを閉じる

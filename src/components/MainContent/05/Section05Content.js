@@ -56,7 +56,7 @@ const Section05Content = () => {
         onClick={() => navigate('/paths')}
       >
         <img src={vectorRB} alt="アイコン" className={styles.playIcon} />
-        <span>中学卒業後の進路を探す</span>
+        <span>中学卒業後の進路をさがす</span>
       </button>
 
       {/* フッター */}

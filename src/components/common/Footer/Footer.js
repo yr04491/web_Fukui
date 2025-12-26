@@ -23,18 +23,18 @@ const Footer = () => {
   // 2. リスト項目用のクリックハンドラを追加
   const handleListClick = (item) => {
     console.log(`${item} がクリックされました`);
-    // 体験談を探すページに遷移
-    if (item === '体験談を探す') {
+    // 体験談をさがすページに遷移
+    if (item === '体験談をさがす') {
       navigate('/experiences');
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
-    // 居場所を探すページに遷移
-    if (item === 'みんなの居場所を探す') {
+    // 居場所をさがすページに遷移
+    if (item === 'みんなの居場所をさがす') {
       navigate('/places');
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
-    // 卒業後の進路を探すページに遷移
-    if (item === '中学卒業後の進路を探す') {
+    // 卒業後の進路をさがすページに遷移
+    if (item === '中学卒業後の進路をさがす') {
       navigate('/paths');
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
@@ -59,11 +59,13 @@ const Footer = () => {
         
         {/* 4. 既存の .footerMenu を削除し、新しい .footerList に変更 */}
         <ul className={styles.footerList}>
-          <li onClick={() => handleListClick('体験談を探す')}>体験談を探す</li>
-          <li onClick={() => handleListClick('体験談の投稿')}>体験談を投稿する</li>
-          <li onClick={() => handleListClick('みんなの居場所を探す')}>居場所を探す</li>
-          <li onClick={() => handleListClick('中学卒業後の進路を探す')}>卒業後の進路を探す</li>
-          <li onClick={() => handleListClick('学校・行政・医療情報の一覧')}>学校・行政・医療情報の一覧</li>
+          <li onClick={() => handleListClick('体験談をさがす')}>体験談をさがす</li>
+          <li onClick={() => handleListClick('みんなの居場所をさがす')}>居場所をさがす</li>
+          <li onClick={() => handleListClick('中学卒業後の進路をさがす')}>卒業後の進路をさがす</li>
+          <li className={styles.lastRow}>
+            <span onClick={() => handleListClick('学校・行政・医療情報の一覧')}>学校・行政・医療情報の一覧</span>
+            <span className={styles.submitButton} onClick={() => handleListClick('体験談の投稿')}>体験談を投稿する</span>
+          </li>
         </ul>
       </div>
       

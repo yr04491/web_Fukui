@@ -53,7 +53,7 @@ const ExperiencesContent = () => {
 
   const breadcrumbItems = [
     { label: 'TOP', path: '/' },
-    { label: '体験談を探す', path: '/experiences' }
+    { label: '体験談をさがす', path: '/experiences' }
   ];
 
   const filterConfig = {
@@ -115,7 +115,7 @@ const ExperiencesContent = () => {
       
       {/* 検索セクション */}
       <div className={styles.searchSection}>
-        <h1 className={styles.searchTitle}>体験談を探す</h1>
+        <h1 className={styles.searchTitle}>体験談をさがす</h1>
         <img src={dotlineImage} alt="" className={styles.dotline} />
         
         <div className={styles.searchBox}>

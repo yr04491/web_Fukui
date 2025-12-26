@@ -69,11 +69,11 @@ const Section01Content = () => {
           <TweetCard cardId={2} />
         </div>
         <button 
-          className={styles.moreButton}
+          className={styles.moreButton2}
           onClick={() => navigate('/experiences')}
         >
           <img src={vectorRB} alt="アイコン" className={styles.playIcon} />
-          <span>体験談をもっと見る</span>
+          <span>体験談をさがす</span>
         </button>
       </div>
 
@@ -121,11 +121,11 @@ const Section01Content = () => {
           <TweetCard cardId={4} />
         </div>
         <button 
-          className={styles.moreButton}
+          className={styles.moreButton2}
           onClick={() => navigate('/experiences')}
         >
           <img src={vectorRB} alt="アイコン" className={styles.playIcon} />
-          <span>体験談をもっと見る</span>
+          <span>体験談をさがす</span>
         </button>
       </div>
 

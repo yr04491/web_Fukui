@@ -6,7 +6,6 @@ import {
   Section04Content, // 
   Section05Content  // 
 } from '../components/MainContent';
-import ExperiencesContent from '../components/MainContent/experiences';
 
 /**
  * ナビゲーション項目データ
@@ -55,8 +54,8 @@ export const navigationItems = [
  * 「探してみよう」セクションの項目
  */
 export const searchItems = [
-  '◯体験談を探す',
-  '◯居場所を探す',
-  '◯卒業後の進路を探す',
+  '◯体験談をさがす',
+  '◯居場所をさがす',
+  '◯卒業後の進路をさがす',
   '◯学校・行政・医療情報の一覧'
 ];

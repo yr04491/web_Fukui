@@ -39,6 +39,7 @@ jobs:
         with:
           path: ./build # Create React App の出力先フォルダ
 
+
   deploy:
     environment:
       name: github-pages

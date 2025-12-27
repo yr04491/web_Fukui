@@ -66,13 +66,11 @@ function App() {
               </Layout>
             } />
 
-            {/* 体験談を投稿するページ（認証必須） */}
+            {/* 体験談を投稿するページ */}
             <Route path="/experiences/post" element={
-              <ProtectedRoute>
-                <Layout>
-                  <PostExperienceContent />
-                </Layout>
-              </ProtectedRoute>
+              <Layout>
+                <PostExperienceContent />
+              </Layout>
             } />
 
             {/* 体験談詳細ページ */}

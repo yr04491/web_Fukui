@@ -55,11 +55,11 @@ const Section05 = () => {
             {/* 体験談セクション追加 */}
             <ExperienceSection 
                 title={"みんなの体験談を見てみよう！\n卒業後の進路をどう選んだ？"}
-                questionId="4-1-3"
+                questionId="4-1-2"
                 limit={6}
                 moreButtonText="卒業後の進路の体験談を見る"
                 customClass={styles.experience05}
-                onMoreClick={() => navigate('/experiences?questionId=4-1-3')}
+                onMoreClick={() => navigate('/experiences?questionId=4-1-2')}
                 sectionName="卒業後の進路に関する体験談"
             />
         </div>

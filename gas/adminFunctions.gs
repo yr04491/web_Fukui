@@ -6,17 +6,23 @@
  * 注意: SHEET_NAME定数はsearchExperiences.gsで定義されています
  */
 
-// 承認ステータス関連の列インデックス（0始まり）
-const EMAIL_ADDRESS_INDEX = 57;   // BF列（58列目）: メールアドレス
-const APPROVAL_STATUS_INDEX = 58; // BG列（59列目）: 承認ステータス
-const APPROVAL_DATE_INDEX = 59;   // BH列（60列目）: 承認日時
-const LAST_EDIT_DATE_INDEX = 60;  // BI列（61列目）: 最終編集日時
-const APPROVAL_COUNT_INDEX = 61;  // BJ列（62列目）: 承認回数
-const REJECT_REASON_INDEX = 62;   // BK列（63列目）: 却下理由（最新）
-const FIRST_SUBMIT_DATE_INDEX = 63; // BL列（64列目）: 初回投稿日時
-const EDIT_COUNT_INDEX = 64;      // BM列（65列目）: 編集回数
-const SUBMISSION_STATE_INDEX = 65; // BN列（66列目）: 投稿状態
-const REJECT_REASON_HISTORY_INDEX = 66; // BO列（67列目）: 却下理由履歴
+// 列インデックスは columns.gs の getColumnMap() / getColumnMapFromSheet() で
+// ヘッダー行から実行時に解決します（固定値でのハードコードは禁止）。
+
+/**
+ * 回数系セルの値を安全に数値へ変換する
+ *
+ * 列がズレていた時期に、回数の列へ文字列（'新規投稿' など）が書き込まれ、
+ * parseInt() が NaN を返してセルが #NUM! になる不具合がありました。
+ * 数値として解釈できない値は 0 として扱い、#NUM! の再発を防ぎます。
+ *
+ * @param {*} value - セルの値
+ * @return {number} - 0以上の整数
+ */
+function toCount_(value) {
+  const count = parseInt(value, 10);
+  return isNaN(count) || count < 0 ? 0 : count;
+}
 
 // ステータス定数
 const STATUS = {
@@ -103,75 +109,86 @@ function decodeJwt(token) {
 }
 
 /**
+ * 指定した承認ステータスの体験談を一覧で取得する
+ * getPendingExperiences / getApprovedExperiences / getOnHoldExperiences の共通処理
+ * @param {string} targetStatus - 抽出する承認ステータス（STATUS の値）
+ * @return {Array} - 体験談の配列
+ */
+function listExperiencesByStatus_(targetStatus) {
+  const spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
+  const sheet = spreadsheet.getSheetByName(SHEET_NAME);
+
+  if (!sheet) {
+    throw new Error('シート「' + SHEET_NAME + '」が見つかりません。');
+  }
+
+  const data = sheet.getDataRange().getValues();
+
+  // ヘッダー行（1行目）から列位置を解決する（定義は columns.gs）
+  const col = getColumnMap(data[0]);
+
+  const results = [];
+
+  // 2行目以降をチェック（1行目はヘッダー）
+  for (let i = 1; i < data.length; i++) {
+    const row = data[i];
+
+    // 承認ステータスが空欄の場合は「未承認」として扱う
+    const status = row[col.approvalStatus] || STATUS.PENDING;
+    if (status !== targetStatus) continue;
+
+    const detail = String(row[col.detail] || '');
+
+    // サポートの種類を取得（3つのサポート列から）
+    const supportTypes = [
+      row[col.support1Type],
+      row[col.support2Type],
+      row[col.support3Type]
+    ].filter(s => s);
+
+    const item = {
+      id: i,
+      title: detail.substring(0, 50) + '...',
+      summary: detail.substring(0, 100) + '...',
+      description: detail,
+      authorName: row[col.authorName] || '匿名',
+      date: formatDate(row[col.timestamp]),
+      startGrade: row[col.grade] || '',
+      trigger: row[col.trigger] || '',
+      supportTypes: supportTypes.join(', '),
+      status: status,
+      lastEditDate: row[col.lastEditDate] || '',
+      firstSubmitDate: row[col.firstSubmitDate] || '',
+      editCount: row[col.editCount] || 0,
+      submissionState: row[col.submissionState] || '新規投稿'
+    };
+
+    if (targetStatus === STATUS.APPROVED) {
+      item.approvalDate = row[col.approvalDate] || '';
+      item.approvalCount = row[col.approvalCount] || 0;
+    } else {
+      item.rejectReason = row[col.rejectReason] || '';
+      item.rejectReasonHistory = row[col.rejectReasonHistory] || '';
+    }
+
+    results.push(item);
+  }
+
+  return results;
+}
+
+/**
  * 未承認の体験談を取得
  * @return {object} - 未承認体験談の配列
  */
 function getPendingExperiences() {
   try {
-    const spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
-    const sheet = spreadsheet.getSheetByName(SHEET_NAME);
-    
-    if (!sheet) {
-      throw new Error('シート「' + SHEET_NAME + '」が見つかりません。');
-    }
-    
-    const data = sheet.getDataRange().getValues();
-    const results = [];
-    
-    // 基本情報の列インデックス
-    const timestampIndex = 0;
-    const authorNameIndex = 1;
-    const gradeIndex = 2;
-    const triggerIndex = 4;
-    const detailIndex = 5;
-    
-    // 2行目以降をチェック（1行目はヘッダー）
-    for (let i = 1; i < data.length; i++) {
-      const row = data[i];
-      
-      // 承認ステータスが「未承認」または空欄の場合
-      const status = row[APPROVAL_STATUS_INDEX] || STATUS.PENDING;
-      
-      if (status === STATUS.PENDING) {
-        // タイトルを生成（詳しい状況の最初の50文字）
-        const title = String(row[detailIndex] || '').substring(0, 50) + '...';
-        
-        // サポートの種類を取得（複数のサポート列から）
-        const support1Index = 37; // AL列
-        const support2Index = 43; // AR列
-        const support3Index = 49; // AX列
-        const supportTypes = [];
-        if (row[support1Index]) supportTypes.push(row[support1Index]);
-        if (row[support2Index]) supportTypes.push(row[support2Index]);
-        if (row[support3Index]) supportTypes.push(row[support3Index]);
-        
-        results.push({
-          id: i,
-          title: title,
-          summary: String(row[detailIndex] || '').substring(0, 100) + '...',
-          description: String(row[detailIndex] || ''),
-          authorName: row[authorNameIndex] || '匿名',
-          date: formatDate(row[timestampIndex]),
-          startGrade: row[gradeIndex] || '',
-          trigger: row[triggerIndex] || '',
-          supportTypes: supportTypes.join(', '),
-          status: status,
-          lastEditDate: row[LAST_EDIT_DATE_INDEX] || '',
-          firstSubmitDate: row[FIRST_SUBMIT_DATE_INDEX] || '',
-          editCount: row[EDIT_COUNT_INDEX] || 0,
-          submissionState: row[SUBMISSION_STATE_INDEX] || '新規投稿',
-          rejectReason: row[REJECT_REASON_INDEX] || '',
-          rejectReasonHistory: row[REJECT_REASON_HISTORY_INDEX] || ''
-        });
-      }
-    }
-    
+    const results = listExperiencesByStatus_(STATUS.PENDING);
     return {
       success: true,
       data: results,
       count: results.length
     };
-    
   } catch (error) {
     Logger.log('Get Pending Experiences Error: ' + error.toString());
     return {
@@ -187,67 +204,12 @@ function getPendingExperiences() {
  */
 function getApprovedExperiences() {
   try {
-    const spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
-    const sheet = spreadsheet.getSheetByName(SHEET_NAME);
-    
-    if (!sheet) {
-      throw new Error('シート「' + SHEET_NAME + '」が見つかりません。');
-    }
-    
-    const data = sheet.getDataRange().getValues();
-    const results = [];
-    
-    // 基本情報の列インデックス
-    const timestampIndex = 0;
-    const authorNameIndex = 1;
-    const gradeIndex = 2;
-    const triggerIndex = 4;
-    const detailIndex = 5;
-    
-    // 2行目以降をチェック
-    for (let i = 1; i < data.length; i++) {
-      const row = data[i];
-      
-      // 承認ステータスが「承認済み」の場合
-      if (row[APPROVAL_STATUS_INDEX] === STATUS.APPROVED) {
-        const title = String(row[detailIndex] || '').substring(0, 50) + '...';
-        
-        // サポートの種類を取得
-        const support1Index = 37;
-        const support2Index = 43;
-        const support3Index = 49;
-        const supportTypes = [];
-        if (row[support1Index]) supportTypes.push(row[support1Index]);
-        if (row[support2Index]) supportTypes.push(row[support2Index]);
-        if (row[support3Index]) supportTypes.push(row[support3Index]);
-        
-        results.push({
-          id: i,
-          title: title,
-          summary: String(row[detailIndex] || '').substring(0, 100) + '...',
-          description: String(row[detailIndex] || ''),
-          authorName: row[authorNameIndex] || '匿名',
-          date: formatDate(row[timestampIndex]),
-          startGrade: row[gradeIndex] || '',
-          trigger: row[triggerIndex] || '',
-          supportTypes: supportTypes.join(', '),
-          status: STATUS.APPROVED,
-          approvalDate: row[APPROVAL_DATE_INDEX] || '',
-          approvalCount: row[APPROVAL_COUNT_INDEX] || 0,
-          lastEditDate: row[LAST_EDIT_DATE_INDEX] || '',
-          firstSubmitDate: row[FIRST_SUBMIT_DATE_INDEX] || '',
-          editCount: row[EDIT_COUNT_INDEX] || 0,
-          submissionState: row[SUBMISSION_STATE_INDEX] || '新規投稿'
-        });
-      }
-    }
-    
+    const results = listExperiencesByStatus_(STATUS.APPROVED);
     return {
       success: true,
       data: results,
       count: results.length
     };
-    
   } catch (error) {
     Logger.log('Get Approved Experiences Error: ' + error.toString());
     return {
@@ -263,67 +225,12 @@ function getApprovedExperiences() {
  */
 function getOnHoldExperiences() {
   try {
-    const spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
-    const sheet = spreadsheet.getSheetByName(SHEET_NAME);
-    
-    if (!sheet) {
-      throw new Error('シート「' + SHEET_NAME + '」が見つかりません。');
-    }
-    
-    const data = sheet.getDataRange().getValues();
-    const results = [];
-    
-    // 基本情報の列インデックス
-    const timestampIndex = 0;
-    const authorNameIndex = 1;
-    const gradeIndex = 2;
-    const triggerIndex = 4;
-    const detailIndex = 5;
-    
-    // 2行目以降をチェック
-    for (let i = 1; i < data.length; i++) {
-      const row = data[i];
-      
-      // 承認ステータスが「却下」の場合
-      if (row[APPROVAL_STATUS_INDEX] === STATUS.REJECTED) {
-        const title = String(row[detailIndex] || '').substring(0, 50) + '...';
-        
-        // サポートの種類を取得
-        const support1Index = 37;
-        const support2Index = 43;
-        const support3Index = 49;
-        const supportTypes = [];
-        if (row[support1Index]) supportTypes.push(row[support1Index]);
-        if (row[support2Index]) supportTypes.push(row[support2Index]);
-        if (row[support3Index]) supportTypes.push(row[support3Index]);
-        
-        results.push({
-          id: i,
-          title: title,
-          summary: String(row[detailIndex] || '').substring(0, 100) + '...',
-          description: String(row[detailIndex] || ''),
-          authorName: row[authorNameIndex] || '匿名',
-          date: formatDate(row[timestampIndex]),
-          startGrade: row[gradeIndex] || '',
-          trigger: row[triggerIndex] || '',
-          supportTypes: supportTypes.join(', '),
-          status: STATUS.REJECTED,
-          lastEditDate: row[LAST_EDIT_DATE_INDEX] || '',
-          firstSubmitDate: row[FIRST_SUBMIT_DATE_INDEX] || '',
-          editCount: row[EDIT_COUNT_INDEX] || 0,
-          submissionState: row[SUBMISSION_STATE_INDEX] || '新規投稿',
-          rejectReason: row[REJECT_REASON_INDEX] || '',
-          rejectReasonHistory: row[REJECT_REASON_HISTORY_INDEX] || ''
-        });
-      }
-    }
-    
+    const results = listExperiencesByStatus_(STATUS.REJECTED);
     return {
       success: true,
       data: results,
       count: results.length
     };
-    
   } catch (error) {
     Logger.log('Get On Hold Experiences Error: ' + error.toString());
     return {
@@ -355,36 +262,39 @@ function approveExperience(id) {
     
     // 実際のシート上の行は1を足す（0始まりのインデックスを1始まりの行番号に変換）
     const sheetRow = rowNumber + 1;
-    
+
+    // ヘッダー行から列位置を解決する（定義は columns.gs）
+    const col = getColumnMapFromSheet(sheet);
+    assertWritableColumns_(col);
+
     // 現在の承認回数を取得
-    const currentCount = sheet.getRange(sheetRow, APPROVAL_COUNT_INDEX + 1).getValue() || 0;
-    
+    const currentCount = sheet.getRange(sheetRow, colNum_(col, 'approvalCount')).getValue() || 0;
+
     // 承認ステータスを更新
-    sheet.getRange(sheetRow, APPROVAL_STATUS_INDEX + 1).setValue(STATUS.APPROVED);
-    
+    sheet.getRange(sheetRow, colNum_(col, 'approvalStatus')).setValue(STATUS.APPROVED);
+
     // 承認日時を記録
     const now = new Date();
-    sheet.getRange(sheetRow, APPROVAL_DATE_INDEX + 1).setValue(Utilities.formatDate(now, 'Asia/Tokyo', 'yyyy/MM/dd HH:mm:ss'));
-    
+    sheet.getRange(sheetRow, colNum_(col, 'approvalDate')).setValue(Utilities.formatDate(now, 'Asia/Tokyo', 'yyyy/MM/dd HH:mm:ss'));
+
     // 承認回数をインクリメント
-    sheet.getRange(sheetRow, APPROVAL_COUNT_INDEX + 1).setValue(parseInt(currentCount) + 1);
-    
+    sheet.getRange(sheetRow, colNum_(col, 'approvalCount')).setValue(toCount_(currentCount) + 1);
+
     // 投稿状態を更新
-    const editCount = sheet.getRange(sheetRow, EDIT_COUNT_INDEX + 1).getValue() || 0;
+    const editCount = toCount_(sheet.getRange(sheetRow, colNum_(col, 'editCount')).getValue());
     if (editCount > 0) {
-      sheet.getRange(sheetRow, SUBMISSION_STATE_INDEX + 1).setValue('再編集');
+      sheet.getRange(sheetRow, colNum_(col, 'submissionState')).setValue('再編集');
     } else {
-      sheet.getRange(sheetRow, SUBMISSION_STATE_INDEX + 1).setValue('新規投稿');
+      sheet.getRange(sheetRow, colNum_(col, 'submissionState')).setValue('新規投稿');
     }
-    
+
     // 承認メールを送信
     try {
-      const email = sheet.getRange(sheetRow, EMAIL_ADDRESS_INDEX + 1).getValue();
-      const authorName = sheet.getRange(sheetRow, 2).getValue(); // C列（投稿者名）
-      const detailIndex = 5; // F列（詳しい状況）
-      const detail = sheet.getRange(sheetRow, detailIndex + 1).getValue();
+      const email = sheet.getRange(sheetRow, colNum_(col, 'email')).getValue();
+      const authorName = sheet.getRange(sheetRow, colNum_(col, 'authorName')).getValue();
+      const detail = sheet.getRange(sheetRow, colNum_(col, 'detail')).getValue();
       const title = String(detail || '').substring(0, 50) + '...';
-      
+
       if (email) {
         sendApprovalEmail(email, authorName, title);
       }
@@ -428,20 +338,24 @@ function returnToPending(id) {
     }
     
     const sheetRow = rowNumber + 1;
-    
+
+    // ヘッダー行から列位置を解決する（定義は columns.gs）
+    const col = getColumnMapFromSheet(sheet);
+    assertWritableColumns_(col);
+
     // 現在のステータスを確認
-    const currentStatus = sheet.getRange(sheetRow, APPROVAL_STATUS_INDEX + 1).getValue();
-    
+    const currentStatus = sheet.getRange(sheetRow, colNum_(col, 'approvalStatus')).getValue();
+
     if (currentStatus !== STATUS.REJECTED) {
       throw new Error('この体験談は保留中ではありません（現在のステータス: ' + currentStatus + '）');
     }
-    
+
     // 承認ステータスを「未承認」に変更
-    sheet.getRange(sheetRow, APPROVAL_STATUS_INDEX + 1).setValue(STATUS.PENDING);
-    
+    sheet.getRange(sheetRow, colNum_(col, 'approvalStatus')).setValue(STATUS.PENDING);
+
     // 最新の却下理由をクリア（履歴は保持）
-    sheet.getRange(sheetRow, REJECT_REASON_INDEX + 1).setValue('');
-    
+    sheet.getRange(sheetRow, colNum_(col, 'rejectReason')).setValue('');
+
     Logger.log('体験談（行' + sheetRow + '）を未承認に戻しました');
     
     return {
@@ -482,35 +396,37 @@ function rejectExperience(id, reason) {
     }
     
     const sheetRow = rowNumber + 1;
-    
+
+    // ヘッダー行から列位置を解決する（定義は columns.gs）
+    const col = getColumnMapFromSheet(sheet);
+    assertWritableColumns_(col);
+
     // 承認ステータスを「却下」に更新
-    sheet.getRange(sheetRow, APPROVAL_STATUS_INDEX + 1).setValue(STATUS.REJECTED);
-    
+    sheet.getRange(sheetRow, colNum_(col, 'approvalStatus')).setValue(STATUS.REJECTED);
+
     // 却下理由を履歴に追加
     if (reason) {
       // 最新の却下理由を保存
-      sheet.getRange(sheetRow, REJECT_REASON_INDEX + 1).setValue(reason);
-      
+      sheet.getRange(sheetRow, colNum_(col, 'rejectReason')).setValue(reason);
+
       // 却下理由履歴に追加
-      const existingHistory = sheet.getRange(sheetRow, REJECT_REASON_HISTORY_INDEX + 1).getValue();
+      const existingHistory = sheet.getRange(sheetRow, colNum_(col, 'rejectReasonHistory')).getValue();
       const updatedHistory = addRejectReasonToHistory(existingHistory, reason);
-      sheet.getRange(sheetRow, REJECT_REASON_HISTORY_INDEX + 1).setValue(updatedHistory);
+      sheet.getRange(sheetRow, colNum_(col, 'rejectReasonHistory')).setValue(updatedHistory);
     }
-    
+
     // 却下時は承認日時をクリア（承認済みではないため）
-    sheet.getRange(sheetRow, APPROVAL_DATE_INDEX + 1).setValue('');
-    
+    sheet.getRange(sheetRow, colNum_(col, 'approvalDate')).setValue('');
+
     // 最終編集日時は保持（管理者が誤って保留にした場合に未承認に戻せるように）
-    // sheet.getRange(sheetRow, LAST_EDIT_DATE_INDEX + 1).setValue(''); // 削除
-    
+
     // 却下メールを送信
     try {
-      const email = sheet.getRange(sheetRow, EMAIL_ADDRESS_INDEX + 1).getValue();
-      const authorName = sheet.getRange(sheetRow, 2).getValue(); // C列（投稿者名）
-      const detailIndex = 5; // F列（詳しい状況）
-      const detail = sheet.getRange(sheetRow, detailIndex + 1).getValue();
+      const email = sheet.getRange(sheetRow, colNum_(col, 'email')).getValue();
+      const authorName = sheet.getRange(sheetRow, colNum_(col, 'authorName')).getValue();
+      const detail = sheet.getRange(sheetRow, colNum_(col, 'detail')).getValue();
       const title = String(detail || '').substring(0, 50) + '...';
-      
+
       if (email) {
         sendRejectionEmail(email, authorName, title, reason);
       }
@@ -621,7 +537,7 @@ function sendRejectionEmail(email, authorName, title, reason) {
 
 この度は体験談をご投稿いただき、ありがとうございました。
 
-管理者による審査の結果、以下の理由により再投稿をお願いしたく、ご連絡いたします。
+管理者による確認の結果、以下の理由により再投稿をお願いしたく、ご連絡いたします。
 
 タイトル: ${title}
 
@@ -629,7 +545,7 @@ function sendRejectionEmail(email, authorName, title, reason) {
 ${reason}
 
 お手数ですが、上記の点を修正の上、再度ご投稿いただけますと幸いです。
-※再投稿の際は、新規投稿として送信してください。
+※再投稿の際は、「回答を編集」から修正し、送信してください。
 
 【再投稿用フォーム】
 ${FORM_URL}
@@ -669,45 +585,49 @@ function onEditTrigger(e) {
     
     const range = e.range;
     const row = range.getRow();
-    
+
     // ヘッダー行は無視
     if (row <= 1) {
       return;
     }
-    
+
+    // ヘッダー行から列位置を解決する（定義は columns.gs）
+    const col = getColumnMapFromSheet(sheet);
+    assertWritableColumns_(col);
+
     // タイムスタンプ列（A列）の変更でない場合、ユーザーによる編集と判断
     // Googleフォームからの編集の場合、複数列が同時に更新される
     const editedColumn = range.getColumn();
-    
+
     // 承認ステータス列以外が編集された場合
-    if (editedColumn !== APPROVAL_STATUS_INDEX + 1 && 
-        editedColumn !== APPROVAL_DATE_INDEX + 1 && 
-        editedColumn !== APPROVAL_COUNT_INDEX + 1) {
-      
+    if (editedColumn !== colNum_(col, 'approvalStatus') &&
+        editedColumn !== colNum_(col, 'approvalDate') &&
+        editedColumn !== colNum_(col, 'approvalCount')) {
+
       // 現在のステータスを確認
-      const currentStatus = sheet.getRange(row, APPROVAL_STATUS_INDEX + 1).getValue();
-      
+      const currentStatus = sheet.getRange(row, colNum_(col, 'approvalStatus')).getValue();
+
       // 承認済みまたは却下済みの場合、未承認に戻す
       if (currentStatus === STATUS.APPROVED || currentStatus === STATUS.REJECTED) {
-        sheet.getRange(row, APPROVAL_STATUS_INDEX + 1).setValue(STATUS.PENDING);
-        
+        sheet.getRange(row, colNum_(col, 'approvalStatus')).setValue(STATUS.PENDING);
+
         // 最終編集日時を記録
         const now = new Date();
-        sheet.getRange(row, LAST_EDIT_DATE_INDEX + 1).setValue(
+        sheet.getRange(row, colNum_(col, 'lastEditDate')).setValue(
           Utilities.formatDate(now, 'Asia/Tokyo', 'yyyy/MM/dd HH:mm:ss')
         );
-        
+
         // 編集回数をインクリメント
-        const currentEditCount = sheet.getRange(row, EDIT_COUNT_INDEX + 1).getValue() || 0;
-        sheet.getRange(row, EDIT_COUNT_INDEX + 1).setValue(parseInt(currentEditCount) + 1);
-        
+        const newEditCount = toCount_(sheet.getRange(row, colNum_(col, 'editCount')).getValue()) + 1;
+        sheet.getRange(row, colNum_(col, 'editCount')).setValue(newEditCount);
+
         // 投稿状態を「再編集」に更新
-        sheet.getRange(row, SUBMISSION_STATE_INDEX + 1).setValue('再編集');
-        
-        Logger.log('体験談（行' + row + '）が編集されたため、承認ステータスを未承認に変更しました。編集回数: ' + (parseInt(currentEditCount) + 1));
+        sheet.getRange(row, colNum_(col, 'submissionState')).setValue('再編集');
+
+        Logger.log('体験談（行' + row + '）が編集されたため、承認ステータスを未承認に変更しました。編集回数: ' + newEditCount);
       }
     }
-    
+
   } catch (error) {
     Logger.log('onEditTrigger Error: ' + error.toString());
   }
@@ -729,47 +649,51 @@ function onFormSubmit(e) {
     const row = e.range.getRow();
     const now = new Date();
     const formattedNow = Utilities.formatDate(now, 'Asia/Tokyo', 'yyyy/MM/dd HH:mm:ss');
-    
+
+    // ヘッダー行から列位置を解決する（定義は columns.gs）
+    const col = getColumnMapFromSheet(sheet);
+    assertWritableColumns_(col);
+
     // 初回投稿日時を確認
-    const firstSubmitDate = sheet.getRange(row, FIRST_SUBMIT_DATE_INDEX + 1).getValue();
-    
+    const firstSubmitDate = sheet.getRange(row, colNum_(col, 'firstSubmitDate')).getValue();
+
     // 承認ステータスを「未承認」に設定
-    sheet.getRange(row, APPROVAL_STATUS_INDEX + 1).setValue(STATUS.PENDING);
-    
+    sheet.getRange(row, colNum_(col, 'approvalStatus')).setValue(STATUS.PENDING);
+
     if (!firstSubmitDate || firstSubmitDate === '') {
       // 初回投稿の場合
       Logger.log('初回投稿を検出（行' + row + '）');
-      
+
       // 初回投稿日時を設定
-      sheet.getRange(row, FIRST_SUBMIT_DATE_INDEX + 1).setValue(formattedNow);
-      
+      sheet.getRange(row, colNum_(col, 'firstSubmitDate')).setValue(formattedNow);
+
       // 最終編集日時を設定
-      sheet.getRange(row, LAST_EDIT_DATE_INDEX + 1).setValue(formattedNow);
-      
+      sheet.getRange(row, colNum_(col, 'lastEditDate')).setValue(formattedNow);
+
       // 編集回数を0に初期化
-      sheet.getRange(row, EDIT_COUNT_INDEX + 1).setValue(0);
-      
+      sheet.getRange(row, colNum_(col, 'editCount')).setValue(0);
+
       // 投稿状態を「新規投稿」に設定
-      sheet.getRange(row, SUBMISSION_STATE_INDEX + 1).setValue('新規投稿');
-      
+      sheet.getRange(row, colNum_(col, 'submissionState')).setValue('新規投稿');
+
       Logger.log('新規投稿として設定しました。初回投稿日時: ' + formattedNow);
     } else {
       // 再編集の場合（初回投稿日が既に存在）
       Logger.log('再編集を検出（行' + row + '）。初回投稿日時: ' + firstSubmitDate);
-      
+
       // 最終編集日時を更新
-      sheet.getRange(row, LAST_EDIT_DATE_INDEX + 1).setValue(formattedNow);
-      
+      sheet.getRange(row, colNum_(col, 'lastEditDate')).setValue(formattedNow);
+
       // 編集回数をインクリメント
-      const currentEditCount = sheet.getRange(row, EDIT_COUNT_INDEX + 1).getValue() || 0;
-      sheet.getRange(row, EDIT_COUNT_INDEX + 1).setValue(parseInt(currentEditCount) + 1);
-      
+      const newEditCount = toCount_(sheet.getRange(row, colNum_(col, 'editCount')).getValue()) + 1;
+      sheet.getRange(row, colNum_(col, 'editCount')).setValue(newEditCount);
+
       // 投稿状態を「再編集」に設定
-      sheet.getRange(row, SUBMISSION_STATE_INDEX + 1).setValue('再編集');
-      
-      Logger.log('再編集として更新しました。編集回数: ' + (parseInt(currentEditCount) + 1));
+      sheet.getRange(row, colNum_(col, 'submissionState')).setValue('再編集');
+
+      Logger.log('再編集として更新しました。編集回数: ' + newEditCount);
     }
-    
+
   } catch (error) {
     Logger.log('onFormSubmit Error: ' + error.toString());
   }

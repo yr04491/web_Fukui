@@ -621,7 +621,7 @@ function sendRejectionEmail(email, authorName, title, reason) {
 
 この度は体験談をご投稿いただき、ありがとうございました。
 
-管理者による審査の結果、以下の理由により再投稿をお願いしたく、ご連絡いたします。
+管理者による確認の結果、以下の理由により再投稿をお願いしたく、ご連絡いたします。
 
 タイトル: ${title}
 
@@ -629,7 +629,7 @@ function sendRejectionEmail(email, authorName, title, reason) {
 ${reason}
 
 お手数ですが、上記の点を修正の上、再度ご投稿いただけますと幸いです。
-※再投稿の際は、新規投稿として送信してください。
+※再投稿の際は、「回答を編集」から修正し、送信してください。
 
 【再投稿用フォーム】
 ${FORM_URL}

@@ -81,6 +81,7 @@ const AdminExperienceDetail = () => {
     authorName: experienceData.authorName || 'ひろまま',
     authorInitial: experienceData.authorInitial || 'H',
     date: experienceData.date || '2025.07.03',
+    birthYear: experienceData.birthYear || '',
     grade: experienceData.grade || '',
     family: experienceData.family || '',
     
@@ -98,6 +99,7 @@ const AdminExperienceDetail = () => {
     dailyLifeOverMonth: experienceData.dailyLifeOverMonth || '',
     improvementTrigger: experienceData.improvementTrigger || '',
     schoolConnection: experienceData.schoolConnection || '',
+    workImpact: experienceData.workImpact || '',
     
     // セクション3: 子どもの成長過程
     elementarySchool: experienceData.elementarySchool || '',
@@ -274,7 +276,7 @@ const AdminExperienceDetail = () => {
                 {(displayData.detail || displayData.parentInitialAction || displayData.childReaction || 
                   displayData.schoolResponse || displayData.initialReflection || displayData.firstMonthLife || 
                   displayData.hardestTime || displayData.dailyLifeOverMonth || displayData.improvementTrigger || 
-                  displayData.schoolConnection) && 
+                  displayData.schoolConnection || displayData.workImpact) &&
                   <li>▼ 2. 不登校のきっかけと経過</li>}
                 {(displayData.elementarySchool || displayData.juniorHighSchool || 
                   displayData.highSchool || displayData.alternativeSchool) && 
@@ -296,6 +298,12 @@ const AdminExperienceDetail = () => {
                 <span>投稿者</span>
                 <span>{displayData.authorName}</span>
               </div>
+              {displayData.birthYear && (
+                <div className={styles.metaRow}>
+                  <span>本人の生まれた年</span>
+                  <span>{displayData.birthYear}</span>
+                </div>
+              )}
               <div className={styles.metaRow}>
                 <span>不登校時の学年</span>
                 <span>{displayData.grade}</span>
@@ -529,6 +537,17 @@ const AdminExperienceDetail = () => {
                   </div>
                 </div>
               )}
+
+              {displayData.workImpact && (
+                <div className={styles.subsection}>
+                  <h4 className={styles.subsectionTitle}>2-12. お子さんが不登校になって、お仕事に影響はありましたか？</h4>
+                  <div className={styles.articleBody}>
+                    {displayData.workImpact.split('\n').map((paragraph, index) => (
+                      <p key={index}>{paragraph}</p>
+                    ))}
+                  </div>
+                </div>
+              )}
             </section>
           )}
 
@@ -593,17 +612,6 @@ const AdminExperienceDetail = () => {
               {displayData.schools.map((school, index) => (
                 <div key={index} className={styles.subsection} style={{ marginBottom: '40px' }}>
                   <h4 className={styles.subsectionTitle}>4-{index + 1}. {school.name}</h4>
-                  
-                  {school.period && (
-                    <div style={{ marginBottom: '20px' }}>
-                      <h5 className={styles.subsectionTitle} style={{ fontSize: '14px', marginBottom: '8px' }}>4-{index + 1}-1. 通学期間</h5>
-                      <div className={styles.articleBody}>
-                        {school.period.split('\n').map((paragraph, pIndex) => (
-                          <p key={pIndex}>{paragraph}</p>
-                        ))}
-                      </div>
-                    </div>
-                  )}
                   
                   {school.reason && (
                     <div style={{ marginBottom: '20px' }}>

@@ -1,138 +1,124 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import layoutStyles from '../commonPageLayout.module.css';
 import styles from './PlacesContent.module.css';
 import Breadcrumbs from '../../common/Breadcrumbs';
 import Footer from '../../common/Footer';
 import PlaceCard from '../../common/PlaceCard/PlaceCard';
-import FilterModal from '../../common/FilterModal';
 import dotlineImage from '../../../assets/images/dotline.png';
-import SearchIcon from '../../../assets/icons/SearchIcon';
-import FilterIcon from '../../../assets/icons/FilterIcon';
+import placeCards from '../../../data/placeCards';
 
 const PlacesContent = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [filterCount, setFilterCount] = useState(0);
-  const [selectedFilters, setSelectedFilters] = useState([]);
-  const [searchKeyword, setSearchKeyword] = useState('');
-  const navigate = useNavigate();
-
-  const handleApplyFilters = (count, filters) => {
-    setFilterCount(count);
-    setSelectedFilters(filters);
-  };
-
-  const handleSearch = () => {
-    navigate('/places/search', { 
-      state: { 
-        filters: selectedFilters,
-        keyword: searchKeyword 
-      } 
-    });
-  };
-
-  const handleClearFilters = () => {
-    setFilterCount(0);
-    setSelectedFilters([]);
-  };
 
   const breadcrumbItems = [
     { label: 'TOP', path: '/' },
     { label: '居場所をさがす', path: '/places' }
   ];
 
-  const filterConfig = {
-    selectedColor: '#88D3BC',
-    buttonColor: '#88D3BC',
-    categories: [
-      {
-        title: 'お子さんの学年からさがす',
-        options: ['小学生から', '中学生から', '高校生から', '卒業している場合']
-      },
-      {
-        title: '状況からさがす',
-        options: ['進学したい', '専門的なことを学びたい', '一人で学習したい', 'オンラインで授業を受けたい', '学校行事に参加したい', '家以外の場所での居場所を見つけたい', '外部とコミュニケーションを取れる場所に行きたい', '不登校や子育てについて相談したい', '不登校や子育ての未来について見失わない', '不登校や子育てのイベントに参加したい', '友達をさがしたい']
-      },
-      {
-        title: '施設の区分からさがす',
-        options: ['フリースクール', '塾', 'オンラインサポート', 'サークル', 'オルタナティブスクール', '習い事', 'イベント']
-      }
-    ]
+  // 市町村ごとにカードを分配
+  const cityCards = {
+    'あわら市': [],
+    '池田町': [],
+    '永平寺町': [],
+    '越前市': [],
+    '越前町': [],
+    'おおい町': [],
+    '大野市': [4],
+    '小浜市': [],
+    '勝山市': [1],
+    '坂井市': [6],
+    '鯖江市': [],
+    '高浜町': [],
+    '敦賀市': [],
+    '福井市': [2, 3, 5, 7, 8, 9, 10, 11],
+    '南越前町': [],
+    '美浜町': [],
+    '若狭町': []
+  };
+
+  // カードがある市町村のみを抽出
+  const citiesWithCards = Object.entries(cityCards)
+    .filter(([_, cardIds]) => cardIds.length > 0)
+    .map(([cityName, cardIds]) => ({ cityName, count: cardIds.length }));
+
+  // スクロール機能
+  const scrollToSection = (cityName) => {
+    const element = document.getElementById(`city-${cityName}`);
+    if (element) {
+      const yOffset = -80;
+      const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
   };
 
   return (
     <div className={layoutStyles.pageContainer}>
+      <Helmet>
+        <title>居場所をさがす｜ぼくらのみち</title>
+        <meta name="description" content="福井県内のフリースクール・居場所情報を掲載しています。地域から居場所を探すことができます。" />
+        <link rel="canonical" href="https://bokuranomichi-fukui.com/places" />
+        <meta property="og:title" content="居場所をさがす｜ぼくらのみち" />
+        <meta property="og:description" content="福井県内のフリースクール・居場所情報を掲載しています。地域から居場所を探すことができます。" />
+        <meta property="og:url" content="https://bokuranomichi-fukui.com/places" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://bokuranomichi-fukui.com/title.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "TOP", "item": "https://bokuranomichi-fukui.com/"},
+            {"@type": "ListItem", "position": 2, "name": "居場所をさがす", "item": "https://bokuranomichi-fukui.com/places"}
+          ]
+        })}</script>
+      </Helmet>
       <Breadcrumbs items={breadcrumbItems} />
       
-      {/* 検索セクション */}
+      {/* タイトルセクション */}
       <div className={styles.searchSection}>
         <h1 className={styles.searchTitle}>居場所をさがす</h1>
         <img src={dotlineImage} alt="" className={styles.dotline} />
-        
-        <div className={styles.searchBox}>
-          {/* 検索入力フィールド */}
-          <div className={styles.searchInputWrapper}>
-            <SearchIcon size={20} color="#999" />
-            <input 
-              type="text" 
-              placeholder="調べたい内容を、キーワードで記入してください。"
-              className={styles.searchInput}
-              value={searchKeyword}
-              onChange={(e) => setSearchKeyword(e.target.value)}
-            />
-          </div>
-          
-          {/* ボタンエリア */}
-          <div className={styles.buttonArea}>
-            <div className={styles.filterRow}>
-              <button 
-                className={styles.filterButton}
-                onClick={() => setIsModalOpen(true)}
-              >
-                <FilterIcon size={16} color="#88D3BC" />
-                <span>絞り込み{filterCount > 0 && `(${filterCount})`}</span>
-              </button>
-              <button 
-                className={styles.clearButton}
-                onClick={handleClearFilters}
-              >
-                クリア
-              </button>
-            </div>
-            
-            <button className={styles.searchButton} onClick={handleSearch}>
-              <SearchIcon size={18} color="#fff" />
-              <span>検索する</span>
-            </button>
-          </div>
-        </div>
       </div>
 
       {/* 居場所ピックアップセクション */}
       <div className={styles.pickupSection}>
-        <h2 className={styles.pickupTitle}>居場所ピックアップ</h2>
+        <h2 className={styles.pickupTitle}>福井県(17市町)</h2>
         <div className={styles.dividerLine}></div>
-        <p className={styles.pickupDescription}>
-          みんなの居場所から、お子さんや保護者の方に合う場所をみつけてみてください。
-        </p>
         
-        {/* 居場所カードグリッド */}
-        <div className={styles.cardsGrid}>
-          <PlaceCard cardId={1} />
-          <PlaceCard cardId={2} />
-          <PlaceCard cardId={3} />
-          <PlaceCard cardId={1} />
-          <PlaceCard cardId={2} />
-          <PlaceCard cardId={3} />
+        {/* 目次セクション */}
+        <div className={styles.tocSection}>
+          <h3 className={styles.tocTitle}>目次</h3>
+          <div className={styles.tocList}>
+            {citiesWithCards.map(({ cityName, count }) => (
+              <div
+                key={cityName}
+                className={styles.tocItem}
+                onClick={() => scrollToSection(cityName)}
+              >
+                {cityName}({count})
+              </div>
+            ))}
+          </div>
+        </div>
+        
+        <div className={styles.dividerLine}></div>
+        
+        {/* 市町名リストとカード */}
+        <div className={styles.citiesContainer}>
+          {Object.entries(cityCards).map(([cityName, cardIds]) => (
+            <div key={cityName} id={`city-${cityName}`} className={styles.citySection}>
+              <div className={styles.cityName}>{cityName}</div>
+              {cardIds.length > 0 && (
+                <div className={styles.cityCardsGrid}>
+                  {cardIds.map(cardId => (
+                    <PlaceCard key={cardId} cardId={cardId} />
+                  ))}
+                </div>
+              )}
+            </div>
+          ))}
         </div>
       </div>
-
-      <FilterModal 
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        filterConfig={filterConfig}
-        onApply={handleApplyFilters}
-      />
 
       <Footer />
     </div>

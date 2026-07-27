@@ -1,10 +1,42 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import Layout from '../components/Layout/Layout';
 import { MainContent } from '../components/MainContent';
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "name": "ぼくらのみち",
+      "url": "https://bokuranomichi-fukui.com/",
+      "description": "当事者たちによる当事者たちのための不登校情報サイト"
+    },
+    {
+      "@type": "Organization",
+      "name": "ぼくらのみち",
+      "url": "https://bokuranomichi-fukui.com/",
+      "logo": "https://bokuranomichi-fukui.com/title.png"
+    }
+  ]
+};
 
 const HomePage = () => {
   return (
     <Layout>
+      <Helmet>
+        <title>ぼくらのみち｜当事者たちでつくる、不登校情報サイト</title>
+        <meta name="description" content="このサイトは当事者たちによる当事者たちのための本当に欲しい情報を集めたウェブサイトです。それぞれのご家庭に合った解決法を見つけるヒントとなるように、専門家のご意見と共に発信しています。" />
+        <link rel="canonical" href="https://bokuranomichi-fukui.com/" />
+        <meta property="og:title" content="ぼくらのみち｜当事者たちでつくる、不登校情報サイト" />
+        <meta property="og:description" content="このサイトは当事者たちによる当事者たちのための本当に欲しい情報を集めたウェブサイトです。" />
+        <meta property="og:url" content="https://bokuranomichi-fukui.com/" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://bokuranomichi-fukui.com/title.png" />
+        <meta property="og:site_name" content="ぼくらのみち" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
+      </Helmet>
       <MainContent />
     </Layout>
   );

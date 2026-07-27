@@ -1,26 +1,50 @@
 // src/components/MainContent/02/Section02Content.js
 
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import layoutStyles from '../commonPageLayout.module.css';
 import styles from './Section02Content.module.css';
 import Footer from '../../common/Footer';
 import Breadcrumbs from '../../common/Breadcrumbs';
 import FlexiCard from '../../common/FlexiCard/FlexiCard';
+import { getCardsByCategory } from '../../../data/flexiCardData';
 import road02Image from '../../../assets/icons/ROAD02.png';
 import dotlineImage from '../../../assets/images/dotline.png';
 import vectorRB from '../../../assets/images/vectorRB.png';
 
 const Section02Content = () => {
+  const navigate = useNavigate();
+
   return (
     <div className={`${layoutStyles.pageContainer} ${styles.section02Content}`}>
+      <Helmet>
+        <title>公的支援や医療機関｜ぼくらのみち</title>
+        <meta name="description" content="不登校の子どもや保護者が利用できる公的機関の支援や医療機関を紹介します。福井県内の相談窓口、カウンセリング情報も掃羅。" />
+        <link rel="canonical" href="https://bokuranomichi-fukui.com/section02" />
+        <meta property="og:title" content="公的支援や医療機関｜ぼくらのみち" />
+        <meta property="og:description" content="不登校の子どもや保護者が利用できる公的機関の支援や医療機関を紹介します。" />
+        <meta property="og:url" content="https://bokuranomichi-fukui.com/section02" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://bokuranomichi-fukui.com/title.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "TOP", "item": "https://bokuranomichi-fukui.com/"},
+            {"@type": "ListItem", "position": 2, "name": "公的支援や医療機関", "item": "https://bokuranomichi-fukui.com/section02"}
+          ]
+        })}</script>
+      </Helmet>
 
       {/* パンくずリスト */}
-      <Breadcrumbs sectionNumber="02" sectionTitle="行政が行う公的支援" />
+      <Breadcrumbs sectionNumber="02" sectionTitle="公的支援や医療機関" />
 
       {/* タイトル部分 */}
       <div className={styles.titleSection}>
         <img src={road02Image} alt="ROAD 02" className={styles.roadImage} />
-        <h1 className={styles.mainTitle}>行政が行う公的支援</h1>
+        <h1 className={styles.mainTitle}>公的支援や医療機関</h1>
         <img src={dotlineImage} alt="点線" className={styles.dotline} />
       </div>
 
@@ -38,24 +62,16 @@ const Section02Content = () => {
       {/* 相談窓口カードセクション */}
       <div className={styles.consultationSection}>
         <div className={styles.flexiCardArea}>
-          <FlexiCard
-            title={`福井県教育総合研究所
-教育相談センター`}
-            description="0776-51-0511（メール不可）0120-96-8104（フリーダイヤル）"
-            buttonText="詳しく見る"
-          />
-          <FlexiCard
-            title={`福井県教育庁
-教育相談課`}
-            description="0776-56-1310"
-            buttonText="詳しく見る"
-          />
-          <FlexiCard
-            title={`スクールソーシャル
-ワーカー`}
-            description="家庭と学校現場の間の繋ぐスクールソーシャルワーカー不登校支援に関するのもお願いしま"
-            buttonText="詳しく見る"
-          />
+          {getCardsByCategory('prefecture').map((card) => (
+            <FlexiCard
+              key={card.id}
+              title={card.title}
+              description={card.description}
+              buttonText={card.buttonText}
+              phone={card.phone}
+              url={card.url}
+            />
+          ))}
         </div>
       </div>
 
@@ -69,29 +85,21 @@ const Section02Content = () => {
           各自治体の情報をまとめました。詳しくはお住まいの窓口まで問い合わせてください。
         </p>
         <div className={styles.flexiCardArea}>
-          <FlexiCard
-            title={`福井市
-チャレンジ教室`}
-            description="学校概要を再検討した。公費グラフ・スクール"
-            buttonText="詳しく見る"
-          />
-          <FlexiCard
-            title={`坂井市
-スタッフスクールきぼう`}
-            description="学校概要を再検討した。公費グラフ・スクール"
-            buttonText="詳しく見る"
-          />
-          <FlexiCard
-            title={`鮫江市
-嶺北エールド`}
-            description="学校概要を再検討した。公費グラフ・スクール"
-            buttonText="詳しが見る"
-          />
+          {getCardsByCategory('municipal').map((card) => (
+            <FlexiCard
+              key={card.id}
+              title={card.title}
+              description={card.description}
+              buttonText={card.buttonText}
+              phone={card.phone}
+              url={card.url}
+            />
+          ))}
         </div>
       </div>
 
       {/* 行政・医療機関一覧ボタン */}
-      <button className={styles.listButton}>
+      <button className={styles.listButton} onClick={() => { navigate('/school-info'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
         <img src={vectorRB} alt="アイコン" className={styles.playIcon} />
         <span>行政・医療機関一覧を見る</span>
       </button>

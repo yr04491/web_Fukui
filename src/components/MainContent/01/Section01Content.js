@@ -1,22 +1,76 @@
 // src/components/MainContent/01/Section01Content.js
 
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import layoutStyles from '../commonPageLayout.module.css'; // 共通CSS（外枠）
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';import { Helmet } from 'react-helmet-async';import layoutStyles from '../commonPageLayout.module.css'; // 共通CSS（外枠）
 import styles from './Section01Content.module.css'; // 01ページ固有CSS
 import Footer from '../../common/Footer';
 import Breadcrumbs from '../../common/Breadcrumbs';
 import InterviewCard from '../../common/InterviewCard/InterviewCard';
 import TweetCard from '../../common/TweetCard/TweetCard';
 import FlexiCard from '../../common/FlexiCard/FlexiCard';
+import { getCardsByCategory } from '../../../data/flexiCardData';
 import road01Image from '../../../assets/icons/ROAD01.png';
 import dotlineImage from '../../../assets/images/dotline.png';
 import vectorRB from '../../../assets/images/vectorRB.png';
+import { getExperiencesByQuestion } from '../../../utils/gasApi';
 
 const Section01Content = () => {
   const navigate = useNavigate();
+  const showSupportExperienceSection2 =
+    process.env.REACT_APP_SHOW_SECTION01_SUPPORT_EXPERIENCES === 'true';
+  
+  // 不登校初期の体験談
+  const [earlyExperiences, setEarlyExperiences] = useState([]);
+  const [earlyLoading, setEarlyLoading] = useState(true);
+  const [earlyError, setEarlyError] = useState(null);
+  const [earlyNoData, setEarlyNoData] = useState(false);
+
+  useEffect(() => {
+    const fetchEarlyExperiences = async () => {
+      try {
+        const result = await getExperiencesByQuestion('2-11', 6);
+        
+        if (result.errorType) {
+          setEarlyError(result.error || '取得エラーが発生しました');
+          setEarlyExperiences([]);
+        } else if (result.noData || result.data.length === 0) {
+          setEarlyNoData(true);
+          setEarlyExperiences([]);
+        } else {
+          setEarlyExperiences(result.data);
+        }
+      } catch (err) {
+        setEarlyError('データの取得に失敗しました');
+        console.error('Experience fetch error:', err);
+      } finally {
+        setEarlyLoading(false);
+      }
+    };
+
+    fetchEarlyExperiences();
+  }, []);
+
   return (
     <div className={`${layoutStyles.pageContainer} ${styles.section01Content}`}>
+      <Helmet>
+        <title>学校に相談してみよう｜ぼくらのみち</title>
+        <meta name="description" content="学校にある支援の種類を軴に、不登校の子どもに学校ができるサポートを紹介します。" />
+        <link rel="canonical" href="https://bokuranomichi-fukui.com/section01" />
+        <meta property="og:title" content="学校に相談してみよう｜ぼくらのみち" />
+        <meta property="og:description" content="学校にある支援の種類を軸に、不登校の子どもに学校ができるサポートを紹介します。" />
+        <meta property="og:url" content="https://bokuranomichi-fukui.com/section01" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://bokuranomichi-fukui.com/title.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "TOP", "item": "https://bokuranomichi-fukui.com/"},
+            {"@type": "ListItem", "position": 2, "name": "学校に相談してみよう", "item": "https://bokuranomichi-fukui.com/section01"}
+          ]
+        })}</script>
+      </Helmet>
 
       {/* パンくずリスト */}
       <Breadcrumbs sectionNumber="01" sectionTitle="学校に相談してみよう" />
@@ -52,7 +106,7 @@ const Section01Content = () => {
             <span className={styles.titleLine2}>不登校の原因って</span>
           </h3>
         </div>
-        <InterviewCard cardId={1} />
+        <InterviewCard cardId={2} />
         <div className={styles.dottedBorder}></div>
       </div>
 
@@ -65,12 +119,36 @@ const Section01Content = () => {
           </h3>
         </div>
         <div className={styles.tweetCardArea}>
-          <TweetCard cardId={1} />
-          <TweetCard cardId={2} />
+          {earlyLoading && <div className={styles.loadingMessage}>読み込み中...</div>}
+          
+          {earlyError && (
+            <div className={styles.errorMessage}>
+              <p>⚠️ 取得エラー: {earlyError}</p>
+            </div>
+          )}
+          
+          {earlyNoData && !earlyError && (
+            <div className={styles.noDataMessage}>
+              <p>該当する体験談がまだありません</p>
+            </div>
+          )}
+          
+          {!earlyLoading && !earlyError && !earlyNoData && earlyExperiences.slice(0, 2).map((exp, index) => (
+            <TweetCard 
+              key={exp.id || index} 
+              data={exp}
+              relatedContext={{
+                type: 'section',
+                sectionName: '学校とのつながりに関する体験談',
+                questionId: '2-11',
+                relatedExperiences: earlyExperiences.slice(0, 6)
+              }}
+            />
+          ))}
         </div>
         <button 
           className={styles.moreButton2}
-          onClick={() => navigate('/experiences')}
+          onClick={() => navigate('/experiences?questionId=2-11')}
         >
           <img src={vectorRB} alt="アイコン" className={styles.playIcon} />
           <span>体験談をさがす</span>
@@ -90,47 +168,47 @@ const Section01Content = () => {
 
         {/* FlexiCardエリア - 柔軟に使える汎用カード */}
         <div className={styles.flexiCardArea}>
-          <FlexiCard
-            title="スクールカウンセラー"
-            description="ついつい頼りたくなりつらさを軽く理解できる話の専門家です。"
-            buttonText="詳しく見る"
-          />
-          <FlexiCard
-            title="校内サポートルーム"
-            description="県内の小学校、１時間がありません。校内の先生とは別の相談窓口です。"
-            buttonText="詳しく見る"
-          />
-          <FlexiCard
-            title="ライフパートナー制度"
-            description="専攻大学の学生さん。おしゃべりや遊び、自分との関わり、宿題など付き合ってくれます。"
-            buttonText="詳しく見る"
-          />
+          {getCardsByCategory('school').map((card) => (
+            <FlexiCard
+              key={card.id}
+              title={card.title}
+              description={card.description}
+              buttonText={card.buttonText}
+              phone={card.phone}
+              url={card.url}
+            />
+          ))}
         </div>
       </div>
 
-      {/* 体験談セクション2 */}
-      <div className={styles.supportSection2}>
-        <div className={styles.sectionHeader}>
-          <h3 className={styles.sectionTitle}>
-            <span className={styles.titleLine2Support}>みんなの体験談を見てみよう</span>
-            <span className={styles.titleLine1Support}>学校の支援制度はどうだった？</span>
-          </h3>
+      {/* 体験談セクション2（将来利用予定のためフラグで表示制御） */}
+      {showSupportExperienceSection2 && (
+        <div className={styles.supportSection2}>
+          <div className={styles.sectionHeader}>
+            <h3 className={styles.sectionTitle}>
+              <span className={styles.titleLine2Support}>みんなの体験談を見てみよう</span>
+              <span className={styles.titleLine1Support}>学校の支援制度はどうだった？</span>
+            </h3>
+          </div>
+          <div className={styles.tweetCardArea}>
+            <TweetCard cardId={3} />
+            <TweetCard cardId={4} />
+          </div>
+          <button
+            className={styles.moreButton2}
+            onClick={() => navigate('/experiences')}
+          >
+            <img src={vectorRB} alt="アイコン" className={styles.playIcon} />
+            <span>体験談をさがす</span>
+          </button>
         </div>
-        <div className={styles.tweetCardArea}>
-          <TweetCard cardId={3} />
-          <TweetCard cardId={4} />
-        </div>
-        <button 
-          className={styles.moreButton2}
-          onClick={() => navigate('/experiences')}
-        >
-          <img src={vectorRB} alt="アイコン" className={styles.playIcon} />
-          <span>体験談をさがす</span>
-        </button>
-      </div>
+      )}
 
       {/* 行政・医療機関一覧ボタン */}
-      <button className={styles.listButton}>
+      <button 
+        className={styles.listButton}
+        onClick={() => navigate('/school-info')}
+      >
         <img src={vectorRB} alt="アイコン" className={styles.playIcon} />
         <span>行政・医療機関一覧を見る</span>
       </button>

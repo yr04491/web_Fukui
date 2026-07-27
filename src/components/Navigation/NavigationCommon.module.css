@@ -1,5 +1,49 @@
 /* ナビゲーション共通スタイル - デスクトップとモバイルで共通 */
 
+/* ナビパネル共通（見た目のみ・位置は各CSSで定義） */
+.navPanel {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  isolation: isolate;
+  width: 270px;
+  background: var(--color-white);
+  border: 2px solid var(--color-black);
+  border-radius: var(--radius-l);
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.navPanel::-webkit-scrollbar {
+  display: none;
+}
+
+/* ナビアイテムコンテナ（共通・PC・スマホ同一） */
+.navItemsContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin-top: 80px;
+}
+
+/* 縦線（共通） */
+.verticalLine {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 17px;
+  background-image: url('../../assets/images/vector.png');
+  background-size: 17px 100%;
+  background-repeat: repeat-y;
+  background-position: top;
+  z-index: 8;
+}
+
 /* ナビアイテム */
 .navItem {
   width: fit-content; /* 100% → fit-content テキスト幅に合わせる */
@@ -8,28 +52,56 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 0px 0px 0px 30px;
+  padding: 0px 0px 0px 8px;
   gap: 5px; /* 10px → 5px に変更 タイトルとサブメニューの間隔を狭める */
-  transition: background-color 0.2s;
   border-radius: 5px;
-  cursor: pointer; /* 全体をクリック可能に */
   overflow: visible;
 }
 
-.navItem:hover {
+/* ナビアイテム - 全体クリック型（03以外） */
+.navItemClickable {
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.navItemClickable:hover {
   background-color: rgba(0, 0, 0, 0.05);
+}
+
+.navItemClickable:hover .navTitle {
+  color: #555;
+}
+
+.navItemClickable:hover .navSubItem {
+  color: #555;
 }
 
 /* ナビアイテムヘッダー */
 .navItemHeader {
   display: flex;
   align-items: center;
-  gap: 8px; /* 12px → 8px に変更 */
+  gap: 8px;
   margin-bottom: 10px;
   width: 100%;
   height: 20px;
   flex-wrap: nowrap;
-  pointer-events: none; /* ホバー検知を親要素に任せる */
+  border-radius: 5px;
+  transition: background-color 0.2s;
+  padding: 2px 4px;
+  box-sizing: border-box;
+}
+
+/* 03専用: ヘッダー単体がクリッカブルな場合 */
+.navItemHeaderClickable {
+  cursor: pointer;
+}
+
+.navItemHeaderClickable:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.navItemHeaderClickable:hover .navTitle {
+  color: #555;
 }
 
 /* ナビアイコン */
@@ -52,16 +124,10 @@
   line-height: 20px; /* 28px → 20px Figmaの2行タイトルに合わせる */
   letter-spacing: 0.05em; /* 追加 */
   color: var(--color-black);
-  white-space: pre-wrap; /* nowrap → pre-wrap 改行を許可し、\nも反映 */
+  white-space: pre-wrap; /* 改行を許可し、\nも反映 */
   overflow: visible; /* hidden → visible はみ出しを許可 */
   max-width: 100%;
-  word-break: keep-all; /* 日本語の単語途中で改行しない */
   transition: color 0.2s;
-}
-
-/* 親要素ホバー時にタイトルの色を変更 */
-.navItem:hover .navTitle {
-  color: #555;
 }
 
 /* サブアイテム容器 */
@@ -69,11 +135,10 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 0px 0px 0px 35px; /* 0px 15px 0px 38px → 0px 0px 0px 35px に変更 */
-  gap: 0px; /* 8px → 4px サブメニュー項目間の間隔を狭める */
+  padding: 0px 0px 0px 35px;
+  gap: 0px;
   width: 100%;
   box-sizing: border-box;
-  pointer-events: none; /* ホバー検知を親要素に任せる */
 }
 
 /* サブアイテム */
@@ -84,17 +149,24 @@
   font-size: 12px;
   line-height: 15px;
   color: var(--color-black);
-  margin-bottom: 0px; /* 8px → 0px に変更 */
+  margin-bottom: 0px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 100%;
-  transition: color 0.2s;
+  transition: color 0.2s, background-color 0.2s;
+  border-radius: 4px;
+  padding: 2px 4px;
 }
 
-/* 親要素ホバー時にサブアイテムの色を変更 */
-.navItem:hover .navSubItem {
+/* 03専用: サブアイテム単体がクリッカブルな場合 */
+.navSubItemClickable {
+  cursor: pointer;
+}
+
+.navSubItemClickable:hover {
   color: #555;
+  background-color: rgba(0, 0, 0, 0.05);
 }
 
 /* 探してみようセクション */
@@ -103,7 +175,7 @@
   display: flex;
   flex-direction: column;
   gap: 5px; /* 10px → 0px 間隔を0に */
-  margin-top: -30px; /* 0px → -30px navigationのgapを打ち消す */
+  margin-top: 0px; /* 0px → -30px navigationのgapを打ち消す */
 }
 
 .searchTitle {
@@ -136,9 +208,9 @@
 }
 
 .searchItem {
-  font-family: var(--font-secondary);
+  font-family: var(--font-primary);
   font-style: normal;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 16px;
   line-height: 23px;
   color: var(--color-black);
@@ -162,13 +234,13 @@
   width: fit-content; /* 100% → fit-content テキスト幅に合わせる */
   min-width: 100%; /* 最小幅は親の100%を確保 */
   padding: 5px 8px;
-  font-family: var(--font-secondary);
+  font-family: var(--font-primary);
   font-style: normal;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 16px;
   line-height: 23px;
   color: var(--color-black);
-  margin-top: -30px; /* 0px → -30px navigationのgapを打ち消す */
+  margin-top: 0px; /* 0px → -30px navigationのgapを打ち消す */
   transition: color 0.2s, background-color 0.2s;
   border-radius: 5px;
   white-space: nowrap;
@@ -182,6 +254,7 @@
 
 /* ナビヘッダー */
 .navHeader {
+  display: block;
   width: 100%;
   height: 79px;
   position: relative;
@@ -244,4 +317,67 @@
 
 .navHeaderSubtitle:hover {
   color: #555;
+}
+
+/* 寄付のお願いセクション */
+.donationSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 20px 40px;
+  gap: 15px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* 黒い点線の区切り線 */
+.dottedDivider {
+  width: 130%;
+  max-width: 240px;
+  border-top: 2px dotted #000;
+  margin: -5px 0;
+}
+
+.donationTitle {
+  font-family: var(--font-primary, sans-serif);
+  font-weight: 700;
+  font-size: 16px;
+  color: #000;
+  margin: 0;
+  text-align: center;
+}
+
+.donationText {
+  font-family: var(--font-primary, sans-serif);
+  font-size: 12px;
+  color: #000;
+  text-align: center;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* サーモンピンクのボタン */
+.donationButton {
+  background-color: #FF8575; /* サーモンピンク */
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  padding: 12px 24px;
+  font-family: var(--font-primary, sans-serif);
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  width: 100%;
+  max-width: 260px;
+  transition: opacity 0.2s, transform 0.1s;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  white-space: nowrap;
+}
+
+.donationButton:hover {
+  opacity: 0.9;
+}
+
+.donationButton:active {
+  transform: scale(0.98);
 }

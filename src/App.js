@@ -1,47 +1,142 @@
 import React from 'react';
+// 変更点1: BrowserRouter を HashRouter に変更
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage';
-import Layout from './components/Layout/Layout'; // 
-import { navigationItems } from './data/navigationItems'; // 
+import AdminPage from './pages/AdminPage/AdminPage';
+import AdminExperienceDetail from './pages/AdminPage/AdminExperienceDetail';
+import LoginPage from './pages/LoginPage';
+import AdminProtectedRoute from './components/Auth/AdminProtectedRoute';
+import Layout from './components/Layout/Layout';
+import { navigationItems } from './data/navigationItems';
 import ScrollToTop from './components/ScrollToTop';
-import ExperiencesContent from './components/MainContent/experiences';
+import ExperiencesContent, { PostExperienceContent } from './components/MainContent/experiences';
+import ExperiencesSearchResultsContent from './components/MainContent/experiences/ExperiencesSearchResultsContent';
 import PlacesContent from './components/MainContent/places';
 import PathsContent from './components/MainContent/paths';
+import SchoolDetailPage from './pages/SchoolDetailPage/SchoolDetailPage';
 import TweetDetailPage from './pages/TweetDetailPage/TweetDetailPage';
-import TweetSearchResults from './pages/TweetSearchResults/TweetSearchResults';
-import PlaceSearchResults from './pages/PlaceSearchResults/PlaceSearchResults';
 import PlaceDetailPage from './pages/PlaceDetailPage/PlaceDetailPage';
 import PlaceReviewPage from './pages/PlaceReviewPage/PlaceReviewPage';
 import ReviewsPage from './pages/ReviewsPage/ReviewsPage';
 import ReviewDetailPage from './pages/ReviewDetailPage/ReviewDetailPage';
-// SectionXXPage のインポートは不要になります
+import InterviewDetailPage from './pages/InterviewDetailPage/InterviewDetailPage';
+import FlexiCardListPage from './pages/FlexiCardListPage/FlexiCardListPage';
 
 function App() {
   return (
-    <Router basename="/web_Fukui">
+    // 変更点2: basename="/web_Fukui" を削除
+    <Router>
       <ScrollToTop />
       <Routes>
         {/* ホーム画面用のルート */}
         <Route path="/" element={<HomePage />} />
 
-        {/* 体験談をさがすページ */}
+        {/* ログインページ */}
+        <Route path="/login" element={<LoginPage />} />
+
+        {/* 管理者画面ページ（認証保護） */}
+        <Route path="/admin" element={
+          <AdminProtectedRoute>
+            <Layout>
+              <AdminPage />
+            </Layout>
+          </AdminProtectedRoute>
+        } />
+
+        {/* 管理者用体験談詳細ページ（認証保護） */}
+        <Route path="/admin/experience/:id" element={
+          <AdminProtectedRoute>
+            <Layout>
+              <AdminExperienceDetail />
+            </Layout>
+          </AdminProtectedRoute>
+        } />
+
+        {/* 体験談を探すページ */}
         <Route path="/experiences" element={
           <Layout>
             <ExperiencesContent />
           </Layout>
         } />
 
-        {/* 居場所をさがすページ */}
+        {/* 体験談検索結果ページ */}
+        <Route path="/experiences/search" element={
+          <Layout>
+            <ExperiencesSearchResultsContent />
+          </Layout>
+        } />
+
+        {/* 体験談を投稿するページ */}
+        <Route path="/experiences/post" element={
+          <Layout>
+            <PostExperienceContent />
+          </Layout>
+        } />
+
+        {/* 体験談詳細ページ */}
+        <Route path="/experiences/:id" element={
+          <Layout>
+            <TweetDetailPage />
+          </Layout>
+        } />
+
+        {/* 居場所を探すページ */}
         <Route path="/places" element={
           <Layout>
             <PlacesContent />
           </Layout>
         } />
+        
+        <Route path="/places/:id" element={
+          <Layout>
+            <PlaceDetailPage />
+          </Layout>
+        } />
+        
+        <Route path="/places/:id/reviews" element={
+          <Layout>
+            <PlaceReviewPage />
+          </Layout>
+        } />
 
-        {/* 卒業後の進路をさがすページ */}
-        <Route path="/paths" element={
+        {/* 口コミ一覧ページと詳細ページ */}
+        <Route path="/reviews" element={
+          <Layout>
+            <ReviewsPage />
+          </Layout>
+        } />
+        
+        <Route path="/reviews/:id" element={
+          <Layout>
+            <ReviewDetailPage />
+          </Layout>
+        } />
+
+        {/* インタビュー詳細ページ */}
+        <Route path="/interviews/:id" element={
+          <Layout>
+            <InterviewDetailPage />
+          </Layout>
+        } />
+
+        {/* 卒業後の進路を探すページ */}
+        <Route path="/schools" element={
           <Layout>
             <PathsContent />
+          </Layout>
+        } />
+
+        {/* 学校詳細ページ */}
+        <Route path="/schools/:id" element={
+          <Layout>
+            <SchoolDetailPage />
+          </Layout>
+        } />
+
+        {/* 学校・行政・医療情報の一覧ページ */}
+        <Route path="/school-info" element={
+          <Layout>
+            <FlexiCardListPage />
           </Layout>
         } />
 
@@ -67,18 +162,6 @@ function App() {
             />
           );
         })}
-        {/* 体験談の検索結果と詳細ページ */}
-        <Route path="/experiences/search" element={<Layout><TweetSearchResults /></Layout>} />
-        <Route path="/experiences/:id" element={<Layout><TweetDetailPage /></Layout>} />
-        
-        {/* 居場所の検索結果と詳細ページ */}
-        <Route path="/places/search" element={<Layout><PlaceSearchResults /></Layout>} />
-        <Route path="/places/:id" element={<Layout><PlaceDetailPage /></Layout>} />
-        <Route path="/places/:id/reviews" element={<Layout><PlaceReviewPage /></Layout>} />
-        
-        {/* 口コミ一覧ページと詳細ページ */}
-        <Route path="/reviews" element={<Layout><ReviewsPage /></Layout>} />
-        <Route path="/reviews/:id" element={<Layout><ReviewDetailPage /></Layout>} />
       </Routes>
     </Router>
   );

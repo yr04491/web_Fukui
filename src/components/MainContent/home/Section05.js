@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './Section05.module.css';
 import roadNumberImage from '../../../assets/icons/05_0.png';
-import PlaceCard from '../../common/PlaceCard/PlaceCard';
+import SchoolCard from '../../common/SchoolCard/SchoolCard';
 import SectionTitle from '../../common/SectionTitle';
 import ExperienceSection from '../../common/ExperienceSection/ExperienceSection';
 
@@ -19,10 +19,10 @@ const Section05 = () => {
 
             {/* 説明テキスト */}
             <div className={styles.description}>
-                <p className={styles.descriptionTitle1}>ここにことばをいれる</p>
-                <p className={styles.descriptionTitle2}>ここにことばをいれるここにことば</p>
+                <p className={styles.descriptionTitle1}>全日制の高校に行けるのかしら？</p>
+                <p className={styles.descriptionTitle2}>大丈夫、様々な高校、通い方があるんです。</p>
                 <p className={styles.descriptionText}>
-                    ここに卒業後の内容をいれる。ここに卒業後の内容をいれる。ここに卒業後の内容をいれる。ここに卒業後の内容をいれる。ここに卒業後の内容をいれる。
+                    今の時代、通信制・定時制・サポート高校など、福井にいながら、様々な勉強方法で高校卒業資格を取得できるのです。
                 </p>
             </div>
 
@@ -33,14 +33,14 @@ const Section05 = () => {
                     <h3 className={styles.placeTitle}>学校・フリースクールの紹介</h3>
                 </div>
                 <div className={styles.placeCardArea}>
-                    <PlaceCard cardId={7} />
-                    <PlaceCard cardId={8} />
-                    <PlaceCard cardId={3} />
+                    <SchoolCard cardId={1} />
+                    <SchoolCard cardId={2} />
+                    <SchoolCard cardId={3} />
                 </div>
 
                 <button 
                     className={styles.moreButton}
-                    onClick={() => navigate('/paths')}
+                    onClick={() => navigate('/schools')}
                 >
                     <div className={styles.buttonIconContainer}>
                         <div className={styles.playIcon}></div>
@@ -55,10 +55,12 @@ const Section05 = () => {
             {/* 体験談セクション追加 */}
             <ExperienceSection 
                 title={"みんなの体験談を見てみよう！\n卒業後の進路をどう選んだ？"}
-                tweetCardIds={[5, 6]}
+                questionId="4-1-2"
+                limit={6}
                 moreButtonText="卒業後の進路の体験談を見る"
                 customClass={styles.experience05}
-                onMoreClick={() => navigate('/experiences')}
+                onMoreClick={() => navigate('/experiences?questionId=4-1-2')}
+                sectionName="卒業後の進路に関する体験談"
             />
         </div>
     );

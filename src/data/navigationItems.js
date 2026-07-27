@@ -25,14 +25,17 @@ export const navigationItems = [
     component: Section01Content 
   },
   {
-    title: '行政が行う公的支援',
-    subItems: ['公的機関の支援の種類'],
+    title: '公的支援や医療機関',
+    subItems: ['公的機関の支援の種類や', '医療機関を紹介'],
     path: '/section02', 
     component: Section02Content 
   },
   {
     title: 'まだまだある！\nみんなの居場所',
-    subItems: ['こどもの居場所', '保護者の居場所'],
+    subItems: [
+      { label: 'こどもの居場所', path: '/section03#kids-place' },
+      { label: '保護者の居場所', path: '/section03#parents-place' },
+    ],
     path: '/section03', 
     component: Section03Content 
   },
@@ -43,7 +46,7 @@ export const navigationItems = [
     component: Section04Content // 
   },
   {
-    title: '中学卒業のこと',
+    title: '中学卒業後のこと',
     subItems: ['義務教育後の選択肢'],
     path: '/section05', // 
     component: Section05Content // 

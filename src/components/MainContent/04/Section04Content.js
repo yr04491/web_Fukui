@@ -1,7 +1,7 @@
 // src/components/MainContent/04/Section04Content.js
 
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import layoutStyles from '../commonPageLayout.module.css';
 import styles from './Section04Content.module.css';
 import Footer from '../../common/Footer';
@@ -12,9 +12,27 @@ import dotlineImage from '../../../assets/images/dotline.png';
 import vectorRB from '../../../assets/images/vectorRB.png';
 
 const Section04Content = () => {
-  const navigate = useNavigate();
   return (
     <div className={`${layoutStyles.pageContainer} ${styles.section04Content}`}>
+      <Helmet>
+        <title>インタビュー 不登校とぼくら｜ぼくらのみち</title>
+        <meta name="description" content="不登校を経験した子どもたちや保護者のリアルな声をインタビュー形式でお届けします。" />
+        <link rel="canonical" href="https://bokuranomichi-fukui.com/section04" />
+        <meta property="og:title" content="インタビュー 不登校とぼくら｜ぼくらのみち" />
+        <meta property="og:description" content="不登校を経験した子どもたちや保護者のリアルな声をインタビュー形式でお届けします。" />
+        <meta property="og:url" content="https://bokuranomichi-fukui.com/section04" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://bokuranomichi-fukui.com/title.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "TOP", "item": "https://bokuranomichi-fukui.com/"},
+            {"@type": "ListItem", "position": 2, "name": "インタビュー 不登校とぼくら", "item": "https://bokuranomichi-fukui.com/section04"}
+          ]
+        })}</script>
+      </Helmet>
 
       {/* パンくずリスト */}
       <Breadcrumbs sectionNumber="04" sectionTitle="不登校とぼくら" />
@@ -44,22 +62,15 @@ const Section04Content = () => {
         <div className={styles.sectionHeader}>
           <h3 className={styles.sectionTitle}>
             <span className={styles.titleLine1}>自分と同じ気持ちの人はいるかな。</span>
-            <span className={styles.titleLine2}>みんなのインタビューを見てみよう！</span>
+            <span className={styles.titleLine2}>不登校を体験したみんなのインタビューを見てみよう！</span>
           </h3>
         </div>
         <div className={styles.interviewCardArea}>
           <InterviewCard cardId={1} />
+          <div className={styles.dividerLine}></div>
+          <span className={styles.titleLine2}>支援者のみなさんからのメッセージ</span>
           <InterviewCard cardId={2} />
         </div>
-        <button 
-          className={styles.interviewButton}
-          onClick={() => navigate('/interviews')}
-        >
-          <div className={styles.buttonIconContainer}>
-            <div className={styles.playIcon}></div>
-          </div>
-          <span>インタビューをもっと見る</span>
-        </button>
       </div>
 
       {/* フッター */}

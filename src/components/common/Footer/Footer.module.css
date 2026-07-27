@@ -20,7 +20,8 @@
   flex-grow: 0;
   margin-top: 0;
   border-radius: 0; 
-  box-sizing: border-box; 
+  box-sizing: border-box;
+  position: relative;
 }
 
 .footerContent {
@@ -60,7 +61,7 @@
   width: 270px; 
   height: auto; 
   flex: none;
-  order: 1;
+  order: 0;
   flex-grow: 0;
   display: flex;
   justify-content: center; /* 中央寄せに変更 */ 
@@ -97,6 +98,19 @@
   object-fit: contain;
   pointer-events: none; 
   user-select: none; 
+}
+
+.adoptionText {
+  width: 100%;
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 1.5;
+  color: #555555;
+  text-align: center;
+  margin: 5px 0 10px 0;
+  order: 1;
 }
 
 /* ▼ 既存の .footerMenu と .menuItem を .footerList に変更 ▼ */
@@ -160,6 +174,57 @@
 }
 /* ▲ スタイル変更ここまで ▲ */
 
+/* フローティング「体験談を投稿する」ボタン */
+.floatingPostButton {
+  position: fixed;
+  bottom: 30px;
+  right: 20px;
+  background: #2A8A6E;
+  color: #ffffff;
+  border: none;
+  border-radius: 28px;
+  padding: 14px 20px;
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
+  white-space: nowrap;
+}
+
+.floatingPostButton:hover {
+  background: #1f7059;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+}
+
+.floatingPostButton:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* タブレット: コンテンツ 540px 中央寄せ */
+@media (min-width: 540px) and (max-width: 982px) {
+  .floatingPostButton {
+    right: calc((100vw - 540px) / 2 + 20px);
+  }
+}
+
+/* デスクトップ小: margin-left 392px + max-width 540px = 932px */
+@media (min-width: 983px) and (max-width: 1303px) {
+  .floatingPostButton {
+    right: calc(100vw - 912px);
+  }
+}
+
+/* デスクトップ大: コンテナ 1304px 中央寄せ */
+@media (min-width: 1304px) {
+  .floatingPostButton {
+    right: calc(50vw - 260px);
+  }
+}
 
 /* レスポンシブ対応 */
 @media (max-width: 768px) {

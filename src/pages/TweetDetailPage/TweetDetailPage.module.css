@@ -63,6 +63,8 @@
 .subsectionTitle { font-size: 14px; font-weight: 600; color: #444; margin: 0 0 8px 0; padding-left: 8px; border-left: 3px solid #F4BED3; }
 .subsection .articleBody { padding-left: 8px; }
 
+.disclaimer { font-size: 12px; color: #888; margin: 24px 0 32px 0; }
+
 .relatedSection { margin-top: 32px; }
 .relatedTitle { font-size: 16px; font-weight: 700; margin: 0 0 12px 0; text-align: center; }
 .relatedDivider { height: 1px; background: #E0E0E0; margin-bottom: 16px; }

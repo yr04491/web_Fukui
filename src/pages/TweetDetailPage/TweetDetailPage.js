@@ -618,6 +618,10 @@ const TweetDetailPage = () => {
             </section>
           )}
 
+          <p className={styles.disclaimer}>
+            ※投稿内容は個人の感想であり、専門的な診断を代替するものではありません。
+          </p>
+
           <section className={styles.relatedSection}>
             <h4 className={styles.relatedTitle}>
               {relatedContext ? (

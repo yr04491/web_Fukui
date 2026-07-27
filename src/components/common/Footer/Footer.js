@@ -37,12 +37,17 @@ const Footer = () => {
     }
     // 卒業後の進路をさがすページに遷移
     if (item === '中学卒業後の進路をさがす') {
-      navigate('/paths');
+      navigate('/schools');
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
     // 体験談の投稿ページに遷移
     if (item === '体験談の投稿') {
       navigate('/experiences/post');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    // 学校・行政・医療情報の一覧ページに遷移
+    if (item === '学校・行政・医療情報の一覧') {
+      navigate('/school-info');
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };

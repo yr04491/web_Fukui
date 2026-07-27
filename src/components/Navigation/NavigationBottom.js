@@ -72,13 +72,17 @@ const NavigationBottom = ({ onActionCompleted }) => {
       </div>
       
       {/* プロジェクトと私たちについて */}
-      <div 
+      <div
         className={commonStyles.navFooter}
         onClick={handleFooterClick}
         style={{ cursor: 'pointer', marginBottom: '10px' }}
       >
         プロジェクトと私たちについて
       </div>
+
+      <button className={commonStyles.emailButton}>
+        メールでお問い合わせ
+      </button>
       {/* // 寄付のお願いセクション
       <div className={commonStyles.donationSection}>
         <h3 className={commonStyles.donationTitle}>寄付のお願い</h3>

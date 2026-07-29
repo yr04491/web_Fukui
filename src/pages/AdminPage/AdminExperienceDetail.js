@@ -5,6 +5,7 @@ import styles from './AdminExperienceDetail.module.css';
 import Breadcrumbs from '../../components/common/Breadcrumbs';
 import Footer from '../../components/common/Footer';
 import { getExperienceById, approveExperience, rejectExperience, returnToPending } from '../../utils/gasApi';
+import { splitMultiSelect } from '../../utils/multiSelect';
 
 const AdminExperienceDetail = () => {
   const { id } = useParams();
@@ -122,6 +123,9 @@ const AdminExperienceDetail = () => {
     currentThoughts: experienceData.currentThoughts || '',
     message: experienceData.message || ''
   };
+
+  // 2-1 きっかけは複数選択のため、項目ごとに分けて表示する
+  const triggerItems = splitMultiSelect(displayData.trigger);
 
   // 承認処理
   const handleApprove = async () => {
@@ -314,10 +318,14 @@ const AdminExperienceDetail = () => {
                   <span>{displayData.family}</span>
                 </div>
               )}
-              {displayData.trigger && (
+              {triggerItems.length > 0 && (
                 <div className={styles.metaRow}>
-                  <span>きっかけ</span>
-                  <span>{displayData.trigger}</span>
+                  <span className={styles.metaLabel}>きっかけ</span>
+                  <span className={styles.metaValue}>
+                    {triggerItems.map((item) => (
+                      <span key={item} className={styles.metaValueItem}>{item}</span>
+                    ))}
+                  </span>
                 </div>
               )}
             </div>
@@ -421,11 +429,15 @@ const AdminExperienceDetail = () => {
               <h3 className={styles.sectionHeading}>2. 不登校のきっかけと経過</h3>
               <div className={styles.sectionDivider}></div>
               
-              {displayData.trigger && (
+              {triggerItems.length > 0 && (
                 <div className={styles.subsection}>
                   <h4 className={styles.subsectionTitle}>2-1. 不登校になったきっかけ</h4>
                   <div className={styles.articleBody}>
-                    <p>{displayData.trigger}</p>
+                    <ul className={styles.triggerList}>
+                      {triggerItems.map((item) => (
+                        <li key={item}>{item}</li>
+                      ))}
+                    </ul>
                   </div>
                 </div>
               )}

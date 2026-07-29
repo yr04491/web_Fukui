@@ -145,30 +145,30 @@ function searchExperiences(keyword, filters = {}) {
         
         // 学年フィルター
         if (filters.grade && filters.grade.length > 0) {
-          const rowGrade = String(row[col.grade] || '');
-          if (!filters.grade.some(filterGrade => rowGrade.includes(filterGrade))) {
+          const rowGrade = normalizeForCompare_(row[col.grade]);
+          if (!filters.grade.some(filterGrade => rowGrade.includes(normalizeForCompare_(filterGrade)))) {
             matchFilter = false;
           }
         }
 
         // きっかけフィルター（複数選択可能な項目）
         if (filters.trigger && filters.trigger.length > 0) {
-          const rowTrigger = String(row[col.trigger] || '');
+          const rowTrigger = normalizeForCompare_(normalizeMultiSelect_(row[col.trigger]));
           // 選択されたフィルターのいずれかが含まれているかチェック
-          if (!filters.trigger.some(filterTrigger => rowTrigger.includes(filterTrigger))) {
+          if (!filters.trigger.some(filterTrigger => rowTrigger.includes(normalizeForCompare_(filterTrigger)))) {
             matchFilter = false;
           }
         }
-        
+
         // サポートの種類フィルター（3つの列のいずれかに含まれているか）
         if (filters.support && filters.support.length > 0) {
           const support1 = String(row[col.support1Type] || '');
           const support2 = String(row[col.support2Type] || '');
           const support3 = String(row[col.support3Type] || '');
-          const allSupports = support1 + ', ' + support2 + ', ' + support3;
-          
+          const allSupports = normalizeForCompare_(support1 + ', ' + support2 + ', ' + support3);
+
           // 選択されたフィルターのいずれかが含まれているかチェック
-          if (!filters.support.some(filterSupport => allSupports.includes(filterSupport))) {
+          if (!filters.support.some(filterSupport => allSupports.includes(normalizeForCompare_(filterSupport)))) {
             matchFilter = false;
           }
         }
@@ -235,7 +235,7 @@ function searchExperiences(keyword, filters = {}) {
         authorInitial: getInitial(row[col.authorName]),
         date: formatDate(row[col.timestamp]),
         grade: row[col.grade],
-        trigger: row[col.trigger],
+        trigger: normalizeMultiSelect_(row[col.trigger]),
         support: [row[col.support1Type], row[col.support2Type], row[col.support3Type]].filter(s => s).join(', ')
       });
     }
@@ -306,7 +306,7 @@ function getAllExperiences(limit = null) {
         birthYear: String(row[col.birthYear] || ''),
         grade: row[col.grade],
         family: row[col.family],
-        trigger: row[col.trigger],
+        trigger: normalizeMultiSelect_(row[col.trigger]),
         schools: schools,  // 学校情報を追加
         supports: supports  // サポート情報を追加
       });
@@ -414,7 +414,7 @@ function getExperienceById(id) {
         family: row[col.family] || '',                          // 1-5 家族構成
 
         // セクション2: 不登校のきっかけ
-        trigger: row[col.trigger] || '',
+        trigger: normalizeMultiSelect_(row[col.trigger]),
         detail: String(row[col.detail] || ''),
         description: String(row[col.detail] || ''), // 互換性のため
 
@@ -487,6 +487,48 @@ function postExperience(experienceData) {
     success: false,
     message: '体験談の投稿はGoogleフォームをご利用ください'
   };
+}
+
+/**
+ * ヘルパー関数: 複数選択（チェックボックス）の回答を整える
+ *
+ * Googleフォームの複数選択は「A, B」のようにカンマ区切りで1セルに記録されますが、
+ * 空の選択肢が混ざると「A, B, 」のように末尾へカンマが残ります。
+ * 区切り直したうえで空要素を捨て、'A, B' の形に揃えます。
+ *
+ * @param {*} value - セルの値
+ * @return {string} - 整形済みのカンマ区切り文字列
+ */
+function normalizeMultiSelect_(value) {
+  return String(value || '')
+    .split(/[,、，]/)
+    .map(item => item.trim())
+    .filter(item => item)
+    .join(', ');
+}
+
+/**
+ * ヘルパー関数: 絞り込み比較用に文字列を正規化する
+ *
+ * フロントの選択肢とフォームの選択肢は、見た目が同じでも文字が違うことがあります。
+ * 例: 「いじめ／友人関係」(全角スラッシュ U+FF0F) と
+ *     「いじめ/友人関係」(半角スラッシュ U+002F) は includes で一致しません。
+ * 全角の英数字・記号を半角へ畳み、空白を無視して比較できるようにします。
+ *
+ * ※ 表示用の値には使いません。比較のときだけ通してください。
+ *
+ * @param {*} value - 比較したい文字列
+ * @return {string} - 正規化後の文字列
+ */
+function normalizeForCompare_(value) {
+  return String(value || '')
+    // 全角の英数字・記号（！〜～）を半角へ
+    .replace(/[！-～]/g, ch => String.fromCharCode(ch.charCodeAt(0) - 0xFEE0))
+    // 半角中点を全角中点へ（「発達特性・体調要因」の表記ゆれ対策）
+    .replace(/･/g, '・')
+    // 全角スペースを含め、空白はすべて無視する
+    .replace(/[\s　]/g, '')
+    .toLowerCase();
 }
 
 /**
@@ -653,7 +695,7 @@ function getExperiencesByQuestion(questionId, limit = 6) {
         date: formatDate(row[col.timestamp]),
         grade: String(row[col.grade] || ''),
         family: String(row[col.family] || ''),
-        trigger: String(row[col.trigger] || ''),
+        trigger: normalizeMultiSelect_(row[col.trigger]),
         questionId: questionId
       });
     }

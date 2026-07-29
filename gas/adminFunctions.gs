@@ -163,7 +163,7 @@ function listExperiencesByStatus_(targetStatus) {
       authorName: row[col.authorName] || '匿名',
       date: formatDate(row[col.timestamp]),
       startGrade: row[col.grade] || '',
-      trigger: row[col.trigger] || '',
+      trigger: normalizeMultiSelect_(row[col.trigger]),
       supportTypes: supportTypes.join(', '),
       status: status,
       lastEditDate: row[col.lastEditDate] || '',

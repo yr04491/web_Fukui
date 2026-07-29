@@ -153,7 +153,7 @@ function searchExperiences(keyword, filters = {}) {
 
         // きっかけフィルター（複数選択可能な項目）
         if (filters.trigger && filters.trigger.length > 0) {
-          const rowTrigger = String(row[col.trigger] || '');
+          const rowTrigger = normalizeMultiSelect_(row[col.trigger]);
           // 選択されたフィルターのいずれかが含まれているかチェック
           if (!filters.trigger.some(filterTrigger => rowTrigger.includes(filterTrigger))) {
             matchFilter = false;
@@ -235,7 +235,7 @@ function searchExperiences(keyword, filters = {}) {
         authorInitial: getInitial(row[col.authorName]),
         date: formatDate(row[col.timestamp]),
         grade: row[col.grade],
-        trigger: row[col.trigger],
+        trigger: normalizeMultiSelect_(row[col.trigger]),
         support: [row[col.support1Type], row[col.support2Type], row[col.support3Type]].filter(s => s).join(', ')
       });
     }
@@ -306,7 +306,7 @@ function getAllExperiences(limit = null) {
         birthYear: String(row[col.birthYear] || ''),
         grade: row[col.grade],
         family: row[col.family],
-        trigger: row[col.trigger],
+        trigger: normalizeMultiSelect_(row[col.trigger]),
         schools: schools,  // 学校情報を追加
         supports: supports  // サポート情報を追加
       });
@@ -414,7 +414,7 @@ function getExperienceById(id) {
         family: row[col.family] || '',                          // 1-5 家族構成
 
         // セクション2: 不登校のきっかけ
-        trigger: row[col.trigger] || '',
+        trigger: normalizeMultiSelect_(row[col.trigger]),
         detail: String(row[col.detail] || ''),
         description: String(row[col.detail] || ''), // 互換性のため
 
@@ -487,6 +487,24 @@ function postExperience(experienceData) {
     success: false,
     message: '体験談の投稿はGoogleフォームをご利用ください'
   };
+}
+
+/**
+ * ヘルパー関数: 複数選択（チェックボックス）の回答を整える
+ *
+ * Googleフォームの複数選択は「A, B」のようにカンマ区切りで1セルに記録されますが、
+ * 空の選択肢が混ざると「A, B, 」のように末尾へカンマが残ります。
+ * 区切り直したうえで空要素を捨て、'A, B' の形に揃えます。
+ *
+ * @param {*} value - セルの値
+ * @return {string} - 整形済みのカンマ区切り文字列
+ */
+function normalizeMultiSelect_(value) {
+  return String(value || '')
+    .split(/[,、，]/)
+    .map(item => item.trim())
+    .filter(item => item)
+    .join(', ');
 }
 
 /**
@@ -653,7 +671,7 @@ function getExperiencesByQuestion(questionId, limit = 6) {
         date: formatDate(row[col.timestamp]),
         grade: String(row[col.grade] || ''),
         family: String(row[col.family] || ''),
-        trigger: String(row[col.trigger] || ''),
+        trigger: normalizeMultiSelect_(row[col.trigger]),
         questionId: questionId
       });
     }

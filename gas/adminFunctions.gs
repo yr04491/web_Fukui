@@ -34,6 +34,15 @@ const STATUS = {
 // メール送信設定
 const FORM_URL = 'https://docs.google.com/forms/d/YOUR_FORM_ID/edit'; // フォームの編集URLに置き換えてください
 
+// 本番スプレッドシートのID（ここに実際の本番スプレッドシートIDを設定してください）
+//
+// メール送信は、このIDのスプレッドシートで動いているときだけ実行されます。
+// 開発用にスプレッドシートをコピーすると新しいIDが自動で振られるため、
+// コピー側では設定不要でメール送信が無効になります。
+//
+// 重要: 未設定（プレースホルダのまま）だと本番でもメールが送信されません。
+const PROD_SPREADSHEET_ID = 'YOUR_PROD_SPREADSHEET_ID_HERE';
+
 // 管理者メールアドレスのリスト（実際のメールアドレスに変更してください）
 const ADMIN_EMAILS = [
   'admin@example.com',
@@ -484,6 +493,46 @@ function addRejectReasonToHistory(existingHistory, newReason) {
 }
 
 /**
+ * 現在のスプレッドシートが本番環境かどうかを判定する
+ *
+ * スプレッドシートをコピーするとIDが新しく振り直されるため、
+ * 開発用コピーでは自動的に false になります。
+ *
+ * @return {boolean} - 本番環境なら true
+ */
+function isProduction_() {
+  try {
+    return SpreadsheetApp.getActiveSpreadsheet().getId() === PROD_SPREADSHEET_ID;
+  } catch (error) {
+    // スプレッドシートに紐づかない実行環境では本番とみなさない
+    Logger.log('環境判定に失敗したため開発環境として扱います: ' + error.toString());
+    return false;
+  }
+}
+
+/**
+ * メール送信の唯一の入り口
+ *
+ * 開発環境では実際には送信せず、内容をログに出力します。
+ * メール送信を追加する場合は、必ずこの関数を経由させてください。
+ *
+ * @param {object} options - MailApp.sendEmail に渡すオプション
+ */
+function sendMail_(options) {
+  if (!isProduction_()) {
+    Logger.log(
+      '[開発環境] メール送信をスキップしました\n' +
+      '  宛先: ' + options.to + '\n' +
+      '  件名: ' + options.subject + '\n' +
+      '  本文:\n' + options.body
+    );
+    return;
+  }
+
+  MailApp.sendEmail(options);
+}
+
+/**
  * 承認メール送信
  * @param {string} email - 送信先メールアドレス
  * @param {string} authorName - 投稿者名
@@ -491,11 +540,11 @@ function addRejectReasonToHistory(existingHistory, newReason) {
  */
 function sendApprovalEmail(email, authorName, title) {
   try {
-    const subject = '【承認通知】あなたの体験談が承認されました';
+    const subject = '【掲載通知】あなたの体験談が掲載されました';
     const body = `${authorName}様
 
 この度は体験談をご投稿いただき、ありがとうございました。
-管理者による審査の結果、あなたの体験談が承認されました。
+管理者による確認の結果、あなたの体験談が掲載されました。
 
 タイトル: ${title}
 承認日時: ${Utilities.formatDate(new Date(), 'Asia/Tokyo', 'yyyy年MM月dd日 HH:mm')}
@@ -510,7 +559,7 @@ function sendApprovalEmail(email, authorName, title) {
 ご不明な点がございましたら、お気軽にお問い合わせください。
 `;
     
-    MailApp.sendEmail({
+    sendMail_({
       to: email,
       subject: subject,
       body: body
@@ -536,16 +585,18 @@ function sendRejectionEmail(email, authorName, title, reason) {
     const body = `${authorName}様
 
 この度は体験談をご投稿いただき、ありがとうございました。
+お送りいただいたお話は、今悩んでいる多くの方の力になる貴重な内容だと感じております。
+管理者による確認の結果、以下の理由により一部修正をお願いしたく、ご連絡いたしました。
+管理者一同、投稿を楽しみにしております
 
-管理者による確認の結果、以下の理由により再投稿をお願いしたく、ご連絡いたします。
 
 タイトル: ${title}
 
-【却下理由】
+【修正依頼】
 ${reason}
 
 お手数ですが、上記の点を修正の上、再度ご投稿いただけますと幸いです。
-※再投稿の際は、「回答を編集」から修正し、送信してください。
+※再投稿の際は、ご自身が登録されたGoogleフォームの編集から記入・送信してください。
 
 【再投稿用フォーム】
 ${FORM_URL}
@@ -557,7 +608,7 @@ ${FORM_URL}
 このメールは自動送信されています。
 `;
     
-    MailApp.sendEmail({
+    sendMail_({
       to: email,
       subject: subject,
       body: body

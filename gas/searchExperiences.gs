@@ -145,30 +145,30 @@ function searchExperiences(keyword, filters = {}) {
         
         // 学年フィルター
         if (filters.grade && filters.grade.length > 0) {
-          const rowGrade = String(row[col.grade] || '');
-          if (!filters.grade.some(filterGrade => rowGrade.includes(filterGrade))) {
+          const rowGrade = normalizeForCompare_(row[col.grade]);
+          if (!filters.grade.some(filterGrade => rowGrade.includes(normalizeForCompare_(filterGrade)))) {
             matchFilter = false;
           }
         }
 
         // きっかけフィルター（複数選択可能な項目）
         if (filters.trigger && filters.trigger.length > 0) {
-          const rowTrigger = normalizeMultiSelect_(row[col.trigger]);
+          const rowTrigger = normalizeForCompare_(normalizeMultiSelect_(row[col.trigger]));
           // 選択されたフィルターのいずれかが含まれているかチェック
-          if (!filters.trigger.some(filterTrigger => rowTrigger.includes(filterTrigger))) {
+          if (!filters.trigger.some(filterTrigger => rowTrigger.includes(normalizeForCompare_(filterTrigger)))) {
             matchFilter = false;
           }
         }
-        
+
         // サポートの種類フィルター（3つの列のいずれかに含まれているか）
         if (filters.support && filters.support.length > 0) {
           const support1 = String(row[col.support1Type] || '');
           const support2 = String(row[col.support2Type] || '');
           const support3 = String(row[col.support3Type] || '');
-          const allSupports = support1 + ', ' + support2 + ', ' + support3;
-          
+          const allSupports = normalizeForCompare_(support1 + ', ' + support2 + ', ' + support3);
+
           // 選択されたフィルターのいずれかが含まれているかチェック
-          if (!filters.support.some(filterSupport => allSupports.includes(filterSupport))) {
+          if (!filters.support.some(filterSupport => allSupports.includes(normalizeForCompare_(filterSupport)))) {
             matchFilter = false;
           }
         }
@@ -505,6 +505,30 @@ function normalizeMultiSelect_(value) {
     .map(item => item.trim())
     .filter(item => item)
     .join(', ');
+}
+
+/**
+ * ヘルパー関数: 絞り込み比較用に文字列を正規化する
+ *
+ * フロントの選択肢とフォームの選択肢は、見た目が同じでも文字が違うことがあります。
+ * 例: 「いじめ／友人関係」(全角スラッシュ U+FF0F) と
+ *     「いじめ/友人関係」(半角スラッシュ U+002F) は includes で一致しません。
+ * 全角の英数字・記号を半角へ畳み、空白を無視して比較できるようにします。
+ *
+ * ※ 表示用の値には使いません。比較のときだけ通してください。
+ *
+ * @param {*} value - 比較したい文字列
+ * @return {string} - 正規化後の文字列
+ */
+function normalizeForCompare_(value) {
+  return String(value || '')
+    // 全角の英数字・記号（！〜～）を半角へ
+    .replace(/[！-～]/g, ch => String.fromCharCode(ch.charCodeAt(0) - 0xFEE0))
+    // 半角中点を全角中点へ（「発達特性・体調要因」の表記ゆれ対策）
+    .replace(/･/g, '・')
+    // 全角スペースを含め、空白はすべて無視する
+    .replace(/[\s　]/g, '')
+    .toLowerCase();
 }
 
 /**

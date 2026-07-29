@@ -11,6 +11,7 @@ import dotlineImage from '../../../assets/images/dotline.png';
 import SearchIcon from '../../../assets/icons/SearchIcon';
 import FilterIcon from '../../../assets/icons/FilterIcon';
 import { searchExperiences } from '../../../utils/gasApi';
+import experienceFilterConfig from '../../../config/experienceFilterConfig';
 
 const ExperiencesSearchResultsContent = () => {
   const [searchParams] = useSearchParams();
@@ -39,24 +40,7 @@ const ExperiencesSearchResultsContent = () => {
     { label: '検索結果', path: `/experiences/search?keyword=${urlKeyword}` }
   ];
 
-  const filterConfig = {
-    selectedColor: '#EF9F94',
-    buttonColor: '#EF9F94',
-    categories: [
-      {
-        title: '初めて不登校になった学年',
-        options: ['小学校1年生', '小学校2年生', '小学校3年生', '小学校4年生', '小学校5年生', '小学校6年生', '中学校1年生', '中学校2年生', '中学校3年生']
-      },
-      {
-        title: '不登校になったきっかけ',
-        options: ['いじめ／友人関係', '勉強のつまずき', '発達特性・体調要因', '教師や学校との関係', 'はっきりとした原因が無い', 'その他']
-      },
-      {
-        title: '利用したサポートの種類',
-        options: ['公的なフリースクール', 'スクールカウンセラー', '学校内の支援教室（校内サポートルーム等）', 'スクールソーシャルワーカー', '心のパートナー', '行政の相談窓口', '行政主催のお話会やイベント', '民間のフリースクール', '民間の学習支援', '民間主催のお話会やイベント', '民間の相談窓口', 'その他']
-      }
-    ]
-  };
+  const filterConfig = experienceFilterConfig;
 
   // 初回レンダリング時に検索を実行
   useEffect(() => {

@@ -491,11 +491,11 @@ function addRejectReasonToHistory(existingHistory, newReason) {
  */
 function sendApprovalEmail(email, authorName, title) {
   try {
-    const subject = '【承認通知】あなたの体験談が承認されました';
+    const subject = '【掲載通知】あなたの体験談が掲載されました';
     const body = `${authorName}様
 
 この度は体験談をご投稿いただき、ありがとうございました。
-管理者による審査の結果、あなたの体験談が承認されました。
+管理者による確認の結果、あなたの体験談が掲載されました。
 
 タイトル: ${title}
 承認日時: ${Utilities.formatDate(new Date(), 'Asia/Tokyo', 'yyyy年MM月dd日 HH:mm')}
@@ -536,16 +536,18 @@ function sendRejectionEmail(email, authorName, title, reason) {
     const body = `${authorName}様
 
 この度は体験談をご投稿いただき、ありがとうございました。
+お送りいただいたお話は、今悩んでいる多くの方の力になる貴重な内容だと感じております。
+管理者による確認の結果、以下の理由により一部修正をお願いしたく、ご連絡いたしました。
+管理者一同、投稿を楽しみにしております
 
-管理者による確認の結果、以下の理由により再投稿をお願いしたく、ご連絡いたします。
 
 タイトル: ${title}
 
-【却下理由】
+【修正依頼】
 ${reason}
 
 お手数ですが、上記の点を修正の上、再度ご投稿いただけますと幸いです。
-※再投稿の際は、「回答を編集」から修正し、送信してください。
+※再投稿の際は、ご自身が登録されたGoogleフォームの編集から記入・送信してください。
 
 【再投稿用フォーム】
 ${FORM_URL}

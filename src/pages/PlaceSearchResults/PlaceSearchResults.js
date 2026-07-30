@@ -250,11 +250,12 @@ const PlaceSearchResults = () => {
         </div>
       </div>
 
-      <FilterModal 
+      <FilterModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         filterConfig={filterConfig}
         onApply={handleApplyFilters}
+        selectedFilters={activeFilters}
       />
 
       <Footer />

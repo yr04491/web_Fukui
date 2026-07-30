@@ -285,12 +285,13 @@ const PathsContent = () => {
         </div>
       </div>
 
-      <FilterModal 
+      <FilterModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         filterConfig={filterConfig}
         onApply={handleFilterApply}
         showPeriodTab={false}
+        selectedFilters={selectedFilters}
       />
       <Footer />
     </div>

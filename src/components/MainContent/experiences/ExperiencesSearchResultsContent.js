@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import layoutStyles from '../commonPageLayout.module.css';
@@ -13,18 +13,25 @@ import FilterIcon from '../../../assets/icons/FilterIcon';
 import { searchExperiences } from '../../../utils/gasApi';
 import experienceFilterConfig from '../../../config/experienceFilterConfig';
 
+/**
+ * 選択されている絞り込み条件の数を数える
+ * @param {object} filters - { grade: [...], trigger: [...] } 形式
+ * @return {number} - 選択数
+ */
+const countFilters = (filters) =>
+  Object.values(filters || {}).reduce((sum, values) => sum + (values ? values.length : 0), 0);
+
 const ExperiencesSearchResultsContent = () => {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
+
+  // 検索欄の状態（まだ検索していない、入力中の条件）
   const [searchKeyword, setSearchKeyword] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [filterCount, setFilterCount] = useState(0);
-  const [filters, setFilters] = useState({});
-  
-  // モーダルで選択中の一時的なフィルター（検索実行まで表示に反映させない）
   const [tempFilterCount, setTempFilterCount] = useState(0);
   const [tempFilters, setTempFilters] = useState({});
-  
+  const [formError, setFormError] = useState(null);
+
   // 検索結果の状態管理
   const [searchResults, setSearchResults] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -34,6 +41,21 @@ const ExperiencesSearchResultsContent = () => {
   const urlKeyword = searchParams.get('keyword') || '';
   const urlFilters = searchParams.get('filters');
 
+  // 実行済みの検索条件はURLだけを正とする。
+  // 検索欄用のstateと分けておかないと、検索欄の操作（クリア等）が
+  // 検索結果の表示にそのまま波及してしまう。
+  const appliedFilters = useMemo(() => {
+    if (!urlFilters) return {};
+    try {
+      return JSON.parse(urlFilters);
+    } catch (e) {
+      console.error('フィルターのパースエラー:', e);
+      return {};
+    }
+  }, [urlFilters]);
+
+  const appliedFilterCount = useMemo(() => countFilters(appliedFilters), [appliedFilters]);
+
   const breadcrumbItems = [
     { label: 'TOP', path: '/' },
     { label: '体験談を探す', path: '/experiences' },
@@ -42,37 +64,31 @@ const ExperiencesSearchResultsContent = () => {
 
   const filterConfig = experienceFilterConfig;
 
-  // 初回レンダリング時に検索を実行
+  // URLの条件が変わったら、検索欄と検索結果の両方をその条件に合わせる
   useEffect(() => {
-    // URLからフィルター情報を取得
-    let initialFilters = {};
-    if (urlFilters) {
-      try {
-        initialFilters = JSON.parse(urlFilters);
-        setFilters(initialFilters);
-        // フィルター数をカウント
-        const count = Object.values(initialFilters).reduce((sum, arr) => sum + arr.length, 0);
-        setFilterCount(count);
-      } catch (e) {
-        console.error('フィルターのパースエラー:', e);
-      }
-    }
-    
+    // 検索欄（一時state）もURLの条件へ同期する。
+    // これをしないと、体験談さがすページから遷移した1回目だけ
+    // 絞り込みの件数と選択内容が検索欄に反映されない。
+    setTempFilters(appliedFilters);
+    setTempFilterCount(appliedFilterCount);
+    setSearchKeyword(urlKeyword === '*' ? '' : urlKeyword); // '*'の場合は空文字に変換
+    setFormError(null);
+
     if (urlKeyword) {
-      const keyword = urlKeyword === '*' ? '' : urlKeyword; // '*'の場合は空文字に変換
-      setSearchKeyword(keyword);
-      handleSearch(urlKeyword, initialFilters);
+      handleSearch(urlKeyword, appliedFilters);
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [urlKeyword, urlFilters]);
+  }, [urlKeyword, appliedFilters, appliedFilterCount]);
 
   // 検索処理
   const handleSearch = async (keyword, currentFilters = {}) => {
     // キーワードが'*'（全検索）または空でフィルターがある場合は検索実行
     const searchKeyword = keyword === '*' ? '' : keyword;
-    
-    if (!searchKeyword.trim() && Object.keys(currentFilters).length === 0) {
+
+    // モーダルは未選択のカテゴリも空配列で返すため、キーの有無ではなく選択数で判定する
+    if (!searchKeyword.trim() && countFilters(currentFilters) === 0) {
       setError('検索キーワードまたは絞り込み条件を指定してください。');
+      setSearchResults([]);
       return;
     }
 
@@ -100,36 +116,33 @@ const ExperiencesSearchResultsContent = () => {
 
   // 検索ボタンクリック
   const handleSearchClick = () => {
-    console.log('=== handleSearchClick called ===');
-    console.log('searchKeyword:', searchKeyword);
-    console.log('searchKeyword.trim():', searchKeyword.trim());
-    console.log('tempFilterCount:', tempFilterCount);
-    console.log('tempFilters:', tempFilters);
-    
     // バリデーション: キーワードもフィルターも指定されていない場合
     if (!searchKeyword.trim() && tempFilterCount === 0) {
-      console.log('バリデーションエラー: キーワードとフィルターが両方未指定');
-      setError('検索キーワードまたは絞り込み条件を指定してください。');
+      // 検索欄の入力に対する指摘なので、検索結果側ではなく検索欄の下に出す
+      setFormError('検索キーワードまたは絞り込み条件を指定してください。');
       return;
     }
 
-    console.log('バリデーション通過、検索を実行');
-    
-    // 検索実行時に一時的なフィルターを正式なフィルターに反映
-    setFilterCount(tempFilterCount);
-    setFilters(tempFilters);
-    
+    setFormError(null);
+
     const keyword = searchKeyword.trim() || '*';
     const queryParams = new URLSearchParams();
     queryParams.set('keyword', keyword);
-    
+
     if (tempFilterCount > 0) {
       queryParams.set('filters', JSON.stringify(tempFilters));
     }
-    
-    console.log('navigate to:', `/experiences/search?${queryParams.toString()}`);
-    navigate(`/experiences/search?${queryParams.toString()}`);
-    handleSearch(keyword, tempFilters);
+
+    const nextQuery = queryParams.toString();
+
+    if (nextQuery === searchParams.toString()) {
+      // URLが変わらないとuseEffectが動かないため、同じ条件のときはその場で再検索する
+      handleSearch(keyword, tempFilters);
+      return;
+    }
+
+    // URLを更新すればuseEffectが検索を実行する（検索条件の起点はURLに一本化）
+    navigate(`/experiences/search?${nextQuery}`);
   };
 
   // Enterキーでの検索
@@ -141,20 +154,18 @@ const ExperiencesSearchResultsContent = () => {
 
   // フィルター適用
   const handleApplyFilters = (count, selectedFilters) => {
-    console.log('フィルター適用:', { count, selectedFilters }); // デバッグログ
     // 一時的なstateに保存（検索実行まで表示に反映させない）
     setTempFilterCount(count);
     setTempFilters(selectedFilters);
+    setFormError(null);
   };
 
-  // クリアボタン
+  // クリアボタン: 検索欄だけを空にする（実行済みの検索結果には触れない）
   const handleClearFilters = () => {
-    console.log('=== handleClearFilters called ===');
-    setFilterCount(0);
-    setFilters({});
     setTempFilterCount(0);
     setTempFilters({});
     setSearchKeyword('');
+    setFormError(null);
   };
 
   return (
@@ -212,6 +223,11 @@ const ExperiencesSearchResultsContent = () => {
               <span>{isLoading ? '検索中...' : '検索する'}</span>
             </button>
           </div>
+
+          {/* 検索欄の入力に対するエラー（検索結果とは独立して表示する） */}
+          {formError && (
+            <p className={styles.formErrorText}>{formError}</p>
+          )}
         </div>
       </div>
 
@@ -227,30 +243,17 @@ const ExperiencesSearchResultsContent = () => {
           <div className={styles.dividerLine}></div>
         </div>
 
-        {/* 絞り込み条件の表示 */}
-        {filterCount > 0 && (
+        {/* 絞り込み条件の表示（実行済みの検索条件＝URLの内容） */}
+        {appliedFilterCount > 0 && (
           <div className={styles.activeFilters}>
             <span className={styles.filterLabel}>絞り込み条件:</span>
             <div className={styles.filterTags}>
-              {filters.grade && filters.grade.map((item, index) => (
-                <span key={`grade-${index}`} className={styles.filterTag}>
-                  {item}
-                </span>
-              ))}
-              {filters.trigger && filters.trigger.map((item, index) => (
-                <span key={`trigger-${index}`} className={styles.filterTag}>
-                  {item}
-                </span>
-              ))}
-              {filters.support && filters.support.map((item, index) => (
-                <span key={`support-${index}`} className={styles.filterTag}>
-                  {item}
-                </span>
-              ))}
-              {filters.period && filters.period.map((item, index) => (
-                <span key={`period-${index}`} className={styles.filterTag}>
-                  {item}
-                </span>
+              {['grade', 'trigger', 'support', 'period'].map(key => (
+                (appliedFilters[key] || []).map((item, index) => (
+                  <span key={`${key}-${index}`} className={styles.filterTag}>
+                    {item}
+                  </span>
+                ))
               ))}
             </div>
           </div>
@@ -289,7 +292,7 @@ const ExperiencesSearchResultsContent = () => {
                   relatedContext={{
                     type: 'search',
                     searchKeyword: urlKeyword,
-                    searchFilters: filters,
+                    searchFilters: appliedFilters,
                     relatedExperiences: searchResults
                   }}
                 />
@@ -309,11 +312,12 @@ const ExperiencesSearchResultsContent = () => {
         )}
       </div>
 
-      <FilterModal 
+      <FilterModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         filterConfig={filterConfig}
         onApply={handleApplyFilters}
+        selectedFilters={tempFilters}
       />
 
       <Footer />

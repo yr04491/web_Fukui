@@ -95,9 +95,13 @@ const ExperiencesContent = () => {
     setFilters(selectedFilters);
   };
 
+  // クリアボタン: 検索欄（キーワード・絞り込み）を空にする
+  // filters をモーダルへ渡しているので、モーダル側の選択も一緒にクリアされる
   const handleClearFilters = () => {
     setFilterCount(0);
     setFilters({});
+    setSearchKeyword('');
+    setError(null);
   };
 
   const breadcrumbItems = [
@@ -276,11 +280,12 @@ const ExperiencesContent = () => {
         )}
       </div>
 
-      <FilterModal 
+      <FilterModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         filterConfig={filterConfig}
         onApply={handleApplyFilters}
+        selectedFilters={filters}
       />
 
       <Footer />

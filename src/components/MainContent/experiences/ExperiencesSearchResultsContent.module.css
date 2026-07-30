@@ -79,6 +79,14 @@
   justify-content: space-between;
 }
 
+/* 検索欄の入力エラー（検索結果側のエラー表示とは別物） */
+.formErrorText {
+  margin-top: 15px;
+  font-size: 14px;
+  color: #d32f2f;
+  line-height: 1.6;
+}
+
 .filterButton {
   display: flex;
   align-items: center;

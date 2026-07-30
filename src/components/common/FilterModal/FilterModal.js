@@ -1,10 +1,98 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import ReactDOM from 'react-dom'; // 1. ReactDOMをインポート
 import styles from './FilterModal.module.css';
 
-const FilterModal = ({ isOpen, onClose, filterConfig, onApply, showPeriodTab = true }) => {
+/**
+ * 時期フィルターのカテゴリ定義（タブが「時期で絞りこむ」の場合に使用）
+ * 復元処理からも参照するため、コンポーネントの外に置いています。
+ */
+const periodCategories = [
+  {
+    title: '登校渋り期',
+    key: 'reluctance',
+    index: 100
+  },
+  {
+    title: '混乱期',
+    key: 'confusion',
+    index: 101
+  },
+  {
+    title: '安定期',
+    key: 'stable',
+    index: 102
+  },
+  {
+    title: '回復期',
+    key: 'recovery',
+    index: 103
+  }
+];
+
+/**
+ * フィルターのキー → カテゴリインデックス
+ * handleDecide の振り分け（index → キー）と対になる定義です。
+ * 片方だけ変更すると復元できなくなるので、必ず両方を合わせてください。
+ */
+const FILTER_KEY_TO_CATEGORY_INDEX = {
+  grade: 0,
+  trigger: 1,
+  support: 2,
+  exam: 3,
+  location: 4
+};
+
+/**
+ * 親が持つフィルターオブジェクトを、内部で使う selectedTags 形式へ戻す
+ * @param {object} filters - { grade: [...], trigger: [...], period: [...] } 形式
+ * @return {Array<string>} - `${categoryIndex}_${tag}` の配列
+ */
+const buildSelectedTags = (filters) => {
+  if (!filters) return [];
+
+  const tags = [];
+
+  Object.keys(filters).forEach(key => {
+    const values = filters[key] || [];
+
+    if (key === 'period') {
+      values.forEach(value => {
+        const category = periodCategories.find(c => c.title === value);
+        if (category) tags.push(`${category.index}_${value}`);
+      });
+      return;
+    }
+
+    const categoryIndex = FILTER_KEY_TO_CATEGORY_INDEX[key];
+    if (categoryIndex === undefined) return;
+
+    values.forEach(value => tags.push(`${categoryIndex}_${value}`));
+  });
+
+  return tags;
+};
+
+const FilterModal = ({ isOpen, onClose, filterConfig, onApply, showPeriodTab = true, selectedFilters }) => {
   const [activeTab, setActiveTab] = useState('condition'); // 'condition' or 'period'
   const [selectedTags, setSelectedTags] = useState([]);
+
+  // モーダルは閉じている間もマウントされたままなので、選択状態は勝手には消えません。
+  // 親が「クリア」しても前回の選択が残ってしまうため、開くたびに親の条件へ合わせます。
+  // selectedFilters を渡さない場合は従来どおり内部状態だけで動きます。
+  const selectedFiltersRef = useRef(selectedFilters);
+  selectedFiltersRef.current = selectedFilters;
+
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const filters = selectedFiltersRef.current;
+    if (filters === undefined || filters === null) return;
+
+    setSelectedTags(buildSelectedTags(filters));
+    // 時期で絞り込んでいた場合は、その選択が見えるタブを開く
+    const hasPeriod = (filters.period || []).length > 0;
+    setActiveTab(hasPeriod && showPeriodTab ? 'period' : 'condition');
+  }, [isOpen, showPeriodTab]);
 
   if (!isOpen) return null;
 
@@ -73,42 +161,21 @@ const FilterModal = ({ isOpen, onClose, filterConfig, onApply, showPeriodTab = t
         const index = parseInt(categoryIndex);
 
         // カテゴリインデックスに基づいてフィルターを分類
-        if (index === 0) filters.grade.push(tag);
-        else if (index === 1) filters.trigger.push(tag);
-        else if (index === 2) filters.support.push(tag);
-        else if (index === 3) filters.exam.push(tag);
-        else if (index === 4) filters.location.push(tag);
-        else if (index >= 100) filters.period.push(tag); // 時期フィルターは100番台
+        // （キー ⇄ インデックスの対応は FILTER_KEY_TO_CATEGORY_INDEX と共通）
+        if (index >= 100) {
+          filters.period.push(tag); // 時期フィルターは100番台
+          return;
+        }
+
+        const key = Object.keys(FILTER_KEY_TO_CATEGORY_INDEX)
+          .find(k => FILTER_KEY_TO_CATEGORY_INDEX[k] === index);
+        if (key) filters[key].push(tag);
       });
 
       onApply(selectedTags.length, filters);
     }
     onClose();
   };
-
-  // 時期フィルターのカテゴリ定義（タブが「時期で絞りこむ」の場合に使用）
-  const periodCategories = [
-    {
-      title: '登校渋り期',
-      key: 'reluctance',
-      index: 100
-    },
-    {
-      title: '混乱期',
-      key: 'confusion',
-      index: 101
-    },
-    {
-      title: '安定期',
-      key: 'stable',
-      index: 102
-    },
-    {
-      title: '回復期',
-      key: 'recovery',
-      index: 103
-    }
-  ];
 
   // 2. モーダルの内容全体を ReactDOM.createPortal でラップし、document.body に描画する
   return ReactDOM.createPortal(

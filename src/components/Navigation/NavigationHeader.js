@@ -3,20 +3,21 @@ import { useNavigate } from 'react-router-dom';
 import commonStyles from './NavigationCommon.module.css';
 
 // 共通のNavigationHeaderコンポーネント
-const NavigationHeader = ({ isHamburger = false }) => {
+// onNavigate: 遷移後に呼ぶ処理。ハンバーガーメニューを閉じるために使う。
+const NavigationHeader = ({ isHamburger = false, onNavigate }) => {
   const navigate = useNavigate();
 
   // タップ/クリック時の処理
   const handleLogoClick = () => {
     // ホームページに遷移する処理
-    console.log('ロゴがクリックされました - ホームページに遷移');
     navigate('/');
+    if (onNavigate) onNavigate();
   };
 
   const handleTitleClick = () => {
-    console.log('タイトルがクリックされました - ホームページに遷移');
     // タイトルクリック時もホームページに遷移
     navigate('/');
+    if (onNavigate) onNavigate();
   };
 
   return (
@@ -26,7 +27,7 @@ const NavigationHeader = ({ isHamburger = false }) => {
         onClick={handleTitleClick}
         style={{ cursor: 'pointer' }}
       >
-        当事者たちでつくる、不登校情報サイト
+        経験者の声から生まれた不登校情報サイト
       </p>
       
       <div 

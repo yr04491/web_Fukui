@@ -64,11 +64,11 @@ const Section05Content = () => {
         <h3 className={styles.searchTitle}>検索機能</h3>
         <div className={styles.dividerLine}></div>
         <div className={styles.placeCardArea}>
-          <SchoolCard cardId={1} />
           <SchoolCard cardId={2} />
           <SchoolCard cardId={3} />
           <SchoolCard cardId={4} />
           <SchoolCard cardId={5} />
+          <SchoolCard cardId={6} />
         </div>
       </div>
 

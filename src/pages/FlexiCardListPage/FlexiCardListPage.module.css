@@ -35,18 +35,29 @@
   min-height: 200px;
 }
 
-/* FlexiCardエリア */
+/* FlexiCardエリア：他セクションのカード一覧と同じ横スクロールに揃える */
 .flexiCardArea {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
   gap: 12px;
   margin: 16px 0 24px 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 8px;
+  -webkit-overflow-scrolling: touch; /* スマホでのスムーズスクロール */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE, Edge */
 }
 
-/* カード幅をグリッドに合わせる */
+/* Chrome, Safari, Opera でスクロールバーを非表示 */
+.flexiCardArea::-webkit-scrollbar {
+  display: none;
+}
+
+/* カードは縮ませず、横に並べる */
 .flexiCardArea > * {
-  width: 100% !important;
-  min-width: 0 !important;
+  flex: 0 0 auto;
 }
 
 /* セクション見出し */

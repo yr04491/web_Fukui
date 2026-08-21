@@ -90,7 +90,7 @@ const Section00Content = () => {
         
         {/* 説明テキスト */}
         <h2 className={styles.topDescription}>
-          ＼　大丈夫です。なんとかなります。／<br />
+          ＼大丈夫です。なんとかなります／<br />
           まずは慌てず落ち着きましょう。
         </h2>
         

@@ -41,7 +41,7 @@ const FlexiCardListPage = () => {
         {/* メインコンテンツエリア */}
         <section className={styles.cardListSection}>
 
-          <h2 className={styles.sectionTitle}>学校の支援</h2>
+          <h2 className={styles.sectionTitle}>学校内の支援</h2>
           <div className={styles.sectionDivider}></div>
           <div className={styles.flexiCardArea}>
             {getCardsByCategory('school').map((card) => (

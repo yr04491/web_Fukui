@@ -147,7 +147,7 @@
   width: 100%;
   max-width: 500px;
   text-align: center;
-  padding: 20px 30px;
+  padding: 20px 10px;
   margin: 10px 0;
 }
 
@@ -178,6 +178,18 @@
 .consultationNote {
   font-size: 20px;
   color: #555;
+}
+
+/* リンク先URLが未定の箇所。見た目はリンクだが遷移はしない */
+.centerLink {
+  color: #000;
+  text-decoration: underline;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.centerLink:hover {
+  color: #007BFF;
 }
 
 /* 体験談セクション */
@@ -260,7 +272,7 @@
 /* レスポンシブ対応 */
 @media (max-width: 768px) {
   .section00 {
-    padding: 30px 15px;
+    padding: 30px 20px;
   }
   
   .tweetArea {

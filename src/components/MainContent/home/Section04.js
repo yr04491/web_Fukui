@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from './Section04.module.css';
 import roadNumberImage from '../../../assets/icons/04_0.png';
 import InterviewCard from '../../common/InterviewCard/InterviewCard';
@@ -6,6 +7,8 @@ import SectionTitle from '../../common/SectionTitle';
 import ContentFrame from '../../common/ContentFrame';
 
 const Section04 = () => {
+    const navigate = useNavigate();
+
     return (
         <div className={styles.section04}>
             <SectionTitle 
@@ -46,7 +49,10 @@ const Section04 = () => {
                     <InterviewCard cardId={2} />
                 </div>
 
-                <button className={styles.moreButton}>
+                <button
+                    className={styles.moreButton}
+                    onClick={() => navigate('/section04')}
+                >
                     <div className={styles.playIcon}></div>
                     <span>インタビューをもっと見る</span>
                 </button>

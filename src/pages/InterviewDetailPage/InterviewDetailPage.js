@@ -82,7 +82,7 @@ const InterviewDetailPage = () => {
         <div className={styles.titleSection}>
           {card.type === 'supporter' ? (
             <>
-              <p className={styles.subTitle}>メッセージ</p>
+              <p className={styles.subTitle}>message</p>
               <h1 className={styles.mainTitle}>支援者のみなさんからの<br />メッセージ</h1>
             </>
           ) : (

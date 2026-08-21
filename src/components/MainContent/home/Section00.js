@@ -25,7 +25,7 @@ const Section00 = () => {
       </div>
 
       <ContentFrame
-        title="＼　大丈夫です。なんとかなります。／まずは慌てず落ち着きましょう。"
+        title="＼大丈夫です。なんとかなります／まずは慌てず落ち着きましょう。"
         buttonElement={
           <button 
             className={styles.projectButton}
@@ -45,8 +45,18 @@ const Section00 = () => {
       {/* 相談センター情報 */}
       <div className={styles.consultationInfo}>
         <p className={styles.consultationText}>
-          今すぐどこかに相談したい方は<br />
-          福井県教育総合研究所教育相談センター<br />
+          今すぐ相談したい方は<br />
+          福井県不登校相談窓口<br />
+          {/* リンク先URLは依頼主に確認中。判明したら data-pending-link を目印に href を設定する */}
+          <span
+            className={styles.centerLink}
+            role="link"
+            tabIndex={0}
+            aria-disabled="true"
+            data-pending-link="excel-50"
+          >
+            福井県教育総合研究所教育相談センター
+          </span><br />
           <a href="tel:0120968104" className={styles.phoneLink}>0120-96-8104</a><br />
           <span className={styles.consultationNote}>(フリーダイヤル)24時間対応</span>
         </p>

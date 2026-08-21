@@ -10,8 +10,10 @@ import NavIcon from '../../assets/icons/NavIcon';
  * @param {number} index - インデックス
  * @param {boolean} isHamburger - ハンバーガーメニューか
  * @param {string} path - (追加) 遷移先のパス
+ * @param {Function} onNavigate - (追加) 遷移後に呼ぶ処理。
+ *   ハンバーガーメニューを閉じるために使う。サイドナビでは渡さない。
  */
-const NavigationItem = ({ title, subItems = [], index, isHamburger = false, path }) => {
+const NavigationItem = ({ title, subItems = [], index, isHamburger = false, path, onNavigate }) => {
   const navigate = useNavigate();
 
   // subItemsがオブジェクト形式（パス付き）かどうかで挙動を分岐
@@ -33,6 +35,7 @@ const NavigationItem = ({ title, subItems = [], index, isHamburger = false, path
     if (!hasSubPaths && path) {
       navigate(path);
       window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (onNavigate) onNavigate();
     }
   };
 
@@ -42,6 +45,7 @@ const NavigationItem = ({ title, subItems = [], index, isHamburger = false, path
     if (path) {
       navigate(path);
       window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (onNavigate) onNavigate();
     }
   };
 
@@ -61,6 +65,7 @@ const NavigationItem = ({ title, subItems = [], index, isHamburger = false, path
       } else {
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }
+      if (onNavigate) onNavigate();
     }
   };
 

@@ -1,51 +1,5 @@
 const schoolCards = [
   {
-    id: 1,
-    title: "フリースクール\n「福インクル学園」",
-    description: "",
-    body: "福井県坂井市にあるフリースクールです。\n小学生から高校生まで幅広く受け入れています。\n個々の目標に応じて一緒に成長を目指します。",
-    address: "坂井市坂井町新庄2-325",
-    hours: "",
-    contact: "070-9011-1496",
-    hpUrl: "https://fukuinclu.com",
-    detailInfo: {
-      location: "坂井市坂井町新庄2-325",
-      phone: "070-9011-1496",
-      email: "fukuinclu@gmail.com",
-      website: "https://fukuinclu.com",
-      target: "小・中・高",
-      recommended: "",
-      suggestion: "フリースクール",
-      schedule: "",
-      fee: "2,000円/1日",
-      uniform: "なし",
-      exam: "なし",
-      style: "対面",
-      frequency: "週１～５ 選択制登校",
-      campus: "あり",
-      events: "体験入学, 説明会, 遠足, 文化祭",
-      rules: "なし",
-      studentCount: "15人",
-      genderRatio: "約5:5",
-      graduates: "",
-      qualifications: "",
-      other: "",
-    },
-    // 検索用タグ（フィルタリング用）
-    searchTags: {
-      type: ["フリースクール"],
-      style: ["対面"],
-      frequency: ["週1~5選択制登校"],
-      exam: ["試験なし"],
-      location: ["福井県内"]
-    },
-    images: [
-      require('../assets/images/AdobeStock_Preview.png'),
-    ],
-    image: require('../assets/images/AdobeStock_Preview.png'),
-    tags: ["小学生", "高校生", "中学生", "フリースクール"]
-  },
-  {
     id: 2,
     title: "第一学院\nmanagara BASE福井",
     description: "",

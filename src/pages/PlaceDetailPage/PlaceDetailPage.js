@@ -267,7 +267,7 @@ const PlaceDetailPage = () => {
               <span className={styles.detailValue}>{card.detailInfo.recommended}</span>
             </div>
             <div className={styles.detailRow}>
-              <span className={styles.detailLabel}>一般的に？</span>
+              <span className={styles.detailLabel}>形態</span>
               <span className={styles.detailValue}>{card.detailInfo.suggestion}</span>
             </div>
             <div className={styles.detailRow}>

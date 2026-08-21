@@ -85,7 +85,7 @@ const HamburgerMenu = ({ isOpen: externalIsOpen, onToggle }) => {
       </div>
 
       <nav className={`${styles.navigation} ${commonStyles.navPanel} ${isOpen ? styles.navigationActive : ''}`}>
-        <NavigationHeader isHamburger={true} />
+        <NavigationHeader isHamburger={true} onNavigate={handleCloseMenu} />
 
         <div className={commonStyles.navItemsContainer}>
           <div className={commonStyles.verticalLine} />
@@ -97,7 +97,8 @@ const HamburgerMenu = ({ isOpen: externalIsOpen, onToggle }) => {
               subItems={item.subItems}
               index={index}
               isHamburger={true}
-              path={item.path} 
+              path={item.path}
+              onNavigate={handleCloseMenu}
             />
           ))}
         </div>

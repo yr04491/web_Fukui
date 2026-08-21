@@ -30,12 +30,12 @@ const Section05 = () => {
             <div className={styles.placeSection}>
                 <div className={styles.placeHeader}>
                     <span className={styles.placeTag}>選択肢はいろいろあります</span>
-                    <h3 className={styles.placeTitle}>学校・フリースクールの紹介</h3>
+                    <h3 className={styles.placeTitle}>全日制以外の学校・フリースクールの紹介</h3>
                 </div>
                 <div className={styles.placeCardArea}>
-                    <SchoolCard cardId={1} />
                     <SchoolCard cardId={2} />
                     <SchoolCard cardId={3} />
+                    <SchoolCard cardId={4} />
                 </div>
 
                 <button 
@@ -54,7 +54,7 @@ const Section05 = () => {
 
             {/* 体験談セクション追加 */}
             <ExperienceSection 
-                title={"みんなの体験談を見てみよう！\n卒業後の進路をどう選んだ？"}
+                title={"みんなの体験談を見てみよう！\n中学卒業後の進路をどう選んだ？"}
                 questionId="4-1-2"
                 limit={6}
                 moreButtonText="卒業後の進路の体験談を見る"

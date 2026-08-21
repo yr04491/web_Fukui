@@ -16,7 +16,7 @@ const OpeningSection = () => {
       >
         <img src={weAreImage} alt="私たちについて" className={styles.weAreImage} />
         <p className={styles.projectDescription}>
-          このサイトは現役不登校生やその保護者で制作しています。
+          このサイトは不登校当事者・その保護者・支援者で作っています
         </p>
         <div className={styles.projectButtonContent}>
           <img src={newWindowIcon} alt="新しいウィンドウ" className={styles.newWindowIcon} />

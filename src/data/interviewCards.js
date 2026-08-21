@@ -141,7 +141,7 @@ const interviewCards = [
     breadcrumbLabel: '支援者からのメッセージ１',
     type: 'supporter',
     title: "支援者のみなさんからの\nメッセージ",
-    description: "ご家族が欲しい情報が見られるのでいいですねー",
+    description: "こどもがこどもでいられる時間はあっちゅう間",
     authorName: "まりぽり",
     authorInitial: "R",
     date: "2025.08.01",

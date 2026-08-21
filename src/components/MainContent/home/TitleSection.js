@@ -5,7 +5,7 @@ import adobeStockImage from '../../../assets/images/main_img2.png';
 const TitleSection = () => {
   return (
     <div className={styles.titleSection}>
-      <p className={styles.mainTitle}>当事者たちでつくる、不登校情報サイト</p>
+      <p className={styles.mainTitle}>経験者の声から生まれた不登校情報サイト</p>
       <div className={styles.mainLogo}></div>
       <p className={styles.prefectureLabel}>福井県版</p>
       <div className={styles.adobeStockImage}>

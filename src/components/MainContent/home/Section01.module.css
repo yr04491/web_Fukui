@@ -93,7 +93,7 @@
   font-family: var(--font-primary);
   font-style: normal;
   font-weight: 500;
-  font-size: 14px;
+  font-size: 16px;
   letter-spacing: 0.1em;
   color: var(--color-black);
   text-align: left;
@@ -236,7 +236,7 @@
 /* レスポンシブ対応 */
 @media (max-width: 768px) {
   .section01 {
-    padding: 30px 15px;
+    padding: 30px 20px;
   }
   
   .tweetArea {

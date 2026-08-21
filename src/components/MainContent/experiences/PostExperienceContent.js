@@ -78,7 +78,7 @@ const PostExperienceContent = () => {
         {/* セクション04 */}
         <div className={styles.section}>
           <h2 className={styles.sectionTitle}>
-            <span className={styles.sectionNumber}>04 |</span> 掲載に関して（審査・編集）
+            <span className={styles.sectionNumber}>04 |</span> 掲載に関して（確認・編集）
           </h2>
           <div className={styles.sectionDivider}></div>
           <div className={styles.sectionContent}>

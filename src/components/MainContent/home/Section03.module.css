@@ -111,7 +111,7 @@
   font-family: var(--font-primary);
   font-style: normal;
   font-weight: 400;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.7;
   color: var(--color-black);
   margin: 0;
@@ -257,7 +257,7 @@
 /* レスポンシブ対応 */
 @media (max-width: 768px) {
   .section03 {
-    padding: 40px 16px 30px;
+    padding: 40px 20px 30px;
   }
   
   .mainTitle {

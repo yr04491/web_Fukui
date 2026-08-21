@@ -87,9 +87,9 @@ const Footer = () => {
       {!isPostPage && <button
         className={styles.floatingPostButton}
         onClick={() => { navigate('/experiences/post'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-        aria-label="体験談を投稿する"
+        aria-label="体験談を教えてください"
       >
-        体験談を投稿する
+        体験談を教えてください
       </button>}
     </>
   );

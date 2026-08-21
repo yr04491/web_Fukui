@@ -379,7 +379,106 @@ const placeCards = [
       require('../assets/images/AdobeStock_Preview.png'),
     ],
     image: require('../assets/images/AdobeStock_Preview.png'),
-    tags: ["タグ1", "タグ2"] // 検索用の簡易タグ
+    tags: ["不登校生の保護者", "大人も子どもも自分らしく在れる場所"] // 検索用の簡易タグ
+  },
+  {
+    id: 12,
+    title: "うえの未来塾",
+    description: "",
+    body: "学習の悩み解決します。学校で習えなかったところ基礎から丁寧に教えます。夢の実現のお手伝いをします。安心して任せて下さい。",
+    address: "福井市文京2丁目7-18 牧の島メゾンドール204",
+    hours: "月　水　木　金　の午後14:00から16:00",
+    contact: "080-3045-4353",
+    detailInfo: {
+      location: "福井市文京2丁目7-18 牧の島メゾンドール204",
+      phone: "080-3045-4353",
+      email: "uejuku@indigo.plala.or.jp",
+      website: null,
+      target: "小学生, 中学生, 高校生, 不登校生の保護者",
+      recommended: "進学したい, 一人で学習したい, オンラインで授業を受けたい, 家以外の場所での居場所を見つけたい",
+      suggestion: "塾",
+      schedule: "月　水　木　金　の午後14:00から16:00",
+      fee: "一コマ5000円",
+      other: "今まで多くの不登校生を指導して大学に合格させて来ました。"
+    },
+    // 検索用タグ（フィルタリング用）
+    searchTags: {
+      grade: ["小学生から", "中学生から", "高校生から"],
+      situation: ["進学したい", "一人で学習したい", "オンラインで授業を受けたい", "家以外の場所での居場所を見つけたい"],
+      facility: ["塾"]
+    },
+    images: [
+      require('../assets/images/AdobeStock_Preview.png'),
+    ],
+    image: require('../assets/images/AdobeStock_Preview.png'),
+    tags: ["小学生", "中学生", "高校生", "不登校生の保護者", "塾"]
+  },
+  {
+    id: 13,
+    title: "不登校・ひきこもり\n回復学習会（親の会）",
+    description: "",
+    body: "中学生、高校生のお子さんのいる親御さんが参加。子の回復につながる子への接し方、親の心構えを楽しく学びます。\n不登校・ひきこもりを経験した当事者の方も参加し、つらかった時、どんな気持ちだったのか、参加者からの質問にも答えてくれます。\n開催日時が変更になる場合があるので、初めて参加されたい方は、事前に加藤まで電話ください。",
+    address: "福井県社会福祉センター（福井市光陽）",
+    hours: "毎月第１日曜日　13時45分〜16時30分",
+    contact: "090-1314-2312",
+    detailInfo: {
+      location: "福井県社会福祉センター（福井市光陽）",
+      phone: "090-1314-2312",
+      email: "t.katou.gv@gmail.com",
+      website: null,
+      target: "不登校生の保護者",
+      recommended: "不登校や子育てについて相談したい, 不登校や子育てについて共有したい, 不登校や子育てのイベントに参加したい, 同じ悩みを持つ人と話したい",
+      suggestion: "親の会",
+      schedule: "毎月第１日曜日　13時45分〜16時30分",
+      fee: "1人当たり　500円",
+      other: "開催日時が変更になる場合があるので、初めて参加されたい方は、事前に加藤まで電話願います。"
+    },
+    // 検索用タグ（フィルタリング用）
+    searchTags: {
+      grade: ["卒業している場合"],
+      situation: ["不登校や子育てについて相談したい", "不登校や子育てのイベントに参加したい", "不登校や子育ての未来について見失わない"],
+      facility: ["親の会"]
+    },
+    images: [
+      require('../assets/images/AdobeStock_Preview.png'),
+    ],
+    image: require('../assets/images/AdobeStock_Preview.png'),
+    tags: ["不登校生の保護者", "親の会"]
+  },
+  {
+    id: 14,
+    title: "子ども若者支援センター\n「坂井子どもの里」",
+    description: "",
+    body: "一軒家がまるごと活動場所です。安心できる居場所の中で、自分のペースを大切にしながら、好きなことや「やってみたい」を見つけていきましょう。\n学校や支援機関とつながりながら、気持ちや歩みに丁寧に寄り添います。一緒に過ごす時間の中で、少しずつこれからのことを考えていけたらと思います。",
+    address: "坂井市坂井町新庄2-325",
+    hours: "フリースクール：月～金の９時～１４時　ユースセンター：金土日の１４時～１９時",
+    contact: "0776-84-9375",
+    detailInfo: {
+      location: "坂井市坂井町新庄2-325",
+      phone: "0776-84-9375",
+      email: "info@fukuinclu.com",
+      website: {
+        name: "公式サイト",
+        url: "https://fukuinclu.com"
+      },
+      target: "小学生, 中学生, 高校生, 不登校生の保護者",
+      recommended: "進学したい, 家以外の場所での居場所を見つけたい, 学校行事に参加したい, 不登校や子育てについて相談したい, 同じ悩みを持つ人と話したい",
+      suggestion: "フリースクール, ユースセンター",
+      schedule: "フリースクール：月～金の９時～１４時　ユースセンター：金土日の１４時～１９時",
+      fee: "行政からの支援をいただいているため、お住まいの地域や家庭状況により異なります",
+      other: ""
+    },
+    // 検索用タグ（フィルタリング用）
+    searchTags: {
+      grade: ["小学生から", "中学生から", "高校生から"],
+      situation: ["進学したい", "家以外の場所での居場所を見つけたい", "学校行事に参加したい", "不登校や子育てについて相談したい", "不登校や子育ての未来について見失わない"],
+      facility: ["フリースクール", "ユースセンター"]
+    },
+    images: [
+      require('../assets/images/AdobeStock_Preview.png'),
+    ],
+    image: require('../assets/images/AdobeStock_Preview.png'),
+    tags: ["小学生", "中学生", "高校生", "不登校生の保護者", "フリースクール", "ユースセンター"]
   }
 ];
 

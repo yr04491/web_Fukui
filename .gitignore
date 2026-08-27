@@ -13,6 +13,7 @@
 
 # misc
 .env
+.figma_token
 .DS_Store
 .env.local
 .env.development.local

@@ -67,6 +67,8 @@ const Section04Content = () => {
         </div>
         <div className={styles.interviewCardArea}>
           <InterviewCard cardId={1} />
+          <InterviewCard cardId={3} />
+          <InterviewCard cardId={4} />
           <div className={styles.dividerLine}></div>
           <span className={styles.titleLine2}>支援者のみなさんからのメッセージ</span>
           <InterviewCard cardId={2} />

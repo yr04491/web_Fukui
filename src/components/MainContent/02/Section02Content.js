@@ -28,18 +28,11 @@ const Section02Content = () => {
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://bokuranomichi-fukui.com/title.png" />
         <meta name="twitter:card" content="summary_large_image" />
-        <script type="application/ld+json">{JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            {"@type": "ListItem", "position": 1, "name": "TOP", "item": "https://bokuranomichi-fukui.com/"},
-            {"@type": "ListItem", "position": 2, "name": "公的支援や医療機関", "item": "https://bokuranomichi-fukui.com/section02"}
-          ]
-        })}</script>
+        {/* BreadcrumbList は Breadcrumbs コンポーネントが出力するため、ここには書かない */}
       </Helmet>
 
       {/* パンくずリスト */}
-      <Breadcrumbs sectionNumber="02" sectionTitle="公的支援や医療機関" />
+      <Breadcrumbs sectionNumber="02" sectionTitle="行政が行う公的支援" />
 
       {/* タイトル部分 */}
       <div className={styles.titleSection}>
@@ -69,6 +62,7 @@ const Section02Content = () => {
               description={card.description}
               buttonText={card.buttonText}
               phone={card.phone}
+              phones={card.phones}
               url={card.url}
             />
           ))}
@@ -82,7 +76,7 @@ const Section02Content = () => {
         </p>
         <div className={styles.dividerLine}></div>
         <p className={styles.municipalDescription}>
-          各自治体の情報をまとめました。詳しくはお住まいの窓口まで問い合わせてください。
+          各自治体の情報をまとめました。お住まいの地域を探してみてください。
         </p>
         <div className={styles.flexiCardArea}>
           {getCardsByCategory('municipal').map((card) => (
@@ -92,6 +86,7 @@ const Section02Content = () => {
               description={card.description}
               buttonText={card.buttonText}
               phone={card.phone}
+              phones={card.phones}
               url={card.url}
             />
           ))}

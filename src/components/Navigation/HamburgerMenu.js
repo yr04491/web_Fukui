@@ -88,8 +88,6 @@ const HamburgerMenu = ({ isOpen: externalIsOpen, onToggle }) => {
         <NavigationHeader isHamburger={true} onNavigate={handleCloseMenu} />
 
         <div className={commonStyles.navItemsContainer}>
-          <div className={commonStyles.verticalLine} />
-          
           {navigationItems.map((item, index) => (
             <NavigationItem
               key={index}

@@ -12,7 +12,6 @@ const Navigation = () => {
       <NavigationHeader isHamburger={false} />
 
       <div className={commonStyles.navItemsContainer}>
-        <div className={commonStyles.verticalLine} />
         {navigationItems.map((item, index) => (
           <NavigationItem 
             key={index} 

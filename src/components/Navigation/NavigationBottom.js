@@ -56,7 +56,7 @@ const NavigationBottom = ({ onActionCompleted }) => {
     <>
       {/* 探してみようセクション */}
       <div className={commonStyles.searchSection}>
-        <div className={commonStyles.searchTitle}>探してみよう</div>
+        <div className={commonStyles.searchTitle}>さがしてみよう</div>
         <div className={commonStyles.dividerLine}></div>
         <div className={commonStyles.searchItems}>
           {searchItems.map((item, index) => (

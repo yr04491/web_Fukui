@@ -93,8 +93,6 @@
   }
 }
 
-/* 縦線は NavigationCommon.module.css の .verticalLine で管理 */
-
 /* ハンバーガーメニュー用 */
 .hamburgerMenu {
   display: none;

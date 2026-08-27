@@ -27,28 +27,14 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  margin-top: 80px;
-}
-
-/* 縦線（共通） */
-.verticalLine {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  width: 17px;
-  background-image: url('../../assets/images/vector.png');
-  background-size: 17px 100%;
-  background-repeat: repeat-y;
-  background-position: top;
-  z-index: 8;
+  margin-top: 24px; /* 80px → 24px 縦線の廃止に伴い余白を圧縮 */
 }
 
 /* ナビアイテム */
 .navItem {
   width: fit-content; /* 100% → fit-content テキスト幅に合わせる */
   min-width: 100%; /* 最小幅は親の100%を確保 */
-  margin-bottom: 15px;
+  margin-bottom: 22px; /* 15px → 22px 項目間隔を均一に */
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -252,11 +238,15 @@
   background-color: rgba(0, 0, 0, 0.05);
 }
 
-/* ナビヘッダー */
+/* ナビヘッダー
+   高さ固定(79px)と中身の絶対配置をやめ、通常フローで高さを決める。
+   flexコンテナ内で潰れなくなり、ロゴと00の間隔が画面高さで変動しない */
 .navHeader {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   width: 100%;
-  height: 79px;
+  height: auto;
   position: relative;
   margin-bottom: 0;
   padding-bottom: 0;
@@ -264,11 +254,10 @@
 
 /* ロゴ画像 */
 .navLogo {
-  position: absolute;
+  position: static;
   width: 151px;
   height: 30px;
-  left: 6px;
-  top: 30px; /* 49px → 46px: 当事者たちでつくる～との間隔を14pxに調整(Figma準拠) */
+  margin-left: 6px;
   background-image: url('../../assets/images/logo.png');
   background-size: contain;
   background-repeat: no-repeat;
@@ -284,15 +273,14 @@
   font-family: var(--font-primary);
   font-style: normal;
   font-weight: 600;
-  font-size: 12px;
+  font-size: 11px; /* 12px → 11px 1行に収める */
   line-height: 15px;
   color: var(--color-black);
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 216px;
-  height: 9px;
-  margin: 0;
+  position: static; /* 216px×9pxの絶対配置を廃止 */
+  width: auto;
+  height: auto;
+  margin: 0 0 6px;
+  white-space: nowrap;
   transition: color 0.2s;
 }
 
@@ -310,7 +298,8 @@
   color: var(--color-black);
   position: absolute;
   left: 163px;
-  top: 46px; /* 32px → 61px ロゴの右下に配置 */
+  top: auto;
+  bottom: 2px; /* ロゴの右下に配置 */
   margin-left: 0;
   transition: color 0.2s;
 }

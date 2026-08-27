@@ -10,6 +10,13 @@ import dotlineImage from '../../assets/images/dotline.png';
 import ellipseImage from '../../assets/images/Ellipse.png';
 import nakataniImage from '../../assets/images/nakatani.png';
 
+// 記事内の写真（冒頭・本文とも共通）。余白だけ呼び出し側のクラスで変える
+const InterviewImage = ({ src, alt, blockClassName }) => (
+  <div className={blockClassName}>
+    <img src={src} alt={alt || 'インタビュー写真'} className={styles.contentImage} />
+  </div>
+);
+
 const InterviewDetailPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -131,10 +138,11 @@ const InterviewDetailPage = () => {
           ))}
         </div>
 
-        {/* インタビュー画像 */}
-        <div className={styles.interviewImageContainer}>
-          <img src={card.image} alt="インタビュー" className={styles.interviewImage} />
-        </div>
+        {/* 記事冒頭の写真 */}
+        <InterviewImage
+          src={card.heroImage || card.image}
+          blockClassName={styles.heroImageBlock}
+        />
 
         {/* 目次セクション */}
         {card.tableOfContents && (
@@ -162,10 +170,19 @@ const InterviewDetailPage = () => {
             <div className={styles.sectionDivider}></div>
             
             {section.qaList && section.qaList.map((qa, qaIndex) => (
-              <div key={qaIndex} className={styles.qaBlock}>
-                <p className={styles.question}>{qa.question}</p>
-                <p className={styles.answer}>{qa.answer}</p>
-              </div>
+              qa.type === 'image' ? (
+                <InterviewImage
+                  key={qaIndex}
+                  src={qa.src}
+                  alt={qa.alt}
+                  blockClassName={styles.bodyImageBlock}
+                />
+              ) : (
+                <div key={qaIndex} className={styles.qaBlock}>
+                  <p className={styles.question}>{qa.question}</p>
+                  {qa.answer && <p className={styles.answer}>{qa.answer}</p>}
+                </div>
+              )
             ))}
           </div>
         ))}

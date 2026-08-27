@@ -85,9 +85,11 @@
 }
 .paragraph:last-child { margin-bottom: 0; }
 
-/* インタビュー画像 */
-.interviewImageContainer { margin-top: 40px; text-align: center; }
-.interviewImage { width: 100%; max-width: 100%; height: auto; display: block; }
+/* 記事内の写真（冒頭・本文で共通） */
+.contentImage { width: 100%; height: auto; display: block; }
+/* 余白のみ配置ごとに分ける（現状の見た目を維持） */
+.heroImageBlock { margin-top: 40px; }
+.bodyImageBlock { margin-bottom: 30px; }
 
 /* 目次セクション */
 .tocSection {

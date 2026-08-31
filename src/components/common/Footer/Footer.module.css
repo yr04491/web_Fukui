@@ -227,7 +227,7 @@
 }
 
 /* レスポンシブ対応 */
-@media (max-width: 982px) {
+@media (max-width: 560px) {
   .footer {
     padding: 40px 20px;
     height: auto;

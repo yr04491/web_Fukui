@@ -501,7 +501,7 @@
 /* .expertButton, .experienceButton クラスは削除 */
 
 /* レスポンシブ対応 - カードサイズは変更せず、コンテナのみ調整 */
-@media (max-width: 982px) {
+@media (max-width: 560px) {
     .section05 {
         padding: 40px 20px 30px;
         width: 100%;

@@ -136,7 +136,7 @@
 }
 
 /* レスポンシブ対応 */
-@media (max-width: 982px) {
+@media (max-width: 560px) {
   .interviewCard {
     max-width: 100%;
     min-width: 280px;

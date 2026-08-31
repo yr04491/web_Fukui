@@ -13,18 +13,10 @@
   background: var(--color-background);
 }
 
-/* レスポンシブデザイン */
-@media (max-width: 982px) {
-  .container {
-    flex-direction: column;
-    padding: 20px;
-    gap: var(--space-l);
-  }
-}
-
 /* 982px以下: ナビ非表示、ハンバーガーメニュー表示、メイン540px中央配置 */
 @media (max-width: 982px) {
   .container {
+    flex-direction: column;
     padding: 0;
     gap: 0;
   }

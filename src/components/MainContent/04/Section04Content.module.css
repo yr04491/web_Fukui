@@ -140,6 +140,6 @@
   width: 100%;
 }
 
-@media (max-width: 982px) {
+@media (max-width: 560px) {
   .roadImage { max-width: 120px; }
 }

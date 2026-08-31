@@ -270,7 +270,7 @@
 }
 
 /* レスポンシブ対応 */
-@media (max-width: 982px) {
+@media (max-width: 560px) {
   .section00 {
     padding: 30px 20px;
   }

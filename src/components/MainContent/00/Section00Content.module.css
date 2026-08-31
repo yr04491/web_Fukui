@@ -197,7 +197,7 @@
 .colorBar:nth-child(5) { left: 0%; right: 44.08%; top: 67.31%; bottom: 18.9%; }
 .colorBar:nth-child(6) { left: 0%; right: 44.08%; top: 83.6%; bottom: 2.62%; }
 
-@media (max-width: 982px) {
+@media (max-width: 560px) {
   .section00Top, .section00Middle { width: 100%; }
   .roadImage { max-width: 120px; }
   .topSubtitle { font-size: var(--font-s); }

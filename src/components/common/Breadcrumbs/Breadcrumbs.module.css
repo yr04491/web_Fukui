@@ -34,7 +34,7 @@
 }
 
 /* レスポンシブ対応 */
-@media (max-width: 982px) {
+@media (max-width: 560px) {
   .breadcrumbs {
     font-size: var(--font-xs);
     margin-bottom: 12px;

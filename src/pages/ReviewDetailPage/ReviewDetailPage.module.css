@@ -110,6 +110,6 @@
 }
 .relatedCards::-webkit-scrollbar { display: none; }
 
-@media (max-width: 982px) {
+@media (max-width: 560px) {
   .main { padding: 20px; }
 }

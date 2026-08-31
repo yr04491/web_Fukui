@@ -63,18 +63,18 @@ const schoolCards = [
       recommended: "",
       suggestion: "通信制高校",
       schedule: "",
-      fee: "所得640万円以下の世帯、週２回通学した場合①中央国際高校学費３年間55万円くらい②サポート校費用３年間120万円（修学旅行費用含む）、①＋②＝175万円（３年間）",
+      fee: "ご希望のコースや受講するコマ数によって異なるため、学費を知りたい方はお問い合わせをお願いいたします。",
       uniform: "あり（自由）",
       exam: "試験なし（面接のみ）",
       style: "対面",
-      frequency: "週１～５ 選択制登校",
+      frequency: "週２～４日 選択制登校（週１も応相談）",
       campus: "あり",
-      events: "入学式, 卒業式, 体験入学, 説明会",
-      rules: "",
-      studentCount: "55名",
+      events: "入学式, 遠足, 修学旅行, 球技大会, 進路ガイダンス, 卒業式, 学校説明会, 会社訪問, ボランティア, その他特別活動",
+      rules: "車やバイクでの登校は可能ですが、当校の生徒を同乗させるのは禁止。",
+      studentCount: "120名",
       genderRatio: "男６：女４",
-      graduates: "",
-      qualifications: "MicrosoftOfficeSpecialist　Word、Excel、PowerPoint、",
+      graduates: "福井工業大学, 仁愛大学, 尚美ミュージックカレッジ専門学校, アミューズメントメディア総合学院",
+      qualifications: "MOS　Word、Excel、PowerPoint, 日商簿記, 英検, ドローン２等（第二等無人航空機操縦士）, プログラミング検定",
       other: "よろしくお願い致します。",
     },
     // 検索用タグ（フィルタリング用）
@@ -153,7 +153,8 @@ const schoolCards = [
       website: "https://www.try-gakuin.com/",
       target: "高校生",
       recommended: "",
-      suggestion: "通信制高校",
+      // 国の認可を受けた通信制高校ではなくサポート校のため、先方の要望により区別して掲載する
+      suggestion: "通信制サポート校",
       schedule: "",
       fee: "ご希望のコースや受講するコマ数によって異なるため、学費を知りたい方はお問い合わせをお願いいたします。",
       uniform: "なし",
@@ -171,7 +172,7 @@ const schoolCards = [
     },
     // 検索用タグ（フィルタリング用）
     searchTags: {
-      type: ["通信制高校"],
+      type: ["通信制サポート校"],
       style: ["選択可能"],
       frequency: ["年数回のスクーリング(宿泊なし)"],
       exam: ["試験なし(面接のみ)"],
@@ -181,7 +182,7 @@ const schoolCards = [
       require('../assets/images/AdobeStock_Preview.png'),
     ],
     image: require('../assets/images/AdobeStock_Preview.png'),
-    tags: ["高校生", "通信制高校", "大学進学"]
+    tags: ["高校生", "通信制サポート校", "大学進学"]
   },
   {
     id: 6,
@@ -217,7 +218,7 @@ const schoolCards = [
     },
     // 検索用タグ（フィルタリング用）
     searchTags: {
-      type: ["通信制高校"],
+      type: ["フリースクール"],
       style: ["選択可能"],
       frequency: ["その他"],
       exam: ["試験なし"],

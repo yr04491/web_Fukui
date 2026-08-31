@@ -47,16 +47,14 @@ const Section00 = () => {
         <p className={styles.consultationText}>
           今すぐ相談したい方は<br />
           福井県不登校相談窓口<br />
-          {/* リンク先URLは依頼主に確認中。判明したら data-pending-link を目印に href を設定する */}
-          <span
+          <a
             className={styles.centerLink}
-            role="link"
-            tabIndex={0}
-            aria-disabled="true"
-            data-pending-link="excel-50"
+            href="https://www.fukui-c.ed.jp/~fec/kyoikusodan/"
+            target="_blank"
+            rel="noopener noreferrer"
           >
             福井県教育総合研究所教育相談センター
-          </span><br />
+          </a><br />
           <a href="tel:0120968104" className={styles.phoneLink}>0120-96-8104</a><br />
           <span className={styles.consultationNote}>(フリーダイヤル)24時間対応</span>
         </p>

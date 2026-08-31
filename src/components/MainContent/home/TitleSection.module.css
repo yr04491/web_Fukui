@@ -31,7 +31,7 @@
   font-style: normal;
   font-weight: 400;
   text-align: center;
-  color: #000000;
+  color: var(--color-black);
   
   /* 元のz-indexを維持 */
   z-index: 0;
@@ -74,7 +74,7 @@
   font-style: normal;
   font-weight: 600;
   text-align: center;
-  color: #333333;
+  color: var(--color-text-secondary);
 
   /* 元のz-indexを維持 */
   z-index: 2;

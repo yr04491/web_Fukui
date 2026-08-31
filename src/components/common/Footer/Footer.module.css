@@ -14,7 +14,7 @@
   /* 高さを自動に変更 */
   height: auto; 
   /* ▼ 背景色を88D3BCに変更 ▼ */
-  background: #88D3BC; 
+  background: var(--color-accent-place); 
   flex: none;
   order: 3;
   flex-grow: 0;
@@ -147,7 +147,7 @@
 
 /* ▼ ホバー時に文字色を黒に変更 ▼ */
 .footerList li:hover {
-  color: #000000; 
+  color: var(--color-black); 
 }
 
 /* 最後の行を横並びに */
@@ -170,7 +170,7 @@
 
 .submitButton:hover {
   background: #f0f0f0;
-  color: #000000;
+  color: var(--color-black);
 }
 /* ▲ スタイル変更ここまで ▲ */
 
@@ -180,7 +180,7 @@
   bottom: 30px;
   right: 20px;
   background: #2A8A6E;
-  color: #ffffff;
+  color: var(--color-white);
   border: none;
   border-radius: 28px;
   padding: 14px 20px;

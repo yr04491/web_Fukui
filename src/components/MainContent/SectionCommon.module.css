@@ -78,7 +78,7 @@
   display: flex;
   align-items: center;
   
-  color: #000000;
+  color: var(--color-black);
   
   flex: none;
   order: 1;
@@ -99,7 +99,7 @@
   line-height: 23px;
   text-align: center;
   
-  color: #000000;
+  color: var(--color-black);
   
   flex: none;
   order: 1;
@@ -121,7 +121,7 @@
   line-height: 23px;
   text-align: center;
   
-  color: #000000;
+  color: var(--color-black);
   
   flex: none;
   order: 0;
@@ -142,7 +142,7 @@
   line-height: 28px;
   letter-spacing: -0.05em;
 
-  color: #000000;
+  color: var(--color-black);
 
   flex: none;
   order: 1;
@@ -164,7 +164,7 @@
   line-height: 28px;
   letter-spacing: -0.05em;
 
-  color: #000000;
+  color: var(--color-black);
 
   flex: none;
   order: 2;
@@ -187,7 +187,7 @@
   height: auto; /* 内容に合わせて高さを自動調整 */
   min-height: 80px;
   
-  border: 1px dashed #000000;
+  border: 1px dashed var(--color-black);
   border-radius: 10px;
   
   flex: none;
@@ -209,7 +209,7 @@
   line-height: 20px;
   letter-spacing: -0.05em;
   
-  color: #000000;
+  color: var(--color-black);
   
   flex: none;
   order: 0;
@@ -229,7 +229,7 @@
   width: 480px;
   min-height: 115px;
   
-  border: 1px dashed #000000;
+  border: 1px dashed var(--color-black);
   border-radius: 10px;
   
   flex: none;
@@ -248,7 +248,7 @@
   line-height: 25px;
   letter-spacing: -0.05em;
   
-  color: #000000;
+  color: var(--color-black);
   
   flex: none;
   order: 0;
@@ -268,7 +268,7 @@
   line-height: 20px;
   letter-spacing: -0.05em;
   
-  color: #000000;
+  color: var(--color-black);
   
   flex: none;
   order: 1;
@@ -339,7 +339,7 @@
   line-height: 20px;
   letter-spacing: -0.05em;
   
-  color: #000000;
+  color: var(--color-black);
   
   flex: none;
   order: 1;
@@ -358,7 +358,7 @@
   line-height: 23px;
   text-align: center;
   
-  color: #000000;
+  color: var(--color-black);
   
   flex: none;
   order: 4;

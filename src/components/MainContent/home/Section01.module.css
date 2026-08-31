@@ -9,7 +9,7 @@
   width: 100%;
   max-width: 540px;
   margin: 0 auto; /* 上部マージンを0に変更 */
-  background: #FFFFFF; /* 背景色を白に変更 */
+  background: var(--color-white); /* 背景色を白に変更 */
   border-radius: 0; /* 四角にする */
 }
 

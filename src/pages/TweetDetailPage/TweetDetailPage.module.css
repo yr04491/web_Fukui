@@ -17,13 +17,13 @@
   border-radius: 6px;
   margin-bottom: 16px;
 }
-.heroLead { margin: 0; font-size: 12px; color: #333; }
+.heroLead { margin: 0; font-size: 12px; color: var(--color-text-secondary); }
 .heroTitle { margin: 6px 0 0 0; font-size: 20px; }
 .heroDots {
   height: 8px;
   margin: 8px auto 0;
   width: 80%;
-  background-image: radial-gradient(circle, #000 1px, transparent 1px);
+  background-image: radial-gradient(circle, var(--color-black) 1px, transparent 1px);
   background-size: 8px 2px;
   background-repeat: repeat-x;
 }
@@ -41,14 +41,14 @@
 .tocBox li { 
   font-size: 13px; 
   line-height: 1.8; 
-  color: #333; 
+  color: var(--color-text-secondary); 
   padding: 4px 8px;
   border-radius: 4px;
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 .tocBox li:hover {
   background-color: #E0E0E0;
-  color: #000;
+  color: var(--color-black);
 }
 .metaArea { width: 100%; }
 .metaRow { display: flex; justify-content: space-between; gap: 16px; padding: 10px 0; border-bottom: 1px dotted #CCC; font-size: 13px; }
@@ -62,9 +62,9 @@
 .triggerList li { margin-bottom: 4px; }
 
 .bodySection { margin-top: 20px; }
-.sectionHeading { color: #000; margin: 0 0 12px 0; font-size: 16px; font-weight: 700; }
+.sectionHeading { color: var(--color-black); margin: 0 0 12px 0; font-size: 16px; font-weight: 700; }
 .sectionDivider { height: 1px; background: #E0E0E0; margin-bottom: 16px; }
-.articleBody { color: #333; line-height: 1.8; margin-bottom: 12px; }
+.articleBody { color: var(--color-text-secondary); line-height: 1.8; margin-bottom: 12px; }
 .articleBody p { margin: 0 0 8px 0; }
 
 .subsection { margin-bottom: 24px; }
@@ -90,11 +90,11 @@
   border-radius: 50%; animation: spin 1s linear infinite;
 }
 @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-.loadingText { margin-top: 16px; font-size: 14px; color: #666; }
+.loadingText { margin-top: 16px; font-size: 14px; color: var(--color-text-muted); }
 
 .errorContainer { background-color: #fff5f5; border: 1px solid #ffcccc; border-radius: 8px; }
 .errorText { font-size: 16px; color: #d32f2f; font-weight: 600; margin: 0 0 8px 0; }
-.errorSubText { font-size: 14px; color: #666; margin: 0; text-align: center; }
+.errorSubText { font-size: 14px; color: var(--color-text-muted); margin: 0; text-align: center; }
 
 .noDataContainer { background-color: #f9f9f9; border: 1px dashed #ddd; border-radius: 8px; }
 .noDataText { font-size: 16px; color: #555; font-weight: 600; margin: 0 0 8px 0; }
@@ -103,7 +103,7 @@
 /* TOPへ戻るボタン */
 .backToTopContainer { display: flex; justify-content: center; margin-top: 40px; padding: 32px 0; }
 .backToTopButton {
-  background-color: #EF9F94; color: #fff; border: none; border-radius: 25px;
+  background-color: var(--color-accent-experience); color: var(--color-white); border: none; border-radius: 25px;
   padding: 12px 48px; font-size: 16px; font-weight: bold; cursor: pointer;
   transition: background-color 0.3s ease; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }

@@ -11,7 +11,7 @@
 
 /* タイトルボックス */
 .titleBox {
-  background-color: #FFE6D5;
+  background-color: var(--color-accent-experience-bg);
   border-radius: 12px;
   padding: 40px 30px;
   text-align: center;
@@ -24,7 +24,7 @@
   font-family: var(--font-primary);
   font-size: 14px;
   font-weight: 400;
-  color: #333;
+  color: var(--color-text-secondary);
   margin: 0 0 10px 0;
   line-height: 1.5;
 }
@@ -33,7 +33,7 @@
   font-family: var(--font-primary);
   font-size: 28px;
   font-weight: 700;
-  color: #333;
+  color: var(--color-text-secondary);
   margin: 0 0 15px 0;
   line-height: 1.4;
 }
@@ -56,7 +56,7 @@
   font-family: var(--font-primary);
   font-size: 18px;
   font-weight: 600;
-  color: #333;
+  color: var(--color-text-secondary);
   margin: 0 0 10px 0;
   line-height: 1.5;
 }
@@ -76,7 +76,7 @@
   font-family: var(--font-primary);
   font-size: 15px;
   font-weight: 400;
-  color: #333;
+  color: var(--color-text-secondary);
   line-height: 1.8;
 }
 

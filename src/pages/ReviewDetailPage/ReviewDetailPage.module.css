@@ -52,7 +52,7 @@
 }
 .authorAvatar span { font-family: var(--font-primary); font-weight: 600; font-size: 18px; color: var(--color-black); }
 .authorName { font-family: var(--font-primary); font-weight: 600; font-size: 16px; color: var(--color-black); }
-.date { font-family: var(--font-primary); font-size: 14px; color: #666; }
+.date { font-family: var(--font-primary); font-size: 14px; color: var(--color-text-muted); }
 
 .tagSection { margin-bottom: 30px; display: flex; flex-wrap: wrap; gap: 10px; }
 .tag {

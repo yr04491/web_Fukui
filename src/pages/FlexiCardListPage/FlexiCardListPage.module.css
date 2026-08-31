@@ -82,5 +82,5 @@
   font-size: 18px;
   font-weight: 700;
   text-align: center;
-  color: #666666;
+  color: var(--color-text-muted);
 }

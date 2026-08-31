@@ -38,8 +38,8 @@
 .tab:first-child { border-top-left-radius: 8px; border-right: none; }
 .tab:last-child { border-top-right-radius: 8px; border-left: none; }
 .tab:hover { background: rgba(136, 211, 188, 0.05); }
-.tabActive { background: #88D3BC !important; color: var(--color-black) !important; border: none !important; border-bottom: none !important; }
-.tabActive:hover { background: #88D3BC !important; }
+.tabActive { background: var(--color-accent-place) !important; color: var(--color-black) !important; border: none !important; border-bottom: none !important; }
+.tabActive:hover { background: var(--color-accent-place) !important; }
 .tabActive + .tab { border-left: 1.5px solid var(--color-black); }
 .tabIcon { width: 14px; height: 14px; object-fit: contain; }
 
@@ -62,7 +62,7 @@
 .tag {
   padding: 6px 16px;
   background: white;
-  border: 1px solid #88D3BC;
+  border: 1px solid var(--color-accent-place);
   border-radius: 20px;
   font-size: 14px;
   color: var(--color-black);
@@ -93,12 +93,12 @@
 
 .pagination { display: flex; align-items: center; justify-content: flex-end; gap: 15px; }
 .paginationBtn { background: none; border: none; font-size: 20px; cursor: pointer; padding: 5px 10px; color: var(--color-black); transition: color 0.2s; }
-.paginationBtn:hover { color: #88D3BC; }
+.paginationBtn:hover { color: var(--color-accent-place); }
 .paginationText { font-size: 16px; color: var(--color-black); }
 
 .backButton {
   padding: 10px 20px;
-  background: #88D3BC;
+  background: var(--color-accent-place);
   color: white;
   border: none;
   border-radius: 5px;
@@ -117,7 +117,7 @@
 }
 
 .aboutTitle {
-  background: #88D3BC;
+  background: var(--color-accent-place);
   color: var(--color-black);
   padding: 4px 22px;
   text-align: center;
@@ -138,7 +138,7 @@
   height: 0;
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
-  border-top: 10px solid #88D3BC;
+  border-top: 10px solid var(--color-accent-place);
 }
 .aboutText { font-size: 15px; line-height: 1.8; color: var(--color-black); margin: 0; }
 
@@ -268,7 +268,7 @@
 }
 
 .noDataMessage {
-  color: #666;
+  color: var(--color-text-muted);
 }
 
 /* Topページに戻るボタン */

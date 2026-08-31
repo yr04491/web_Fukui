@@ -18,7 +18,7 @@
 .searchTitle {
   font-size: 28px;
   font-weight: bold;
-  color: #333;
+  color: var(--color-text-secondary);
   margin-bottom: 10px;
 }
 
@@ -31,7 +31,7 @@
 }
 
 .searchBox {
-  background-color: #fff;
+  background-color: var(--color-white);
   padding: 30px;
   border-radius: 10px;
   width: 100%; /* 修正 */
@@ -55,7 +55,7 @@
   border: none;
   outline: none;
   font-size: 14px;
-  color: #333;
+  color: var(--color-text-secondary);
   width: 100%;
 }
 
@@ -76,10 +76,10 @@
   align-items: center;
   gap: 5px;
   padding: 8px 15px;
-  border: 1px solid #88D3BC;
+  border: 1px solid var(--color-accent-place);
   border-radius: 20px;
-  background-color: #fff;
-  color: #88D3BC;
+  background-color: var(--color-white);
+  color: var(--color-accent-place);
   font-size: 14px;
   cursor: pointer;
   white-space: nowrap;
@@ -106,10 +106,10 @@
   align-items: center;
   justify-content: center;
   padding: 8px 15px;
-  border: 1px solid #88D3BC;
+  border: 1px solid var(--color-accent-place);
   border-radius: 20px;
-  background-color: #fff;
-  color: #88D3BC;
+  background-color: var(--color-white);
+  color: var(--color-accent-place);
   font-size: 14px;
   cursor: pointer;
   white-space: nowrap;
@@ -127,8 +127,8 @@
   justify-content: center;
   gap: 8px;
   padding: 12px 30px;
-  background-color: #88D3BC;
-  color: #fff;
+  background-color: var(--color-accent-place);
+  color: var(--color-white);
   border: none;
   border-radius: 25px;
   font-size: 16px;
@@ -154,14 +154,14 @@
 .pickupTitle {
   font-size: 24px;
   font-weight: bold;
-  color: #333;
+  color: var(--color-text-secondary);
   margin-bottom: 15px;
 }
 
 .dividerLine {
   width: 100%;
   height: 2px;
-  background-color: #000;
+  background-color: var(--color-black);
   margin-bottom: 10px;
 }
 
@@ -175,7 +175,7 @@
 .tocTitle {
   font-size: 16px;
   font-weight: bold;
-  color: #333;
+  color: var(--color-text-secondary);
   margin-bottom: 10px;
 }
 
@@ -187,7 +187,7 @@
 
 .tocItem {
   font-size: 14px;
-  color: #333;
+  color: var(--color-text-secondary);
   cursor: pointer;
   padding: 5px 0;
   padding-left: 20px;
@@ -199,7 +199,7 @@
   content: '▼';
   position: absolute;
   left: 0;
-  color: #666;
+  color: var(--color-text-muted);
   font-size: 12px;
 }
 
@@ -220,7 +220,7 @@
 
 .cityName {
   font-size: 14px;
-  color: #333;
+  color: var(--color-text-secondary);
   margin-bottom: 10px;
 }
 
@@ -236,7 +236,7 @@
 
 .pickupDescription {
   font-size: 14px;
-  color: #666;
+  color: var(--color-text-muted);
   line-height: 1.6;
   margin-bottom: 30px;
 }
@@ -253,7 +253,7 @@
 .noResults {
   text-align: center;
   padding: 60px 20px;
-  color: #666;
+  color: var(--color-text-muted);
   width: 100%;
 }
 
@@ -265,7 +265,7 @@
 .noResults p:first-child {
   font-size: 18px;
   font-weight: bold;
-  color: #333;
+  color: var(--color-text-secondary);
 }
 
 @media (max-width: 768px) {

@@ -4,7 +4,7 @@
   display: flex;
   align-items: flex-start;
   font-size: 14px;
-  color: #666;
+  color: var(--color-text-muted);
   margin-bottom: 16px;
   padding: 8px 0 8px 30px;
   justify-content: flex-start;
@@ -13,7 +13,7 @@
 }
 
 .link {
-  color: #333;
+  color: var(--color-text-secondary);
   text-decoration: none;
   transition: color 0.2s ease;
 }
@@ -29,7 +29,7 @@
 }
 
 .current {
-  color: #333;
+  color: var(--color-text-secondary);
   font-weight: 500;
 }
 

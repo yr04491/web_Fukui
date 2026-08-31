@@ -40,9 +40,9 @@
 /* ▼▼▼ 修正: ホバー時の薄い青色 ▼▼▼ */
 .tab:hover { background: rgba(121, 181, 238, 0.05); }
 
-/* ▼▼▼ 修正: アクティブ時の青色 (#79B5EE) ▼▼▼ */
-.tabActive { background: #79B5EE !important; color: white !important; border: none !important; border-bottom: none !important; }
-.tabActive:hover { background: #79B5EE !important; }
+/* ▼▼▼ 修正: アクティブ時の青色 (var(--color-accent-school)) ▼▼▼ */
+.tabActive { background: var(--color-accent-school) !important; color: white !important; border: none !important; border-bottom: none !important; }
+.tabActive:hover { background: var(--color-accent-school) !important; }
 .tabActive + .tab { border-left: 1.5px solid var(--color-black); }
 .tabIcon { width: 14px; height: 14px; object-fit: contain; }
 
@@ -66,7 +66,7 @@
   padding: 6px 16px;
   background: white;
   /* ▼▼▼ 修正: 青色の枠線 ▼▼▼ */
-  border: 1px solid #79B5EE;
+  border: 1px solid var(--color-accent-school);
   border-radius: 20px;
   font-size: 14px;
   color: var(--color-black);
@@ -98,13 +98,13 @@
 .pagination { display: flex; align-items: center; justify-content: flex-end; gap: 15px; }
 .paginationBtn { background: none; border: none; font-size: 20px; cursor: pointer; padding: 5px 10px; color: var(--color-black); transition: color 0.2s; }
 /* ▼▼▼ 修正: ホバー時の文字色 ▼▼▼ */
-.paginationBtn:hover { color: #79B5EE; }
+.paginationBtn:hover { color: var(--color-accent-school); }
 .paginationText { font-size: 16px; color: var(--color-black); }
 
 .backButton {
   padding: 10px 20px;
   /* ▼▼▼ 修正: ボタン背景色 ▼▼▼ */
-  background: #79B5EE;
+  background: var(--color-accent-school);
   color: white;
   border: none;
   border-radius: 5px;
@@ -124,7 +124,7 @@
 
 .aboutTitle {
   /* ▼▼▼ 修正: 見出しの背景色 ▼▼▼ */
-  background: #79B5EE;
+  background: var(--color-accent-school);
   color: white; /* 文字色を白にして見やすく */
   padding: 4px 22px;
   text-align: center;
@@ -146,7 +146,7 @@
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
   /* ▼▼▼ 修正: 三角部分の色 ▼▼▼ */
-  border-top: 10px solid #79B5EE;
+  border-top: 10px solid var(--color-accent-school);
 }
 .aboutText { font-size: 15px; line-height: 1.8; color: var(--color-black); margin: 0; }
 
@@ -273,7 +273,7 @@
 }
 
 .noDataMessage {
-  color: #666;
+  color: var(--color-text-muted);
 }
 
 /* Topページに戻るボタン */

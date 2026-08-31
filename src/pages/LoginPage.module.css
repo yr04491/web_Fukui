@@ -25,7 +25,7 @@
   font-family: var(--font-primary);
   font-size: 32px;
   font-weight: 700;
-  color: #333;
+  color: var(--color-text-secondary);
   text-align: center;
   margin: 0 0 10px 0;
 }
@@ -41,7 +41,7 @@
   font-family: var(--font-primary);
   font-size: 16px;
   font-weight: 400;
-  color: #666;
+  color: var(--color-text-muted);
   text-align: center;
   line-height: 1.8;
   margin: 20px 0 0 0;
@@ -69,7 +69,7 @@
   font-family: var(--font-primary);
   font-size: 18px;
   font-weight: 700;
-  color: #333;
+  color: var(--color-text-secondary);
   margin: 0 0 16px 0;
 }
 
@@ -78,7 +78,7 @@
   padding-left: 20px;
   font-family: var(--font-primary);
   font-size: 14px;
-  color: #666;
+  color: var(--color-text-muted);
   line-height: 1.8;
 }
 

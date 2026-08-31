@@ -39,8 +39,8 @@
 .tab:first-child { border-top-left-radius: 8px; border-right: none; }
 .tab:last-child { border-top-right-radius: 8px; border-left: none; }
 .tab:hover { background: rgba(136, 211, 188, 0.05); }
-.tabActive { background: #88D3BC !important; color: var(--color-black) !important; border: none !important; border-bottom: none !important; }
-.tabActive:hover { background: #88D3BC !important; }
+.tabActive { background: var(--color-accent-place) !important; color: var(--color-black) !important; border: none !important; border-bottom: none !important; }
+.tabActive:hover { background: var(--color-accent-place) !important; }
 .tabActive + .tab { border-left: 1.5px solid var(--color-black); }
 .tabIcon { width: 14px; height: 14px; object-fit: contain; }
 

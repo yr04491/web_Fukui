@@ -102,7 +102,7 @@
 .menuIcon {
   width: 30px;
   height: 3px;
-  background-color: #000;
+  background-color: var(--color-black);
   margin: 6px 0;
   border-radius: 2px;
 }
@@ -220,7 +220,7 @@
   font-size: 14px;
   line-height: 17px;
   text-align: center;
-  color: #FFFFFF;
+  color: var(--color-white);
 }
 
 .mainLogo {

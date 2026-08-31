@@ -5,7 +5,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 30px 20px;
-  background: linear-gradient(135deg, #EF9F94 0%, #f5b5ac 100%);
+  background: linear-gradient(135deg, var(--color-accent-experience) 0%, #f5b5ac 100%);
   border-radius: 12px;
   margin-bottom: 30px;
 }
@@ -24,7 +24,7 @@
   font-family: var(--font-primary);
   font-size: 28px;
   font-weight: 700;
-  color: #ffffff;
+  color: var(--color-white);
   margin: 0 0 8px 0;
   text-align: left;
 }
@@ -33,7 +33,7 @@
   font-family: var(--font-primary);
   font-size: 14px;
   font-weight: 400;
-  color: #ffffff;
+  color: var(--color-white);
   margin: 0;
   opacity: 0.95;
   text-align: left;
@@ -51,7 +51,7 @@
 .userName {
   font-family: var(--font-primary);
   font-size: 14px;
-  color: #ffffff;
+  color: var(--color-white);
   font-weight: 500;
 }
 
@@ -60,8 +60,8 @@
   font-size: 14px;
   font-weight: 600;
   padding: 8px 20px;
-  background: #ffffff;
-  color: #EF9F94;
+  background: var(--color-white);
+  color: var(--color-accent-experience);
   border: none;
   border-radius: 20px;
   cursor: pointer;
@@ -95,19 +95,19 @@
   background: transparent;
   border: none;
   border-bottom: 3px solid transparent;
-  color: #666666;
+  color: var(--color-text-muted);
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .tab:hover {
-  color: #333333;
+  color: var(--color-text-secondary);
   background: #f5f5f5;
 }
 
 .activeTab {
-  color: #EF9F94;
-  border-bottom-color: #EF9F94;
+  color: var(--color-accent-experience);
+  border-bottom-color: var(--color-accent-experience);
   font-weight: 600;
 }
 
@@ -126,7 +126,7 @@
   font-size: 16px;
   text-align: center;
   padding: 60px 20px;
-  color: #666666;
+  color: var(--color-text-muted);
 }
 
 .errorMessage {
@@ -169,7 +169,7 @@
   font-weight: 700;
   padding: 4px 10px;
   border-radius: 12px;
-  color: #ffffff;
+  color: var(--color-white);
   text-align: center;
   white-space: nowrap;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
@@ -203,7 +203,7 @@
 }
 
 .cardButton:focus {
-  outline: 2px solid #EF9F94;
+  outline: 2px solid var(--color-accent-experience);
   outline-offset: 2px;
 }
 
@@ -235,7 +235,7 @@
 
 .approveButton {
   background: #4caf50;
-  color: #ffffff;
+  color: var(--color-white);
 }
 
 .approveButton:hover {
@@ -246,7 +246,7 @@
 
 .rejectButton {
   background: #f44336;
-  color: #ffffff;
+  color: var(--color-white);
 }
 
 .rejectButton:hover {

@@ -35,7 +35,7 @@
   font-size: 25px;
   line-height: 1.3;
   text-align: center;
-  color: #333;
+  color: var(--color-text-secondary);
   margin: -5px 0;
 }
 
@@ -228,7 +228,7 @@
 }
 
 .moreButton { background: var(--color-white); }
-.moreButton2 { background: #FFE6D5; }
+.moreButton2 { background: var(--color-accent-experience-bg); }
 .moreButton:hover, .moreButton2:hover { background-color: rgba(0, 0, 0, 0.05); }
 .moreButton:active, .moreButton2:active { transform: scale(0.98); }
 
@@ -240,7 +240,7 @@
   text-align: center;
   width: 100%;
 }
-.loadingMessage { color: #666; padding: 40px 20px; }
+.loadingMessage { color: var(--color-text-muted); padding: 40px 20px; }
 .errorMessage { background-color: #fff3f3; border: 1px solid #ff6b6b; border-radius: 8px; padding: 20px; margin: 10px 0; }
 .errorMessage p { margin: 0; color: #d63031; line-height: 1.5; }
 .noDataMessage { background-color: #f8f9fa; border: 1px solid #dee2e6; border-radius: 8px; padding: 20px; margin: 10px 0; }

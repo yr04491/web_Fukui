@@ -6,7 +6,18 @@
   --color-black: #000000;
   --color-button-bg: #D8D4C9;
   --color-banner-bg: #D9D9D9;
-  
+
+  /* テキストのグレー階調 */
+  --color-text-secondary: #333333;
+  --color-text-muted: #666666;
+
+  /* ブランドカラー(カード種別のテーマカラー) */
+  --color-accent-experience: #EF9F94;    /* 体験談系(サーモンピンク) */
+  --color-accent-experience-bg: #FFE6D5; /* 体験談系の薄い背景 */
+  --color-accent-place: #88D3BC;         /* 居場所系(グリーン) */
+  --color-accent-school: #79B5EE;        /* 進路・学校系(ブルー) */
+  --color-tag-bg: #FDF9D5;               /* タグの薄い背景(黄) */
+
   /* スペース */
   --space-xs: 5px;
   --space-s: 8px;

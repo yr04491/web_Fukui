@@ -10,7 +10,7 @@
   flex-shrink: 0;
   box-sizing: border-box;
   background-color: rgba(255, 255, 255, 0.9);
-  border: 1.5px solid #000000;
+  border: 1.5px solid var(--color-black);
   border-radius: 5px;
   cursor: pointer;
   align-items: center;
@@ -38,7 +38,7 @@
   font-size: 16px;
   line-height: 0px;
   text-align: center;
-  color: #000000;
+  color: var(--color-black);
   flex-grow: 1;
 }
 
@@ -54,7 +54,7 @@
   position: absolute;
   width: 19px;
   height: 1.29px;
-  background: #000000;
+  background: var(--color-black);
   border-radius: 0;
   margin: 0;
 }
@@ -76,7 +76,7 @@
   font-family: Arial, sans-serif;
   font-size: 16px;
   font-weight: bold;
-  color: #000000;
+  color: var(--color-black);
   display: flex;
   align-items: center;
   justify-content: center;

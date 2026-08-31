@@ -11,7 +11,7 @@
   font-style: normal;
   font-weight: 600;
   font-size: var(--font-s);
-  line-height: var(--line-height-xl);
+  line-height: 2;
   color: var(--color-black);
   position: relative;
 }

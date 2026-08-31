@@ -40,7 +40,7 @@
 .tocBox ul { margin: 12px 0 0 0; padding-left: 0; list-style: none; }
 .tocBox li { 
   font-size: 13px; 
-  line-height: 1.8; 
+  line-height: var(--line-height-loose); 
   color: var(--color-text-secondary); 
   padding: 4px 8px;
   border-radius: 4px;
@@ -64,7 +64,7 @@
 .bodySection { margin-top: 20px; }
 .sectionHeading { color: var(--color-black); margin: 0 0 12px 0; font-size: var(--font-m); font-weight: 700; }
 .sectionDivider { height: 1px; background: #E0E0E0; margin-bottom: 16px; }
-.articleBody { color: var(--color-text-secondary); line-height: 1.8; margin-bottom: 12px; }
+.articleBody { color: var(--color-text-secondary); line-height: var(--line-height-loose); margin-bottom: 12px; }
 .articleBody p { margin: 0 0 8px 0; }
 
 .subsection { margin-bottom: 24px; }

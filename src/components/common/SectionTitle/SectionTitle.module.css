@@ -48,7 +48,7 @@
   font-style: normal;
   font-weight: 600;
   font-size: var(--font-title-story);
-  line-height: 35px;
+  line-height: var(--line-height-snug);
   display: block;
   text-align: center;
   color: var(--color-black);

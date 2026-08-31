@@ -20,7 +20,7 @@
   font-style: normal;
   font-weight: 600;
   font-size: var(--font-m);
-  line-height: 1.4;
+  line-height: var(--line-height-snug);
   color: var(--color-black);
   margin: 0;
   white-space: pre-line;
@@ -39,7 +39,7 @@
 .flexiCardPhoneList {
   font-family: var(--font-primary);
   font-size: var(--font-s);
-  line-height: 1.6;
+  line-height: var(--line-height-relaxed);
   color: var(--color-black);
   margin: 0;
   word-wrap: break-word;
@@ -61,7 +61,7 @@
   font-style: normal;
   font-weight: 400;
   font-size: var(--font-s);
-  line-height: 1.6;
+  line-height: var(--line-height-relaxed);
   color: var(--color-black);
   margin: 0;
   word-wrap: break-word;

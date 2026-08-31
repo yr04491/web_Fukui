@@ -17,7 +17,7 @@
   font-style: normal;
   font-weight: 600;
   font-size: var(--font-m);
-  line-height: 20px;
+  line-height: var(--line-height-tight);
   text-align: center;
   color: var(--color-black);
   margin-bottom: -5px;
@@ -30,7 +30,7 @@
   font-style: normal;
   font-weight: 500;
   font-size: var(--font-m);
-  line-height: 28px;
+  line-height: var(--line-height-loose);
   letter-spacing: 0.1em;
   color: var(--color-black);
 }

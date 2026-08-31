@@ -45,7 +45,7 @@
   font-style: normal;
   font-weight: 400; /* Medium or Regular */
   font-size: var(--font-xs); /* 12px */
-  line-height: 1.5;
+  line-height: var(--line-height-normal);
   /* ▼ 文字色を濃いグレーに変更 ▼ */
   color: #555555; 
   /* ▼ 左寄せに変更 ▼ */
@@ -106,7 +106,7 @@
   font-style: normal;
   font-weight: 400;
   font-size: 11px;
-  line-height: 1.5;
+  line-height: var(--line-height-normal);
   color: #555555;
   text-align: center;
   margin: 5px 0 10px 0;
@@ -138,7 +138,7 @@
   font-style: normal;
   font-weight: 500; /* Medium */
   font-size: var(--font-s);
-  line-height: 1.5; /* 行間 */
+  line-height: var(--line-height-normal); /* 行間 */
   /* 文字色を濃いグレーに */
   color: #555555; 
   cursor: pointer;

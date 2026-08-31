@@ -56,13 +56,13 @@
   --font-title-login: 32px;     /* ログインページ */
   --font-title-admin: 18px;     /* 管理画面 */
 
-  /* 行の高さ */
-  --line-height-s: 15px;
-  --line-height-m: 20px;
-  --line-height-l: 23px;
-  --line-height-xl: 28px;
-  --line-height-xxl: 32px;
-  
+  /* 行の高さ(比率指定。フォントサイズを変えても行間が崩れない) */
+  --line-height-tight: 1.3;   /* 見出し */
+  --line-height-snug: 1.4;    /* カードタイトル等 */
+  --line-height-normal: 1.5;  /* 標準 */
+  --line-height-relaxed: 1.6; /* 読みやすさ重視 */
+  --line-height-loose: 1.8;   /* 長文の本文 */
+
   /* レイアウト */
   --nav-width: 270px;
   --content-width: 540px;

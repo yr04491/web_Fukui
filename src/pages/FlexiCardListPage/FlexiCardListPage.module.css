@@ -9,7 +9,7 @@
 .pageTitle {
   font-size: var(--font-title-tool);
   font-weight: bold;
-  line-height: 1.4;
+  line-height: var(--line-height-snug);
   margin: 0;
   color: var(--color-black);
 }

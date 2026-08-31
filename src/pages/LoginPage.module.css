@@ -43,7 +43,7 @@
   font-weight: 400;
   color: var(--color-text-muted);
   text-align: center;
-  line-height: 1.8;
+  line-height: var(--line-height-loose);
   margin: 20px 0 0 0;
 }
 
@@ -79,7 +79,7 @@
   font-family: var(--font-primary);
   font-size: var(--font-s);
   color: var(--color-text-muted);
-  line-height: 1.8;
+  line-height: var(--line-height-loose);
 }
 
 .noticeList li {

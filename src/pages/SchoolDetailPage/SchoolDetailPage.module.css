@@ -56,7 +56,7 @@
 .pageTitle {
   font-size: var(--font-title-school);
   font-weight: bold;
-  line-height: 1.4;
+  line-height: var(--line-height-snug);
   margin: 0 0 15px 0;
   color: var(--color-black);
 }
@@ -148,7 +148,7 @@
   /* ▼▼▼ 修正: 三角部分の色 ▼▼▼ */
   border-top: 10px solid var(--color-accent-school);
 }
-.aboutText { font-size: 15px; line-height: 1.8; color: var(--color-black); margin: 0; }
+.aboutText { font-size: 15px; line-height: var(--line-height-loose); color: var(--color-black); margin: 0; }
 
 /* 詳細情報エリア全体 */
 .detailInfo {
@@ -183,7 +183,7 @@
 /* 内容 */
 .detailValue {
   font-size: var(--font-s);
-  line-height: 1.6;
+  line-height: var(--line-height-relaxed);
   color: var(--color-black);
   padding-left: 0;
 }
@@ -207,8 +207,8 @@
   flex-direction: column;
   gap: var(--space-xs);
 }
-.titleLine1 { font-size: var(--font-xs); font-weight: normal; line-height: 1.5; color: var(--color-black); }
-.titleLine2 { font-size: var(--font-l); font-weight: 600; line-height: 1.4; color: var(--color-black); }
+.titleLine1 { font-size: var(--font-xs); font-weight: normal; line-height: var(--line-height-normal); color: var(--color-black); }
+.titleLine2 { font-size: var(--font-l); font-weight: 600; line-height: var(--line-height-snug); color: var(--color-black); }
 
 .tweetArea {
   display: flex;
@@ -243,7 +243,7 @@
   font-style: normal;
   font-weight: 600;
   font-size: var(--font-s);
-  line-height: 20px;
+  line-height: var(--line-height-snug);
   color: var(--color-black);
   cursor: pointer;
   transition: background-color 0.2s, transform 0.1s;
@@ -302,7 +302,7 @@
   font-style: normal;
   font-weight: 600;
   font-size: var(--font-s);
-  line-height: 20px;
+  line-height: var(--line-height-snug);
   color: var(--color-black);
   cursor: pointer;
   transition: background-color 0.2s, transform 0.1s;
@@ -341,7 +341,7 @@
   color: #0066cc; /* リンクらしい青色 */
   text-decoration: underline;
   word-break: break-all; /* URLが長い場合に折り返す */
-  line-height: 1.5;
+  line-height: var(--line-height-normal);
 }
 
 .urlLink:hover {

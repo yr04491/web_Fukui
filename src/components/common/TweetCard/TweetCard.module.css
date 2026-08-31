@@ -53,7 +53,7 @@
   font-style: normal;
   font-weight: 600;
   font-size: var(--font-s); /* cardConfig.js: tweetCardConfig.text.fontSize */
-  line-height: 18px; /* cardConfig.js: tweetCardConfig.text.lineHeight */
+  line-height: var(--line-height-tight); /* cardConfig.js: tweetCardConfig.text.lineHeight */
   letter-spacing: 0.1em; /* cardConfig.js: tweetCardConfig.text.letterSpacing */
   color: var(--color-black);
   
@@ -87,7 +87,7 @@
   font-style: normal;
   font-weight: 600;
   font-size: var(--font-xs);
-  line-height: 15px;
+  line-height: var(--line-height-tight);
   color: var(--color-black);
 }
 
@@ -136,7 +136,7 @@
   font-style: normal;
   font-weight: 600;
   font-size: var(--font-xs); /* cardConfig.js: tweetCardConfig.footer.authorName.fontSize */
-  line-height: 15px; /* cardConfig.js: tweetCardConfig.footer.authorName.lineHeight */
+  line-height: var(--line-height-tight); /* cardConfig.js: tweetCardConfig.footer.authorName.lineHeight */
   color: var(--color-black);
 }
 
@@ -146,7 +146,7 @@
   font-style: normal;
   font-weight: 600;
   font-size: var(--font-xs); /* cardConfig.js: tweetCardConfig.footer.date.fontSize */
-  line-height: 15px; /* cardConfig.js: tweetCardConfig.footer.date.lineHeight */
+  line-height: var(--line-height-tight); /* cardConfig.js: tweetCardConfig.footer.date.lineHeight */
   color: var(--color-black);
   margin-left: auto; /* 右寄せ */
   text-align: right;

@@ -75,7 +75,7 @@
   font-size: 1rem;
   color: #7f8c8d;
   margin: -1rem 0 0 0;
-  line-height: 1.6;
+  line-height: var(--line-height-relaxed);
   font-family: var(--font-primary);
 }
 

@@ -159,7 +159,7 @@
   text-align: center;
   /* 画面幅に応じてサイズが変わるようにし、すべて同じサイズにする */
   font-size: clamp(12px, 3.5vw, 15px); 
-  line-height: 1.4;
+  line-height: var(--line-height-snug);
   
   /* margin: 外側の余白。0にリセット */
   margin: 0; 

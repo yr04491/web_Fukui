@@ -74,7 +74,7 @@
   font-style: normal;
   font-weight: 500;
   font-size: var(--font-title-story);
-  line-height: 36px;
+  line-height: var(--line-height-snug);
   display: flex;
   align-items: center;
   
@@ -96,7 +96,7 @@
   font-style: normal;
   font-weight: 700;
   font-size: var(--font-m);
-  line-height: 23px;
+  line-height: var(--line-height-snug);
   text-align: center;
   
   color: var(--color-black);
@@ -118,7 +118,7 @@
   font-style: normal;
   font-weight: 700;
   font-size: var(--font-m);
-  line-height: 23px;
+  line-height: var(--line-height-snug);
   text-align: center;
   
   color: var(--color-black);
@@ -139,7 +139,7 @@
   font-style: normal;
   font-weight: 400;
   font-size: var(--font-m);
-  line-height: 28px;
+  line-height: var(--line-height-loose);
   letter-spacing: -0.05em;
 
   color: var(--color-black);
@@ -161,7 +161,7 @@
   font-style: normal;
   font-weight: 400;
   font-size: var(--font-m);
-  line-height: 28px;
+  line-height: var(--line-height-loose);
   letter-spacing: -0.05em;
 
   color: var(--color-black);
@@ -206,7 +206,7 @@
   font-style: normal;
   font-weight: 400;
   font-size: 13px;
-  line-height: 20px;
+  line-height: var(--line-height-normal);
   letter-spacing: -0.05em;
   
   color: var(--color-black);
@@ -245,7 +245,7 @@
   font-style: normal;
   font-weight: 500;
   font-size: var(--font-s);
-  line-height: 25px;
+  line-height: var(--line-height-loose);
   letter-spacing: -0.05em;
   
   color: var(--color-black);
@@ -265,7 +265,7 @@
   font-style: normal;
   font-weight: 400;
   font-size: var(--font-xs);
-  line-height: 20px;
+  line-height: var(--line-height-relaxed);
   letter-spacing: -0.05em;
   
   color: var(--color-black);
@@ -336,7 +336,7 @@
   font-style: normal;
   font-weight: 700;
   font-size: var(--font-xs);
-  line-height: 20px;
+  line-height: var(--line-height-relaxed);
   letter-spacing: -0.05em;
   
   color: var(--color-black);
@@ -355,7 +355,7 @@
   font-style: normal;
   font-weight: 700;
   font-size: var(--font-m);
-  line-height: 23px;
+  line-height: var(--line-height-snug);
   text-align: center;
   
   color: var(--color-black);

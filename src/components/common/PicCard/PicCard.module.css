@@ -70,7 +70,7 @@
   font-style: normal;
   font-weight: 600;
   font-size: var(--font-xs);
-  line-height: 15px;
+  line-height: var(--line-height-tight);
   color: var(--color-black);
 }
 
@@ -103,7 +103,7 @@
   font-style: normal;
   font-weight: 600;
   font-size: var(--font-s);
-  line-height: 18px;
+  line-height: var(--line-height-tight);
   letter-spacing: 0.1em;
   color: var(--color-black);
 }
@@ -151,7 +151,7 @@
   font-style: normal;
   font-weight: 600;
   font-size: var(--font-xs);
-  line-height: 15px;
+  line-height: var(--line-height-tight);
   color: var(--color-black);
 }
 
@@ -160,7 +160,7 @@
   font-style: normal;
   font-weight: 600;
   font-size: var(--font-xs);
-  line-height: 15px;
+  line-height: var(--line-height-tight);
   color: var(--color-black);
   opacity: 0.7;
 }

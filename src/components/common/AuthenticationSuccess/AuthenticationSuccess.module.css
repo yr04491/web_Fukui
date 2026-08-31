@@ -135,7 +135,7 @@
   font-size: 1rem;
   color: #558b2f;
   margin: -0.5rem 0 0 0;
-  line-height: 1.6;
+  line-height: var(--line-height-relaxed);
   font-family: var(--font-primary);
   animation: fadeIn 0.5s ease-out 0.5s both;
 }

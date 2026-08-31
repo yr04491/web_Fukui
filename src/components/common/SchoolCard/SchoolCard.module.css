@@ -79,7 +79,7 @@
   font-style: normal;
   font-weight: 600;
   font-size: var(--font-xs);
-  line-height: 15px;
+  line-height: var(--line-height-tight);
   color: var(--color-black);
 }
 
@@ -117,7 +117,7 @@
   font-style: normal;
   font-weight: 600;
   font-size: var(--font-s);
-  line-height: 1.4; /* 行間を調整 */
+  line-height: var(--line-height-snug); /* 行間を調整 */
   text-align: center; /* 中央揃え */
   letter-spacing: 0.05em;
   color: var(--color-black);
@@ -138,7 +138,7 @@
   font-style: normal;
   font-weight: 600;
   font-size: var(--font-s);
-  line-height: 1.4;
+  line-height: var(--line-height-snug);
   text-align: center;
   letter-spacing: 0.05em;
   color: var(--color-black);
@@ -161,7 +161,7 @@
   font-style: normal;
   font-weight: 400;
   font-size: var(--font-xs);
-  line-height: 1.4;
+  line-height: var(--line-height-snug);
   letter-spacing: 0.05em;
   color: var(--color-text-secondary);
   flex: none;

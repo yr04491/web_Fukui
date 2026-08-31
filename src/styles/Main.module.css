@@ -157,7 +157,7 @@
   font-style: normal;
   font-weight: 500;
   font-size: var(--font-s);
-  line-height: var(--line-height-xl);
+  line-height: 2;
   letter-spacing: 0.1em;
   color: var(--color-black);
   /* leading-trim: both; */
@@ -181,7 +181,7 @@
   font-style: normal;
   font-weight: 600;
   font-size: var(--font-xs);
-  line-height: var(--line-height-s);
+  line-height: var(--line-height-tight);
   color: var(--color-black);
   cursor: pointer;
   /* leading-trim: both; */
@@ -218,7 +218,7 @@
   font-style: normal;
   font-weight: 400;
   font-size: var(--font-s);
-  line-height: 17px;
+  line-height: var(--line-height-tight);
   text-align: center;
   color: var(--color-white);
 }

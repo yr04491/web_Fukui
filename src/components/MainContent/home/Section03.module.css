@@ -66,7 +66,7 @@
   font-style: normal;
   font-weight: 600;
   font-size: var(--font-title-story);
-  line-height: 32px;
+  line-height: var(--line-height-tight);
   display: flex;
   align-items: center;
   text-align: center;
@@ -100,7 +100,7 @@
   font-style: normal;
   font-weight: 600;
   font-size: var(--font-m);
-  line-height: 1.5;
+  line-height: var(--line-height-normal);
   color: var(--color-black);
   margin: 0;
   text-align: center;
@@ -148,7 +148,7 @@
   font-style: normal;
   font-weight: 600;
   font-size: var(--font-xs);
-  line-height: 15px;
+  line-height: var(--line-height-tight);
   color: var(--color-black);
 }
 
@@ -157,7 +157,7 @@
   font-style: normal;
   font-weight: 600;
   font-size: var(--font-m);
-  line-height: 32px;
+  line-height: 2;
   color: var(--color-black);
   margin: 0;
 }
@@ -224,7 +224,7 @@
   font-style: normal;
   font-weight: 600;
   font-size: var(--font-xs);
-  line-height: 15px;
+  line-height: var(--line-height-tight);
   color: var(--color-black);
   white-space: nowrap;
   display: inline-block;
@@ -262,7 +262,7 @@
   
   .mainTitle {
     font-size: 22px;
-    line-height: 28px;
+    line-height: var(--line-height-tight);
   }
   
   .tweetArea {
@@ -274,7 +274,7 @@
 @media (max-width: 480px) {
   .mainTitle {
     font-size: var(--font-l);
-    line-height: 26px;
+    line-height: var(--line-height-tight);
   }
   
   .placeTitle {

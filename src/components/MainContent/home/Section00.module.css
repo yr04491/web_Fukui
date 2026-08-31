@@ -84,7 +84,7 @@
   font-style: normal;
   font-weight: 600;
   font-size: var(--font-title-story);
-  line-height: 32px;
+  line-height: var(--line-height-tight);
   display: flex;
   align-items: center;
   text-align: center;
@@ -136,7 +136,7 @@
   font-style: normal;
   font-weight: 600;
   font-size: var(--font-xs);
-  line-height: 15px;
+  line-height: var(--line-height-tight);
   color: var(--color-black);
   flex-grow: 1;
   text-align: center;
@@ -156,7 +156,7 @@
   font-style: normal;
   font-weight: 500;
   font-size: 23px;
-  line-height: 1.8;
+  line-height: var(--line-height-loose);
   color: var(--color-text-secondary);
   margin: 0;
 }
@@ -204,7 +204,7 @@
   font-style: normal;
   font-weight: 600;
   font-size: var(--font-m);
-  line-height: 24px;
+  line-height: var(--line-height-normal);
   color: var(--color-black);
   margin-bottom: 15px;
 }
@@ -259,7 +259,7 @@
   font-style: normal;
   font-weight: 600;
   font-size: var(--font-xs);
-  line-height: 15px;
+  line-height: var(--line-height-tight);
   color: var(--color-black);
   white-space: nowrap; /* テキストの改行を防止 */
 }

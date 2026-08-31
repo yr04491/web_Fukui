@@ -65,7 +65,7 @@
   font-style: normal;
   font-weight: 600;
   font-size: var(--font-title-story);
-  line-height: 32px;
+  line-height: var(--line-height-tight);
   display: flex;
   align-items: center;
   text-align: center;
@@ -104,7 +104,7 @@
 .contentList p {
   margin: 0;
   padding: 0;
-  line-height: 24px;
+  line-height: var(--line-height-normal);
 }
 
 .projectButton {
@@ -136,7 +136,7 @@
   font-style: normal;
   font-weight: 600;
   font-size: var(--font-xs);
-  line-height: 15px;
+  line-height: var(--line-height-tight);
   color: var(--color-black);
   flex-grow: 1;
   text-align: center;
@@ -169,7 +169,7 @@
   font-style: normal;
   font-weight: 600;
   font-size: var(--font-xs);
-  line-height: 14px; /* 15pxから14pxに減らして行間を詰める */
+  line-height: var(--line-height-tight); /* 15pxから14pxに減らして行間を詰める */
   color: var(--color-black);
   margin-bottom: -2px; /* 下部に負のマージンを追加して詰める */
 }
@@ -179,7 +179,7 @@
   font-style: normal;
   font-weight: 600;
   font-size: var(--font-m);
-  line-height: 24px; /* 32pxから24pxに減らして行間を詰める */
+  line-height: var(--line-height-normal); /* 32pxから24pxに減らして行間を詰める */
   margin-top: -2px; /* 上部に少し負のマージンを追加して詰める */
   color: var(--color-black);
 }
@@ -228,7 +228,7 @@
   font-style: normal;
   font-weight: 600;
   font-size: var(--font-xs);
-  line-height: 15px;
+  line-height: var(--line-height-tight);
   color: var(--color-black);
   white-space: nowrap;
 }

@@ -19,7 +19,7 @@
   font-style: normal;
   font-weight: 500;
   font-size: var(--font-m);
-  line-height: var(--line-height-xl);
+  line-height: var(--line-height-loose);
   letter-spacing: 0.1em;
   color: var(--color-black);
   /* leading-trim: both; */
@@ -59,7 +59,7 @@
   font-style: normal;
   font-weight: 500;
   font-size: var(--font-m);
-  line-height: var(--line-height-xl);
+  line-height: var(--line-height-loose);
   letter-spacing: 0.05em;
   color: var(--color-black);
   margin-bottom: 10px;
@@ -76,7 +76,7 @@
   font-style: normal;
   font-weight: 600;
   font-size: var(--font-xs);
-  line-height: var(--line-height-s);
+  line-height: var(--line-height-tight);
   color: var(--color-black);
 }
 
@@ -98,7 +98,7 @@
   font-style: normal;
   font-weight: 600;
   font-size: var(--font-xs);
-  line-height: var(--line-height-s);
+  line-height: var(--line-height-tight);
   color: var(--color-black);
   cursor: pointer;
   /* leading-trim: both; */

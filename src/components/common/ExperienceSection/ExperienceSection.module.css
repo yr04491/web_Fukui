@@ -22,7 +22,7 @@
   font-style: normal;
   font-weight: 600;
   font-size: var(--font-s);
-  line-height: 20px;
+  line-height: var(--line-height-snug);
   color: var(--color-black);
   text-align: left;
   width: 100%;
@@ -44,13 +44,13 @@
 /* 1行目: みんなの体験談を見てみよう！ */
 .titleLine1 {
   font-size: var(--font-xs);
-  line-height: 1.5;
+  line-height: var(--line-height-normal);
 }
 
 /* 2行目: 不登校になったきっかけは？ */
 .titleLine2 {
   font-size: var(--font-l);
-  line-height: 1.4;
+  line-height: var(--line-height-snug);
 }
 
 .tweetArea {
@@ -90,7 +90,7 @@
   font-style: normal;
   font-weight: 600;
   font-size: var(--font-s);
-  line-height: 20px;
+  line-height: var(--line-height-snug);
   color: var(--color-black);
   cursor: pointer;
   transition: background-color 0.2s, transform 0.1s;
@@ -135,7 +135,7 @@
   font-family: var(--font-primary);
   font-size: var(--font-s);
   color: #d63031;
-  line-height: 1.5;
+  line-height: var(--line-height-normal);
 }
 
 /* 該当なしメッセージ */
@@ -153,5 +153,5 @@
   font-family: var(--font-primary);
   font-size: var(--font-s);
   color: #6c757d;
-  line-height: 1.5;
+  line-height: var(--line-height-normal);
 }

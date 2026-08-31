@@ -225,7 +225,7 @@
 }
 
 /* レスポンシブ対応 */
-@media (max-width: 768px) {
+@media (max-width: 982px) {
   .message {
     font-size: 1.5rem;
   }

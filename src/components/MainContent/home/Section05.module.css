@@ -501,7 +501,7 @@
 /* .expertButton, .experienceButton クラスは削除 */
 
 /* レスポンシブ対応 - カードサイズは変更せず、コンテナのみ調整 */
-@media (max-width: 768px) {
+@media (max-width: 982px) {
     .section05 {
         padding: 40px 20px 30px;
         width: 100%;
@@ -513,8 +513,7 @@
         max-width: 100%;
     }
 
-    .mainTitle {
-        font-size: 22px;
+    .mainTitle {
         line-height: var(--line-height-tight);
         width: 100%;
         max-width: 300px; /* タイトルの最大幅を制限 */
@@ -561,9 +560,8 @@
     }
 }
 
-@media (max-width: 480px) {
-    .mainTitle {
-        font-size: var(--font-l);
+@media (max-width: 560px) {
+    .mainTitle {
         line-height: var(--line-height-tight);
         max-width: 250px; /* さらに小さい画面での最大幅 */
     }

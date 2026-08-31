@@ -214,7 +214,7 @@
   opacity: 0.9;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 982px) {
   .modal {
     width: 95%;
     padding: 20px;

@@ -96,6 +96,5 @@
   .titleSection {
     padding: 40px 0 30px;
   }
-  .mainTitle { font-size: 28px; }
   .description { font-size: var(--font-s); }
 }

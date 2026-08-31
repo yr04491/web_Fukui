@@ -129,7 +129,7 @@
 }
 
 /* レスポンシブ対応 */
-@media (max-width: 768px) {
+@media (max-width: 982px) {
   .reviewCard {
     width: 240px; /* 固定幅を維持 */
     min-width: 240px; /* 最小幅も維持 */

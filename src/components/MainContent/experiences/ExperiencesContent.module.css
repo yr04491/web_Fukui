@@ -272,7 +272,7 @@
 }
 
 /* レスポンシブ対応 */
-@media (max-width: 768px) {
+@media (max-width: 982px) {
   /* スマホ時は2列グリッドを横スクロールにする既存スタイルを維持 */
   .cardsGrid {
     display: flex;

@@ -255,13 +255,12 @@
 }
 
 /* レスポンシブ対応 */
-@media (max-width: 768px) {
+@media (max-width: 982px) {
   .section03 {
     padding: 40px 20px 30px;
   }
   
-  .mainTitle {
-    font-size: 22px;
+  .mainTitle {
     line-height: var(--line-height-tight);
   }
   
@@ -271,9 +270,8 @@
   }
 }
 
-@media (max-width: 480px) {
-  .mainTitle {
-    font-size: var(--font-l);
+@media (max-width: 560px) {
+  .mainTitle {
     line-height: var(--line-height-tight);
   }
   

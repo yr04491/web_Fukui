@@ -261,7 +261,7 @@
 }
 
 /* レスポンシブ対応 */
-@media (max-width: 768px) {
+@media (max-width: 982px) {
   .adminHeader {
     flex-direction: column;
     align-items: flex-start;
@@ -338,7 +338,7 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 560px) {
   .adminHeader {
     padding: 20px 12px;
     margin-bottom: 20px;

@@ -68,3 +68,36 @@
   --content-width: 540px;
   --banner-width: 200px;
 }
+
+/* ------------------------------------------------------------------
+   レスポンシブ時の見出しサイズ
+   ブレークポイントは README.txt の定義に準拠する
+     982px … ナビ非表示・ハンバーガーメニュー表示に切り替わる
+     560px … メインコンテンツが比率縮小に切り替わる
+   トークン側で切り替えることで、全ページの見出しが同じルールで縮む
+   ------------------------------------------------------------------ */
+@media (max-width: 982px) {
+  :root {
+    --font-title-story: 22px;
+    --font-title-tool: 24px;
+    --font-title-place: 22px;
+    --font-title-school: 22px;
+    --font-title-tweet: 22px;
+    --font-title-review: 24px;
+    --font-title-interview: 28px;
+    --font-title-login: 28px;
+  }
+}
+
+@media (max-width: 560px) {
+  :root {
+    --font-title-story: 20px;
+    --font-title-tool: 22px;
+    --font-title-place: 20px;
+    --font-title-school: 20px;
+    --font-title-tweet: 20px;
+    --font-title-review: 22px;
+    --font-title-interview: 24px;
+    --font-title-login: 24px;
+  }
+}

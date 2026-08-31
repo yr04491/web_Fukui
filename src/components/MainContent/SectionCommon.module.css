@@ -369,7 +369,7 @@
 
 
 /* レスポンシブ対応 */
-@media (max-width: 768px) {
+@media (max-width: 982px) {
   /*
     .sectionXXTop, .sectionXXMiddle のレスポンシブは
     各専用CSSファイル側で定義します。

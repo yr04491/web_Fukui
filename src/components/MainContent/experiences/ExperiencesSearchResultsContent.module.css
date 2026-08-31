@@ -358,7 +358,7 @@
   margin: 0 auto;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 982px) {
   .cardsGrid {
     display: flex;
     overflow-x: auto;

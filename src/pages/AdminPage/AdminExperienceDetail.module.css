@@ -493,7 +493,7 @@
 }
 
 /* タブレット以上 */
-@media (min-width: 768px) {
+@media (min-width: 983px) {
   .tocAndMeta {
     flex-direction: row;
   }

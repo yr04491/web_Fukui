@@ -34,7 +34,7 @@
 }
 
 .titleSection { margin-bottom: 16px; }
-.pageTitle { font-size: 18px; margin: 0 0 12px 0; font-weight: 700; }
+.pageTitle { font-size: var(--font-title-admin); margin: 0 0 12px 0; font-weight: 700; }
 .titleDivider { 
   height: 1px; 
   background: #E0E0E0; 

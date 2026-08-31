@@ -7,7 +7,7 @@
 }
 
 .pageTitle {
-  font-size: 28px;
+  font-size: var(--font-title-tool);
   font-weight: bold;
   line-height: 1.4;
   margin: 0;
@@ -62,7 +62,7 @@
 
 /* セクション見出し */
 .sectionTitle {
-  font-size: 18px;
+  font-size: var(--font-heading);
   font-weight: bold;
   color: var(--color-black);
   margin: 24px 0 12px 0;

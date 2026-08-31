@@ -31,7 +31,7 @@
 
 .mainTitle {
   font-family: var(--font-primary);
-  font-size: 28px;
+  font-size: var(--font-title-tool);
   font-weight: 700;
   color: var(--color-text-secondary);
   margin: 0 0 15px 0;
@@ -54,7 +54,7 @@
 
 .sectionTitle {
   font-family: var(--font-primary);
-  font-size: 18px;
+  font-size: var(--font-heading);
   font-weight: 600;
   color: var(--color-text-secondary);
   margin: 0 0 10px 0;

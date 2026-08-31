@@ -54,7 +54,7 @@
 }
 
 .pageTitle {
-  font-size: 25px;
+  font-size: var(--font-title-school);
   font-weight: bold;
   line-height: 1.4;
   margin: 0 0 15px 0;

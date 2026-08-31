@@ -36,7 +36,23 @@
   --font-s: 14px;
   --font-m: 16px;
   --font-l: 20px;
-  
+  --font-heading: 18px;         /* 中見出し(セクション見出し) */
+
+  /* ページ主見出し */
+  --font-title-story: 25px;     /* TOPページ系の詳細ページ(00〜05) */
+  --font-title-tool: 28px;      /* 検索・一覧・機能ページ */
+
+  /* カード種別ごとの詳細ページ見出し */
+  --font-title-place: 25px;     /* 居場所カード詳細 */
+  --font-title-school: 25px;    /* 進路(学校)カード詳細 */
+  --font-title-tweet: 25px;     /* 体験談カード詳細 */
+  --font-title-review: 28px;    /* レビューカード詳細 */
+  --font-title-interview: 32px; /* インタビューカード詳細 */
+
+  /* 独立枠(サイト共通ルールと切り離す) */
+  --font-title-login: 32px;     /* ログインページ */
+  --font-title-admin: 18px;     /* 管理画面 */
+
   /* 行の高さ */
   --line-height-s: 15px;
   --line-height-m: 20px;

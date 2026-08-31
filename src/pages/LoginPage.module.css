@@ -23,7 +23,7 @@
 
 .mainTitle {
   font-family: var(--font-primary);
-  font-size: 32px;
+  font-size: var(--font-title-login);
   font-weight: 700;
   color: var(--color-text-secondary);
   text-align: center;
@@ -67,7 +67,7 @@
 
 .noticeTitle {
   font-family: var(--font-primary);
-  font-size: 18px;
+  font-size: var(--font-heading);
   font-weight: 700;
   color: var(--color-text-secondary);
   margin: 0 0 16px 0;

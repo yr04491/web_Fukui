@@ -40,7 +40,7 @@
 
 .mainTitle {
   font-family: var(--font-primary);
-  font-size: 32px;
+  font-size: var(--font-title-interview);
   font-weight: 600;
   color: var(--color-black);
   margin: 0;
@@ -121,7 +121,7 @@
 /* セクション */
 .section { margin-top: 40px; }
 .sectionHeading {
-  font-size: 18px;
+  font-size: var(--font-heading);
   font-weight: 600;
   color: var(--color-text-secondary);
   margin: 0 0 10px 0;

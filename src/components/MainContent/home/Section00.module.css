@@ -266,7 +266,7 @@
 
 /* Section00専用のExperienceSection */
 .experience00 :global(.titleLine2) {
-  font-size: 18px !important;
+  font-size: var(--font-heading) !important;
 }
 
 /* レスポンシブ対応 */

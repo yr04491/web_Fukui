@@ -175,7 +175,7 @@
     font-family: var(--font-primary);
     font-style: normal;
     font-weight: 600;
-    font-size: 18px;
+    font-size: var(--font-heading);
     line-height: 1.4;
     color: var(--color-black);
     margin: 0;
@@ -307,7 +307,7 @@
 
 /* Section05専用のExperienceSection */
 .experience05 :global(.titleLine2) {
-  font-size: 18px !important;
+  font-size: var(--font-heading) !important;
 }
 
 /* 体験談セクションのボタン */

@@ -27,7 +27,7 @@
 
 .mainTitle {
   font-family: var(--font-primary);
-  font-size: 25px;
+  font-size: var(--font-title-story);
   font-weight: 600;
   color: var(--color-black);
   text-align: center;
@@ -58,7 +58,7 @@
   font-family: var(--font-primary);
   font-style: normal;
   font-weight: 600;
-  font-size: 18px;
+  font-size: var(--font-heading);
   line-height: 1.5;
   color: var(--color-black);
   margin: 0;

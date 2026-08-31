@@ -16,7 +16,7 @@
 }
 
 .searchTitle {
-  font-size: 28px;
+  font-size: var(--font-title-tool);
   font-weight: bold;
   color: var(--color-text-secondary);
   margin-bottom: 10px;

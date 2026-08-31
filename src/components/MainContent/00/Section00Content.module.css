@@ -47,7 +47,7 @@
 
 .topMainTitle {
   font-family: var(--font-primary);
-  font-size: 25px;
+  font-size: var(--font-title-story);
   font-weight: 700;
   color: var(--color-text-secondary);
   text-align: center;
@@ -203,6 +203,6 @@
   .topMainTitle { font-size: 26px; }
   .topSubtitle { font-size: 14px; }
   .topDescription { font-size: 16px; }
-  .experienceTitle { font-size: 18px; }
+  .experienceTitle { font-size: var(--font-heading); }
   .experienceButton { font-size: 14px; padding: 14px 20px; }
 }

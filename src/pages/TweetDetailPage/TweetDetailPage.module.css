@@ -31,7 +31,7 @@
 .main { margin-top: 12px; }
 
 .titleSection { margin-bottom: 16px; }
-.pageTitle { font-size: 18px; margin: 0 0 12px 0; font-weight: 700; }
+.pageTitle { font-size: var(--font-title-tweet); margin: 0 0 12px 0; font-weight: 700; }
 .titleDivider { height: 1px; background: #E0E0E0; margin-bottom: 12px; }
 
 .tocAndMeta { display: flex; flex-direction: column; gap: 16px; margin: 16px 0; }

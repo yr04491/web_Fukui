@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styles from './ExperienceSection.module.css';
-import vectorRB from '../../../assets/images/vectorRB.png';
+import vectorRB from '../../../assets/images/vectorRB2.png';
 import TweetCard from '../TweetCard/TweetCard';
 import { getExperiencesByQuestion } from '../../../utils/gasApi';
 

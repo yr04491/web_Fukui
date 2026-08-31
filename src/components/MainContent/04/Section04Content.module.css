@@ -139,3 +139,7 @@
   gap: 20px;
   width: 100%;
 }
+
+@media (max-width: 768px) {
+  .roadImage { max-width: 120px; }
+}

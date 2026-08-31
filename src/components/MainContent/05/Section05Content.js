@@ -11,7 +11,7 @@ import SchoolCard from '../../common/SchoolCard/SchoolCard';
 import schoolCards from '../../../data/schoolCards';
 import road05Image from '../../../assets/icons/ROAD05.png';
 import dotlineImage from '../../../assets/images/dotline.png';
-import vectorRB from '../../../assets/images/vectorRB.png';
+import vectorRB from '../../../assets/images/vectorRB2.png';
 
 const Section05Content = () => {
   const navigate = useNavigate();

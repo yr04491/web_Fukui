@@ -159,4 +159,5 @@
 
 @media (max-width: 768px) {
   .section05Top, .section05Middle { width: 100%; }
+  .roadImage { max-width: 120px; }
 }

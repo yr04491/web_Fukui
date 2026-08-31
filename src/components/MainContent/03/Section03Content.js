@@ -10,7 +10,7 @@ import Breadcrumbs from '../../common/Breadcrumbs';
 import PlaceCard from '../../common/PlaceCard/PlaceCard';
 import road03Image from '../../../assets/icons/ROAD03.png';
 import dotlineImage from '../../../assets/images/dotline.png';
-import vectorRB from '../../../assets/images/vectorRB.png';
+import vectorRB from '../../../assets/images/vectorRB2.png';
 
 const Section03Content = () => {
   const navigate = useNavigate();

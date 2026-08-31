@@ -7,7 +7,7 @@ import placeCards from '../../data/schoolCards';
 import TweetCard from '../../components/common/TweetCard/TweetCard';
 import Breadcrumbs from '../../components/common/Breadcrumbs';
 import Footer from '../../components/common/Footer';
-import vectorRB from '../../assets/images/vectorRB.png';
+import vectorRB from '../../assets/images/vectorRB2.png';
 import { getAllExperiences } from '../../utils/gasApi';
 
 const SchoolDetailPage = () => {

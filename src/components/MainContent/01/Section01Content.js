@@ -11,7 +11,7 @@ import FlexiCard from '../../common/FlexiCard/FlexiCard';
 import { getCardsByCategory } from '../../../data/flexiCardData';
 import road01Image from '../../../assets/icons/ROAD01.png';
 import dotlineImage from '../../../assets/images/dotline.png';
-import vectorRB from '../../../assets/images/vectorRB.png';
+import vectorRB from '../../../assets/images/vectorRB2.png';
 import { getExperiencesByQuestion } from '../../../utils/gasApi';
 
 const Section01Content = () => {

@@ -9,7 +9,7 @@ import Breadcrumbs from '../../common/Breadcrumbs';
 import InterviewCard from '../../common/InterviewCard/InterviewCard';
 import road04Image from '../../../assets/icons/ROAD04.png';
 import dotlineImage from '../../../assets/images/dotline.png';
-import vectorRB from '../../../assets/images/vectorRB.png';
+import vectorRB from '../../../assets/images/vectorRB2.png';
 
 const Section04Content = () => {
   return (

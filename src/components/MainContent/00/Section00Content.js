@@ -9,7 +9,7 @@ import Breadcrumbs from '../../common/Breadcrumbs';
 import TweetCard from '../../common/TweetCard/TweetCard';
 import road00Image from '../../../assets/icons/ROAD00.png';
 import dotlineImage from '../../../assets/images/dotline.png';
-import vectorRB from '../../../assets/images/vectorRB.png';
+import vectorRB from '../../../assets/images/vectorRB2.png';
 import { getExperiencesByQuestion } from '../../../utils/gasApi';
 
 const Section00Content = () => {

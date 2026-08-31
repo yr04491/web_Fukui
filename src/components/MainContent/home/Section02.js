@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './Section02.module.css';
-import vectorRB from '../../../assets/images/vectorRB.png';
+import vectorRB from '../../../assets/images/vectorRB2.png';
 import roadNumberImage from '../../../assets/icons/02_0.png';
 import SectionTitle from '../../common/SectionTitle';
 import ContentFrame from '../../common/ContentFrame';

@@ -8,7 +8,7 @@ import TweetCard from '../../components/common/TweetCard/TweetCard';
 import Breadcrumbs from '../../components/common/Breadcrumbs';
 import Footer from '../../components/common/Footer';
 import newwindowIcon from '../../assets/images/newwindow.png';
-import vectorRB from '../../assets/images/vectorRB.png';
+import vectorRB from '../../assets/images/vectorRB2.png';
 import { getAllExperiences } from '../../utils/gasApi';
 
 const PlaceDetailPage = () => {

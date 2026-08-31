@@ -163,3 +163,7 @@
 .listButton:active { transform: scale(0.98); }
 
 .playIcon { width: 14px; height: 14px; }
+
+@media (max-width: 768px) {
+  .roadImage { max-width: 120px; }
+}

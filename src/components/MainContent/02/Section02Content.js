@@ -11,7 +11,7 @@ import FlexiCard from '../../common/FlexiCard/FlexiCard';
 import { getCardsByCategory } from '../../../data/flexiCardData';
 import road02Image from '../../../assets/icons/ROAD02.png';
 import dotlineImage from '../../../assets/images/dotline.png';
-import vectorRB from '../../../assets/images/vectorRB.png';
+import vectorRB from '../../../assets/images/vectorRB2.png';
 
 const Section02Content = () => {
   const navigate = useNavigate();

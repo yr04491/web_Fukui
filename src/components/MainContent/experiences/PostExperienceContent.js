@@ -22,7 +22,7 @@ const PostExperienceContent = () => {
       <div className={styles.mainContentArea}>
         {/* タイトルセクション */}
         <div className={styles.titleBox}>
-          <p className={styles.subtitle}>あなたの経験が、だれかの道しるべになります</p>
+          <p className={styles.subtitle}>あなたの経験が、<br />だれかの道しるべになります</p>
           <h1 className={styles.mainTitle}>体験談を投稿する前に</h1>
           <img src={dotlineImage} alt="点線" className={styles.dotline} />
         </div>

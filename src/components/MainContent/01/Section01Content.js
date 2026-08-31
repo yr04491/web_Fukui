@@ -103,10 +103,10 @@ const Section01Content = () => {
         <div className={styles.sectionHeader}>
           <h3 className={styles.sectionTitle}>
             <span className={styles.titleLine1}>専門家の先生にお聞きしました</span>
-            <span className={styles.titleLine2}>不登校の原因って</span>
+            <span className={styles.titleLine2}>不登校の原因って？</span>
           </h3>
         </div>
-        <InterviewCard cardId={2} />
+        <InterviewCard cardId={1} />
         <div className={styles.dottedBorder}></div>
       </div>
 

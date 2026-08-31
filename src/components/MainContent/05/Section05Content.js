@@ -73,13 +73,44 @@ const Section05Content = () => {
       </div>
 
       {/* 中学卒業後の進路ボタン */}
-      <button 
+      <button
         className={styles.pathButton}
         onClick={() => navigate('/schools')}
       >
         <img src={vectorRB} alt="アイコン" className={styles.playIcon} />
         <span>中学卒業後の進路をさがす</span>
       </button>
+
+      {/* 全日制高校の情報（外部サイトへの案内） */}
+      <div className={styles.fulltimeSection}>
+        <h2 className={styles.fulltimeTitle}>全日制の高校の情報はこちらをご確認ください</h2>
+        <div className={styles.dividerLine}></div>
+
+        <ul className={styles.fulltimeList}>
+          <li>
+            <a
+              className={styles.fulltimeLink}
+              href="https://www.pref.fukui.lg.jp/doc/koukou/sixyoukai.html"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              県立高校の紹介
+              <span className={styles.fulltimeNote}>・福井県の福井県立学校紹介ページ</span>
+            </a>
+          </li>
+          <li>
+            <a
+              className={styles.fulltimeLink}
+              href="https://www.pref.fukui.lg.jp/doc/daishi/siritugakkou/koutougakkou.html"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              私立高校（通信制含む）の紹介
+              <span className={styles.fulltimeNote}>・福井県の福井県内私立高校一覧ページ</span>
+            </a>
+          </li>
+        </ul>
+      </div>
 
       {/* フッター */}
       <Footer />

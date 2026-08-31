@@ -79,7 +79,7 @@
 }
 
 .tab {
-  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-family: var(--font-primary);
   font-size: 15px;
   font-weight: 500;
   padding: 10px 20px;

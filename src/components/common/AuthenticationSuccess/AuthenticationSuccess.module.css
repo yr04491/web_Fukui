@@ -116,7 +116,7 @@
   font-weight: 700;
   color: #2e7d32;
   margin: 0;
-  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-family: var(--font-primary);
   animation: fadeIn 0.5s ease-out 0.3s both;
 }
 
@@ -126,7 +126,7 @@
   font-weight: 600;
   color: #388e3c;
   margin: -0.5rem 0 0 0;
-  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-family: var(--font-primary);
   animation: fadeIn 0.5s ease-out 0.4s both;
 }
 
@@ -136,7 +136,7 @@
   color: #558b2f;
   margin: -0.5rem 0 0 0;
   line-height: 1.6;
-  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-family: var(--font-primary);
   animation: fadeIn 0.5s ease-out 0.5s both;
 }
 
@@ -173,7 +173,7 @@
   font-size: 0.95rem;
   font-weight: 700;
   color: #f57c00;
-  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-family: var(--font-primary);
 }
 
 /* プログレスバー */
@@ -210,7 +210,7 @@
   font-size: 0.9rem;
   color: #66bb6a;
   margin: 0;
-  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-family: var(--font-primary);
   animation: fadeIn 0.5s ease-out 0.8s both, pulse 1.5s ease-in-out 1s infinite;
 }
 

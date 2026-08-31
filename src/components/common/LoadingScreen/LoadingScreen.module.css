@@ -67,7 +67,7 @@
   font-weight: 600;
   color: #2c3e50;
   margin: 0;
-  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-family: var(--font-primary);
 }
 
 /* サブメッセージ */
@@ -76,7 +76,7 @@
   color: #7f8c8d;
   margin: -1rem 0 0 0;
   line-height: 1.6;
-  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-family: var(--font-primary);
 }
 
 /* ドットアニメーション */

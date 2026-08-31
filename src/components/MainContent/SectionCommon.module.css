@@ -70,7 +70,7 @@
 .mainTitle {
   width: 400px;
   height: 48px;
-  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-family: var(--font-primary);
   font-style: normal;
   font-weight: 500;
   font-size: 25px;
@@ -92,7 +92,7 @@
   height: auto; /* 内容に合わせて高さを自動調整 */
   min-height: 23px; 
   
-  font-family: 'Zen Kaku Gothic New';
+  font-family: var(--font-primary);
   font-style: normal;
   font-weight: 700;
   font-size: 16px;
@@ -114,7 +114,7 @@
   height: auto; /* 内容に合わせて高さを自動調整 */
   min-height: 23px;
   
-  font-family: 'Zen Kaku Gothic New';
+  font-family: var(--font-primary);
   font-style: normal;
   font-weight: 700;
   font-size: 16px;
@@ -135,7 +135,7 @@
   height: auto; /* 内容に合わせて高さを自動調整 */
   min-height: 25px;
   
-  font-family: 'Zen Kaku Gothic New';
+  font-family: var(--font-primary);
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -157,7 +157,7 @@
   height: auto; /* 内容に合わせて高さを自動調整 */
   min-height: 25px;
   
-  font-family: 'Zen Kaku Gothic New';
+  font-family: var(--font-primary);
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -202,7 +202,7 @@
   height: auto; /* 内容に合わせて高さを自動調整 */
   min-height: 60px;
   
-  font-family: 'Zen Kaku Gothic New';
+  font-family: var(--font-primary);
   font-style: normal;
   font-weight: 400;
   font-size: 13px;
@@ -241,7 +241,7 @@
   width: 460px;
   height: 25px;
   
-  font-family: 'Zen Kaku Gothic New';
+  font-family: var(--font-primary);
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
@@ -261,7 +261,7 @@
   width: 460px;
   min-height: 40px;
   
-  font-family: 'Zen Kaku Gothic New';
+  font-family: var(--font-primary);
   font-style: normal;
   font-weight: 400;
   font-size: 12px;
@@ -332,7 +332,7 @@
 
 .projectButton span,
 .projectButtonHighlight span {
-  font-family: 'Zen Kaku Gothic New';
+  font-family: var(--font-primary);
   font-style: normal;
   font-weight: 700;
   font-size: 12px;
@@ -351,7 +351,7 @@
   width: 480px;
   height: 46px;
   
-  font-family: 'Zen Kaku Gothic New';
+  font-family: var(--font-primary);
   font-style: normal;
   font-weight: 700;
   font-size: 16px;

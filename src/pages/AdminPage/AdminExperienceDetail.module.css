@@ -162,7 +162,7 @@
 }
 
 .backButton {
-  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-family: var(--font-primary);
   font-size: 14px;
   font-weight: 600;
   padding: 10px 20px;
@@ -203,7 +203,7 @@
 }
 
 .adminInfoLabel {
-  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-family: var(--font-primary);
   font-size: 12px;
   font-weight: 600;
   color: #666666;
@@ -212,7 +212,7 @@
 }
 
 .adminInfoValue {
-  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-family: var(--font-primary);
   font-size: 14px;
   font-weight: 500;
   color: #333333;
@@ -268,7 +268,7 @@
 }
 
 .currentRejectReasonTitle {
-  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-family: var(--font-primary);
   font-size: 16px;
   font-weight: 700;
   color: #f57c00;
@@ -276,7 +276,7 @@
 }
 
 .currentRejectReasonBox {
-  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-family: var(--font-primary);
   font-size: 14px;
   line-height: 1.8;
   color: #333333;
@@ -295,7 +295,7 @@
 }
 
 .rejectHistoryTitle {
-  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-family: var(--font-primary);
   font-size: 16px;
   font-weight: 700;
   color: #333333;
@@ -317,7 +317,7 @@
 }
 
 .rejectHistoryDate {
-  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-family: var(--font-primary);
   font-size: 11px;
   font-weight: 600;
   color: #666666;
@@ -326,7 +326,7 @@
 }
 
 .rejectHistoryReason {
-  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-family: var(--font-primary);
   font-size: 14px;
   line-height: 1.6;
   color: #333333;
@@ -347,7 +347,7 @@
 .approveButton,
 .rejectButton,
 .backButton {
-  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-family: var(--font-primary);
   font-size: 16px;
   font-weight: 600;
   padding: 12px 32px;
@@ -380,7 +380,7 @@
 }
 
 .returnToPendingButton {
-  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-family: var(--font-primary);
   font-size: 16px;
   font-weight: 600;
   padding: 12px 32px;
@@ -424,7 +424,7 @@
 }
 
 .rejectFormTitle {
-  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-family: var(--font-primary);
   font-size: 16px;
   font-weight: 600;
   color: #d32f2f;
@@ -433,7 +433,7 @@
 }
 
 .rejectReasonTextarea {
-  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-family: var(--font-primary);
   width: 100%;
   padding: 12px;
   font-size: 14px;
@@ -460,7 +460,7 @@
 
 .confirmRejectButton,
 .cancelRejectButton {
-  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-family: var(--font-primary);
   font-size: 16px;
   font-weight: 600;
   padding: 12px 32px;

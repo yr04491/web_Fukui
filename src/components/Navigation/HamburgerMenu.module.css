@@ -32,7 +32,7 @@
 
 /* MEMUテキスト */
 .menuText {
-  font-family: 'DNP ShueiGoKinStd', sans-serif;
+  font-family: var(--font-primary);
   font-style: normal;
   font-weight: 600;
   font-size: 16px;

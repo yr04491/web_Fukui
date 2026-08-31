@@ -37,7 +37,7 @@
 }
 
 .topSubtitle {
-  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-family: var(--font-primary);
   font-size: 16px;
   font-weight: 400;
   color: #333;
@@ -46,7 +46,7 @@
 }
 
 .topMainTitle {
-  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-family: var(--font-primary);
   font-size: 25px;
   font-weight: 700;
   color: #333;
@@ -70,7 +70,7 @@
 }
 
 .topDescription {
-  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-family: var(--font-primary);
   font-size: 18px;
   font-weight: 500;
   color: #333;
@@ -101,7 +101,7 @@
 }
 
 .experienceTitle {
-  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-family: var(--font-primary);
   font-size: 20px;
   font-weight: 700;
   color: #333;

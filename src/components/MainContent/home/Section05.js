@@ -49,9 +49,6 @@ const Section05 = () => {
                 </button>
             </div>
 
-            {/* 10pxの余白 */}
-            <div style={{ height: '10px' }} />
-
             {/* 体験談セクション追加 */}
             <ExperienceSection 
                 title={"みんなの体験談を見てみよう！\n中学卒業後の進路をどう選んだ？"}

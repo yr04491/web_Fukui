@@ -8,7 +8,13 @@ const Banner = () => {
   return (
     <div className={styles.bannerArea}>
       <BannerItem>
-        <img src={bannerImage} alt="福井県教育総合研究所 教育相談ページ" className={styles.bannerImage} />
+        <a
+          href="https://www.fukui-c.ed.jp/~fec/kyoikusodan/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img src={bannerImage} alt="福井県教育総合研究所 教育相談ページ" className={styles.bannerImage} />
+        </a>
       </BannerItem>
       <GirlImage />
     </div>

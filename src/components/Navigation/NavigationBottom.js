@@ -43,6 +43,16 @@ const NavigationBottom = ({ onActionCompleted }) => {
     }
   };
 
+  // お問い合わせボタンクリックハンドラ
+  const handleContactClick = () => {
+    console.log("「お問い合わせはこちら」がクリックされました");
+    window.open('https://docs.google.com/forms/d/e/1FAIpQLSefUY43iBxlmQrMfjH7JfoLn7GSWzk2pFtDRr0R7PDAV-7Iuw/viewform', '_blank');
+
+    if (onActionCompleted) {
+      onActionCompleted();
+    }
+  };
+
   // // 寄付ボタンクリックハンドラ
   // const handleDonationClick = () => {
   //   console.log("寄付ボタンがクリックされました");
@@ -80,8 +90,8 @@ const NavigationBottom = ({ onActionCompleted }) => {
         プロジェクトと私たちについて
       </div>
 
-      <button className={commonStyles.emailButton}>
-        メールでお問い合わせ
+      <button className={commonStyles.emailButton} onClick={handleContactClick}>
+        お問い合わせはこちら
       </button>
       {/* // 寄付のお願いセクション
       <div className={commonStyles.donationSection}>

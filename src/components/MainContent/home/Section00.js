@@ -25,7 +25,7 @@ const Section00 = () => {
       </div>
 
       <ContentFrame
-        title="＼大丈夫です。なんとかなります／まずは慌てず落ち着きましょう。"
+        title={<>＼大丈夫です。なんとかなります／<br />まずは慌てず落ち着きましょう。</>}
         buttonElement={
           <button 
             className={styles.projectButton}

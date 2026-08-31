@@ -4,7 +4,7 @@
   flex-direction: row;
   align-items: stretch;
   padding: 0;
-  gap: 15px;
+  gap: var(--space-m);
   width: 100%;
   max-width: 460px;
   min-width: 320px;
@@ -47,7 +47,7 @@
   justify-content: space-between;
   padding: 15px 15px 12px 0;
   flex: 1;
-  gap: 10px;
+  gap: var(--space-s);
 }
 
 .mainContent {

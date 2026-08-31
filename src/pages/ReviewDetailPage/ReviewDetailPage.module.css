@@ -44,8 +44,8 @@
   margin: 0 0 20px 0;
 }
 
-.metaInfo { display: flex; align-items: center; gap: 20px; }
-.authorInfo { display: flex; align-items: center; gap: 10px; }
+.metaInfo { display: flex; align-items: center; gap: var(--space-l); }
+.authorInfo { display: flex; align-items: center; gap: var(--space-s); }
 .authorAvatar {
   width: 40px; height: 40px; background: #F4BED3; border-radius: var(--radius-full);
   display: flex; align-items: center; justify-content: center;
@@ -54,7 +54,7 @@
 .authorName { font-family: var(--font-primary); font-weight: 600; font-size: var(--font-m); color: var(--color-black); }
 .date { font-family: var(--font-primary); font-size: var(--font-s); color: var(--color-text-muted); }
 
-.tagSection { margin-bottom: 30px; display: flex; flex-wrap: wrap; gap: 10px; }
+.tagSection { margin-bottom: 30px; display: flex; flex-wrap: wrap; gap: var(--space-s); }
 .tag {
   padding: 6px 12px;
   background: #f0f0f0;
@@ -81,7 +81,7 @@
   border-radius: var(--radius-button);
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: var(--space-s);
 }
 .ratingLabel { font-family: var(--font-primary); font-weight: 600; font-size: var(--font-m); color: var(--color-black); }
 .ratingValue { font-size: var(--font-l); color: #FFD700; }
@@ -101,7 +101,7 @@
 
 .relatedCards {
   display: flex;
-  gap: 20px;
+  gap: var(--space-l);
   overflow-x: auto;
   overflow-y: hidden;
   padding-bottom: 10px;

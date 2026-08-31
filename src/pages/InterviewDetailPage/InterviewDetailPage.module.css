@@ -61,7 +61,7 @@
   padding: 20px 30px;
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: var(--space-l);
   margin-bottom: 30px;
 }
 
@@ -141,7 +141,7 @@
   padding: 20px 30px;
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: var(--space-l);
   margin-top: 40px;
 }
 .writerIcon { flex-shrink: 0; }

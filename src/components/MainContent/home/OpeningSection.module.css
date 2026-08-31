@@ -71,7 +71,7 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: var(--space-s);
   font-family: var(--font-primary);
   font-style: normal;
   font-weight: 600;
@@ -87,7 +87,7 @@
   justify-content: center;
   align-items: center;
   padding: 8px var(--space-m);
-  gap: 10px;
+  gap: var(--space-s);
   width: auto;
   min-width: 180px;
   height: 40px;

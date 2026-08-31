@@ -99,7 +99,7 @@
   top: auto !important;
   flex-direction: row !important;
   width: auto !important;
-  gap: 20px !important;
+  gap: var(--space-l) !important;
   display: flex !important; /* メディアクエリでの display: none を上書き */
   min-height: auto !important; /* 最小高さを自動に */
   padding: 0 !important; /* 内側の余白も0に */

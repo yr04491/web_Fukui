@@ -44,7 +44,7 @@
 .searchInputWrapper {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: var(--space-s);
   padding: 12px 20px;
   border: 1px solid #ddd;
   border-radius: var(--radius-pill);
@@ -67,14 +67,14 @@
 .buttonArea {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: var(--space-m);
   align-items: flex-start;
   width: 100%;
 }
 
 .filterRow {
   display: flex;
-  gap: 10px;
+  gap: var(--space-s);
   width: 100%;
   justify-content: space-between;
 }
@@ -183,7 +183,7 @@
   margin-bottom: 15px;
   display: flex;
   align-items: baseline;
-  gap: 10px;
+  gap: var(--space-s);
   flex-wrap: wrap;
 }
 
@@ -203,7 +203,7 @@
 .activeFilters {
   display: flex;
   align-items: flex-start;
-  gap: 15px;
+  gap: var(--space-m);
   margin-bottom: 25px;
   padding: 15px 20px;
   background-color: #FFF5F2;
@@ -242,7 +242,7 @@
   align-items: center;
   justify-content: center;
   padding: 60px 20px;
-  gap: 20px;
+  gap: var(--space-l);
 }
 
 .loadingSpinner {
@@ -331,7 +331,7 @@
   align-items: center;
   justify-content: center;
   padding: 60px 20px;
-  gap: 15px;
+  gap: var(--space-m);
 }
 
 .noResultsText {
@@ -351,7 +351,7 @@
 .cardsGrid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
+  gap: var(--space-l);
   /* 修正 */
   width: 100%;
   max-width: 100%;
@@ -362,7 +362,7 @@
   .cardsGrid {
     display: flex;
     overflow-x: auto;
-    gap: 15px;
+    gap: var(--space-m);
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
     padding-bottom: 10px;
@@ -372,5 +372,5 @@
   .cardsGrid::-webkit-scrollbar { display: none; }
   .cardsGrid > * { flex: 0 0 auto; scroll-snap-align: start; }
   
-  .activeFilters { flex-direction: column; gap: 10px; padding: 12px 15px; }
+  .activeFilters { flex-direction: column; gap: var(--space-s); padding: 12px 15px; }
 }

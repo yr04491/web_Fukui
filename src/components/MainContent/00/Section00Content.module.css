@@ -113,7 +113,7 @@
 
 .tweetCardsContainer {
   display: flex;
-  gap: 20px;
+  gap: var(--space-l);
   width: 100%;
   overflow-x: auto;
   overflow-y: hidden;

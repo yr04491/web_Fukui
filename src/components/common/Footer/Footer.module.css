@@ -30,7 +30,7 @@
   /* ▼ 左寄せに変更 ▼ */
   align-items: flex-start; 
   /* ギャップを調整 */
-  gap: 15px; 
+  gap: var(--space-m); 
   width: 100%;
   /* コンテンツの最大幅（左右の余白を考慮） */
   max-width: 480px; 
@@ -232,11 +232,11 @@
     padding: 40px 20px;
     height: auto;
     max-width: 100%;
-    gap: 20px;
+    gap: var(--space-l);
   }
   
   .footerContent {
-    gap: 15px; 
+    gap: var(--space-m); 
     /* レスポンシブでも最大幅を指定 */
     max-width: 480px; 
     width: 100%;
@@ -258,11 +258,11 @@
 @media (max-width: 480px) {
   .footer {
     padding: 30px 20px; 
-    gap: 15px;
+    gap: var(--space-m);
   }
   
   .footerContent {
-    gap: 10px;
+    gap: var(--space-s);
     max-width: 100%; /* スマホでは最大幅を解除 */
   }
   

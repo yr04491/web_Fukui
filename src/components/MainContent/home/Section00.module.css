@@ -112,7 +112,7 @@
   justify-content: center;
   align-items: center;
   padding: 8px 10px;
-  gap: 10px;
+  gap: var(--space-s);
   width: 100%;
   max-width: 280px;
   height: 46px;
@@ -213,7 +213,7 @@
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap; /* wrapからnowrapに変更して折り返しを防止 */
-  gap: 20px;
+  gap: var(--space-l);
   width: 100%;
   justify-content: flex-start; /* センターからスタートに変更 */
   overflow-x: auto; /* 横スクロールを有効にする */
@@ -237,7 +237,7 @@
   justify-content: center;
   align-items: center;
   padding: 8px 16px;
-  gap: 10px;
+  gap: var(--space-s);
   width: auto; /* 固定幅から自動幅に変更 */
   min-width: 236px; /* 最小幅を設定 */
   height: 40px;

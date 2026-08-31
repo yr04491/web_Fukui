@@ -48,7 +48,7 @@
   align-items: flex-start;
   /* 修正: 20px -> 30px に統一 */
   padding: 30px 30px; 
-  gap: 15px;
+  gap: var(--space-m);
   width: 100%;
   max-width: 540px;
   box-sizing: border-box; /* 追加 */
@@ -85,7 +85,7 @@
   align-items: center;
   /* 修正: 20px -> 30px に統一 */
   padding: 30px 30px; 
-  gap: 20px;
+  gap: var(--space-l);
   width: 100%;
   max-width: 540px;
   box-sizing: border-box; /* 追加 */
@@ -97,7 +97,7 @@
   align-items: flex-start;
   /* 修正: 20px -> 30px に統一 */
   padding: 30px 30px; 
-  gap: 15px;
+  gap: var(--space-m);
   width: 100%;
   max-width: 540px;
   box-sizing: border-box; /* 追加 */
@@ -126,7 +126,7 @@
 .flexiCardArea {
   display: flex;
   flex-direction: row;
-  gap: 15px;
+  gap: var(--space-m);
   width: 100%;
   overflow-x: auto;
   overflow-y: hidden;

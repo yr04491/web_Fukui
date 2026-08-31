@@ -55,7 +55,7 @@
   /* 修正: 余白統一 (30px) */
   padding: 30px 30px; 
   
-  gap: 15px;
+  gap: var(--space-m);
   width: 100%;
   max-width: 540px;
   box-sizing: border-box; /* 追加 */
@@ -97,7 +97,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
+  gap: var(--space-l);
   width: 100%;
   
   /* 修正: 余白統一 (30px) */
@@ -159,7 +159,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
+  gap: var(--space-l);
   width: 100%;
   
   /* 修正: 余白統一 */
@@ -196,7 +196,7 @@
   flex-direction: row;
   align-items: flex-start;
   padding: 10px 0;
-  gap: 15px;
+  gap: var(--space-m);
   width: 100%;
   overflow-x: auto;
   overflow-y: hidden;
@@ -277,7 +277,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
+  gap: var(--space-l);
   width: 100%;
   
   /* 修正: 余白統一 */
@@ -315,7 +315,7 @@
 .flexiCardArea {
   display: flex;
   flex-direction: row;
-  gap: 15px;
+  gap: var(--space-m);
   width: 100%;
   overflow-x: auto;
   overflow-y: hidden;
@@ -330,7 +330,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
+  gap: var(--space-l);
   width: 100%;
   
   /* 修正: 余白統一 */

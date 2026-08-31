@@ -181,7 +181,7 @@
   justify-content: center;
   align-items: center;
   padding: 10px;
-  gap: 10px;
+  gap: var(--space-s);
   
   width: 480px;
   height: auto; /* 内容に合わせて高さを自動調整 */
@@ -224,7 +224,7 @@
   justify-content: center;
   align-items: center;
   padding: 10px;
-  gap: 10px;
+  gap: var(--space-s);
   
   width: 480px;
   min-height: 115px;
@@ -284,7 +284,7 @@
   justify-content: center;
   align-items: center;
   padding: 5px 10px;
-  gap: 10px;
+  gap: var(--space-s);
   
   max-width: 280px;
   height: 40px;
@@ -305,7 +305,7 @@
   justify-content: center;
   align-items: center;
   padding: 5px 10px;
-  gap: 10px;
+  gap: var(--space-s);
   
   width: 166px;
   max-width: 280px;

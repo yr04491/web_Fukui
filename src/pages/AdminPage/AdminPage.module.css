@@ -137,7 +137,7 @@
 .experiencesList {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
+  gap: var(--space-l);
   max-width: 1000px;
   margin: 0 auto;
 }
@@ -309,7 +309,7 @@
   .experiencesList {
     display: flex;
     overflow-x: auto;
-    gap: 15px;
+    gap: var(--space-m);
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
     padding-bottom: 10px;

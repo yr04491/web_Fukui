@@ -18,7 +18,7 @@
   .container {
     flex-direction: column;
     padding: 20px;
-    gap: 20px;
+    gap: var(--space-l);
   }
 }
 
@@ -171,7 +171,7 @@
   justify-content: center;
   align-items: center;
   padding: 8px var(--space-m);
-  gap: 10px;
+  gap: var(--space-s);
   width: 180px;
   height: 40px;
   background: var(--color-button-bg);

@@ -43,7 +43,7 @@
 .searchInputWrapper {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: var(--space-s);
   padding: 12px 20px;
   border: 1px solid #ddd;
   border-radius: var(--radius-pill);
@@ -66,7 +66,7 @@
 .buttonArea {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: var(--space-m);
   align-items: flex-start;
   width: 100%;
 }
@@ -96,7 +96,7 @@
 
 .filterRow {
   display: flex;
-  gap: 10px;
+  gap: var(--space-s);
   width: 100%;
   justify-content: space-between;
 }
@@ -227,7 +227,7 @@
 .cityCardsGrid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
+  gap: var(--space-l);
   width: 100%;
   max-width: 100%;
   margin-top: 10px;
@@ -244,7 +244,7 @@
 .cardsGrid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
+  gap: var(--space-l);
   width: 100%;
   max-width: 100%;
   margin: 0 auto;
@@ -272,7 +272,7 @@
   .cardsGrid {
     display: flex;
     overflow-x: auto;
-    gap: 15px;
+    gap: var(--space-m);
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
     padding-bottom: 10px;

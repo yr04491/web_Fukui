@@ -45,7 +45,7 @@
   gap: 8px;
   padding: 8px 16px;
   background: rgba(255, 255, 255, 0.2);
-  border-radius: 20px;
+  border-radius: var(--radius-l);
 }
 
 .userName {
@@ -63,7 +63,7 @@
   background: var(--color-white);
   color: var(--color-accent-experience);
   border: none;
-  border-radius: 20px;
+  border-radius: var(--radius-l);
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);

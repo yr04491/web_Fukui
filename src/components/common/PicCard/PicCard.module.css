@@ -8,7 +8,7 @@
   width: 240px;
   max-width: 240px;
   height: 369px; /* 355pxから369pxに変更 - 新しいcontentContainerサイズに合わせる */
-  border-radius: 10px;
+  border-radius: var(--radius-m);
   overflow: visible;
   flex-shrink: 0;
 }
@@ -22,7 +22,7 @@
   background-position: center;
   background-repeat: no-repeat;
   border: 1px solid var(--color-black); /* 黒い枠線を追加 */
-  border-radius: 10px;
+  border-radius: var(--radius-m);
   margin: -10px auto 0;
   flex-shrink: 0;
   align-self: center;
@@ -48,7 +48,7 @@
   height: 149px;
   background: var(--color-white);
   border: 1.5px solid var(--color-black);
-  border-radius: 10px;
+  border-radius: var(--radius-m);
   position: relative;
   z-index: 2;
 }
@@ -132,7 +132,7 @@
   width: 25px;
   height: 25px;
   background: #F4BED3;
-  border-radius: 50%;
+  border-radius: var(--radius-full);
   display: flex;
   align-items: center;
   justify-content: center;

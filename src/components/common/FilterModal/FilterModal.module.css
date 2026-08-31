@@ -104,7 +104,7 @@
 
 .searchBar {
   border: 1px solid #E0E0E0;
-  border-radius: 8px;
+  border-radius: var(--radius-button);
   padding: 12px;
   min-height: 48px;
   background-color: var(--color-white);
@@ -121,7 +121,7 @@
   align-items: center;
   gap: 6px;
   padding: 6px 12px;
-  border-radius: 20px;
+  border-radius: var(--radius-l);
   background-color: #F5F5F5;
   font-size: 14px;
   color: var(--color-text-secondary);
@@ -180,7 +180,7 @@
 
 .filterButton {
   padding: 10px 20px;
-  border-radius: 20px;
+  border-radius: var(--radius-l);
   border: 1px solid #E0E0E0;
   background-color: var(--color-white);
   color: var(--color-text-secondary);
@@ -201,7 +201,7 @@
 .decideButton {
   width: 100%;
   padding: 16px;
-  border-radius: 8px;
+  border-radius: var(--radius-button);
   border: none;
   color: var(--color-white);
   font-size: 16px;

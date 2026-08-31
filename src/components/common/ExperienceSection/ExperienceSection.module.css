@@ -85,7 +85,7 @@
   height: auto;
   background: var(--color-accent-experience-bg);
   border: 1px solid var(--color-black);
-  border-radius: 8px;
+  border-radius: var(--radius-button);
   font-family: var(--font-primary);
   font-style: normal;
   font-weight: 600;
@@ -124,7 +124,7 @@
 .errorMessage {
   background-color: #fff3f3;
   border: 1px solid #ff6b6b;
-  border-radius: 8px;
+  border-radius: var(--radius-button);
   padding: 20px;
   width: 100%;
   text-align: center;
@@ -142,7 +142,7 @@
 .noDataMessage {
   background-color: #f8f9fa;
   border: 1px solid #dee2e6;
-  border-radius: 8px;
+  border-radius: var(--radius-button);
   padding: 20px;
   width: 100%;
   text-align: center;

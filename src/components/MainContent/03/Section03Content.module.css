@@ -126,7 +126,7 @@
   height: auto;
   background: rgba(136, 211, 188, 0.15);
   border: 1px solid var(--color-black);
-  border-radius: 8px;
+  border-radius: var(--radius-button);
   font-family: var(--font-primary);
   font-style: normal;
   font-weight: 600;

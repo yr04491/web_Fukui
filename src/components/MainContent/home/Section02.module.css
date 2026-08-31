@@ -121,7 +121,7 @@
   min-height: 46px;
   background: #FFF9CC; /* 黄色に変更 */
   border: 1px solid var(--color-black);
-  border-radius: 5px;
+  border-radius: var(--radius-s);
   cursor: pointer;
 }
 
@@ -218,7 +218,7 @@
   height: 40px;
   background: var(--color-white);
   border: 1px solid var(--color-black);
-  border-radius: 5px;
+  border-radius: var(--radius-s);
   margin: 20px auto 0;
   cursor: pointer;
 }

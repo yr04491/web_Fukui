@@ -66,7 +66,7 @@
 }
 
 .profileIcon { flex-shrink: 0; margin-left: -8px; }
-.iconImage { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; }
+.iconImage { width: 64px; height: 64px; border-radius: var(--radius-full); object-fit: cover; }
 .profileInfo { flex: 1; }
 /* 長い肩書き（例: 特定非営利活動法人 BRICOLAB代表理事）がスマホで
    はみ出すため、改行禁止をやめて折り返せるようにする */
@@ -145,7 +145,7 @@
   margin-top: 40px;
 }
 .writerIcon { flex-shrink: 0; }
-.writerIconImage { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; }
+.writerIconImage { width: 60px; height: 60px; border-radius: var(--radius-full); object-fit: cover; }
 .writerInfo { flex: 1; }
 .writerText { font-size: 14px; font-weight: 400; color: var(--color-text-secondary); margin: 0; line-height: 1.6; }
 

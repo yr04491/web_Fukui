@@ -210,7 +210,7 @@
     height: auto;
     background: rgba(121, 181, 238, 0.15);
     border: 1px solid var(--color-black);
-    border-radius: 8px;
+    border-radius: var(--radius-button);
     font-family: var(--font-primary);
     font-style: normal;
     font-weight: 600;
@@ -254,7 +254,7 @@
     width: 100%;
     max-width: 500px;
     background: var(--color-white);
-    border-radius: 10px;
+    border-radius: var(--radius-m);
     margin-bottom: 30px; /* ← この行を追加 */
 }
 
@@ -297,7 +297,7 @@
     width: 100%;
     max-width: 500px;
     background: var(--color-white);
-    border-radius: 10px;
+    border-radius: var(--radius-m);
     /*margin-bottom: -50px;*/
     overflow: visible;
     margin-top: 30px; /* ← introSectionとの間に空間を設ける場合はこちらで調整 */
@@ -322,7 +322,7 @@
     height: 40px;
     background: var(--color-tag-bg);
     border: 1px solid var(--color-black);
-    border-radius: 5px;
+    border-radius: var(--radius-s);
     cursor: pointer;
     margin-top: 0px;
 }
@@ -368,7 +368,7 @@
     width: 100%;
     max-width: 500px;
     background: var(--color-white);
-    border-radius: 10px;
+    border-radius: var(--radius-m);
     margin-bottom: 20px;
     margin-top: 0;
 }
@@ -459,7 +459,7 @@
     height: 40px;
     background: var(--color-tag-bg);
     border: 1px solid var(--color-black);
-    border-radius: 5px;
+    border-radius: var(--radius-s);
     cursor: pointer;
     margin-top: 0;
     margin-bottom: 20px;

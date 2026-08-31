@@ -67,7 +67,7 @@
   background: white;
   /* ▼▼▼ 修正: 青色の枠線 ▼▼▼ */
   border: 1px solid var(--color-accent-school);
-  border-radius: 20px;
+  border-radius: var(--radius-l);
   font-size: 14px;
   color: var(--color-black);
 }
@@ -107,7 +107,7 @@
   background: var(--color-accent-school);
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: var(--radius-s);
   cursor: pointer;
   font-size: 16px;
   margin-bottom: 20px;
@@ -238,7 +238,7 @@
   /* ▼▼▼ 修正: ボタン背景も薄い青色に統一 ▼▼▼ */
   background: rgba(121, 181, 238, 0.25);
   border: 1px solid var(--color-black);
-  border-radius: 8px;
+  border-radius: var(--radius-button);
   font-family: var(--font-primary);
   font-style: normal;
   font-weight: 600;
@@ -297,7 +297,7 @@
   height: auto;
   background: rgba(121, 181, 238, 0.25);
   border: 1px solid var(--color-black);
-  border-radius: 8px;
+  border-radius: var(--radius-button);
   font-family: var(--font-primary);
   font-style: normal;
   font-weight: 600;

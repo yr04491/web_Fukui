@@ -128,7 +128,7 @@
   width: 100%;
   max-width: 500px;
   background: var(--color-white); /* 白に変更 */
-  border-radius: 10px;
+  border-radius: var(--radius-m);
   margin-bottom: 5px; /* セクション間の空間を削減 */
   overflow: visible;
 }

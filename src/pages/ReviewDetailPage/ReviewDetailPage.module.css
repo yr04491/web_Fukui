@@ -15,7 +15,7 @@
   padding: 10px 20px;
   background: var(--color-white);
   border: 1.5px solid var(--color-black);
-  border-radius: 5px;
+  border-radius: var(--radius-s);
   cursor: pointer;
   font-family: var(--font-primary);
   font-weight: 600;
@@ -24,7 +24,7 @@
 
 .main {
   background: var(--color-white);
-  border-radius: 10px;
+  border-radius: var(--radius-m);
   padding: 40px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
@@ -47,7 +47,7 @@
 .metaInfo { display: flex; align-items: center; gap: 20px; }
 .authorInfo { display: flex; align-items: center; gap: 10px; }
 .authorAvatar {
-  width: 40px; height: 40px; background: #F4BED3; border-radius: 50%;
+  width: 40px; height: 40px; background: #F4BED3; border-radius: var(--radius-full);
   display: flex; align-items: center; justify-content: center;
 }
 .authorAvatar span { font-family: var(--font-primary); font-weight: 600; font-size: 18px; color: var(--color-black); }
@@ -78,7 +78,7 @@
   margin-bottom: 30px;
   padding: 20px;
   background: #f9f9f9;
-  border-radius: 8px;
+  border-radius: var(--radius-button);
   display: flex;
   align-items: center;
   gap: 10px;

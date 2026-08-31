@@ -57,7 +57,7 @@
 .checkmarkCircle {
   width: 100px;
   height: 100px;
-  border-radius: 50%;
+  border-radius: var(--radius-full);
   background-color: #4caf50;
   position: relative;
   animation: scaleIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);

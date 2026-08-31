@@ -28,9 +28,12 @@
   
   /* ボーダーラディウス */
   --radius-s: 5px;
-  --radius-m: 10px;
+  --radius-m: 10px;       /* カード・コンテナ */
   --radius-l: 20px;
-  
+  --radius-button: 8px;   /* ボタン・メッセージボックス */
+  --radius-pill: 25px;    /* ピル型ボタン */
+  --radius-full: 50%;     /* 円形要素 */
+
   /* フォントサイズ */
   --font-xs: 12px;
   --font-s: 14px;

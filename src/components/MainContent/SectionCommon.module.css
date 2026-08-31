@@ -188,7 +188,7 @@
   min-height: 80px;
   
   border: 1px dashed var(--color-black);
-  border-radius: 10px;
+  border-radius: var(--radius-m);
   
   flex: none;
   order: 3;
@@ -230,7 +230,7 @@
   min-height: 115px;
   
   border: 1px dashed var(--color-black);
-  border-radius: 10px;
+  border-radius: var(--radius-m);
   
   flex: none;
   align-self: stretch;
@@ -290,7 +290,7 @@
   height: 40px;
   
   background: rgba(163, 208, 250, 0.46);
-  border-radius: 5px;
+  border-radius: var(--radius-s);
   border: none;
   cursor: pointer;
   
@@ -312,7 +312,7 @@
   height: 40px;
   
   background: #A3D0FA;
-  border-radius: 5px;
+  border-radius: var(--radius-s);
   border: none;
   cursor: pointer;
   

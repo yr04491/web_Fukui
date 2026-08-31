@@ -8,7 +8,7 @@
   /* パディングを調整 (上下50px, 左右30px) */
   padding: 50px 30px; 
   /* 要素間のギャップを調整 */
-  gap: 30px; 
+  gap: var(--space-xl); 
   width: 100%;
   max-width: 540px;
   /* 高さを自動に変更 */
@@ -44,7 +44,7 @@
   font-family: var(--font-primary);
   font-style: normal;
   font-weight: 400; /* Medium or Regular */
-  font-size: 12px; /* 12px */
+  font-size: var(--font-xs); /* 12px */
   line-height: 1.5;
   /* ▼ 文字色を濃いグレーに変更 ▼ */
   color: #555555; 
@@ -137,7 +137,7 @@
   font-family: var(--font-primary);
   font-style: normal;
   font-weight: 500; /* Medium */
-  font-size: 14px;
+  font-size: var(--font-s);
   line-height: 1.5; /* 行間 */
   /* 文字色を濃いグレーに */
   color: #555555; 
@@ -186,7 +186,7 @@
   padding: 14px 20px;
   font-family: var(--font-primary);
   font-weight: 700;
-  font-size: 14px;
+  font-size: var(--font-s);
   cursor: pointer;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   z-index: 1000;
@@ -243,7 +243,7 @@
   }
   
   .footerTitle {
-    font-size: 12px;
+    font-size: var(--font-xs);
   }
   
   .footerLogo {

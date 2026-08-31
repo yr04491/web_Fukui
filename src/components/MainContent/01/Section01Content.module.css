@@ -13,7 +13,7 @@
   flex-direction: column;
   align-items: center;
   padding: 0 30px 20px;
-  gap: 5px;
+  gap: var(--space-xs);
   width: 100%;
   max-width: 540px;
   position: relative;
@@ -65,7 +65,7 @@
   font-family: var(--font-primary);
   font-style: normal;
   font-weight: 600;
-  font-size: 16px;
+  font-size: var(--font-m);
   line-height: 1.6;
   text-align: left;
   color: var(--color-black);
@@ -84,7 +84,7 @@
   font-family: var(--font-primary);
   font-style: normal;
   font-weight: 400;
-  font-size: 14px;
+  font-size: var(--font-s);
   line-height: 1.8;
   text-align: left;
   color: var(--color-black);
@@ -122,13 +122,13 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 5px;
+  gap: var(--space-xs);
 }
 
 .sectionTitle {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: var(--space-xs);
   margin: 0;
   width: 100%;
 }
@@ -137,7 +137,7 @@
   font-family: var(--font-primary);
   font-style: normal;
   font-weight: 600;
-  font-size: 12px;
+  font-size: var(--font-xs);
   line-height: 1.5;
   color: var(--color-black);
   /* 親でpaddingがあるので追加インデント不要 */
@@ -175,7 +175,7 @@
   font-family: var(--font-primary);
   font-style: normal;
   font-weight: 600;
-  font-size: 12px;
+  font-size: var(--font-xs);
   line-height: 1.5;
   color: var(--color-black);
   padding-left: 0;
@@ -211,7 +211,7 @@
   justify-content: center;
   align-items: center;
   padding: 12px 20px;
-  gap: 8px;
+  gap: var(--space-s);
   width: auto;
   max-width: 360px;
   height: auto;
@@ -219,7 +219,7 @@
   font-family: var(--font-primary);
   font-style: normal;
   font-weight: 600;
-  font-size: 14px;
+  font-size: var(--font-s);
   line-height: 20px;
   color: var(--color-black);
   cursor: pointer;
@@ -236,7 +236,7 @@
 
 .loadingMessage, .errorMessage, .noDataMessage {
   font-family: var(--font-primary);
-  font-size: 14px;
+  font-size: var(--font-s);
   text-align: center;
   width: 100%;
 }
@@ -252,7 +252,7 @@
   justify-content: center;
   align-items: center;
   padding: 12px 20px;
-  gap: 8px;
+  gap: var(--space-s);
   width: auto;
   max-width: 360px;
   height: auto;
@@ -262,7 +262,7 @@
   font-family: var(--font-primary);
   font-style: normal;
   font-weight: 600;
-  font-size: 14px;
+  font-size: var(--font-s);
   line-height: 20px;
   color: var(--color-black);
   cursor: pointer;
@@ -304,7 +304,7 @@
   font-family: var(--font-primary);
   font-style: normal;
   font-weight: 400;
-  font-size: 14px;
+  font-size: var(--font-s);
   line-height: 1.8;
   text-align: left;
   color: var(--color-black);

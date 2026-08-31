@@ -13,12 +13,12 @@
 }
 .heroLead {
   margin: 0;
-  font-size: 12px;
+  font-size: var(--font-xs);
   color: var(--color-text-secondary);
 }
 .heroTitle {
   margin: 6px 0 0 0;
-  font-size: 20px;
+  font-size: var(--font-l);
 }
 .heroDots {
   height: 8px;
@@ -44,7 +44,7 @@
 .tocAndMeta { 
   display: flex; 
   flex-direction: column;
-  gap: 16px; 
+  gap: var(--space-m); 
   margin: 16px 0; 
 }
 .tocBox { 
@@ -54,7 +54,7 @@
   width: 100%; 
 }
 .tocBox strong {
-  font-size: 14px;
+  font-size: var(--font-s);
   font-weight: 700;
 }
 .tocBox ul {
@@ -71,7 +71,7 @@
 .metaRow {
   display: flex;
   justify-content: space-between;
-  gap: 16px;
+  gap: var(--space-m);
   padding: 10px 0;
   border-bottom: 1px dotted #CCC;
   font-size: 13px;
@@ -104,7 +104,7 @@
 .sectionHeading { 
   color: var(--color-black); 
   margin: 0 0 12px 0; 
-  font-size: 16px;
+  font-size: var(--font-m);
   font-weight: 700;
 }
 .sectionDivider {
@@ -158,12 +158,12 @@
 .loadingText {
   margin-top: 16px;
   color: var(--color-text-muted);
-  font-size: 14px;
+  font-size: var(--font-s);
 }
 
 .backButton {
   font-family: var(--font-primary);
-  font-size: 14px;
+  font-size: var(--font-s);
   font-weight: 600;
   padding: 10px 20px;
   border-radius: 6px;
@@ -192,7 +192,7 @@
 .adminInfoGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 16px;
+  gap: var(--space-m);
   margin-bottom: 24px;
 }
 
@@ -204,7 +204,7 @@
 
 .adminInfoLabel {
   font-family: var(--font-primary);
-  font-size: 12px;
+  font-size: var(--font-xs);
   font-weight: 600;
   color: var(--color-text-muted);
   text-transform: uppercase;
@@ -213,7 +213,7 @@
 
 .adminInfoValue {
   font-family: var(--font-primary);
-  font-size: 14px;
+  font-size: var(--font-s);
   font-weight: 500;
   color: var(--color-text-secondary);
   padding: 8px 12px;
@@ -269,7 +269,7 @@
 
 .currentRejectReasonTitle {
   font-family: var(--font-primary);
-  font-size: 16px;
+  font-size: var(--font-m);
   font-weight: 700;
   color: #f57c00;
   margin: 0 0 12px 0;
@@ -277,7 +277,7 @@
 
 .currentRejectReasonBox {
   font-family: var(--font-primary);
-  font-size: 14px;
+  font-size: var(--font-s);
   line-height: 1.8;
   color: var(--color-text-secondary);
   background: var(--color-white);
@@ -296,7 +296,7 @@
 
 .rejectHistoryTitle {
   font-family: var(--font-primary);
-  font-size: 16px;
+  font-size: var(--font-m);
   font-weight: 700;
   color: var(--color-text-secondary);
   margin: 0 0 16px 0;
@@ -327,7 +327,7 @@
 
 .rejectHistoryReason {
   font-family: var(--font-primary);
-  font-size: 14px;
+  font-size: var(--font-s);
   line-height: 1.6;
   color: var(--color-text-secondary);
   white-space: pre-wrap;
@@ -348,7 +348,7 @@
 .rejectButton,
 .backButton {
   font-family: var(--font-primary);
-  font-size: 16px;
+  font-size: var(--font-m);
   font-weight: 600;
   padding: 12px 32px;
   border-radius: var(--radius-button);
@@ -381,7 +381,7 @@
 
 .returnToPendingButton {
   font-family: var(--font-primary);
-  font-size: 16px;
+  font-size: var(--font-m);
   font-weight: 600;
   padding: 12px 32px;
   border-radius: var(--radius-button);
@@ -403,7 +403,7 @@
   color: var(--color-white);
   border: none;
   padding: 12px 32px;
-  font-size: 16px;
+  font-size: var(--font-m);
 }
 
 .adminActions .backButton:hover {
@@ -425,7 +425,7 @@
 
 .rejectFormTitle {
   font-family: var(--font-primary);
-  font-size: 16px;
+  font-size: var(--font-m);
   font-weight: 600;
   color: #d32f2f;
   margin: 0 0 16px 0;
@@ -436,7 +436,7 @@
   font-family: var(--font-primary);
   width: 100%;
   padding: 12px;
-  font-size: 14px;
+  font-size: var(--font-s);
   line-height: 1.6;
   border: 1px solid #e0e0e0;
   border-radius: var(--radius-button);
@@ -461,7 +461,7 @@
 .confirmRejectButton,
 .cancelRejectButton {
   font-family: var(--font-primary);
-  font-size: 16px;
+  font-size: var(--font-m);
   font-weight: 600;
   padding: 12px 32px;
   border-radius: var(--radius-button);

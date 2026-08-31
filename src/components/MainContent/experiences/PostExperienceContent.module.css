@@ -22,7 +22,7 @@
 
 .subtitle {
   font-family: var(--font-primary);
-  font-size: 14px;
+  font-size: var(--font-s);
   font-weight: 400;
   color: var(--color-text-secondary);
   margin: 0 0 10px 0;
@@ -135,7 +135,7 @@
   justify-content: center;
   align-items: center;
   padding: 12px 20px;
-  gap: 8px;
+  gap: var(--space-s);
   width: auto;
   max-width: 360px;
   height: auto;
@@ -145,7 +145,7 @@
   font-family: var(--font-primary);
   font-style: normal;
   font-weight: 600;
-  font-size: 14px;
+  font-size: var(--font-s);
   line-height: 20px;
   color: var(--color-black);
   text-decoration: none;
@@ -172,10 +172,10 @@
   }
 
   .sectionTitle {
-    font-size: 16px;
+    font-size: var(--font-m);
   }
 
   .sectionContent {
-    font-size: 14px;
+    font-size: var(--font-s);
   }
 }

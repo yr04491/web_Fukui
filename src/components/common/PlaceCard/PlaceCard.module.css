@@ -93,7 +93,7 @@
   font-family: var(--font-primary);
   font-style: normal;
   font-weight: 600;
-  font-size: 12px;
+  font-size: var(--font-xs);
   line-height: 15px;
   color: var(--color-black);
 }
@@ -131,7 +131,7 @@
   font-family: var(--font-primary);
   font-style: normal;
   font-weight: 600;
-  font-size: 14px;
+  font-size: var(--font-s);
   line-height: 1.4; /* 行間を調整 */
   text-align: center; /* 中央揃え */
   letter-spacing: 0.05em;
@@ -154,7 +154,7 @@
   font-family: var(--font-primary);
   font-style: normal;
   font-weight: 400;
-  font-size: 12px;
+  font-size: var(--font-xs);
   line-height: 1.4;
   letter-spacing: 0.05em;
   color: var(--color-text-secondary);

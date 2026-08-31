@@ -14,7 +14,7 @@
   align-items: center;
   /* 修正: 余白統一 (他ページのtitleSectionに合わせる) */
   padding: 0 30px 20px;
-  gap: 5px;
+  gap: var(--space-xs);
   width: 100%;
   max-width: 540px;
   position: relative;
@@ -38,7 +38,7 @@
 
 .topSubtitle {
   font-family: var(--font-primary);
-  font-size: 16px;
+  font-size: var(--font-m);
   font-weight: 400;
   color: var(--color-text-secondary);
   text-align: center;
@@ -88,7 +88,7 @@
   /* 修正: 余白を他ページと統一 (30px) */
   padding: 30px 30px; 
   
-  gap: 30px;
+  gap: var(--space-xl);
   position: relative;
   
   /* 修正: 固定幅をやめて最大幅にする */
@@ -102,7 +102,7 @@
 
 .experienceTitle {
   font-family: var(--font-primary);
-  font-size: 20px;
+  font-size: var(--font-l);
   font-weight: 700;
   color: var(--color-text-secondary);
   text-align: left;
@@ -131,7 +131,7 @@
   justify-content: center;
   align-items: center;
   padding: 12px 20px;
-  gap: 8px;
+  gap: var(--space-s);
   width: auto;
   max-width: 360px;
   height: auto;
@@ -141,7 +141,7 @@
   font-family: var(--font-primary);
   font-style: normal;
   font-weight: 600;
-  font-size: 14px;
+  font-size: var(--font-s);
   line-height: 20px;
   color: var(--color-black);
   cursor: pointer;
@@ -159,7 +159,7 @@
 /* メッセージ類 */
 .loadingMessage, .errorMessage, .noDataMessage {
   font-family: var(--font-primary);
-  font-size: 14px;
+  font-size: var(--font-s);
   text-align: center;
   width: 100%;
 }
@@ -201,8 +201,8 @@
   .section00Top, .section00Middle { width: 100%; }
   .roadImage { max-width: 120px; }
   .topMainTitle { font-size: 26px; }
-  .topSubtitle { font-size: 14px; }
-  .topDescription { font-size: 16px; }
+  .topSubtitle { font-size: var(--font-s); }
+  .topDescription { font-size: var(--font-m); }
   .experienceTitle { font-size: var(--font-heading); }
-  .experienceButton { font-size: 14px; padding: 14px 20px; }
+  .experienceButton { font-size: var(--font-s); padding: 14px 20px; }
 }

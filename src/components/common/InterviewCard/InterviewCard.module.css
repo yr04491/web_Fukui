@@ -53,14 +53,14 @@
 .mainContent {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: var(--space-s);
 }
 
 .cardTitle {
   font-family: var(--font-primary);
   font-style: normal;
   font-weight: 600;
-  font-size: 16px;
+  font-size: var(--font-m);
   line-height: 1.4;
   color: var(--color-black);
   margin: 0;
@@ -70,7 +70,7 @@
   font-family: var(--font-primary);
   font-style: normal;
   font-weight: 400;
-  font-size: 12px;
+  font-size: var(--font-xs);
   line-height: 1.6;
   color: var(--color-black);
   margin: 0;
@@ -97,7 +97,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 8px;
+  gap: var(--space-s);
 }
 
 .authorIcon {
@@ -111,7 +111,7 @@
   font-family: var(--font-primary);
   font-style: normal;
   font-weight: 600;
-  font-size: 12px;
+  font-size: var(--font-xs);
   color: var(--color-black);
   flex-shrink: 0;
 }
@@ -120,7 +120,7 @@
   font-family: var(--font-primary);
   font-style: normal;
   font-weight: 400;
-  font-size: 12px;
+  font-size: var(--font-xs);
   line-height: 15px;
   color: var(--color-black);
 }
@@ -129,7 +129,7 @@
   font-family: var(--font-primary);
   font-style: normal;
   font-weight: 400;
-  font-size: 12px;
+  font-size: var(--font-xs);
   line-height: 15px;
   color: var(--color-black);
   margin-left: auto;
@@ -148,7 +148,7 @@
   }
 
   .cardTitle {
-    font-size: 14px;
+    font-size: var(--font-s);
   }
 
   .cardDescription {

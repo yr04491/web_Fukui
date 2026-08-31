@@ -21,13 +21,13 @@
 .tab {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: var(--space-s);
   padding: 12px 30px;
   background: white;
   border: 1.5px solid var(--color-black);
   border-bottom: none;
   cursor: pointer;
-  font-size: 16px;
+  font-size: var(--font-m);
   font-weight: 500;
   text-decoration: none;
   color: var(--color-black);
@@ -68,7 +68,7 @@
   /* ▼▼▼ 修正: 青色の枠線 ▼▼▼ */
   border: 1px solid var(--color-accent-school);
   border-radius: var(--radius-l);
-  font-size: 14px;
+  font-size: var(--font-s);
   color: var(--color-black);
 }
 
@@ -96,10 +96,10 @@
 .image { width: 100%; height: 100%; object-fit: cover; }
 
 .pagination { display: flex; align-items: center; justify-content: flex-end; gap: 15px; }
-.paginationBtn { background: none; border: none; font-size: 20px; cursor: pointer; padding: 5px 10px; color: var(--color-black); transition: color 0.2s; }
+.paginationBtn { background: none; border: none; font-size: var(--font-l); cursor: pointer; padding: 5px 10px; color: var(--color-black); transition: color 0.2s; }
 /* ▼▼▼ 修正: ホバー時の文字色 ▼▼▼ */
 .paginationBtn:hover { color: var(--color-accent-school); }
-.paginationText { font-size: 16px; color: var(--color-black); }
+.paginationText { font-size: var(--font-m); color: var(--color-black); }
 
 .backButton {
   padding: 10px 20px;
@@ -109,7 +109,7 @@
   border: none;
   border-radius: var(--radius-s);
   cursor: pointer;
-  font-size: 16px;
+  font-size: var(--font-m);
   margin-bottom: 20px;
 }
 .backButton:hover { background: #5fa0dd; }
@@ -128,7 +128,7 @@
   color: white; /* 文字色を白にして見やすく */
   padding: 4px 22px;
   text-align: center;
-  font-size: 16px;
+  font-size: var(--font-m);
   font-weight: bold;
   margin-bottom: 7px;
   border-radius: 4px;
@@ -168,7 +168,7 @@
 
 /* 小タイトル (公式サイトと同じ雰囲気で) */
 .detailLabel {
-  font-size: 14px;
+  font-size: var(--font-s);
   font-weight: bold;
   color: var(--color-black);
   width: 100%;
@@ -182,7 +182,7 @@
 
 /* 内容 */
 .detailValue {
-  font-size: 14px;
+  font-size: var(--font-s);
   line-height: 1.6;
   color: var(--color-black);
   padding-left: 0;
@@ -205,10 +205,10 @@
   max-width: 480px;
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: var(--space-xs);
 }
-.titleLine1 { font-size: 12px; font-weight: normal; line-height: 1.5; color: var(--color-black); }
-.titleLine2 { font-size: 20px; font-weight: 600; line-height: 1.4; color: var(--color-black); }
+.titleLine1 { font-size: var(--font-xs); font-weight: normal; line-height: 1.5; color: var(--color-black); }
+.titleLine2 { font-size: var(--font-l); font-weight: 600; line-height: 1.4; color: var(--color-black); }
 
 .tweetArea {
   display: flex;
@@ -231,7 +231,7 @@
   justify-content: center;
   align-items: center;
   padding: 12px 20px;
-  gap: 8px;
+  gap: var(--space-s);
   width: auto;
   max-width: 360px;
   height: auto;
@@ -242,7 +242,7 @@
   font-family: var(--font-primary);
   font-style: normal;
   font-weight: 600;
-  font-size: 14px;
+  font-size: var(--font-s);
   line-height: 20px;
   color: var(--color-black);
   cursor: pointer;
@@ -258,7 +258,7 @@
 .noDataMessage {
   text-align: center;
   padding: 40px 20px;
-  font-size: 16px;
+  font-size: var(--font-m);
   color: var(--color-black);
   width: 100%;
   max-width: 480px;
@@ -291,7 +291,7 @@
   justify-content: center;
   align-items: center;
   padding: 12px 20px;
-  gap: 8px;
+  gap: var(--space-s);
   width: auto;
   max-width: 360px;
   height: auto;
@@ -301,7 +301,7 @@
   font-family: var(--font-primary);
   font-style: normal;
   font-weight: 600;
-  font-size: 14px;
+  font-size: var(--font-s);
   line-height: 20px;
   color: var(--color-black);
   cursor: pointer;
@@ -327,7 +327,7 @@
 }
 
 .urlLabel {
-  font-size: 14px;
+  font-size: var(--font-s);
   font-weight: bold;
   color: var(--color-black); /* 黒文字 */
   /* ここで「区切り線」を引いています */
@@ -337,7 +337,7 @@
 }
 
 .urlLink {
-  font-size: 14px;
+  font-size: var(--font-s);
   color: #0066cc; /* リンクらしい青色 */
   text-decoration: underline;
   word-break: break-all; /* URLが長い場合に折り返す */

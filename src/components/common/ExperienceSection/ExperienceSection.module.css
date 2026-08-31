@@ -13,7 +13,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 5px;
+  gap: var(--space-xs);
   width: 100%;
 }
 
@@ -21,7 +21,7 @@
   font-family: var(--font-primary);
   font-style: normal;
   font-weight: 600;
-  font-size: 14px;
+  font-size: var(--font-s);
   line-height: 20px;
   color: var(--color-black);
   text-align: left;
@@ -38,18 +38,18 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: var(--space-xs);
 }
 
 /* 1行目: みんなの体験談を見てみよう！ */
 .titleLine1 {
-  font-size: 12px;
+  font-size: var(--font-xs);
   line-height: 1.5;
 }
 
 /* 2行目: 不登校になったきっかけは？ */
 .titleLine2 {
-  font-size: 20px;
+  font-size: var(--font-l);
   line-height: 1.4;
 }
 
@@ -79,7 +79,7 @@
   justify-content: center;
   align-items: center;
   padding: 12px 20px;
-  gap: 8px;
+  gap: var(--space-s);
   width: auto;
   max-width: 360px;
   height: auto;
@@ -89,7 +89,7 @@
   font-family: var(--font-primary);
   font-style: normal;
   font-weight: 600;
-  font-size: 14px;
+  font-size: var(--font-s);
   line-height: 20px;
   color: var(--color-black);
   cursor: pointer;
@@ -113,7 +113,7 @@
 /* ローディングメッセージ */
 .loadingMessage {
   font-family: var(--font-primary);
-  font-size: 14px;
+  font-size: var(--font-s);
   color: var(--color-text-muted);
   text-align: center;
   padding: 40px 20px;
@@ -133,7 +133,7 @@
 .errorMessage p {
   margin: 0;
   font-family: var(--font-primary);
-  font-size: 14px;
+  font-size: var(--font-s);
   color: #d63031;
   line-height: 1.5;
 }
@@ -151,7 +151,7 @@
 .noDataMessage p {
   margin: 0;
   font-family: var(--font-primary);
-  font-size: 14px;
+  font-size: var(--font-s);
   color: #6c757d;
   line-height: 1.5;
 }

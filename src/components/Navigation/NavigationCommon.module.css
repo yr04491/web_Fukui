@@ -39,7 +39,7 @@
   flex-direction: column;
   align-items: flex-start;
   padding: 0px 0px 0px 8px;
-  gap: 5px; /* 10px → 5px に変更 タイトルとサブメニューの間隔を狭める */
+  gap: var(--space-xs); /* 10px → 5px に変更 タイトルとサブメニューの間隔を狭める */
   border-radius: var(--radius-s);
   overflow: visible;
 }
@@ -66,7 +66,7 @@
 .navItemHeader {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: var(--space-s);
   margin-bottom: 10px;
   width: 100%;
   height: 20px;
@@ -106,7 +106,7 @@
   font-family: var(--font-primary);
   font-style: normal;
   font-weight: 600;
-  font-size: 16px;
+  font-size: var(--font-m);
   line-height: 20px; /* 28px → 20px Figmaの2行タイトルに合わせる */
   letter-spacing: 0.05em; /* 追加 */
   color: var(--color-black);
@@ -132,7 +132,7 @@
   font-family: var(--font-primary);
   font-style: normal;
   font-weight: 600;
-  font-size: 12px;
+  font-size: var(--font-xs);
   line-height: 15px;
   color: var(--color-black);
   margin-bottom: 0px;
@@ -160,7 +160,7 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 5px; /* 10px → 0px 間隔を0に */
+  gap: var(--space-xs); /* 10px → 0px 間隔を0に */
   margin-top: 0px; /* 0px → -30px navigationのgapを打ち消す */
 }
 
@@ -168,7 +168,7 @@
   font-family: var(--font-primary);
   font-style: normal;
   font-weight: 600;
-  font-size: 16px;
+  font-size: var(--font-m);
   line-height: 23px;
   color: var(--color-black);
   padding: 0px 0px 0px 0px;
@@ -197,7 +197,7 @@
   font-family: var(--font-primary);
   font-style: normal;
   font-weight: 600;
-  font-size: 16px;
+  font-size: var(--font-m);
   line-height: 23px;
   color: var(--color-black);
   padding: 0px 0px 0px 0px; /* 30px → 0px 左寄せに変更 */
@@ -223,7 +223,7 @@
   font-family: var(--font-primary);
   font-style: normal;
   font-weight: 600;
-  font-size: 16px;
+  font-size: var(--font-m);
   line-height: 23px;
   color: var(--color-black);
   margin-top: 0px; /* 0px → -30px navigationのgapを打ち消す */
@@ -293,7 +293,7 @@
   font-family: var(--font-primary);
   font-style: normal;
   font-weight: 600;
-  font-size: 12px;
+  font-size: var(--font-xs);
   line-height: 15px;
   color: var(--color-black);
   position: absolute;
@@ -330,7 +330,7 @@
 .donationTitle {
   font-family: var(--font-primary, sans-serif);
   font-weight: 700;
-  font-size: 16px;
+  font-size: var(--font-m);
   color: var(--color-black);
   margin: 0;
   text-align: center;
@@ -338,7 +338,7 @@
 
 .donationText {
   font-family: var(--font-primary, sans-serif);
-  font-size: 12px;
+  font-size: var(--font-xs);
   color: var(--color-black);
   text-align: center;
   line-height: 1.6;
@@ -354,7 +354,7 @@
   padding: 12px 24px;
   font-family: var(--font-primary, sans-serif);
   font-weight: 700;
-  font-size: 14px;
+  font-size: var(--font-s);
   cursor: pointer;
   width: 100%;
   max-width: 260px;
@@ -384,7 +384,7 @@
   padding: 12px 24px;
   font-family: var(--font-primary, sans-serif);
   font-weight: 700;
-  font-size: 14px;
+  font-size: var(--font-s);
   text-align: center;
   cursor: pointer;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);

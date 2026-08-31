@@ -27,12 +27,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 5px;
+  gap: var(--space-xs);
 }
 
 .subTitle {
   font-family: var(--font-primary);
-  font-size: 16px;
+  font-size: var(--font-m);
   font-weight: 400;
   color: var(--color-black);
   margin: 0;
@@ -70,8 +70,8 @@
 .profileInfo { flex: 1; }
 /* 長い肩書き（例: 特定非営利活動法人 BRICOLAB代表理事）がスマホで
    はみ出すため、改行禁止をやめて折り返せるようにする */
-.profileName { font-size: 16px; font-weight: 400; color: var(--color-text-secondary); margin: 0 0 4px 0; line-height: 1.3; overflow-wrap: anywhere; }
-.profileDate { font-size: 16px; font-weight: 400; color: var(--color-text-secondary); margin: 0; line-height: 1.3; }
+.profileName { font-size: var(--font-m); font-weight: 400; color: var(--color-text-secondary); margin: 0 0 4px 0; line-height: 1.3; overflow-wrap: anywhere; }
+.profileDate { font-size: var(--font-m); font-weight: 400; color: var(--color-text-secondary); margin: 0; line-height: 1.3; }
 
 /* 本文 */
 .contentText { padding: 0 10px; }
@@ -98,7 +98,7 @@
   padding: 20px 30px;
   margin-top: 40px;
 }
-.tocTitle { font-size: 16px; font-weight: 600; color: var(--color-text-secondary); margin: 0 0 15px 0; }
+.tocTitle { font-size: var(--font-m); font-weight: 600; color: var(--color-text-secondary); margin: 0 0 15px 0; }
 .tocList { list-style: none; padding: 0; margin: 0; }
 .tocItem {
   font-size: 15px;
@@ -116,7 +116,7 @@
   color: var(--color-black);
 }
 .tocItem:last-child { margin-bottom: 0; }
-.tocItem::before { content: '▼'; position: absolute; left: 8px; font-size: 12px; }
+.tocItem::before { content: '▼'; position: absolute; left: 8px; font-size: var(--font-xs); }
 
 /* セクション */
 .section { margin-top: 40px; }
@@ -147,7 +147,7 @@
 .writerIcon { flex-shrink: 0; }
 .writerIconImage { width: 60px; height: 60px; border-radius: var(--radius-full); object-fit: cover; }
 .writerInfo { flex: 1; }
-.writerText { font-size: 14px; font-weight: 400; color: var(--color-text-secondary); margin: 0; line-height: 1.6; }
+.writerText { font-size: var(--font-s); font-weight: 400; color: var(--color-text-secondary); margin: 0; line-height: 1.6; }
 
 .backButton {
   background-color: #4A90E2;
@@ -156,7 +156,7 @@
   padding: 10px 24px;
   border-radius: 4px;
   cursor: pointer;
-  font-size: 14px;
+  font-size: var(--font-s);
   margin-bottom: 30px;
   transition: background-color 0.3s;
 }

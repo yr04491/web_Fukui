@@ -13,7 +13,7 @@
   align-items: center;
   /* 修正: 余白統一 */
   padding: 0 30px 20px;
-  gap: 5px;
+  gap: var(--space-xs);
   width: 100%;
   max-width: 540px;
   box-sizing: border-box; /* 追加 */
@@ -73,7 +73,7 @@
   font-family: var(--font-primary);
   font-style: normal;
   font-weight: 400;
-  font-size: 14px;
+  font-size: var(--font-s);
   line-height: 1.8;
   color: var(--color-black);
   margin: 0;
@@ -107,7 +107,7 @@
   font-family: var(--font-primary);
   font-style: normal;
   font-weight: 600;
-  font-size: 16px;
+  font-size: var(--font-m);
   line-height: 1.5;
   color: var(--color-black);
   margin: 0;
@@ -117,7 +117,7 @@
   font-family: var(--font-primary);
   font-style: normal;
   font-weight: 400;
-  font-size: 14px;
+  font-size: var(--font-s);
   line-height: 1.8;
   color: var(--color-black);
   margin: 0;
@@ -142,7 +142,7 @@
   justify-content: center;
   align-items: center;
   padding: 12px 20px;
-  gap: 8px;
+  gap: var(--space-s);
   width: auto;
   max-width: 360px;
   height: auto;
@@ -152,7 +152,7 @@
   font-family: var(--font-primary);
   font-style: normal;
   font-weight: 600;
-  font-size: 14px;
+  font-size: var(--font-s);
   line-height: 20px;
   color: var(--color-black);
   cursor: pointer;

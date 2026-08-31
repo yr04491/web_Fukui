@@ -14,7 +14,7 @@
   flex-direction: column;
   align-items: center;
   padding: 60px 20px 40px;
-  gap: 30px;
+  gap: var(--space-xl);
   position: relative;
   width: 100%;
   max-width: 540px;
@@ -75,7 +75,7 @@
   font-family: var(--font-primary);
   font-style: normal;
   font-weight: 600;
-  font-size: 25px;
+  font-size: var(--font-title-story);
   line-height: 35px;
   display: flex;
   align-items: center;
@@ -100,7 +100,7 @@
   font-family: var(--font-primary);
   font-style: normal;
   font-weight: 400;
-  font-size: 16px;
+  font-size: var(--font-m);
   line-height: 1.7;
   color: var(--color-black);
   text-align: left;
@@ -125,7 +125,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 5px;
+  gap: var(--space-xs);
   width: 100%;
 }
 
@@ -133,7 +133,7 @@
   font-family: var(--font-primary);
   font-style: normal;
   font-weight: 600;
-  font-size: 12px;
+  font-size: var(--font-xs);
   line-height: 1.5;
   color: var(--color-black);
 }
@@ -171,7 +171,7 @@
   justify-content: center;
   align-items: center;
   padding: 12px 20px;
-  gap: 8px;
+  gap: var(--space-s);
   width: auto;
   max-width: 360px;
   height: auto;
@@ -181,7 +181,7 @@
   font-family: var(--font-primary);
   font-style: normal;
   font-weight: 600;
-  font-size: 14px;
+  font-size: var(--font-s);
   line-height: 20px;
   color: var(--color-black);
   cursor: pointer;
@@ -225,7 +225,7 @@
   font-family: var(--font-primary);
   font-style: normal;
   font-weight: 600;
-  font-size: 12px;
+  font-size: var(--font-xs);
   line-height: 15px;
   color: var(--color-black);
 }
@@ -234,7 +234,7 @@
   font-family: var(--font-primary);
   font-style: normal;
   font-weight: 600;
-  font-size: 16px;
+  font-size: var(--font-m);
   line-height: 32px;
   color: var(--color-black);
   margin: 0;
@@ -301,7 +301,7 @@
   font-family: var(--font-primary);
   font-style: normal;
   font-weight: 600;
-  font-size: 12px;
+  font-size: var(--font-xs);
   line-height: 15px;
   color: var(--color-black);
   white-space: nowrap;
@@ -314,7 +314,7 @@
 
 /* Section04専用のタイトルスタイル */
 .section04 :global(.titleLine1) {
-  font-size: 12px !important;
+  font-size: var(--font-xs) !important;
   line-height: 1.5;
 }
 
@@ -337,7 +337,7 @@
 
 @media (max-width: 480px) {
   .mainTitle {
-    font-size: 20px;
+    font-size: var(--font-l);
     line-height: 26px;
   }
   

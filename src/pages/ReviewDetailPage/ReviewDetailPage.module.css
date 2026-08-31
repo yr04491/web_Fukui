@@ -51,8 +51,8 @@
   display: flex; align-items: center; justify-content: center;
 }
 .authorAvatar span { font-family: var(--font-primary); font-weight: 600; font-size: 18px; color: var(--color-black); }
-.authorName { font-family: var(--font-primary); font-weight: 600; font-size: 16px; color: var(--color-black); }
-.date { font-family: var(--font-primary); font-size: 14px; color: var(--color-text-muted); }
+.authorName { font-family: var(--font-primary); font-weight: 600; font-size: var(--font-m); color: var(--color-black); }
+.date { font-family: var(--font-primary); font-size: var(--font-s); color: var(--color-text-muted); }
 
 .tagSection { margin-bottom: 30px; display: flex; flex-wrap: wrap; gap: 10px; }
 .tag {
@@ -60,7 +60,7 @@
   background: #f0f0f0;
   border-radius: 15px;
   font-family: var(--font-primary);
-  font-size: 14px;
+  font-size: var(--font-s);
   font-weight: 600;
   color: var(--color-black);
 }
@@ -68,7 +68,7 @@
 .bodySection { margin-bottom: 30px; }
 .bodyText {
   font-family: var(--font-primary);
-  font-size: 16px;
+  font-size: var(--font-m);
   line-height: 1.8;
   color: var(--color-black);
   white-space: pre-wrap;
@@ -83,8 +83,8 @@
   align-items: center;
   gap: 10px;
 }
-.ratingLabel { font-family: var(--font-primary); font-weight: 600; font-size: 16px; color: var(--color-black); }
-.ratingValue { font-size: 20px; color: #FFD700; }
+.ratingLabel { font-family: var(--font-primary); font-weight: 600; font-size: var(--font-m); color: var(--color-black); }
+.ratingValue { font-size: var(--font-l); color: #FFD700; }
 
 .relatedSection {
   margin-top: 50px;

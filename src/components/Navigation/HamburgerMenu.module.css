@@ -35,7 +35,7 @@
   font-family: var(--font-primary);
   font-style: normal;
   font-weight: 600;
-  font-size: 16px;
+  font-size: var(--font-m);
   line-height: 0px;
   text-align: center;
   color: var(--color-black);
@@ -74,7 +74,7 @@
 /* Close X アイコンのスタイル - 文字として表示 */
 .closeIconText {
   font-family: Arial, sans-serif;
-  font-size: 16px;
+  font-size: var(--font-m);
   font-weight: bold;
   color: var(--color-black);
   display: flex;

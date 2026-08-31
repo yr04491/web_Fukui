@@ -4,7 +4,7 @@
   flex-direction: column;
   align-items: center;
   padding: 40px 20px;
-  gap: 30px;
+  gap: var(--space-xl);
   position: relative;
   width: 100%;
   max-width: 540px;
@@ -20,7 +20,7 @@
   justify-content: center;
   align-items: center;
   padding: 0;
-  gap: 8px; /* 5pxから8pxに少し広げる */
+  gap: var(--space-s); /* 5pxから8pxに少し広げる */
   width: 100%;
   max-width: 500px;
 }
@@ -64,7 +64,7 @@
   font-family: var(--font-primary);
   font-style: normal;
   font-weight: 600;
-  font-size: 25px;
+  font-size: var(--font-title-story);
   line-height: 32px; /* 30pxから32pxに調整 */
   display: flex;
   align-items: center;
@@ -93,7 +93,7 @@
   font-family: var(--font-primary);
   font-style: normal;
   font-weight: 500;
-  font-size: 16px;
+  font-size: var(--font-m);
   letter-spacing: 0.1em;
   color: var(--color-black);
   text-align: left;
@@ -135,7 +135,7 @@
   font-family: var(--font-primary);
   font-style: normal;
   font-weight: 600;
-  font-size: 12px;
+  font-size: var(--font-xs);
   line-height: 15px;
   color: var(--color-black);
   flex-grow: 1;
@@ -154,7 +154,7 @@
   flex-direction: column;
   align-items: flex-start;
   padding: 2px 0px;
-  gap: 5px; /* 8pxから5pxに縮小 */
+  gap: var(--space-xs); /* 8pxから5pxに縮小 */
   margin-bottom: 10px; /* 15pxから10pxに縮小 */
   width: 100%;
 }
@@ -163,7 +163,7 @@
   font-family: var(--font-primary);
   font-style: normal;
   font-weight: 600;
-  font-size: 12px;
+  font-size: var(--font-xs);
   line-height: 14px; /* 15pxから14pxに縮小 */
   color: var(--color-black);
   margin-bottom: -1px; /* 下部の余白を縮める */
@@ -173,7 +173,7 @@
   font-family: var(--font-primary);
   font-style: normal;
   font-weight: 600;
-  font-size: 16px;
+  font-size: var(--font-m);
   line-height: 24px; /* 32pxから24pxに縮小 */
   color: var(--color-black);
   margin-top: -2px; /* 上部の余白を縮める */
@@ -223,7 +223,7 @@
   font-family: var(--font-primary);
   font-style: normal;
   font-weight: 600;
-  font-size: 12px;
+  font-size: var(--font-xs);
   line-height: 15px;
   color: var(--color-black);
   white-space: nowrap;

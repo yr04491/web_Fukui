@@ -47,7 +47,7 @@
 /* レスポンシブ対応 (変更なし) */
 @media (max-width: 982px) {
   .headerSection {
-    gap: 30px; 
+    gap: var(--space-xl); 
     padding: 0 10px; 
     width: 100%; /* コンテンツがはみ出ないように幅を100%に */
   }
@@ -71,7 +71,7 @@
   /* --- 修正箇所 終了 --- */
 
   .headerSection {
-    gap: 30px; 
+    gap: var(--space-xl); 
     padding: 0 10px; 
     width: 100%;
   }

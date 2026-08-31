@@ -32,7 +32,7 @@
   justify-content: space-between;
   align-items: flex-end;
   padding: 15px 20px;
-  gap: 8px;
+  gap: var(--space-s);
   width: 240px; /* cardConfig.js: tweetCardConfig.width */
   min-width: 240px;
   flex-shrink: 0;
@@ -52,7 +52,7 @@
   font-family: var(--font-primary);
   font-style: normal;
   font-weight: 600;
-  font-size: 14px; /* cardConfig.js: tweetCardConfig.text.fontSize */
+  font-size: var(--font-s); /* cardConfig.js: tweetCardConfig.text.fontSize */
   line-height: 18px; /* cardConfig.js: tweetCardConfig.text.lineHeight */
   letter-spacing: 0.1em; /* cardConfig.js: tweetCardConfig.text.letterSpacing */
   color: var(--color-black);
@@ -86,7 +86,7 @@
   font-family: var(--font-primary);
   font-style: normal;
   font-weight: 600;
-  font-size: 12px;
+  font-size: var(--font-xs);
   line-height: 15px;
   color: var(--color-black);
 }
@@ -97,7 +97,7 @@
   flex-direction: row;
   align-items: center;
   padding: 0;
-  gap: 5px; /* cardConfig.js: tweetCardConfig.footer.gap */
+  gap: var(--space-xs); /* cardConfig.js: tweetCardConfig.footer.gap */
   margin: 0 auto;
   width: 100%;
   max-width: 200px; /* cardConfig.js: tweetCardConfig.footer.maxWidth */
@@ -126,7 +126,7 @@
   font-family: var(--font-primary);
   font-style: normal;
   font-weight: 600;
-  font-size: 14px; /* cardConfig.js: tweetCardConfig.footer.avatar.fontSize */
+  font-size: var(--font-s); /* cardConfig.js: tweetCardConfig.footer.avatar.fontSize */
   color: var(--color-black);
 }
 
@@ -135,7 +135,7 @@
   font-family: var(--font-primary);
   font-style: normal;
   font-weight: 600;
-  font-size: 12px; /* cardConfig.js: tweetCardConfig.footer.authorName.fontSize */
+  font-size: var(--font-xs); /* cardConfig.js: tweetCardConfig.footer.authorName.fontSize */
   line-height: 15px; /* cardConfig.js: tweetCardConfig.footer.authorName.lineHeight */
   color: var(--color-black);
 }
@@ -145,7 +145,7 @@
   font-family: var(--font-primary);
   font-style: normal;
   font-weight: 600;
-  font-size: 12px; /* cardConfig.js: tweetCardConfig.footer.date.fontSize */
+  font-size: var(--font-xs); /* cardConfig.js: tweetCardConfig.footer.date.fontSize */
   line-height: 15px; /* cardConfig.js: tweetCardConfig.footer.date.lineHeight */
   color: var(--color-black);
   margin-left: auto; /* 右寄せ */

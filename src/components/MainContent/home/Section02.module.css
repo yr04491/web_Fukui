@@ -4,7 +4,7 @@
   flex-direction: column;
   align-items: center;
   padding: 40px 20px;
-  gap: 30px;
+  gap: var(--space-xl);
   position: relative;
   width: 100%;
   max-width: 540px;
@@ -20,7 +20,7 @@
   justify-content: center;
   align-items: center;
   padding: 0;
-  gap: 8px; 
+  gap: var(--space-s); 
   width: 100%;
   max-width: 500px;
 }
@@ -64,7 +64,7 @@
   font-family: var(--font-primary);
   font-style: normal;
   font-weight: 600;
-  font-size: 25px;
+  font-size: var(--font-title-story);
   line-height: 32px;
   display: flex;
   align-items: center;
@@ -93,7 +93,7 @@
   font-family: var(--font-primary);
   font-style: normal;
   font-weight: 500;
-  font-size: 16px;
+  font-size: var(--font-m);
   letter-spacing: 0.1em;
   color: var(--color-black);
   text-align: left;
@@ -135,7 +135,7 @@
   font-family: var(--font-primary);
   font-style: normal;
   font-weight: 600;
-  font-size: 12px;
+  font-size: var(--font-xs);
   line-height: 15px;
   color: var(--color-black);
   flex-grow: 1;
@@ -159,7 +159,7 @@
   flex-direction: column;
   align-items: flex-start;
   padding: 2px 0px;
-  gap: 5px; /* 8pxから5pxに変更して間隔を詰める */
+  gap: var(--space-xs); /* 8pxから5pxに変更して間隔を詰める */
   margin-bottom: 15px;
   width: 100%;
 }
@@ -168,7 +168,7 @@
   font-family: var(--font-primary);
   font-style: normal;
   font-weight: 600;
-  font-size: 12px;
+  font-size: var(--font-xs);
   line-height: 14px; /* 15pxから14pxに減らして行間を詰める */
   color: var(--color-black);
   margin-bottom: -2px; /* 下部に負のマージンを追加して詰める */
@@ -178,7 +178,7 @@
   font-family: var(--font-primary);
   font-style: normal;
   font-weight: 600;
-  font-size: 16px;
+  font-size: var(--font-m);
   line-height: 24px; /* 32pxから24pxに減らして行間を詰める */
   margin-top: -2px; /* 上部に少し負のマージンを追加して詰める */
   color: var(--color-black);
@@ -227,7 +227,7 @@
   font-family: var(--font-primary);
   font-style: normal;
   font-weight: 600;
-  font-size: 12px;
+  font-size: var(--font-xs);
   line-height: 15px;
   color: var(--color-black);
   white-space: nowrap;
